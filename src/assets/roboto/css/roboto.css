@@ -1,0 +1,20 @@
+	@font-face {
+			font-family: "RobotoSlabRegular";
+			src: url("../fonts/RobotoSlabRegular/RobotoSlabRegular.ttf") format("truetype");
+			font-style: normal;
+			font-weight: normal;
+	}
+
+	@font-face {
+			font-family: "RobotoSlabLight";
+			src: url("../fonts/RobotoSlabLight/RobotoSlabLight.ttf") format("truetype");
+			font-style: normal;
+			font-weight: normal;
+	}
+
+	@font-face {
+			font-family: "RobotoSlabBold";
+			src: url("../fonts/RobotoSlabBold/RobotoSlabBold.ttf") format("truetype");
+			font-style: normal;
+			font-weight: normal;
+	}

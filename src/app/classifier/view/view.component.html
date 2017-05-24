@@ -1,0 +1,27 @@
+<!--<div class='neck'>
+  <a [routerLink]="['/classifier/list']">Справочники</a><br>↓ 
+  <h1>Уровни образования</h1>
+  <div><a [routerLink]="['/classifier/edit']">+ Добавить</a> </div>
+</div>
+<div>
+  <table>
+    <thead>
+      <tr>
+        <td></td>
+        <td *ngFor = 'let title of titles'>
+          {{title.name}}
+        </td>
+        <td></td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor = 'let item of list' >
+        <td><a [routerLink]="['/classifier/edit/', item.id]">EDIT</a></td>
+        <td *ngFor = 'let title of titles'>
+          {{toView(item[title.propertie])}}
+        </td>
+        <td><span (click)='deleteItem(item.id)'>X</span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>-->

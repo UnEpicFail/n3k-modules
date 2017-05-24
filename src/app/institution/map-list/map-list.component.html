@@ -1,0 +1,84 @@
+<n3k-neck>
+  <h2>Образовательные организации</h2>
+</n3k-neck>
+<n3k-columns context='list'>
+  <column-1>
+  </column-1>
+  <column-2>
+    <div *ngFor='let item of list'>
+      <div><h3>{{item.name}}</h3></div>
+      <div>{{item.status.name}}</div>
+      <div>
+        {{item.address.origin_address}}
+        <span *ngIf="getFromArray(item.contacts, 'phone')">, {{getFromArray(item.contacts, 'phone')}}</span>
+        <span *ngIf="getFromArray(item.contacts, 'email')">, {{getFromArray(item.contacts, 'email')}}</span>
+      </div>
+    </div>
+  </column-2>
+  <column-3>
+  </column-3>
+</n3k-columns>
+
+
+<!--<app-neck>
+  <span class='neck-title'>
+    Образовательные организации
+  </span>
+  
+  <a class='neck-buttons' [routerLink]="['/institution/edit']">
+    <div class='create-button'>
+      <i class="fa fa-plus-circle" aria-hidden="true"></i> Добавить
+    </div>
+  </a>
+  
+  <div class='neck-tabs selected'><a [routerLink]="['/institution/map-list']">На карте</a></div>
+  <div class='neck-tabs'><a [routerLink]="['/institution/list']">Списком</a></div>
+  
+</app-neck>
+<app-column position=1 of=3 state='list'>
+  <table>
+    <tr>
+      <td>
+        
+          <md-input-container (change)='searchInputChange()' >
+            <input mdInput placeholder="Поиск" [(value)]='searchSrt'>
+          </md-input-container>
+        
+      </td>
+    </tr>
+    <tr>
+      <td></td>
+    </tr>
+    <tr>
+      <td></td>
+    </tr>
+    <tr>
+      <td></td>
+    </tr>
+    <tr>
+      <td></td>
+    </tr>
+    <tr>
+      <td></td>
+    </tr>
+  </table>
+</app-column>
+<app-column position=2 of=3 state='list'>
+  <div *ngFor='let item of list'>
+    <div><h3>{{item.name}}</h3></div>
+    <div>{{item.status.name}}</div>
+    <div>
+      {{item.address.origin_address}}
+      <span *ngIf="getFromArray(item.contacts, 'phone')">, {{getFromArray(item.contacts, 'phone')}}</span>
+      <span *ngIf="getFromArray(item.contacts, 'email')">, {{getFromArray(item.contacts, 'email')}}</span>
+    </div>
+  </div>
+</app-column>
+<app-column position=3 of=3 state='list'>
+  <ya-map [latitude]="55.76" [longitude]="37.64">
+    <ya-marker [latitude]="55.847" [longitude]="38.6">
+    </ya-marker>
+    <ya-marker [latitude]="55.847" [longitude]="35.6">
+    </ya-marker>
+  </ya-map>
+</app-column>-->

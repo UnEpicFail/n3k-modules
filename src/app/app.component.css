@@ -1,0 +1,103 @@
+.main-menu {
+    padding: 15px 4.2vw 0 4.2vw;
+    margin: 0;
+    overflow: hidden;
+    width: 100%;
+    height: 60px;
+    display: table;
+    box-sizing: border-box;
+}
+
+.main-menu .logo,
+.main-menu .pages,
+.main-menu .static-elements {
+    display: table-cell;
+}
+
+.main-menu .logo {
+    width: 180px;
+    height: 60px;
+}
+
+.main-menu .content{
+    overflow: hidden;
+    display: block;
+    height: 60px;
+}
+
+.main-menu .static-elements {
+    width: 200px;
+    height: 60px;
+
+    font-family: ArialMT, Arial;
+}
+
+.main-menu .pages li,
+.main-menu .static-elements li {
+    width: 100px;
+    height: 60px;
+    
+    float: left;
+    
+    text-align: center;
+    vertical-align: bottom;
+}
+
+.main-menu .static-elements li {
+    height: 51px;
+}
+
+.main-menu .pages li:hover,
+.main-menu .static-elements li:hover {
+    cursor: pointer;
+}
+.main-menu .pages li.slected-false:hover .text,
+.main-menu .static-elements li:hover .text{
+    color: #000;
+}
+
+
+.main-menu .pages li a {
+    overflow: hidden;
+    display: block;
+    height: 51px;
+}
+
+.main-menu .pages li a,
+.main-menu .static-elements li{
+    padding-top:9px;
+}
+
+.main-menu .icon {
+    line-height: 23px;
+    font-size: 28px;
+    font-weight: 400;
+    
+    font-style: normal;
+    text-align: center;
+    
+    color: #000;
+}
+
+.main-menu .selected-true .icon {
+    color: #D8666C;
+} 
+
+.main-menu .text {
+    line-height: 22px;
+    font-size: 13px;
+
+    color: #a1a1a1;
+
+    text-decoration: none;
+}
+
+.main-menu .selected-true .text {
+    color: #D8666C;
+}
+
+@media all and (max-width: 979px) {
+    .main-menu {
+        padding-left: 8.4vw
+    }
+}
