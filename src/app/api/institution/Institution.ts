@@ -6,6 +6,7 @@ import { InstitutionShort } from '../common/InstitutionShort';
 import { Organization } from './Organization';
 import { JobShort } from '../common/JobShort';
 import { ClassifierShort } from '../common/ClassifierShort';
+import { WorkTime } from '../common/WorkTime';
 import { Address } from '../common/Address';
 import { Meal } from '../common/Meal';
 import { Capacity } from '../common/Capacity';
@@ -24,7 +25,7 @@ export class Institution extends InstitutionShort
     status_date: string; /*Дата последней смены статуса*/
     kind: ClassifierShort; /**/
     terrain: ClassifierShort; /**/
-    work_time: ClassifierShort; /**/
+    work_time: WorkTime[]; /*Время работы*/
     education_language: ClassifierShort; /**/
     education_area: Address[]; /*Адреса обслуживаемой территории*/
     levels: ClassifierShort[]; /*Уровни образования*/
@@ -57,7 +58,12 @@ export class Institution extends InstitutionShort
 		this.status_date = json["status_date"] || null;
 		this.kind = new ClassifierShort(json["kind"]);
 		this.terrain = new ClassifierShort(json["terrain"]);
-		this.work_time = new ClassifierShort(json["work_time"]);
+		this.work_time = []
+		if(json["work_time"]){
+			for (let i in json["work_time"]){
+				this.work_time.push(new WorkTime(json["work_time"][i]))
+			}
+		}
 		this.education_language = new ClassifierShort(json["education_language"]);
 		this.education_area = []
 		if(json["education_area"]){

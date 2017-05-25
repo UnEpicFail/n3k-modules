@@ -13,3 +13,130 @@ ul, li {
 a {
     text-decoration: none;
 }
+
+h1 {
+    font-family: "RobotoSlab-Regular", "Roboto Slab";
+    font-size: 42px;
+    font-weight: normal;
+    font-style: normal;
+    line-height: 48px;
+    color: #000;
+}
+
+h3 {
+    font-family: "RobotoSlab-Regular", "Roboto Slab";
+    font-size: 16px;
+    font-weight: normal;
+    font-style: normal;
+    line-height: 26px;
+    color: #000;
+}
+
+
+/***STATUS***/
+.status-array {
+    display: inline-block;
+}
+
+.status {
+    display: inline-block;
+    padding: 10px 20px;
+    color: #fff;
+    font-size: 13px;
+    line-height: 21px;
+    font-family: 'ArialMT', 'Arial';
+    overflow: hidden
+}
+
+.status-array .status-deleted {
+    background-color: #D8666C;
+}
+
+.status-array .status-1 {
+    background-color: #5BAD5B;
+}
+
+/***STATUS***/
+
+/***BTN***/
+.buttons-array {
+    display: inline-block;
+}
+
+.btn {
+    padding: 8px 25px;
+    overflow: hidden;
+    white-space: normal;
+    text-overflow: ellipsis;
+    line-height: 21px;
+    border-bottom-width: 3px;
+    border-bottom-style: solid;
+    display: inline-block;
+    box-sizing: border-box;
+}
+
+.btn:hover {
+    cursor: pointer;
+}
+
+.btn .text {
+    font-family: ArialMT, Arial;
+    font-style: normal;
+    font-size: 13px;
+}
+
+.default-btn {
+    background-color: #F2F2F2;
+    color: #000;
+    border-bottom-color: #DEDEDE;
+}
+
+.default-btn:hover {
+    background-color: #DEDEDE;
+}
+
+.create-new-btn {
+    background-color: #77D3EC;
+    color: #fff;
+    border-bottom-color: #38B6DE;
+}
+
+.create-new-btn:hover {
+    background-color: #38B6DE;
+}
+/***BTN***/
+
+/***TAB***/
+
+.tab-array {
+    border-top-width: 1px;
+    border-top-style: solid;
+    border-top-color: #E3E3E3;
+}
+
+.tab {
+    display: inline-block;
+    padding-top: 20px;
+    margin-top: -1px;
+    margin-right: 50px;
+    font-family: 'ArialMT', 'Arial';
+    font-size: 13px;
+    line-height: 23px;
+    border-top-width: 1px;
+    border-top-style: solid;
+    border-top-color: #E3E3E3;
+    text-decoration: underline;
+
+}
+
+.tab.active {
+    color: #D8666C;
+    border-top-color:#D8666C; 
+}
+
+.tab:hover {
+    cursor: pointer;
+}
+
+/***TAB***/
+

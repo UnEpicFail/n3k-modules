@@ -10,7 +10,7 @@ export class ProgramShort
 {
     identity: Identity; /**/
     entity_state: EntityState; /**/
-    name: string; /*Краткое наименование образовательной организации*/
+    name: string; /*Краткое наименование образовательной программы*/
 
     constructor(json) {
         json = (json || {})

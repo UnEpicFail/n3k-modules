@@ -6,7 +6,7 @@
 
 export class OrganizationMeta
 {
-    id: string; /*Идентификатор БД*/
+    id: number; /*Идентификатор БД*/
     previous_ogrn: string[]; /*Предыдущие ОГРН*/
     description: string; /*Описание юридического лица*/
 

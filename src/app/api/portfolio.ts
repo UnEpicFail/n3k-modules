@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers } from '@angular/http';
 
-import { DeleteRestore } from './common/DeleteRestore';
 import { Portfolio } from './portfolio/Portfolio';
 
 @Injectable()
@@ -35,10 +34,8 @@ export class PortfolioService {
      * @method
      * @name portfolioDeleteRestore
      *
-     * @param {DeleteRestore[]} *body -   
      */
     public portfolioDeleteRestore(
-        body: DeleteRestore[],
     ) {
         let _path = '/portfolio/portfolio/delete';
         let _body = '';
@@ -47,9 +44,8 @@ export class PortfolioService {
         }
         _params.headers.append('X-Requested-With', 'XMLHttpRequest'); 
 
-        _body += JSON.stringify(body);
 
-        return this.http['post'](_path, _body, _params)
+        return this.http['post'](_path, _params)
     }
     /**
      * Получает список записей портфолио в постраничном разбиении

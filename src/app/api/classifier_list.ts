@@ -1375,45 +1375,6 @@ export class Classifier_listService {
     /**
      * 
      * @method
-     * @name classifierWorkTimeList
-     *
-     * @param {number} p_limit - Количество записей 
-     * @param {number} p_page - Страница выдачи 
-     * @param {string} p_query - Поисковая строка 
-     * @param {string} p_sort_direction - Направление сортировок [DESC,ASC]
-     * @param {string} p_sort_field - Поля для сортировок 
-     */
-    public classifierWorkTimeList(
-        p_limit?: number,
-        p_page?: number,
-        p_query?: string,
-        p_sort_direction?: string,
-        p_sort_field?: string,
-    ) {
-        let _path = '/classifiers/work-time/list';
-        let _body = '';
-        let _params = {
-            headers: new Headers(),
-            search: new URLSearchParams(),
-        }
-        _params.headers.append('X-Requested-With', 'XMLHttpRequest'); 
-        if (typeof p_limit !== 'undefined')
-            _params.search.append('p_limit', ''+p_limit); 
-        if (typeof p_page !== 'undefined')
-            _params.search.append('p_page', ''+p_page); 
-        if (typeof p_query !== 'undefined')
-            _params.search.append('p_query', ''+p_query); 
-        if (typeof p_sort_direction !== 'undefined')
-            _params.search.append('p_sort_direction', ''+p_sort_direction); 
-        if (typeof p_sort_field !== 'undefined')
-            _params.search.append('p_sort_field', ''+p_sort_field); 
-
-
-        return this.http['get'](_path, _params)
-    }
-    /**
-     * 
-     * @method
      * @name classifierLanguageList
      *
      * @param {number} p_limit - Количество записей 
@@ -1492,7 +1453,7 @@ export class Classifier_listService {
     /**
      * 
      * @method
-     * @name classifierMealPaymentList
+     * @name classifierMealTypeList
      *
      * @param {number} p_limit - Количество записей 
      * @param {number} p_page - Страница выдачи 
@@ -1500,14 +1461,53 @@ export class Classifier_listService {
      * @param {string} p_sort_direction - Направление сортировок [DESC,ASC]
      * @param {string} p_sort_field - Поля для сортировок 
      */
-    public classifierMealPaymentList(
+    public classifierMealTypeList(
         p_limit?: number,
         p_page?: number,
         p_query?: string,
         p_sort_direction?: string,
         p_sort_field?: string,
     ) {
-        let _path = '/classifiers/meal-payment/list';
+        let _path = '/classifiers/meal-type/list';
+        let _body = '';
+        let _params = {
+            headers: new Headers(),
+            search: new URLSearchParams(),
+        }
+        _params.headers.append('X-Requested-With', 'XMLHttpRequest'); 
+        if (typeof p_limit !== 'undefined')
+            _params.search.append('p_limit', ''+p_limit); 
+        if (typeof p_page !== 'undefined')
+            _params.search.append('p_page', ''+p_page); 
+        if (typeof p_query !== 'undefined')
+            _params.search.append('p_query', ''+p_query); 
+        if (typeof p_sort_direction !== 'undefined')
+            _params.search.append('p_sort_direction', ''+p_sort_direction); 
+        if (typeof p_sort_field !== 'undefined')
+            _params.search.append('p_sort_field', ''+p_sort_field); 
+
+
+        return this.http['get'](_path, _params)
+    }
+    /**
+     * 
+     * @method
+     * @name classifierFinancingTypeList
+     *
+     * @param {number} p_limit - Количество записей 
+     * @param {number} p_page - Страница выдачи 
+     * @param {string} p_query - Поисковая строка 
+     * @param {string} p_sort_direction - Направление сортировок [DESC,ASC]
+     * @param {string} p_sort_field - Поля для сортировок 
+     */
+    public classifierFinancingTypeList(
+        p_limit?: number,
+        p_page?: number,
+        p_query?: string,
+        p_sort_direction?: string,
+        p_sort_field?: string,
+    ) {
+        let _path = '/classifiers/financing-type/list';
         let _body = '';
         let _params = {
             headers: new Headers(),

@@ -60,7 +60,7 @@ export class ColumnsComponent implements AfterContentInit , OnDestroy{
           this.column2.getHeight(), 
           this.column3.getHeight(), 
         ]
-        this.height = this.heights.sort().slice(-1)[0] + 'px'
+        this.height = this.heights.sort(function(a, b){return a-b}).slice(-1)[0] + 'px'
       }, 1)  
     } else if ( typeof this.column2 !== 'undefined') {
       this.columns = 2;
@@ -69,15 +69,15 @@ export class ColumnsComponent implements AfterContentInit , OnDestroy{
           this.column1.getHeight(), 
           this.column2.getHeight(), 
         ]
-        this.height = this.heights.sort().slice(-1)[0] + 'px'
+        this.height = this.heights.sort(function(a, b){return a-b}).slice(-1)[0] + 'px'
       }, 1)    
-    } else if ( typeof this.column2 !== 'undefined') {
+    } else if ( typeof this.column1 !== 'undefined') {
       this.columns = 1;
       setTimeout(()=>{
         this.heights = [
           this.column1.getHeight(), 
         ]
-        this.height = this.heights.sort().slice(-1)[0] + 'px'
+        this.height = this.heights.sort(function(a, b){return a-b}).slice(-1)[0] + 'px'
       }, 1)    
     } else {
        return;

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { InstitutionShort } from '../../api/common/InstitutionShort'
 import { Router, ActivatedRoute } from '@angular/router';
-// import { YaCoreModule, MapMouseEvent, MapClickMouseEvent, MarkerClaster }  from 'angular2-yandex-maps';
+import { MapMouseEvent, MapClickMouseEvent, MarkerClaster }  from 'angular2-yandex-maps';
 
 
 @Component({
@@ -10,8 +10,9 @@ import { Router, ActivatedRoute } from '@angular/router';
   styleUrls: ['./map-list.component.css']
 })
 export class MapListComponent implements OnInit {
-
-  list: InstitutionShort[] = []
+  
+  selectedTab: string = 'map';
+  list: InstitutionShort[] = [];
 
   public searchSrt: string = ''
 
@@ -19,6 +20,7 @@ export class MapListComponent implements OnInit {
     for (let i=0; i<20; i+=1){
       this.list.push(
         new InstitutionShort({
+          identity: {id: i+1},
           name:'Детский сад №1 "Калинка"',
           status: {id:1, name:'Функционирует'},
           address: {
@@ -52,6 +54,21 @@ export class MapListComponent implements OnInit {
     console.log('searchInputChange', this.searchSrt)
     this.router.navigate(['/institution/map-list',{search:'aaa',direction:'12'}])
   }
+
+  selectListItem(id) {
+    if (this.selectedTab === 'map') {
+      this.router.navigate([`institution/view/${id}`]);
+    }
+  }
+
+  get isActiveMap() {
+    return this.selectedTab === 'map'
+  }
+
+  get isActiveList() {
+    return this.selectedTab === 'list'
+  }
+  
 
   
 }

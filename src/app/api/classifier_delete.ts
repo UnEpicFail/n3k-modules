@@ -780,28 +780,6 @@ export class Classifier_deleteService {
     /**
      * 
      * @method
-     * @name classifierWorkTimeDelete
-     *
-     * @param {string} *p_ids - Идентификаторы 
-     */
-    public classifierWorkTimeDelete(
-        p_ids: string,
-    ) {
-        let _path = '/classifiers/work-time/delete';
-        let _body = '';
-        let _params = {
-            headers: new Headers(),
-            search: new URLSearchParams(),
-        }
-        _params.headers.append('X-Requested-With', 'XMLHttpRequest'); 
-        _params.search.append('p_ids', ''+p_ids); 
-
-
-        return this.http['delete'](_path, _params)
-    }
-    /**
-     * 
-     * @method
      * @name classifierLanguageDelete
      *
      * @param {string} *p_ids - Идентификаторы 
@@ -846,14 +824,36 @@ export class Classifier_deleteService {
     /**
      * 
      * @method
-     * @name classifierMealPaymentDelete
+     * @name classifierMealTypeDelete
      *
      * @param {string} *p_ids - Идентификаторы 
      */
-    public classifierMealPaymentDelete(
+    public classifierMealTypeDelete(
         p_ids: string,
     ) {
-        let _path = '/classifiers/meal-payment/delete';
+        let _path = '/classifiers/meal-type/delete';
+        let _body = '';
+        let _params = {
+            headers: new Headers(),
+            search: new URLSearchParams(),
+        }
+        _params.headers.append('X-Requested-With', 'XMLHttpRequest'); 
+        _params.search.append('p_ids', ''+p_ids); 
+
+
+        return this.http['delete'](_path, _params)
+    }
+    /**
+     * 
+     * @method
+     * @name classifierFinancingTypeDelete
+     *
+     * @param {string} *p_ids - Идентификаторы 
+     */
+    public classifierFinancingTypeDelete(
+        p_ids: string,
+    ) {
+        let _path = '/classifiers/financing-type/delete';
         let _body = '';
         let _params = {
             headers: new Headers(),

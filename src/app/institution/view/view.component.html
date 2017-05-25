@@ -1,0 +1,165 @@
+<n3k-neck>
+    <a [routerLink] = '["/institution"]'>Поиск организаций</a>
+    <br>↓
+    
+    <h1>{{institution.publication.title}}</h1>
+
+
+    <div class='status-array'>
+        <div *ngIf='!institution.is_delete' class='status status-deleted'>
+            <i class="fa fa-lock" aria-hidden="true"></i>
+        </div>
+        <div class='status status-{{institution.status?.id}}'>
+            <i class="fa fa-flag"></i> {{institution.status?.name}}
+        </div>
+    </div>
+
+    <div class='buttons-array'>
+        <div class='default-btn btn'>
+            <span class='icon'><i class="fa fa-bars" aria-hidden="true"></i></span>
+            <span class='text'>Действия</span>
+        </div> 
+    </div>
+
+    <div class='tab-array'>
+        <div class='tab' *ngFor='let tab of tabs'  [class.active]='selectedTab === tab.id' (click)='selectedTab = tab.id'>{{tab.name}}</div>
+        
+    </div>
+
+</n3k-neck>
+<n3k-columns context='view'>
+    <column-1>
+        <h2>О нас</h2>
+        <table>
+            <tr>
+                <td style='width: 75%' colspan="3">
+                    {{institution.description}}
+                </td>
+                <td style='width: 25%'>
+                    <div class='description-block'>
+                        <div class='title'>Район:</div>
+                        {{institution.district.name}}
+                    </div>
+                    <div class='description-block'>
+                        <div class='title'>Уровень образования:</div>
+                        <div *ngFor='let level of institution.levels'>{{level.name}}</div>
+                    </div>
+                    <div class='description-block'>
+                        <div class='title'>Сайт:</div>
+                        <a href='getContactByType(1).value'>{{getContactByType(1).value}}</a>
+                    </div>
+                    <div class='description-block'>
+                        <div class='title'>Телефон:</div>
+                        {{getContactByType(2).value}}
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="4"><h2>Общие сведения</h2></td>
+            </tr>
+            <tr>
+                <td style='width: 25%'>
+                     <div class='description-block'>
+                        <div class='title'>Полное наименование организации:</div>
+                        {{institution.full_name}}
+                    </div>
+                    <div class='description-block'>
+                        <div class='title'>Краткое наименование организации:</div>
+                        {{institution.name}}
+                    </div>
+                    <div class='description-block'>
+                        <div class='title'>Адреса обслуживаемой территории:</div>
+                        <div *ngFor='let area of institution.education_area'>{{area.origin_address}}</div>
+                    </div>
+                </td>
+                <td style='width: 25%'>
+                    <div class='description-block'>
+                        <div class='title'>Подведомственность:</div>
+                        {{institution}}
+                    </div>
+                    <div class='description-block'>
+                        <div class='title'>Регион:</div>
+                        {{institution.region.name}}
+                    </div>
+                    <div class='description-block'>
+                        <div class='title'>:</div>
+                        {{institution}}
+                    </div>
+                    <div class='description-block'>
+                        <div class='title'>:</div>
+                        {{institution}}
+                    </div>
+                    <div class='description-block'>
+                        <div class='title'>:</div>
+                        {{institution}}
+                    </div>
+                    <div class='description-block'>
+                        <div class='title'>:</div>
+                        {{institution}}
+                    </div>
+                    <div class='description-block'>
+                        <div class='title'>:</div>
+                        {{institution}}
+                    </div>
+                    <div class='description-block'>
+                        <div class='title'>:</div>
+                        {{institution}}
+                    </div>
+                </td>
+
+                <td style='width: 25%'>
+                    <div class='description-block'>
+                        <div class='title'>:</div>
+                        {{institution}}
+                    </div>
+                    <div class='description-block'>
+                        <div class='title'>:</div>
+                        {{institution}}
+                    </div>
+                    <div class='description-block'>
+                        <div class='title'>:</div>
+                        {{institution}}
+                    </div>
+                    <div class='description-block'>
+                        <div class='title'>:</div>
+                        {{institution}}
+                    </div>
+                    <div class='description-block'>
+                        <div class='title'>:</div>
+                        {{institution}}
+                    </div>
+                    <div class='description-block'>
+                        <div class='title'>:</div>
+                        {{institution}}
+                    </div>
+                    <div class='description-block'>
+                        <div class='title'>:</div>
+                        {{institution}}
+                    </div>
+                    <div class='description-block'>
+                        <div class='title'>:</div>
+                        {{institution}}
+                    </div>
+                </td>
+                <td style='width: 25%'>
+                     <div class='description-block'>
+                        <div class='title'>:</div>
+                        {{institution}}
+                    </div>
+                    <div class='description-block'>
+                        <div class='title'>:</div>
+                        {{institution}}
+                    </div>
+                    <div class='description-block'>
+                        <div class='title'>:</div>
+                        {{institution}}
+                    </div>
+                    <div class='description-block'>
+                        <div class='title'>:</div>
+                        {{institution}}
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </column-1>
+</n3k-columns>

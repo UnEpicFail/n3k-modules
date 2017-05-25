@@ -6,7 +6,7 @@
 
 export class RoomSeat
 {
-    id: string; /*Идентификатор в БД*/
+    id: number; /*Идентификатор в БД*/
     row_number: number; /*Номер ряда*/
     seats: number; /*Количество мест в ряду*/
 

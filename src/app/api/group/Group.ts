@@ -5,6 +5,7 @@
 import { GroupShort } from '../common/GroupShort';
 import { Capacity } from '../common/Capacity';
 import { ClassifierShort } from '../common/ClassifierShort';
+import { WorkTime } from '../common/WorkTime';
 import { Meal } from '../common/Meal';
 import { TeacherShort } from '../common/TeacherShort';
 
@@ -17,7 +18,7 @@ export class Group extends GroupShort
     implement_form: ClassifierShort; /**/
     education_form: ClassifierShort; /**/
     stay_mode: ClassifierShort; /**/
-    work_time: ClassifierShort; /**/
+    work_time: WorkTime[]; /*Время работы*/
     shifts: ClassifierShort[]; /*Смена*/
     meal: Meal[]; /*Питание*/
     is_sleep: string; /*Организация девного сна*/
@@ -42,7 +43,12 @@ export class Group extends GroupShort
 		this.implement_form = new ClassifierShort(json["implement_form"]);
 		this.education_form = new ClassifierShort(json["education_form"]);
 		this.stay_mode = new ClassifierShort(json["stay_mode"]);
-		this.work_time = new ClassifierShort(json["work_time"]);
+		this.work_time = []
+		if(json["work_time"]){
+			for (let i in json["work_time"]){
+				this.work_time.push(new WorkTime(json["work_time"][i]))
+			}
+		}
 		this.shifts = []
 		if(json["shifts"]){
 			for (let i in json["shifts"]){

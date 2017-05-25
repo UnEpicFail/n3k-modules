@@ -7,7 +7,7 @@ import { ClassifierShort } from '../common/ClassifierShort';
 
 export class InstitutionMeta
 {
-    id: string; /*Идентификатор БД*/
+    id: number; /*Идентификатор БД*/
     reorganization_name: string; /*Дополнительное наименование (на момент реорганизации)*/
     additional_name: string; /*Дополнительное наименование образовательной организации*/
     occupied_place: number; /*Фактическая наполняемость*/

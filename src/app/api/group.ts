@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers } from '@angular/http';
 
-import { DeleteRestore } from './common/DeleteRestore';
 import { Group } from './group/Group';
 
 @Injectable()
@@ -35,10 +34,8 @@ export class GroupService {
      * @method
      * @name groupDeleteRestore
      *
-     * @param {DeleteRestore[]} *body -   
      */
     public groupDeleteRestore(
-        body: DeleteRestore[],
     ) {
         let _path = '/group/group/delete';
         let _body = '';
@@ -47,9 +44,8 @@ export class GroupService {
         }
         _params.headers.append('X-Requested-With', 'XMLHttpRequest'); 
 
-        _body += JSON.stringify(body);
 
-        return this.http['post'](_path, _body, _params)
+        return this.http['post'](_path, _params)
     }
     /**
      * Получает список групп в постраничном разбиении

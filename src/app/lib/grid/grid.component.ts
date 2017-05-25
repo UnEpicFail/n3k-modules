@@ -71,12 +71,11 @@ export class GridComponent implements OnInit {
     window.addEventListener('resize', this.positions);
     
   }
-  checkColumn(column, data) {
+  checkColumn(column, data, debug?) {
 
 
     if(column.ownScroll < 0)
     {
-      // column.ownScroll = undefined
       column.setOwnScroll(undefined)
     }
 
@@ -84,22 +83,15 @@ export class GridComponent implements OnInit {
     var top = data.border - SC;
     var V = (data.sc + data.v < data.border + data.columns) ? data.v : data.v - (data.sc + data.v - (data.border + data.columns));
 
-
     if ((top <= 0 && column.el.nativeElement.offsetHeight <= V) || (top > 0 && column.ownScroll <= data.border))
     {
 
 
-    
-      // column.style.bottom = 'auto';
-      // column.style.top = (data.border - data.sc > 0) ? data.border - data.sc : 0;
-
       column.setPostion((data.border - data.sc > 0) ? data.border - data.sc + 'px' : 0, 'auto');
 
-      // column.ownScroll = (column.ownScroll || data.sc);
       column.setOwnScroll((column.ownScroll || data.sc));
 
       if (data.sd > 0) {
-        // column.ownScroll += data.sd;
         column.setOwnScroll(column.ownScroll + data.sd)
       }
 

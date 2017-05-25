@@ -745,27 +745,6 @@ export class Classifier_getService {
     /**
      * 
      * @method
-     * @name classifierWorkTimeGet
-     *
-     * @param {number} *id - Идентификатор записи 
-     */
-    public classifierWorkTimeGet(
-        id: number,
-    ) {
-        let _path = '/classifiers/work-time/get/{id}';
-        let _body = '';
-        _path = _path.replace(/{id}/ig, (typeof id !== 'string')?JSON.stringify(id):id);
-        let _params = {
-            headers: new Headers(),
-        }
-        _params.headers.append('X-Requested-With', 'XMLHttpRequest'); 
-
-
-        return this.http['get'](_path, _params)
-    }
-    /**
-     * 
-     * @method
      * @name classifierLanguageGet
      *
      * @param {number} *id - Идентификатор записи 
@@ -808,14 +787,35 @@ export class Classifier_getService {
     /**
      * 
      * @method
-     * @name classifierMealPaymentGet
+     * @name classifierMealTypeGet
      *
      * @param {number} *id - Идентификатор записи 
      */
-    public classifierMealPaymentGet(
+    public classifierMealTypeGet(
         id: number,
     ) {
-        let _path = '/classifiers/meal-payment/get/{id}';
+        let _path = '/classifiers/meal-type/get/{id}';
+        let _body = '';
+        _path = _path.replace(/{id}/ig, (typeof id !== 'string')?JSON.stringify(id):id);
+        let _params = {
+            headers: new Headers(),
+        }
+        _params.headers.append('X-Requested-With', 'XMLHttpRequest'); 
+
+
+        return this.http['get'](_path, _params)
+    }
+    /**
+     * 
+     * @method
+     * @name classifierFinancingTypeGet
+     *
+     * @param {number} *id - Идентификатор записи 
+     */
+    public classifierFinancingTypeGet(
+        id: number,
+    ) {
+        let _path = '/classifiers/financing-type/get/{id}';
         let _body = '';
         _path = _path.replace(/{id}/ig, (typeof id !== 'string')?JSON.stringify(id):id);
         let _params = {

@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers } from '@angular/http';
 
-import { DeleteRestore } from './common/DeleteRestore';
 
 @Injectable()
 export class JobService {
@@ -55,10 +54,8 @@ export class JobService {
      * @method
      * @name jobDeleteRestore
      *
-     * @param {DeleteRestore[]} *body -   
      */
     public jobDeleteRestore(
-        body: DeleteRestore[],
     ) {
         let _path = '/job/job/delete';
         let _body = '';
@@ -67,19 +64,16 @@ export class JobService {
         }
         _params.headers.append('X-Requested-With', 'XMLHttpRequest'); 
 
-        _body += JSON.stringify(body);
 
-        return this.http['post'](_path, _body, _params)
+        return this.http['post'](_path, _params)
     }
     /**
      * Удаляет/восстанавливает учителя, по списку id/состояние записи
      * @method
      * @name teacherDeleteRestore
      *
-     * @param {DeleteRestore[]} *body -   
      */
     public teacherDeleteRestore(
-        body: DeleteRestore[],
     ) {
         let _path = '/job/teacher/delete';
         let _body = '';
@@ -88,9 +82,8 @@ export class JobService {
         }
         _params.headers.append('X-Requested-With', 'XMLHttpRequest'); 
 
-        _body += JSON.stringify(body);
 
-        return this.http['post'](_path, _body, _params)
+        return this.http['post'](_path, _params)
     }
     /**
      * Получает список записей о работе в разрезе должностей в постраничном разбиении

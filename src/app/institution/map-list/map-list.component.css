@@ -1,0 +1,29 @@
+/deep/ .map-container-inner
+{
+    width: 100%;
+    height: 100vh;
+    padding-right: 17px;
+    box-sizing: border-box;
+}
+
+
+.status-1{
+    color:#6CB27B;
+}
+
+.list-item {
+    padding: 25px 30px;
+    background-color: #F2F2F2;
+    border-bottom: 5px solid #fff;
+    border-right: 5px solid #fff;
+    font-family: 'ArialMT', 'Arial';
+    color: #666666;
+    font-size: 13px;
+    line-height: 21px;
+}
+
+.list-item:hover {
+    cursor: pointer;
+}
+
+

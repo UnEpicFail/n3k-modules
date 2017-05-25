@@ -2,11 +2,11 @@
  * 
  */
 
-import { EntityState } from '../common/EntityState';
+import { PlanShort } from '../common/PlanShort';
 import { Subject } from './Subject';
 
 
-export class Plan extends EntityState
+export class Plan extends PlanShort
 {
     subjects: Subject[]; /*Предметы учебного плана*/
 

@@ -7,7 +7,7 @@ import { Equipment } from './Equipment';
 
 export class PlaceEquipment
 {
-    id: string; /*Идентификатор БД*/
+    id: number; /*Идентификатор БД*/
     equipment: Equipment; /**/
     quantity: number; /*Количество*/
 

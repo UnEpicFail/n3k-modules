@@ -780,28 +780,6 @@ export class Classifier_restoreService {
     /**
      * 
      * @method
-     * @name classifierWorkTimeRestore
-     *
-     * @param {string} *p_ids - Идентификаторы 
-     */
-    public classifierWorkTimeRestore(
-        p_ids: string,
-    ) {
-        let _path = '/classifiers/work-time/restore';
-        let _body = '';
-        let _params = {
-            headers: new Headers(),
-            search: new URLSearchParams(),
-        }
-        _params.headers.append('X-Requested-With', 'XMLHttpRequest'); 
-        _params.search.append('p_ids', ''+p_ids); 
-
-
-        return this.http['delete'](_path, _params)
-    }
-    /**
-     * 
-     * @method
      * @name classifierLanguageRestore
      *
      * @param {string} *p_ids - Идентификаторы 
@@ -846,14 +824,36 @@ export class Classifier_restoreService {
     /**
      * 
      * @method
-     * @name classifierMealPaymentRestore
+     * @name classifierMealTypeRestore
      *
      * @param {string} *p_ids - Идентификаторы 
      */
-    public classifierMealPaymentRestore(
+    public classifierMealTypeRestore(
         p_ids: string,
     ) {
-        let _path = '/classifiers/meal-payment/restore';
+        let _path = '/classifiers/meal-type/restore';
+        let _body = '';
+        let _params = {
+            headers: new Headers(),
+            search: new URLSearchParams(),
+        }
+        _params.headers.append('X-Requested-With', 'XMLHttpRequest'); 
+        _params.search.append('p_ids', ''+p_ids); 
+
+
+        return this.http['delete'](_path, _params)
+    }
+    /**
+     * 
+     * @method
+     * @name classifierFinancingTypeRestore
+     *
+     * @param {string} *p_ids - Идентификаторы 
+     */
+    public classifierFinancingTypeRestore(
+        p_ids: string,
+    ) {
+        let _path = '/classifiers/financing-type/restore';
         let _body = '';
         let _params = {
             headers: new Headers(),

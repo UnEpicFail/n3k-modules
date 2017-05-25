@@ -7,7 +7,7 @@ import { ClassifierShort } from '../common/ClassifierShort';
 
 export class PublicAdministration
 {
-    id: string; /*Идентификатор БД*/
+    id: number; /*Идентификатор БД*/
     form: ClassifierShort; /**/
     foundation_cause: string; /*Основание для создания*/
     foundation_date: string; /*Дата создания*/

@@ -2,6 +2,9 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router'; 
 
+import { YaCoreModule }  from 'angular2-yandex-maps';
+
+
 import { N3kNgGridModule } from '../lib/n3k-ng-grid.module'
 
 import { ViewComponent } from './view/view.component';
@@ -25,6 +28,7 @@ const routes:Routes = [
   imports: [
     CommonModule,
     N3kNgGridModule,
+    YaCoreModule.forRoot(),
     RouterModule.forRoot(routes),
   ],
   declarations: [
@@ -33,6 +37,7 @@ const routes:Routes = [
     ListComponent, 
     MapListComponent,
   ],
+  providers: [],
   schemas: []
 })
 export class InstitutionModule { 

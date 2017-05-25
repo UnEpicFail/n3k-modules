@@ -744,27 +744,6 @@ export class Classifier_saveService {
     /**
      * 
      * @method
-     * @name classifierWorkTimeSave
-     *
-     * @param {Classifier} *body -   
-     */
-    public classifierWorkTimeSave(
-        body: Classifier,
-    ) {
-        let _path = '/classifiers/work-time/save';
-        let _body = '';
-        let _params = {
-            headers: new Headers(),
-        }
-        _params.headers.append('X-Requested-With', 'XMLHttpRequest'); 
-
-        _body += JSON.stringify(body);
-
-        return this.http['post'](_path, _body, _params)
-    }
-    /**
-     * 
-     * @method
      * @name classifierLanguageSave
      *
      * @param {Classifier} *body -   
@@ -807,14 +786,35 @@ export class Classifier_saveService {
     /**
      * 
      * @method
-     * @name classifierMealPaymentSave
+     * @name classifierMealTypeSave
      *
      * @param {Classifier} *body -   
      */
-    public classifierMealPaymentSave(
+    public classifierMealTypeSave(
         body: Classifier,
     ) {
-        let _path = '/classifiers/meal-payment/save';
+        let _path = '/classifiers/meal-type/save';
+        let _body = '';
+        let _params = {
+            headers: new Headers(),
+        }
+        _params.headers.append('X-Requested-With', 'XMLHttpRequest'); 
+
+        _body += JSON.stringify(body);
+
+        return this.http['post'](_path, _body, _params)
+    }
+    /**
+     * 
+     * @method
+     * @name classifierFinancingTypeSave
+     *
+     * @param {Classifier} *body -   
+     */
+    public classifierFinancingTypeSave(
+        body: Classifier,
+    ) {
+        let _path = '/classifiers/financing-type/save';
         let _body = '';
         let _params = {
             headers: new Headers(),

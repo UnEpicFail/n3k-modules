@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers } from '@angular/http';
 
-import { DeleteRestore } from './common/DeleteRestore';
 import { Person } from './person/Person';
 
 @Injectable()
@@ -35,10 +34,8 @@ export class PersonService {
      * @method
      * @name personDeleteRestore
      *
-     * @param {DeleteRestore[]} *body -   
      */
     public personDeleteRestore(
-        body: DeleteRestore[],
     ) {
         let _path = '/person/person/delete';
         let _body = '';
@@ -47,9 +44,8 @@ export class PersonService {
         }
         _params.headers.append('X-Requested-With', 'XMLHttpRequest'); 
 
-        _body += JSON.stringify(body);
 
-        return this.http['post'](_path, _body, _params)
+        return this.http['post'](_path, _params)
     }
     /**
      * Получает список персон в постраничном разбиении

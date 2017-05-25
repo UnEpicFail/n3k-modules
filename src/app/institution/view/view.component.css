@@ -1,0 +1,17 @@
+table {
+    width: 100%;
+}
+td {
+        vertical-align: top
+}
+
+.description-block {
+    font-family: 'ArialMT', 'Arial';
+    font-size: 16px;
+    line-height: 26px;
+    margin-bottom: 35px;
+}
+
+.description-block .title {
+    color: #A1A1A1;
+}

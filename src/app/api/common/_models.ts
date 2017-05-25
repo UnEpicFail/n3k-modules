@@ -3,6 +3,7 @@
  * version: 0.0.1
  */
 export { Module } from './Module';
+export { CID } from './CID';
 export { Identity } from './Identity';
 export { EntityState } from './EntityState';
 export { Contact } from './Contact';
@@ -39,3 +40,4 @@ export { EducationShort } from './EducationShort';
 export { JobShort } from './JobShort';
 export { TeacherShort } from './TeacherShort';
 export { PortfolioShort } from './PortfolioShort';
+export { WorkTime } from './WorkTime';

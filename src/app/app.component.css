@@ -79,7 +79,7 @@
     color: #000;
 }
 
-.main-menu .selected-true .icon {
+.main-menu .active .icon {
     color: #D8666C;
 } 
 
@@ -92,7 +92,7 @@
     text-decoration: none;
 }
 
-.main-menu .selected-true .text {
+.main-menu .active .text {
     color: #D8666C;
 }
 

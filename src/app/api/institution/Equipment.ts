@@ -7,7 +7,7 @@ import { EntityState } from '../common/EntityState';
 
 export class Equipment
 {
-    id: string; /*Идентификатор БД*/
+    id: number; /*Идентификатор БД*/
     parent: string; /*Идентификатор родителя БД*/
     entity_state: EntityState; /**/
     code: string; /*Код*/
