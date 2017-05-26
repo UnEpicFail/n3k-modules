@@ -6,6 +6,8 @@ import { FooterComponent } from '../footer/footer.component';
 
 import { PositionService } from '../position.service'
 
+import { MapMouseEvent, MapClickMouseEvent, MarkerClaster }  from '../../angular2-yandex-maps/core.module';
+
 @Component({
   selector: 'n3k-grid',
   templateUrl: './grid.component.html',
@@ -44,7 +46,7 @@ export class GridComponent implements OnInit {
 
     this.positions = this.debounce(() => {
       
-      if (!this.columns || !this.header || !this.neck || !this.footer)
+      if (!this.columns.el || !this.header.el || !this.neck.el || !this.footer.el)
         return
       
       let data = {
@@ -67,6 +69,7 @@ export class GridComponent implements OnInit {
       return true
 
     }, 10)
+
     window.addEventListener('scroll', this.positions);
     window.addEventListener('resize', this.positions);
     

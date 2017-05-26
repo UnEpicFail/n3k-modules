@@ -33,6 +33,7 @@
         <table>
             <tr>
                 <td style='width: 75%' colspan="3">
+                    <div class='image' [style.background-image]='backgraunImage()'></div>
                     {{institution.description}}
                 </td>
                 <td style='width: 25%'>
@@ -54,12 +55,12 @@
                     </div>
                 </td>
             </tr>
-            <tr>
+            <tr class='delimiter'>
                 <td colspan="4"><h2>Общие сведения</h2></td>
             </tr>
             <tr>
                 <td style='width: 25%'>
-                     <div class='description-block'>
+                    <div class='description-block'>
                         <div class='title'>Полное наименование организации:</div>
                         {{institution.full_name}}
                     </div>
@@ -82,82 +83,205 @@
                         {{institution.region.name}}
                     </div>
                     <div class='description-block'>
-                        <div class='title'>:</div>
+                        <div class='title'>Район:</div>
+                        {{institution.district.name}}
+                    </div>
+                    <div class='description-block'>
+                        <div class='title'>Уровень образования:</div>
+                        <div *ngFor='let level of institution.levels'>{{level.name}}</div>
+                    </div>
+                    <div class='description-block'>
+                        <div class='title'>Тип местности:</div>
                         {{institution}}
                     </div>
                     <div class='description-block'>
-                        <div class='title'>:</div>
-                        {{institution}}
+                        <div class='title'>Основной язык обучения:</div>
+                        {{institution.education_language.name}}
                     </div>
                     <div class='description-block'>
-                        <div class='title'>:</div>
-                        {{institution}}
+                        <div class='title'>Тип питания:</div>
+                        <div *ngFor='let meal of institution.meals'>{{meal.meal_type.name}}</div>
                     </div>
                     <div class='description-block'>
-                        <div class='title'>:</div>
-                        {{institution}}
-                    </div>
-                    <div class='description-block'>
-                        <div class='title'>:</div>
-                        {{institution}}
-                    </div>
-                    <div class='description-block'>
-                        <div class='title'>:</div>
-                        {{institution}}
+                        <div class='title'>Образовательные услуги:</div>
+                        <div *ngFor='let services of institution.education_services'>{{services.name}}</div>
                     </div>
                 </td>
 
                 <td style='width: 25%'>
                     <div class='description-block'>
-                        <div class='title'>:</div>
+                        <div class='title'>Фактическая наполняемость:</div>
+                        {{institution.meta.occupied_place}}
+                    </div>
+                    <div class='description-block'>
+                        <div class='title'>Предельная наполняемость:</div>
+                        {{institution.meta.total_place}}
+                    </div>
+                    <div class='description-block'>
+                        <div class='title'>Количество смен:</div>
+                        <div *ngFor='let shift of institution.shift'>{{shift.name}}</div>
+                    </div>
+                    <div class='description-block'>
+                        <div class='title'>Время работы:</div>
+                        {{institution.meta.schedule_string}}
+                    </div>
+                    <div class='description-block'>
+                        <div class='title'>Типы групп ОВЗ доступные в ОО:</div>
+                        <div *ngFor='let ovz_group_types of institution.ovz_group_types'>{{ovz_group_types.name}}</div>
+                    </div>
+                    <div class='description-block'>
+                        <div class='title'>Дата образования организации:</div>
+                        {{institution.foundation_date}}
+                    </div>
+                </td>
+                <td style='width: 25%'>
+                    <div class='description-block'>
+                        <div class='title'>Тип организации:</div>
+                        {{institution.type.name}}
+                    </div>
+                    <div class='description-block'>
+                        <div class='title'>Вид организации:</div>
+                        {{institution.organization.founders_type.name}}
+                    </div>
+                    <div class='description-block'>
+                        <div class='title'>Заведующий:</div>
                         {{institution}}
                     </div>
                     <div class='description-block'>
-                        <div class='title'>:</div>
+                        <div class='title'>Телефон руководителя:</div>
+                        {{institution}}
+                    </div>
+                </td>
+            </tr>
+            <tr class='delimiter'>
+                <td colspan="4"><h2>Дополнительные сведения</h2></td>
+            </tr>
+            <tr>
+                <td style='width: 25%'>
+                    <div class='description-block'>
+                        <div class='title'>Дополнительное наименование организации:</div>
+                        {{institution.meta.additional_name}}
+                    </div>
+                    <div class='description-block'>
+                        <div class='title'>Дополнительное наименование организации (на момент реорганизации):</div>
+                        {{institution.meta.reorganization_name}}
+                    </div>
+                    <div class='description-block'>
+                        <div class='title'>Ссылка на образовательную программу на официальном сайте:</div>
+                        <a href='{{institution.meta.educational_program_url'>{{institution.meta.educational_program_url}}</a>
+                    </div>
+                    <div class='description-block'>
+                        <div class='title'>Организация разработчика «Электронного дневника»:</div>
+                        {{institution.meta.electronic_diary_vendor}}
+                    </div>
+                </td>
+                <td style='width: 25%'>
+                    <div class='description-block'>
+                        <div class='title'>Название информационной системы «Электронного дневника»:</div>
+                        {{institution.meta.electronic_diary_name}}
+                    </div>
+                    <div class='description-block'>
+                        <div class='title'>Ссылка для входа на сервис «Электронный дневник»:</div>
+                        <a href='{{institution.meta.electronic_diary_url'>{{institution.meta.electronic_diary_name}}</a>
+                    </div>
+                    <div class='description-block'>
+                        <div class='title'>Будет запись в 1 класс:</div>
+                        {{institution.meta.is_first_class | yesNo}}
+                    </div>
+                    <div class='description-block'>
+                        <div class='title'>Общее количество сотрудников:</div>
+                        {{institution.meta.employee_count}}
+                    </div>
+                    <div class='description-block'>
+                        <div class='title'>Ссылка на устав:</div>
+                        <a href='{{institution.meta.statute_url'>{{institution.meta.statute_url}}</a>
+                    </div>
+                    <div class='description-block'>
+                        <div class='title'>Направление подготвки, специальности, профессии (кроме общего образования):</div>
+                        {{institution.meta.direction_for_ip}}
+                    </div>
+                </td>
+                <td style='width: 25%'>
+                    <div class='description-block'>
+                        <div class='title'>Режим (часы, дни):</div>
+                        <div *ngFor='let work_time of institution.work_time'>
+                            <div>{{work_time.week_days | toWeekDays}}</div>
+                            <div>
+                                {{work_time.begin_time | toTime }}<span *ngIf='work_time.end_time'>-{{work_time.end_time | toTime}}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class='description-block'>
+                        <div class='title'>Наличие требуемой численности преподователей общепрофессиональных и специальных дисциплин, связанных с ИТ:</div>
+                        {{institution.meta.has_it_teachers | yesNo}}
+                    </div>
+                    <div class='description-block'>
+                        <div class='title'>Переведено на нормативно-бюджетное финансирование:</div>
+                        {{institution.meta.is_budget_transfered | yesNo}}
+                    </div>
+                    <div class='description-block'>
+                        <div class='title'>Наличие бухгалтерии:</div>
+                        {{institution.meta.has_bookkeeping | yesNo}}
+                    </div>
+                    <div class='description-block'>
+                        <div class='title'>Малокомплектное (для школ):</div>
+                        {{institution.meta.is_small_setted | yesNo}}
+                    </div>
+                </td>
+                <td style='width: 25%'>
+                    <div class='description-block'>
+                        <div class='title'>Использование современных оценочных процедур для оценки достижений по ФГОС:</div>
+                        <div *ngFor='let fgos of institution.meta.fgos_scoring'>{{fgos.name}}</div>
+                    </div>
+                    <div class='description-block'>
+                        <div class='title'>Характеристики сайта ОО:</div>
+                        <div *ngFor='let site_characteristics of institution.meta.site_characteristics'>{{site_characteristics.name}}</div>
+                    </div>
+                </td>
+            </tr>
+            <tr class='delimiter'>
+                <td colspan="4"><h2>Контакты</h2></td>
+            </tr>
+            <tr>
+                <td style='width: 25%'>
+                    <div class='description-block'>
+                        <div class='title'>Почтовый адрес:</div>
                         {{institution}}
                     </div>
                     <div class='description-block'>
-                        <div class='title'>:</div>
-                        {{institution}}
-                    </div>
-                    <div class='description-block'>
-                        <div class='title'>:</div>
-                        {{institution}}
-                    </div>
-                    <div class='description-block'>
-                        <div class='title'>:</div>
-                        {{institution}}
-                    </div>
-                    <div class='description-block'>
-                        <div class='title'>:</div>
-                        {{institution}}
-                    </div>
-                    <div class='description-block'>
-                        <div class='title'>:</div>
-                        {{institution}}
-                    </div>
-                    <div class='description-block'>
-                        <div class='title'>:</div>
+                        <div class='title'>Телефон:</div>
                         {{institution}}
                     </div>
                 </td>
                 <td style='width: 25%'>
-                     <div class='description-block'>
-                        <div class='title'>:</div>
+                    <div class='description-block'>
+                        <div class='title'>Дополнительный телефон:</div>
                         {{institution}}
                     </div>
                     <div class='description-block'>
-                        <div class='title'>:</div>
+                        <div class='title'>Факс:</div>
                         {{institution}}
                     </div>
+                </td>
+                <td style='width: 25%'>
                     <div class='description-block'>
-                        <div class='title'>:</div>
+                        <div class='title'>Email:</div>
                         {{institution}}
                     </div>
+                </td>
+                <td style='width: 25%'>
                     <div class='description-block'>
-                        <div class='title'>:</div>
+                        <div class='title'>Сайт:</div>
                         {{institution}}
                     </div>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="4">
+                    <ya-map [latitude]="55.76" [longitude]="37.64">
+                        <ya-marker [latitude]="55.847" [longitude]="38.6">
+                        </ya-marker>
+                    </ya-map>
                 </td>
             </tr>
         </table>

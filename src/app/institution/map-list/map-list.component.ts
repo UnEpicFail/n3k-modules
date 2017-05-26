@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { InstitutionShort } from '../../api/common/InstitutionShort'
 import { Router, ActivatedRoute } from '@angular/router';
-import { MapMouseEvent, MapClickMouseEvent, MarkerClaster }  from 'angular2-yandex-maps';
+import { MapMouseEvent, MapClickMouseEvent, MarkerClaster }  from '../../angular2-yandex-maps/core.module';
 
 
 @Component({
