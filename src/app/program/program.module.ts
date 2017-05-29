@@ -8,23 +8,31 @@ import { ViewComponent } from './view/view.component';
 
 const routes:Routes = [
   {path: 'program', children: [
-    {path: 'list', component: ListComponent},
-    {path: 'edit', component: EditComponent},
-    {path: 'edit/:id', component: EditComponent},
-    {path: 'view/:id', component: ViewComponent},        
-    {path: '', component: MapListComponent},
+    {path: 'list', component: ListComponent, pathMatch: 'full'},
+    {path: 'edit', component: EditComponent, pathMatch: 'full'},
+    {path: 'edit/:id', component: EditComponent, pathMatch: 'full'},
+    {path: 'view/:id', component: ViewComponent, pathMatch: 'full'},        
+    {path: '', component: MapListComponent, pathMatch: 'full'},
   ]}
 ]
 
 @NgModule({
   imports: [
     CommonModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot([])
   ],
-  declarations: [EditComponent, ListComponent, MapListComponent, ViewComponent]
+  declarations: [EditComponent, ListComponent, MapListComponent, ViewComponent],
 })
 export class ProgramModule { 
   static getRoutes() {
     return routes[0];
+  }
+
+  static getIndexComponent() {
+    return ListComponent
+  }
+
+  static getIndexRoute() {
+    return 'program'
   }
 }

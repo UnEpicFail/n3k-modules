@@ -1,4 +1,6 @@
-.main-menu {
+
+.main-menu,
+.main-sub-menu {
     padding: 15px 4.2vw 0 4.2vw;
     margin: 0;
     overflow: hidden;
@@ -57,6 +59,13 @@
 }
 
 
+.main-sub-menu .content .text {
+    font-family: 'ArialMT', 'Arial';
+    font-size: 16px;
+    text-decoration: underline;
+    color: #000000;
+    line-height: 20px;
+}
 .main-menu .pages li a {
     overflow: hidden;
     display: block;
@@ -92,12 +101,21 @@
     text-decoration: none;
 }
 
+.main-sub-menu .active .text,
 .main-menu .active .text {
     color: #D8666C;
 }
 
+
+.main-sub-menu .page {
+    float: left;
+    margin-right: 40px;    
+}
+
+
 @media all and (max-width: 979px) {
-    .main-menu {
+    .main-menu,
+    .main-sub-menu {
         padding-left: 8.4vw
     }
 }

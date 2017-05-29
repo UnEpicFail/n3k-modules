@@ -30,7 +30,7 @@ const routes:Routes = [
     CommonModule,
     N3kNgGridModule,
     YaCoreModule.forRoot(),
-    RouterModule.forRoot(routes),
+    RouterModule.forRoot([]),
   ],
   declarations: [
     ViewComponent, 

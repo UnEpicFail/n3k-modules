@@ -12,13 +12,20 @@
             <li
               *ngFor = "let item of menuList"
             >
-              <a [routerLink]="[item.link]" class="content">
+              <a [routerLink]="[item.link]" class="content" routerLinkActive='active' [routerLinkActiveOptions]='{exact:true}'>
                 <div class='icon'><i [class]='item.icon'></i></div>
                 <div class='text'>{{item.name}}</div>
               </a>
             </li>
           </ul>
         </div>
+      </div>
+    </div>
+    <div class='main-sub-menu'>
+      <div class='page' *ngFor="let sub of menuList[getActive()].sub">
+        <a [routerLink]="[sub.link]" class="content" routerLinkActive='active'>
+          <div class='text'>{{sub.name}}</div>
+        </a>
       </div>
     </div>
   </n3k-header>

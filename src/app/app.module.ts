@@ -12,6 +12,16 @@ import { GroupModule } from './group/group.module';
 import { ProgramModule } from './program/program.module';
 import { ClassifierModule } from './classifier/classifier.module';
 
+const rourer = [
+  {path:'journal',  children: [
+    GroupModule.getRoutes(),
+    ProgramModule.getRoutes(),
+    {path: '', component: ProgramModule.getIndexComponent()},
+  ]},
+  InstitutionModule.getRoutes(),
+  ClassifierModule.getRoutes()
+]
+
 @NgModule({
   declarations: [
     AppComponent
@@ -25,7 +35,7 @@ import { ClassifierModule } from './classifier/classifier.module';
     ClassifierModule,
     ProgramModule,
     GroupModule,
-    RouterModule.forRoot([])
+    RouterModule.forRoot(rourer)
   ],
   providers: [],
   bootstrap: [AppComponent]
