@@ -1,5 +1,6 @@
 
 import { Component, OnInit, Pipe, PipeTransform } from '@angular/core';
+
 import { InstitutionFull } from '../../api/institution/InstitutionFull';
 
 
@@ -33,45 +34,102 @@ export class YesNo implements PipeTransform {
 })
 export class ViewComponent implements OnInit {
 
+  selectedId: string;
   selectedTab = 'common'
 
   tabs = [
     {
       id: 'common',
-      name: 'Общие сведения'
+      name: 'Общие сведения',
     },
     {
       id: 'divisions',
-      name: 'Подразделения'
+      name: 'Подразделения',
     },
     {
       id: 'buildings',
-      name: 'Здания'
+      name: 'Здания',
     },
     {
       id: 'area',
-      name: 'Територия'
+      name: 'Територия',
     },
     {
       id: 'contracts',
-      name: 'Договоры'
+      name: 'Договоры',
     },
     {
-      id: 'educational_services',
-      name: 'Образовательные услуги'
+      id: 'educational-services',
+      name: 'Образовательные услуги',
     },
     {
-      id: 'electronic_services',
-      name: 'Электронные госуслуги'
+      id: 'electronic-services',
+      name: 'Электронные госуслуги',
     },
     {
       id: 'innovations',
-      name: 'Инновации'
+      name: 'Инновации',
     },
   ]
 
   institution: InstitutionFull = new InstitutionFull({
-    organization:{
+    organization: {
+      owner: {
+        firstname: 'Игорь',
+        surname: 'Петров',
+        middlename: 'Владимирович',
+        citizenship: {
+          country: {
+            name:'Российская Федерация'
+          }
+        }
+      },
+      okved: [
+        {
+          id: 1,
+          name: '80.10.1 (дошкольное образование)'
+        }
+      ],
+      okato: '49210804000',
+      inn: 5303001700,
+      okfs: {
+        id: 1,
+        name: '49210804000'
+      },
+      oktmo: {
+        id: 1,
+        name: '49210804000'
+      },
+      okopf: {
+        id: 1,
+        name: '2 09 03 «Бюджетные учреждения»'
+      },
+      ogrn: '1025301788423',
+      kpp: '530301001',
+      okogu: '49210804000',
+      district: {
+        id: 1,
+        name: 'Санкт-Петербург'
+      },
+      region: {
+        id: 1,
+        name: 'Петроградский'
+      },
+      status: {
+        id: 1,
+        name: 'Муниципальная'
+      },
+      // founders_type: {
+      //   id: 1,
+      //   name: 'Муниципальное образование'
+      // },
+      type_of_ownership: {
+        id: 1,
+        name: 'Муниципальная'
+      },
+      address: {
+        origin_address: 'Средний пр-кт, 20, 199004, г. Санкт-Петербург'
+      },
       founders_type: {
         id: 1,
         name: 'Сад'
@@ -202,10 +260,7 @@ export class ViewComponent implements OnInit {
         value: '88123237728'
       }
     ],
-    description: `Политехнический университет - многофункциональное государственное высшее учебное заведение.
-
-В 2010 году он получил статус национального исследовательского университета, что явилось признанием его роли и возможностей как в области подготовки кадров, так и в мультидисциплинарных научных исследованиях и разработках.
-В рейтинге технических университетов России Политехнический неизменно занимает ведущие позиции.`,
+    description: 'Политехнический университет - многофункциональное государственное высшее учебное заведение. В 2010 году он получил статус национального исследовательского университета, что явилось признанием его роли и возможностей как в области подготовки кадров, так и в мультидисциплинарных научных исследованиях и разработках. В рейтинге технических университетов России Политехнический неизменно занимает ведущие позиции.',
     education_area: [
       {
         origin_address: 'Московский 1'
@@ -227,22 +282,9 @@ export class ViewComponent implements OnInit {
 
   })
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit() {
-  }
-
-  getContactByType(id:number) {
-    for(let i in this.institution.contacts) {
-      if (this.institution.contacts[i].type.id === id){
-        return this.institution.contacts[i]
-      }
-    }
-    return {}
-  }
-
-  backgraunImage(){
-    return `url(${this.institution.publication.image_url})`
   }
 
 }

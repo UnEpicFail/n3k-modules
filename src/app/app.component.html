@@ -12,7 +12,7 @@
             <li
               *ngFor = "let item of menuList"
             >
-              <a [routerLink]="[item.link]" class="content" routerLinkActive='active' [routerLinkActiveOptions]='{exact:true}'>
+              <a [routerLink]="[item.link]" class="content" routerLinkActive='active'>
                 <div class='icon'><i [class]='item.icon'></i></div>
                 <div class='text'>{{item.name}}</div>
               </a>
