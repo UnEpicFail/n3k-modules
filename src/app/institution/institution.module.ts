@@ -27,7 +27,11 @@ const routes:Routes = [
     {path: 'list/:filter', component: ListComponent},
     {path: 'edit', component: EditComponent},
     {path: 'edit/:id', component: EditComponent},
-    {path: 'view/:id', component: ViewComponent},      
+    {path: 'view/:id', children: [
+      {path: 'common', component: CommonComponent},
+      {path: 'divisions', component: DivisionsComponent},
+      {path: '', component: CommonComponent},
+    ]},      
     {path: '', component: MapListComponent},
     {path: ':filter', component: MapListComponent},
   ]}
@@ -59,7 +63,7 @@ const routes:Routes = [
   ],
   exports: [ToTime, ToWeekDays, YesNo],
   providers: [],
-  schemas: []
+  schemas: [],
 })
 export class InstitutionModule { 
   static getRoutes() {
