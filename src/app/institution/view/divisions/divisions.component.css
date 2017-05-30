@@ -1,0 +1,35 @@
+.delimiter {
+    line-height: 22px;
+    font-size: 13px;
+    padding: 10px 0;
+    background-color: #F2F2F2;
+    width: 3px;
+    margin-right: 30px;
+    display: inline-block;
+}
+.children,
+.division {
+    color: #666666;
+    line-height: 22px;
+    font-family: 'ArialMT', 'Arial';
+    font-size: 13px;
+    /*padding: 10px 0;*/
+    background-color: #F2F2F2;
+    border-bottom: 2px solid #fff; 
+}
+
+.children:hover,
+.division:hover {
+    cursor: pointer;
+}
+
+.children {
+    margin-left: 30px;
+}
+
+.active {
+    background-color: #fff;
+} 
+.active .delimiter{
+    background-color: #D8666C;
+}

@@ -1,0 +1,21 @@
+<n3k-columns context='view'>
+  <column-1>11</column-1>
+  <column-2>
+    <ul>
+      <li *ngFor='let division of divisionsList'>
+        <div class='division' (click) = 'selectedDivision = division.id' [class.active]='division.id === selectedDivision'>
+          <div class='delimiter'>&nbsp;</div>
+          {{division.name}}
+        </div>
+        <ul>
+          <li *ngFor='let children of division.childrens'>
+            <div  class='children' (click) = 'selectedDivision = children.id' [class.active]='children.id === selectedDivision'>
+              <div class='delimiter'>&nbsp;</div>
+              {{children.name}}
+            </div>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </column-2>
+</n3k-columns>

@@ -34,7 +34,6 @@ export class YesNo implements PipeTransform {
 })
 export class ViewComponent implements OnInit {
 
-  selectedId: string;
   selectedTab = 'common'
 
   tabs = [

@@ -23,9 +23,7 @@
 
     <div class='tab-array'>
         <div class='tab' *ngFor='let tab of tabs'  [class.active]='selectedTab === tab.id' (click)='selectedTab = tab.id'>{{tab.name}}</div>
-        
     </div>
-
 </n3k-neck>
 <app-common *ngIf='selectedTab==="common"' [institution]='institution'></app-common>
 <app-divisions *ngIf='selectedTab==="divisions"' ></app-divisions>
