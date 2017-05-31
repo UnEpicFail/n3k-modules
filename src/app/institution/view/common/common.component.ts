@@ -9,24 +9,26 @@ import { InstitutionFull } from '../../../api/institution/InstitutionFull';
 })
 export class CommonComponent implements OnInit {
 
+
+  _institution;
+  _backgraunImage;
+  _contacts={};
+
   @Input()
-  institution: InstitutionFull;
+  set institution(institution: InstitutionFull){
+    if(institution){
+      this._institution = institution
+      this._backgraunImage = `url(${this._institution.publication.image_url})`
+      this._institution.contacts.map(contact=>{
+        this._contacts[contact.type.id] = contact.value
+      })
+    }
+  };
+
 
   constructor() { }
 
   ngOnInit() {
   }
 
-   getContactByType(id:number) {
-    for(let i in this.institution.contacts) {
-      if (this.institution.contacts[i].type.id === id){
-        return this.institution.contacts[i]
-      }
-    }
-    return {}
-  }
-
-  backgraunImage(){
-    return `url(${this.institution.publication.image_url})`
-  }
 }

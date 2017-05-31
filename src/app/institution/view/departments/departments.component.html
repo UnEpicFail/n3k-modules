@@ -31,7 +31,7 @@
 
       <table>
         <tr>
-            <td class='seporator' colspan="4"><h2>Общие сведения</h2></td>
+            <td class='separator' colspan="4"><h2>Общие сведения</h2></td>
         </tr>
         <tr>
             <td style='width: 25%'>
@@ -74,7 +74,7 @@
             </td>
         </tr>
         <tr>
-            <td class='seporator' colspan="4"><h2>Контакты</h2></td>
+            <td class='separator' colspan="4"><h2>Контакты</h2></td>
         </tr>
         <tr>
           <td style='width: 25%'>
@@ -111,7 +111,7 @@
             </td>
         </tr>
         <tr>
-            <td class='seporator' colspan="4"> 
+            <td class='separator' colspan="4"> 
               <ya-map [latitude]="_department.address.latitude" [longitude]="_department.address.longitude">
                   <ya-marker [latitude]="_department.address.latitude" [longitude]="_department.address.longitude">
                   </ya-marker>
@@ -122,16 +122,16 @@
     </div>
   </column-1>
   <column-2>
-    <ul>
+    <ul class='tree-list'>
       <li *ngFor='let department of departmentsTree'>
-        <div class='department' [class.active]='selectedDepartment === department.identity.id' (click)='selectDepartment(department.identity.id)'>
-          <div class='delimiter'>&nbsp;</div>
+        <div class='item' [class.active]='selectedDepartment === department.identity.id' (click)='selectDepartment(department.identity.id)'>
+          <div class='item-delimiter'>&nbsp;</div>
           {{department.name}}
         </div>
         <ul>
           <li *ngFor='let children of department.childrens'>
-            <div  class='children' [class.active]='selectedDepartment === children.identity.id' (click)='selectDepartment(children.identity.id)'>
-              <div class='delimiter'>&nbsp;</div>
+            <div  class='children item' [class.active]='selectedDepartment === children.identity.id' (click)='selectDepartment(children.identity.id)'>
+              <div class='item-delimiter'>&nbsp;</div>
               {{children.name}}
             </div>
           </li>

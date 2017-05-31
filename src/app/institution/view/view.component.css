@@ -27,6 +27,6 @@
     height: 340px;;
     box-sizing: border-box;
 }
-/deep/ td.seporator {
+/deep/ td.separator {
     border-top:1px solid #E3E3E3;
 }

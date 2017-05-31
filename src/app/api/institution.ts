@@ -30,6 +30,33 @@ export class InstitutionService {
         id: string,
     ) {
         let institution = new InstitutionFull({
+            buildings: [
+                {
+                    identity: {
+                        id: 1
+                    },
+                    name: 'Школа',
+                    is_head: 'true'
+                },
+                {
+                    identity: {
+                        id: 2
+                    },
+                    name: 'Детский сад',
+                },
+                {
+                    identity: {
+                        id: 3
+                    },
+                    name: 'Администрация',
+                },
+                {
+                    identity: {
+                        id: 4
+                    },
+                    name: 'Спорткомплекс',
+                }
+            ],
             departments: [
                 {
                     identity :{
@@ -332,16 +359,179 @@ export class InstitutionService {
     public buildingGet(
         id: string,
     ) {
-        let _path = '/institutions/building/{id}';
-        let _body = '';
-        _path = _path.replace(/{id}/ig, (typeof id !== 'string')?JSON.stringify(id):id);
-        let _params = {
-            headers: new Headers(),
-        }
-        _params.headers.append('X-Requested-With', 'XMLHttpRequest'); 
+
+        let building = new Building({
+            identity: {
+                id: 3
+            },
+            name: 'Администрация',
+            address: {
+                postal_index: '199004',
+                fias: {
+                    city: {
+                        name: 'г. Великий Новгород'
+                    },
+                    street: {
+                        name: 'Средний пр-кт'
+                    },
+                    building: {
+                        name: '20'
+                    }
+                },
+                longitude: 38.6, /*Долгота*/
+                latitude: 55.847, /*Широта*/
+
+            },
+            is_head: 'Нет',
+            status: {
+                id: 1,
+                name: ' Функционирует'
+            },
+            capacity: {
+                 total: 346
+            },
+            type: {
+                id: 1,
+                name: 'Одноэтажное'
+            },
+            terrain: {
+                id: 1,
+                name: 'Сельская'
+            },
+            rooms:[
+                {
+                    identity: {
+                        id: 1
+                    },
+                    number: '', /*Номер помещения*/
+                    type: {
+                        id: 1,
+                        name: ''
+                    },
+                    name: 'Наличие сети Wi-Fi', /*Наименование*/
+                    seats: [
+                       {
+                            id: 1,
+                            row_number: 1,
+                            seats: 20
+                       },
+                       {
+                            id: 2,
+                            row_number: 2,
+                            seats: 3
+                       } 
+                    ], /*Посадочные места в помещении*/
+                    equipment: [
+                        
+                    ] /*Оснащение*/  
+                },
+                {
+                    identity: {
+                        id: 2
+                    },
+                    number: '', /*Номер помещения*/
+                    type: {
+                        id: 1,
+                        name: ''
+                    },
+                    name: 'Наличие локальной вычислительной сети', /*Наименование*/
+                    seats: [
+                       {
+                            id: 1,
+                            row_number: 1,
+                            seats: 20
+                       },
+                       {
+                            id: 2,
+                            row_number: 2,
+                            seats: 1
+                       } 
+                    ], /*Посадочные места в помещении*/
+                    equipment: [
+                        
+                    ] /*Оснащение*/  
+                },
+                {
+                    identity: {
+                        id: 3
+                    },
+                    number: '', /*Номер помещения*/
+                    type: {
+                        id: 1,
+                        name: ''
+                    },
+                    name: 'Вентиляция', /*Наименование*/
+                    seats: [
+                       {
+                            id: 1,
+                            row_number: 1,
+                            seats: 10
+                       },
+                       {
+                            id: 2,
+                            row_number: 2,
+                            seats: 4
+                       } 
+                    ], /*Посадочные места в помещении*/
+                    equipment: [
+                        
+                    ] /*Оснащение*/  
+                },
+                {
+                    identity: {
+                        id: 4
+                    },
+                    number: '', /*Номер помещения*/
+                    type: {
+                        id: 1,
+                        name: ''
+                    },
+                    name: 'Вахтер', /*Наименование*/
+                    seats: [
+                       {
+                            id: 1,
+                            row_number: 1,
+                            seats: 10
+                       },
+                       {
+                            id: 2,
+                            row_number: 2,
+                            seats: 5
+                       } 
+                    ], /*Посадочные места в помещении*/
+                    equipment: [
+                        
+                    ] /*Оснащение*/  
+                }
+            ],
+            equipment: [
+
+            ] /*Оснащение*/
+        })
 
 
-        return this.http['get'](_path, _params)
+        let res = new Observable(observer => {
+          setTimeout(() => {
+              observer.next(new Response({data:building}));
+          }, 1000);
+
+          setTimeout(() => {
+              observer.complete();
+          }, 3000);
+        })
+
+        return res;
+
+        // let _path = '/institutions/building/{id}';
+        // let _body = '';
+        // _path = _path.replace(/{id}/ig, (typeof id !== 'string')?JSON.stringify(id):id);
+        // let _params = {
+        //     headers: new Headers(),
+        // }
+        // _params.headers.append('X-Requested-With', 'XMLHttpRequest'); 
+
+
+        // return this.http['get'](_path, _params)
     }
     /**
      * Получает подразделение по его id

@@ -1,3 +1,135 @@
-<p>
-  buildings works!
-</p>
+<n3k-columns context='view' *ngIf='_institution'>
+  <column-1>
+    <table *ngIf='_building'>
+      <tr>
+        <td colspan="4">
+          <h1>{{_building.name}}</h1>
+
+          <div class='status-array'>
+              <div class='status status-{{_building.status.id}}'>
+                  <i class="fa fa-flag"></i> {{_building.status.name}}
+              </div>
+          </div>
+
+          <div class='buttons-array'>
+            <div class='default-btn btn'>
+                <span class='icon'><i class="fa fa-pencil" aria-hidden="true"></i></span>
+                <span class='text'>Редактировать</span>
+            </div>
+            <div class='transparent-btn btn'>
+                <span class='icon'><i class="fa fa-trash" aria-hidden="true"></i></span>
+            </div> 
+          </div>
+        </td> 
+      </tr>
+      <tr>
+        <td colspan="4" class='separator'>
+          <h2>Характеристики</h2>
+        </td>
+      </tr>
+      <tr>
+        <td style="width:25%">
+            <div class='description-block'>
+              <div class='title'>Вместительность:</div>
+              {{_building.capacity.total}}
+            </div>
+        </td>
+        <td style="width:25%">
+            <div class='description-block'>
+              <div class='title'>Тип:</div>
+              {{_building.type.name}}
+            </div>
+        </td>
+        <td style="width:25%">
+            <div class='description-block'>
+              <div class='title'>Вид местности:</div>
+              {{_building.terrain.name}}
+            </div>
+        </td>
+        <td style="width:25%">
+            <div class='description-block'>
+              <div class='title'>Головное здание:</div>
+              {{_building.is_head}}
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="4" class='separator'>
+          <h2>Помещения</h2>
+
+          <div class='buttons-array'>
+            <div class='create-new-btn btn'>
+                <span class='icon'><i class="fa fa-plus" aria-hidden="true"></i></span>
+                <span class='text'>Добавить новое</span>
+            </div>
+          </div> 
+
+          <table class='sortable-list'>
+            <thead>
+              <tr>
+                <td style='width: 50%'>
+                  <span clas='text'>Помещения</span> <i class="fa fa-sort-desc" aria-hidden="true"></i>
+                </td>
+                <td style='width: 50%'>
+                  <span clas='text'>Количество мест</span> <i class="fa fa-sort" aria-hidden="true"></i>
+                </td>
+              </tr>
+            </thead>
+            <tfoot>
+              <tr>
+                <td>
+                  Итого {{_institution.buildings.length}} помещенией
+                </td>
+                <td>
+                  {{_totalSeatsSum}}
+                </td>
+              </tr>
+            </tfoot>
+            <tbody>
+              <tr *ngFor='let room of _building.rooms'>
+                <td>
+                  {{room.name}}
+                </td>
+                <td>
+                  {{_seatsSum[room.identity.id]}}
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="4">
+          <h2>Контакты</h2>
+          <div class='description-block'>
+              <div class='title'>Почтовый адрес:</div>
+              {{_building.address.fias.street.name}}, 
+              {{_building.address.fias.building.name}}, 
+              {{_building.address.postal_index}}, 
+              {{_building.address.fias.city.name}} 
+          </div>
+        
+          <ya-map [latitude]="_building.address.latitude" [longitude]="_building.address.longitude">
+              <ya-marker [latitude]="_building.address.latitude" [longitude]="_building.address.longitude">
+              </ya-marker>
+          </ya-map>
+        </td>
+      </tr>
+      <tr >
+        <td colspan="4" class='separator'>
+          <h2>Оснащение</h2>
+        </td>
+      </tr>
+    </table>
+  </column-1>
+  <column-2>
+    <ul class='tree-list'>
+      <li *ngFor='let building of _institution.buildings'>
+        <div class='item' [class.active]='selectedBuilding === building.identity.id' (click)='selectBuilding(building.identity.id)'>
+          <div class='item-delimiter'>&nbsp;</div>
+          {{building.name}}
+        </div>
+      </li>
+    </ul>
+  </column-2>
+</n3k-columns>
