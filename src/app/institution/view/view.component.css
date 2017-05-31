@@ -1,0 +1,32 @@
+/deep/ table {
+    width: 100%;
+}
+/deep/ td {
+        vertical-align: top
+}
+
+/deep/ .description-block {
+    font-family: 'ArialMT', 'Arial';
+    font-size: 16px;
+    line-height: 26px;
+    margin-bottom: 35px;
+}
+
+/deep/ .description-block .title {
+    color: #A1A1A1;
+}
+
+/deep/ .image {
+    width: 100%;
+    height: 360px;
+}
+
+/deep/ .map-container-inner
+{
+    width: 100%;
+    height: 340px;;
+    box-sizing: border-box;
+}
+/deep/ td.seporator {
+    border-top:1px solid #E3E3E3;
+}

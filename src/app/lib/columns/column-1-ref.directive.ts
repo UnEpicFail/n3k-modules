@@ -5,6 +5,7 @@ import { Directive, Renderer, ElementRef,} from '@angular/core';
 })
 export class Column1RefDirective{
 
+  _height = 0;
   position = {
     top: 'auto',
     bottom: 'auto',

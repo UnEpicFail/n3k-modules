@@ -1,4 +1,4 @@
-import { Component, OnInit, ElementRef, ContentChild, ViewChild } from '@angular/core';
+import { Component, ElementRef, ContentChild, ViewChild } from '@angular/core';
 import { HeaderComponent } from '../header/header.component';
 import { NeckComponent } from '../neck/neck.component';
 import { ColumnsComponent } from '../columns/columns.component';
@@ -13,7 +13,7 @@ import { MapMouseEvent, MapClickMouseEvent, MarkerClaster }  from '../../angular
   templateUrl: './grid.component.html',
   styleUrls: ['./grid.component.css']
 })
-export class GridComponent implements OnInit {
+export class GridComponent {
 
   @ContentChild(HeaderComponent)
   header: HeaderComponent;
@@ -37,11 +37,8 @@ export class GridComponent implements OnInit {
     ps.neck.subscribe(neck => {
       this.neck = neck
     })
-  }
 
-  ngOnInit() {
-
-    this.body  = document.querySelector('body');
+        this.body  = document.querySelector('body');
     this.scrollPosition = this.body.scrollTop;
 
     this.positions = this.debounce(() => {
@@ -72,8 +69,9 @@ export class GridComponent implements OnInit {
 
     window.addEventListener('scroll', this.positions);
     window.addEventListener('resize', this.positions);
-    
   }
+
+
   checkColumn(column, data, debug?) {
 
 

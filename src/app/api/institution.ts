@@ -30,6 +30,46 @@ export class InstitutionService {
         id: string,
     ) {
         let institution = new InstitutionFull({
+            departments: [
+                {
+                    identity :{
+                        id: 4
+                    }, 
+                    parent: {
+                        id: 1
+                    },
+                    name: 'Администрация'
+                },
+                {
+                    identity :{
+                        id: 5
+                    }, 
+                    parent: {
+                        id: 1
+                    },
+                    name: 'Спорткомплекс'
+                },
+                {
+                    identity :{
+                        id: 1
+                    },
+                    name: 'Школа'
+                },
+                {
+                    identity :{
+                        id: 2
+                    },
+                    name: 'Детский сад'
+                },
+                {
+                    identity :{
+                        id: 3
+                    },
+                    name: 'Спорткомплекс'
+                },
+                
+
+            ],
             organization: {
                 owner: {
                     firstname: 'Игорь',
@@ -93,144 +133,144 @@ export class InstitutionService {
                 }
             },
             type: {
-            id: 1,
-            name: 'Дошкольная образовательные организации'
+                id: 1,
+                name: 'Дошкольная образовательные организации'
             },
             foundation_date: '12.12.2016',
             ovz_group_types: [
-            {
-                id: 1,
-                name: 'Компенсирующий'
-            },
-            {
-                id: 2,
-                name: 'Общеразвивающие'
-            }
+                {
+                    id: 1,
+                    name: 'Компенсирующий'
+                },
+                {
+                    id: 2,
+                    name: 'Общеразвивающие'
+                }
             ],
             work_time: [
-            {
-                id: 1,
-                begin_time: '08:00:00',
-                end_time: '17:00:00',
-                week_days: [1,2,3,4,5]
-            }
+                {
+                    id: 1,
+                    begin_time: '08:00:00',
+                    end_time: '17:00:00',
+                    week_days: [1,2,3,4,5]
+                }
             ],
             shift: [
-            {
-                id: 1,
-                name: '1 смена'
-            },
-            {
-                id: 2,
-                name: '2 смена'
-            }
+                {
+                    id: 1,
+                    name: '1 смена'
+                },
+                {
+                    id: 2,
+                    name: '2 смена'
+                }
             ],
             meta: {
-            site_characteristics: [
-                {
-                id: 1,
-                name: 'Компенсирующий'
-                },
-                {
-                id: 2,
-                name: 'Общеразвивающие'
-                }
-            ],
-            fgos_scoring: [
-                {
-                id: 1,
-                name: 'ФГОС1'
-                }
-            ],
-            is_small_setted: true,
-            has_bookkeeping: true,
-            is_budget_transfered: true,
-            has_it_teachers: true,
-            schedule_string: 'Круглосуточно',
-            direction_for_ip: 'Прямое',
-            statute_url: 'http://netrika.ru/',
-            employee_count: 23,
-            is_first_class: true,
-            electronic_diary_url: 'http://netrika.ru/',
-            electronic_diary_name: 'КАИС КРО',
-            electronic_diary_vendor: 'Нетрика',
-            educational_program_url:'http://netrika.ru/',
-            additional_name: 'Муниципальное бюджетное дошкольное образовательное учреждение детский сад №1',
-            reorganization_name: 'Муниципальное бюджетное дошкольное образовательное учреждение детский сад №1',
-            occupied_place: 234,
-            total_place: 270,
+                site_characteristics: [
+                    {
+                        id: 1,
+                        name: 'Компенсирующий'
+                    },
+                    {
+                        id: 2,
+                        name: 'Общеразвивающие'
+                    }
+                ],
+                fgos_scoring: [
+                    {
+                        id: 1,
+                        name: 'ФГОС1'
+                    }
+                ],
+                is_small_setted: true,
+                has_bookkeeping: true,
+                is_budget_transfered: true,
+                has_it_teachers: true,
+                schedule_string: 'Круглосуточно',
+                direction_for_ip: 'Прямое',
+                statute_url: 'http://netrika.ru/',
+                employee_count: 23,
+                is_first_class: true,
+                electronic_diary_url: 'http://netrika.ru/',
+                electronic_diary_name: 'КАИС КРО',
+                electronic_diary_vendor: 'Нетрика',
+                educational_program_url:'http://netrika.ru/',
+                additional_name: 'Муниципальное бюджетное дошкольное образовательное учреждение детский сад №1',
+                reorganization_name: 'Муниципальное бюджетное дошкольное образовательное учреждение детский сад №1',
+                occupied_place: 234,
+                total_place: 270,
             },
             education_services: [
-            {
-                identity: {
-                id:1
-                },
-                name: 'Дошкольное образование'
-            }
+                {
+                    identity: {
+                        id:1
+                    },
+                    name: 'Дошкольное образование'
+                }
             ],
             meals: [
-            {
-                id: 1,
-                meal_type: {
-                id: 1,
-                name: 'Горячее питание'
+                {
+                    id: 1,
+                    meal_type: {
+                        id: 1,
+                        name: 'Горячее питание'
+                    }
                 }
-            }
             ],
             education_language: {
-            id: 1, 
-            name: 'Русский'
+                id: 1, 
+                name: 'Русский'
             },
             publication: {
-            image_url: 'https://vignette2.wikia.nocookie.net/waha/images/d/d8/Altdorf3.jpg/revision/latest/scale-to-width-down/1000?cb=20110409091612&path-prefix=ru',
-            title: 'БДОУ детский сад №1 комбинированного вида'
+                image_url: 'https://vignette2.wikia.nocookie.net/waha/images/d/d8/Altdorf3.jpg/revision/latest/scale-to-width-down/1000?cb=20110409091612&path-prefix=ru',
+                title: 'БДОУ детский сад №1 комбинированного вида'
             },
             name: 'Детский сад №1',
             full_name: 'Муниципальное бюджетное дошкольное образовательное учреждение детский сад №1 комбинированного вида',
             status: {
-            id: 1,
-            name: 'Функционирует'
+                id: 1,
+                name: 'Функционирует'
             },
             district: {
-            id: 1,
-            name: 'Выборгский район'
+                id: 1,
+                name: 'Выборгский район'
             },
             levels: [
-            {
-                id: 1,
-                name: 'Высшее образование'
-            }
+                {
+                    id: 1,
+                    name: 'Высшее образование'
+                }
             ],
             contacts: [
-            {
-                type:{
-                id: 1,
-                name: 'site'
+                {
+                    type:{
+                        id: 1,
+                        name: 'site'
+                    },
+                    value: 'spbstu.ru'
                 },
-                value: 'spbstu.ru'
-            },
-            {
-                type:{
-                id: 2,
-                name: 'phone'
-                },
-                value: '88123237728'
-            }
+                {
+                    type:{
+                        id: 2,
+                        name: 'phone'
+                    },
+                    value: '88123237728'
+                }
             ],
             description: 'Политехнический университет - многофункциональное государственное высшее учебное заведение. В 2010 году он получил статус национального исследовательского университета, что явилось признанием его роли и возможностей как в области подготовки кадров, так и в мультидисциплинарных научных исследованиях и разработках. В рейтинге технических университетов России Политехнический неизменно занимает ведущие позиции.',
             education_area: [
-            {
-                origin_address: 'Московский 1'
-            },
-            {
-                origin_address: 'Московский 2'
-            },
-            {
-                origin_address: 'Московский 3'
-            },
-            {
-                origin_address: 'Московский 4'
-            },
+                {
+                    origin_address: 'Московский 1'
+                },
+                {
+                    origin_address: 'Московский 2'
+                },
+                {
+                    origin_address: 'Московский 3'
+                },
+                {
+                    origin_address: 'Московский 4'
+                },
             ],
             region: {
             id: 1,
@@ -313,16 +353,128 @@ export class InstitutionService {
     public departmentGet(
         id: string,
     ) {
-        let _path = '/institutions/department/{id}';
-        let _body = '';
-        _path = _path.replace(/{id}/ig, (typeof id !== 'string')?JSON.stringify(id):id);
-        let _params = {
-            headers: new Headers(),
-        }
-        _params.headers.append('X-Requested-With', 'XMLHttpRequest'); 
+
+        let department = new Department({
+            identity: {
+                id: 4
+            },
+            name: 'Администрация',
+            parent:{
+                id: 1
+            },
+            kind: {
+                id: 1,
+                name: 'Администрация'
+            },
+            capacity: {
+                total: 346,
+            },
+            head: {
+                identity: {
+                    id: 1
+                },
+                entity_state: {},
+                position_name: 'Заведующий',
+                position: {
+                    id: 1,
+                    name: 'Заведующий'
+                },
+                person: {
+                    identity: {
+                        id: 1
+                    },
+                    firstname: 'Ирина',
+                    surname: 'Семенова',
+                    middlename: 'Александровна'
+                }
+            },
+            address: {
+                origin_address: 'Средний пр-кт, 20, 199004, г. Великий Новгород',
+                longitude: 38.6, /*Долгота*/
+                latitude: 55.847, /*Широта*/
+            },
+            contacts: [
+                {
+                    identity: {
+                        id: 1
+                    },
+                    type: {
+                        id: 1,
+                        name: 'Телефон'
+                    },
+                    value: '88123237728'
+                },
+                {
+                    identity: {
+                        id: 2
+                    },
+                    type: {
+                        id: 2,
+                        name: 'email'
+                    },
+                    value: 'gymn024@mail.ru'
+                },
+                {
+                    identity: {
+                        id: 3
+                    },
+                    type: {
+                        id: 3,
+                        name: 'сайт'
+                    },
+                    value: 'gymn024.ru'
+                },
+                {
+                    identity: {
+                        id: 4
+                    },
+                    type: {
+                        id: 4,
+                        name: 'Дополнительный телефон'
+                    },
+                    value: '88123237728'
+                },
+                {
+                    identity: {
+                        id: 5
+                    },
+                    type: {
+                        id: 5,
+                        name: 'Факс'
+                    },
+                    value: '88123237728'
+                },
+            ],
+            is_based_on_another_organization: 'Да', /*Разпологается на базе другого учреждения*/
+            foundation_date: '12.12.2016', /*Дата создания*/
+            liquidation_date: '12.12.2016', /*Дата ликвидации*/
+        })
 
 
-        return this.http['get'](_path, _params)
+
+         let res = new Observable(observer => {
+          setTimeout(() => {
+              observer.next(new Response({data:department}));
+          }, 1000);
+
+          setTimeout(() => {
+              observer.complete();
+          }, 3000);
+        })
+
+        return res;
+
+
+        // let _path = '/institutions/department/{id}';
+        // let _body = '';
+        // _path = _path.replace(/{id}/ig, (typeof id !== 'string')?JSON.stringify(id):id);
+        // let _params = {
+        //     headers: new Headers(),
+        // }
+        // _params.headers.append('X-Requested-With', 'XMLHttpRequest'); 
+
+
+        // return this.http['get'](_path, _params)
     }
     /**
      * Получает иновацию по его id

@@ -1,10 +1,10 @@
 <n3k-neck>
-    <a [routerLink] = '["/institution"]'>Поиск организаций</a>
+    <a class='bread-crumbs' [routerLink] = '["/institution"]'>Поиск организаций</a>
     <br>↓
     <h1>{{institution?.publication.title}}</h1>
     
     <div class='status-array'>
-        <div *ngIf='!institution?.is_delete' class='status status-deleted'>
+        <div *ngIf='institution?.is_delete' class='status status-deleted'>
             <i class="fa fa-lock" aria-hidden="true"></i>
         </div>
         <div class='status status-{{institution?.status?.id}}'>

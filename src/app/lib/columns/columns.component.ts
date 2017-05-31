@@ -42,13 +42,17 @@ export class ColumnsComponent implements AfterContentInit , OnDestroy{
 
   constructor(public el: ElementRef, private ps: PositionService) {
     ps.addColumn(this)    
+    // window.addEventListener('resize', ()=>{
+    //   this.setHeight()
+    // });
+    // Убрал, так как добавил интервал который чекает высоту постояно, решение раково, но другого пока нет
   }
 
   ngAfterContentInit() {
     this.setHeight();
-    window.addEventListener('resize', ()=>{
+    setInterval(()=>{
       this.setHeight()
-    });
+    }, 100);
   }
 
   setHeight() {

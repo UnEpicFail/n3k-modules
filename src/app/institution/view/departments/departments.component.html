@@ -1,17 +1,136 @@
 <n3k-columns context='view'>
   <column-1>
-    
+    <!--{{_department | json}}-->
+    <div *ngIf='_department'>
+      <div *ngIf='_department.parent.id'>
+        <div class ='bread-crumbs' (click)='selectDepartment(_department.parent.id)'>
+          {{getPatentNameById(_department.parent.id)}}
+        </div>
+        ↓
+      </div>
+      <h1>{{_department.name}}</h1>
+
+      <div class='status-array'>
+        <div *ngIf='_department?.is_delete' class='status status-deleted'>
+            <i class="fa fa-lock" aria-hidden="true"></i>
+        </div>
+        <!--<div class='status status-{{_department?.status?.id}}'>
+            <i class="fa fa-flag"></i> {{_department?.status?.name}}
+        </div>-->
+      </div>
+
+      <div class='buttons-array'>
+          <div class='default-btn btn'>
+              <span class='icon'><i class="fa fa-bars" aria-hidden="true"></i></span>
+              <span class='text'>Действия</span>
+          </div> 
+          <div class='transparent-btn btn'>
+            <span class='icon'><i class="fa fa-trash" aria-hidden="true"></i></span>
+          </div>
+      </div>
+
+      <table>
+        <tr>
+            <td class='seporator' colspan="4"><h2>Общие сведения</h2></td>
+        </tr>
+        <tr>
+            <td style='width: 25%'>
+              <div class='description-block'>
+                  <div class='title'>Тип:</div>
+                  {{_department.kind.name}}
+              </div>
+              <div class='description-block'>
+                  <div class='title'>Вместительность:</div>
+                  {{_department.capacity.total}}
+              </div>
+            </td>
+            <td style='width: 25%'>
+              <div class='description-block'>
+                  <div class='title'>{{_department.head.position_name}}:</div>
+                  {{_department.head.person.surname}} 
+                  {{_department.head.person.firstname}} 
+                  {{_department.head.person.middlename}}
+              </div>
+              <div class='description-block'>
+                  <div class='title'>Телефон руководителя:</div>
+                  {{_department}}
+              </div>
+            </td>
+            <td style='width: 25%'>
+              <div class='description-block'>
+                  <div class='title'>Дата создания:</div>
+                  {{_department.foundation_date}}
+              </div>
+              <div class='description-block'>
+                  <div class='title'>Дата закрытия:</div>
+                  {{_department.liquidation_date}}
+              </div>
+            </td>
+            <td style='width: 25%'>
+              <div class='description-block'>
+                  <div class='title'>Разпологается на базе другого учреждения:</div>
+                  {{_department.is_based_on_another_organization}}
+              </div>
+            </td>
+        </tr>
+        <tr>
+            <td class='seporator' colspan="4"><h2>Контакты</h2></td>
+        </tr>
+        <tr>
+          <td style='width: 25%'>
+              <div class='description-block'>
+                  <div class='title'>Почтовый адрес:</div>
+                  {{_department.address.origin_address}}
+              </div>
+              <div class='description-block'>
+                  <div class='title'>Телефон:</div>
+                  {{getContactByType(1).value}}
+              </div>
+            </td>
+            <td style='width: 25%'>
+              <div class='description-block'>
+                  <div class='title'>Email:</div>
+                  {{getContactByType(2).value}}
+              </div>
+              <div class='description-block'>
+                  <div class='title'>Сайт:</div>
+                  {{getContactByType(3).value}}
+              </div>
+            </td>
+            <td style='width: 25%'>
+              <div class='description-block'>
+                  <div class='title'>Дополнительный телефон:</div>
+                  {{getContactByType(4).value}}
+              </div>
+            </td>
+            <td style='width: 25%'>
+              <div class='description-block'>
+                  <div class='title'>Факс:</div>
+                  {{getContactByType(5).value}}
+              </div>
+            </td>
+        </tr>
+        <tr>
+            <td class='seporator' colspan="4"> 
+              <ya-map [latitude]="_department.address.latitude" [longitude]="_department.address.longitude">
+                  <ya-marker [latitude]="_department.address.latitude" [longitude]="_department.address.longitude">
+                  </ya-marker>
+              </ya-map>
+            </td>
+        </tr>
+      </table>
+    </div>
   </column-1>
   <column-2>
     <ul>
-      <li *ngFor='let department of departmentsList'>
-        <div class='department' [class.active]='selecreddepartment === department.id' (click)='selecreddepartment = department.id'>
+      <li *ngFor='let department of departmentsTree'>
+        <div class='department' [class.active]='selectedDepartment === department.identity.id' (click)='selectDepartment(department.identity.id)'>
           <div class='delimiter'>&nbsp;</div>
           {{department.name}}
         </div>
         <ul>
           <li *ngFor='let children of department.childrens'>
-            <div  class='children' [class.active]='selecreddepartment === children.id' (click)='selecreddepartment = children.id'>
+            <div  class='children' [class.active]='selectedDepartment === children.identity.id' (click)='selectDepartment(children.identity.id)'>
               <div class='delimiter'>&nbsp;</div>
               {{children.name}}
             </div>
