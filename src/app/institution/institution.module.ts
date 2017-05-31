@@ -8,18 +8,20 @@ import { YaCoreModule } from '../angular2-yandex-maps/core.module';
 
 import { N3kNgGridModule } from '../lib/n3k-ng-grid.module'
 
+import { InstitutionService } from '../api/institution'
+
 import { ViewComponent, ToWeekDays, ToTime, YesNo } from './view/view.component';
 import { EditComponent } from './edit/edit.component';
 import { ListComponent } from './list/list.component';
 import { MapListComponent } from './map-list/map-list.component';
 import { CommonComponent } from './view/common/common.component';
-import { DivisionsComponent } from './view/divisions/divisions.component';
 import { BuildingsComponent } from './view/buildings/buildings.component';
 import { AreaComponent } from './view/area/area.component';
 import { ContractsComponent } from './view/contracts/contracts.component';
 import { EducationalServicesComponent } from './view/educational-services/educational-services.component';
 import { ElectronicServicesComponent } from './view/electronic-services/electronic-services.component';
 import { InnovationsComponent } from './view/innovations/innovations.component';
+import { DepartmentsComponent } from './view/departments/departments.component';
 
 const routes:Routes = [
   {path: 'institution', children: [
@@ -27,11 +29,7 @@ const routes:Routes = [
     {path: 'list/:filter', component: ListComponent},
     {path: 'edit', component: EditComponent},
     {path: 'edit/:id', component: EditComponent},
-    {path: 'view/:id', children: [
-      {path: 'common', component: CommonComponent},
-      {path: 'divisions', component: DivisionsComponent},
-      {path: '', component: CommonComponent},
-    ]},      
+    {path: 'view/:id/:tab', component: ViewComponent},      
     {path: '', component: MapListComponent},
     {path: ':filter', component: MapListComponent},
   ]}
@@ -53,16 +51,16 @@ const routes:Routes = [
     ToWeekDays,
     YesNo,
     CommonComponent,
-    DivisionsComponent,
     BuildingsComponent,
     AreaComponent,
     ContractsComponent,
     EducationalServicesComponent,
     ElectronicServicesComponent,
     InnovationsComponent,
+    DepartmentsComponent,
   ],
   exports: [ToTime, ToWeekDays, YesNo],
-  providers: [],
+  providers: [InstitutionService],
   schemas: [],
 })
 export class InstitutionModule { 

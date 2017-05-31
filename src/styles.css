@@ -33,6 +33,13 @@ h3 {
 }
 
 
+.horizontal-separator {
+    line-height: 0px;
+    border-top-width: 1px;
+    border-top-style: solid;
+    border-top-color: #E3E3E3;
+}
+
 /***STATUS***/
 .status-array {
     display: inline-block;
@@ -126,6 +133,7 @@ h3 {
     border-top-style: solid;
     border-top-color: #E3E3E3;
     text-decoration: underline;
+    color: #000;
 
 }
 

@@ -1,16 +1,14 @@
 <n3k-neck>
     <a [routerLink] = '["/institution"]'>Поиск организаций</a>
     <br>↓
+    <h1>{{institution?.publication.title}}</h1>
     
-    <h1>{{institution.publication.title}}</h1>
-
-
     <div class='status-array'>
-        <div *ngIf='!institution.is_delete' class='status status-deleted'>
+        <div *ngIf='!institution?.is_delete' class='status status-deleted'>
             <i class="fa fa-lock" aria-hidden="true"></i>
         </div>
-        <div class='status status-{{institution.status?.id}}'>
-            <i class="fa fa-flag"></i> {{institution.status?.name}}
+        <div class='status status-{{institution?.status?.id}}'>
+            <i class="fa fa-flag"></i> {{institution?.status?.name}}
         </div>
     </div>
 
@@ -22,14 +20,20 @@
     </div>
 
     <div class='tab-array'>
-        <div class='tab' *ngFor='let tab of tabs'  [class.active]='selectedTab === tab.id' (click)='selectedTab = tab.id'>{{tab.name}}</div>
+        <div class='tab' *ngFor='let tab of tabs' [routerLink]='[tab.link]'  routerLinkActive='active' >{{tab.name}}</div>
+    </div>
+
+    <div *ngIf='selectedTab === "departments"'>
+        <h1>Подразделения</h1>
+        <div class='buttons-array'>
+            <div class='create-new-btn btn'>
+                <span class='icon'><i class="fa fa-plus" aria-hidden="true"></i></span>
+                <span class='text'>Добавить</span>
+            </div> 
+        </div>
+        <div class='horizontal-separator'>&nbsp;</div>
     </div>
 </n3k-neck>
-<!--<app-common *ngIf='selectedTab==="common"' [institution]='institution'></app-common>
-<app-divisions *ngIf='selectedTab==="divisions"' ></app-divisions>
-<app-buildings *ngIf='selectedTab==="buildings"' ></app-buildings>
-<app-area *ngIf='selectedTab==="area"' ></app-area>
-<app-contracts *ngIf='selectedTab==="contracts"' ></app-contracts>
-<app-educational-services *ngIf='selectedTab==="educational-services"' ></app-educational-services>
-<app-electronic-services *ngIf='selectedTab==="electronic-services"' ></app-electronic-services>
-<app-innovations *ngIf='selectedTab==="innovations"' ></app-innovations>-->
+
+<app-common *ngIf='selectedTab === "common"' [institution]='institution'></app-common>
+<app-departments *ngIf='selectedTab === "departments"' [institution]='institution'></app-departments>

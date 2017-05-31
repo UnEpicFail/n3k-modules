@@ -57,7 +57,7 @@ export class MapListComponent implements OnInit {
 
   selectListItem(id) {
     if (this.selectedTab === 'map') {
-      this.router.navigate([`institution/view/${id}`]);
+      this.router.navigate([`institution/view/${id}/common`]);
     }
   }
 

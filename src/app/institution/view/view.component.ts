@@ -1,7 +1,11 @@
 
-import { Component, OnInit, Pipe, PipeTransform } from '@angular/core';
+import { Component, OnInit, Pipe, PipeTransform , Input} from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 import { InstitutionFull } from '../../api/institution/InstitutionFull';
+import { Response } from '../../api/common/Response';
+
+import { InstitutionService } from '../../api/institution'
 
 
 @Pipe({name: 'toWeekDays'})
@@ -34,49 +38,69 @@ export class YesNo implements PipeTransform {
 })
 export class ViewComponent implements OnInit {
 
-  selectedTab = 'common'
+  @Input()
+  institution: InstitutionFull
+
+  selectedTab: string
+  selectedId: string
 
   tabs = [
     {
       id: 'common',
+      link: '../common',
       name: 'Общие сведения',
     },
     {
-      id: 'divisions',
+      id: 'departments',
+      link: '../departments',
       name: 'Подразделения',
     },
     {
       id: 'buildings',
+      link: '../buildings',
       name: 'Здания',
     },
     {
       id: 'area',
+      link: '../area',
       name: 'Територия',
     },
     {
       id: 'contracts',
+      link: '../contracts',
       name: 'Договоры',
     },
     {
       id: 'educational-services',
+      link: '../educational-services',
       name: 'Образовательные услуги',
     },
     {
       id: 'electronic-services',
+      link: '../electronic-services',
       name: 'Электронные госуслуги',
     },
     {
       id: 'innovations',
+      link: '../innovations',
       name: 'Инновации',
     },
   ]
 
 
 
-  constructor() {}
-
-  ngOnInit() {
+  constructor(private ar: ActivatedRoute, public institutionService: InstitutionService) {
+    this.ar.params.subscribe(params => {
+      this.selectedTab = params.tab
+      this.selectedId = params.id;
+      institutionService.institutionGet(params.id).subscribe(res => {
+        let _res = new Response(res)
+        this.institution = new InstitutionFull(_res.data)
+      })  
+    })
   }
+
+  ngOnInit() {}
 
 }
 
