@@ -34,11 +34,12 @@ export class GridComponent {
     ps.columns.subscribe(columns => {
       this.columns = columns
     })
+
     ps.neck.subscribe(neck => {
       this.neck = neck
     })
 
-        this.body  = document.querySelector('body');
+    this.body  = document.querySelector('body');
     this.scrollPosition = this.body.scrollTop;
 
     this.positions = this.debounce(() => {

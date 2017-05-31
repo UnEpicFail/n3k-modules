@@ -4,7 +4,7 @@
     <div *ngIf='_department'>
       <div *ngIf='_department.parent.id'>
         <div class ='bread-crumbs' (click)='selectDepartment(_department.parent.id)'>
-          {{getPatentNameById(_department.parent.id)}}
+          {{_parentName}}
         </div>
         ↓
       </div>
@@ -84,29 +84,29 @@
               </div>
               <div class='description-block'>
                   <div class='title'>Телефон:</div>
-                  {{getContactByType(1).value}}
+                  {{_contacts[1]}}
               </div>
             </td>
             <td style='width: 25%'>
               <div class='description-block'>
                   <div class='title'>Email:</div>
-                  {{getContactByType(2).value}}
+                  {{_contacts[2]}}
               </div>
               <div class='description-block'>
                   <div class='title'>Сайт:</div>
-                  {{getContactByType(3).value}}
+                  {{_contacts[3]}}
               </div>
             </td>
             <td style='width: 25%'>
               <div class='description-block'>
                   <div class='title'>Дополнительный телефон:</div>
-                  {{getContactByType(4).value}}
+                  {{_contacts[4]}}
               </div>
             </td>
             <td style='width: 25%'>
               <div class='description-block'>
                   <div class='title'>Факс:</div>
-                  {{getContactByType(5).value}}
+                  {{_contacts[5]}}
               </div>
             </td>
         </tr>

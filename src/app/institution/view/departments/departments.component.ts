@@ -15,6 +15,8 @@ export class DepartmentsComponent{
 
   private _institution: InstitutionFull;
   private _department;
+  private _contacts = {};
+  private _parentName = ''
 
   @Input()
   set institution(institution: InstitutionFull) {
@@ -54,6 +56,11 @@ export class DepartmentsComponent{
     this.is.departmentGet(id).subscribe(res => {
       let _res = new Response(res)
       this._department = _res.data
+      this._department.contacts.map(contact=>{
+        this._contacts[contact.type.id] = contact.value
+      })
+      if (this._department.parent.id)
+        this._parentName = this.getPatentNameById(this._department.parent.id);
     })
   }
 
