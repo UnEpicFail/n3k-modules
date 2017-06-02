@@ -1,0 +1,26 @@
+<n3k-columns context='view'>
+  <column-1 *ngIf='_educationServicesList'>
+    <div class='quarter-list'>
+      <div class='quarter-part' *ngFor='let educationService of _educationServicesList.items'> 
+        <h2>{{educationService.name}}</h2>
+        <div class='buttons-array'>
+          <div class='default-btn btn'>
+              <span class='icon'><i class="fa fa-pencil" aria-hidden="true"></i></span>
+              <span class='text'>Редактировать</span>
+          </div>
+          <div class='transparent-btn btn'>
+              <span class='icon'><i class="fa fa-trash" aria-hidden="true"></i></span>
+          </div> 
+        </div>
+        <div class='description-block'>
+          <div class='title'>Вид образовательной услуги:</div>
+          {{educationService.kind.name}}
+        </div>
+        <div class='description-block'>
+          <div class='title'>Направление:</div>
+          {{educationService.direction.name}}
+        </div>
+      </div>
+    </div>
+  </column-1>
+</n3k-columns>

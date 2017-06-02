@@ -71,8 +71,8 @@ export class ViewComponent implements OnInit {
       name: 'Договоры',
     },
     {
-      id: 'educational-services',
-      link: '../educational-services',
+      id: 'education-services',
+      link: '../education-services',
       name: 'Образовательные услуги',
     },
     {

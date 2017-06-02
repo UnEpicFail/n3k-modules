@@ -17,7 +17,7 @@ import { MapListComponent } from './map-list/map-list.component';
 import { CommonComponent } from './view/common/common.component';
 import { BuildingsComponent } from './view/buildings/buildings.component';
 import { ContractsComponent } from './view/contracts/contracts.component';
-import { EducationalServicesComponent } from './view/educational-services/educational-services.component';
+import { EducationServicesComponent } from './view/education-services/education-services.component';
 import { ElectronicServicesComponent } from './view/electronic-services/electronic-services.component';
 import { InnovationsComponent } from './view/innovations/innovations.component';
 import { DepartmentsComponent } from './view/departments/departments.component';
@@ -53,7 +53,7 @@ const routes:Routes = [
     CommonComponent,
     BuildingsComponent,
     ContractsComponent,
-    EducationalServicesComponent,
+    EducationServicesComponent,
     ElectronicServicesComponent,
     InnovationsComponent,
     DepartmentsComponent,

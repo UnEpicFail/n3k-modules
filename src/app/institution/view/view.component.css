@@ -21,6 +21,22 @@
     height: 360px;
 }
 
+/deep/ .quarter-list {
+    position: relative;
+}
+
+/deep/ .quarter-part {
+    padding: 35px 30px 0 0;
+    width: 25%;
+    display: inline-block;
+    background-color: #fff;
+    border-top: 2px solid #F2ECDF;
+    border-right: 5px solid #fff;
+    box-sizing: border-box;
+    vertical-align: top;
+    overflow: hidden;
+}
+
 /deep/ .map-container-inner
 {
     width: 100%;

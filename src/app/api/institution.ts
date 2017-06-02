@@ -7,6 +7,9 @@ import { Response } from './common/Response'
 import { Institution } from './institution/Institution';
 import { InstitutionFull } from './institution/InstitutionFull';
 import { EducationService } from './institution/EducationService';
+import { EducationServiceShort } from './institution/EducationServiceShort';
+import { EducationServiceList } from './institution/EducationServiceList';
+
 import { Building } from './institution/Building';
 import { Department } from './institution/Department';
 import { Innovation } from './institution/Innovation';
@@ -1368,36 +1371,195 @@ export class InstitutionService {
      * @param {number} p_limit - Количество записей 
      * @param {number} p_page - Страница выдачи 
      * @param {string} p_query - Поисковая строка 
-     * @param {string} p_institutions - Образовательные организации 
+     * @param {number[]} p_institutions - Образовательные организации 
      * @param {string} p_deleted - Показывать удаленные 
      */
     public educationServiceList(
         p_limit?: number,
         p_page?: number,
         p_query?: string,
-        p_institutions?: string,
+        p_institutions?: number[],
         p_deleted?: string,
     ) {
-        let _path = '/institutions/education_service/list';
-        let _body = '';
-        let _params = {
-            headers: new Headers(),
-            search: new URLSearchParams(),
-        }
-        _params.headers.append('X-Requested-With', 'XMLHttpRequest'); 
-        if (typeof p_limit !== 'undefined')
-            _params.search.append('p_limit', ''+p_limit); 
-        if (typeof p_page !== 'undefined')
-            _params.search.append('p_page', ''+p_page); 
-        if (typeof p_query !== 'undefined')
-            _params.search.append('p_query', ''+p_query); 
-        if (typeof p_institutions !== 'undefined')
-            _params.search.append('p_institutions', ''+p_institutions); 
-        if (typeof p_deleted !== 'undefined')
-            _params.search.append('p_deleted', ''+p_deleted); 
 
 
-        return this.http['get'](_path, _params)
+        let educationService1 = new EducationServiceShort({
+            identity: {
+                id: 1
+            },
+            entity_state: {
+                created_at: '',
+                updated_at: '',
+                deleted_at: '',
+            },
+            kind: {
+                id: 1,
+                name: 'занятия с психологом'
+            },
+            name: 'Реализация основной общеобразовательной программы дошкольного образования',
+            direction: {
+                id: 1,
+                name: 'Химико-биологический'
+            },
+        })
+        let educationService2 = new EducationServiceShort({
+            identity: {
+                id: 2
+            },
+            entity_state: {
+                created_at: '',
+                updated_at: '',
+                deleted_at: '',
+            },
+            kind: {
+                id: 1,
+                name: 'занятия с психологом'
+            },
+            name: 'Реализация основной программы профессионального обучения - программы переподготовки рабочих',
+            direction: {
+                id: 1,
+                name: 'Химико-биологический'
+            },
+        })
+        let educationService3 = new EducationServiceShort({
+            identity: {
+                id: 3
+            },
+            entity_state: {
+                created_at: '',
+                updated_at: '',
+                deleted_at: '',
+            },
+            kind: {
+                id: 1,
+                name: 'занятия с психологом'
+            },
+            name: 'Реализация дополнительных профессиональных программ повышения квалификации',
+            direction: {
+                id: 1,
+                name: 'Химико-биологический'
+            },
+        })
+        let educationService4 = new EducationServiceShort({
+            identity: {
+                id: 4
+            },
+            entity_state: {
+                created_at: '',
+                updated_at: '',
+                deleted_at: '',
+            },
+            kind: {
+                id: 1,
+                name: 'занятия с психологом'
+            },
+            name: 'Реализация основной профессионьной образовательной программы среднего профессионального образования - программы подготовки квалифицированных рабочих, служащих',
+            direction: {
+                id: 1,
+                name: 'Химико-биологический'
+            },
+        })
+        let educationService5 = new EducationServiceShort({
+            identity: {
+                id: 5
+            },
+            entity_state: {
+                created_at: '',
+                updated_at: '',
+                deleted_at: '',
+            },
+            kind: {
+                id: 1,
+                name: 'занятия с психологом'
+            },
+            name: 'Реализация основной программы профессионального обучения - программы переподготовки рабочих, служащих',
+            direction: {
+                id: 1,
+                name: 'Химико-биологический'
+            },
+        })
+        let educationService6 = new EducationServiceShort({
+            identity: {
+                id: 6
+            },
+            entity_state: {
+                created_at: '',
+                updated_at: '',
+                deleted_at: '',
+            },
+            kind: {
+                id: 1,
+                name: 'занятия с психологом'
+            },
+            name: 'Реализация дополнительных профессиональных программ повышения квалификации',
+            direction: {
+                id: 1,
+                name: 'Химико-биологический'
+            },
+        })
+        let educationService7 = new EducationServiceShort({
+            identity: {
+                id: 7
+            },
+            entity_state: {
+                created_at: '',
+                updated_at: '',
+                deleted_at: '',
+            },
+            kind: {
+                id: 1,
+                name: 'занятия с психологом'
+            },
+            name: 'Реализация основной профессиональной образовательной программы среднего профессионального образования - программы подготовки квалифицированных рабочих, служащих',
+            direction: {
+                id: 1,
+                name: 'Химико-биологический'
+            },
+        })
+
+
+        let res = new Observable(observer => {
+          setTimeout(() => {
+              observer.next(new Response({data: new Pagination({
+                  items: [
+                      educationService1,
+                      educationService2,
+                      educationService3,
+                      educationService4,
+                      educationService5,
+                      educationService6,
+                      educationService7,
+                  ]
+              })}));
+          }, 1000);
+
+          setTimeout(() => {
+              observer.complete();
+          }, 3000);
+        })
+
+        return res;
+
+        // let _path = '/institutions/education_service/list';
+        // let _body = '';
+        // let _params = {
+        //     headers: new Headers(),
+        //     search: new URLSearchParams(),
+        // }
+        // _params.headers.append('X-Requested-With', 'XMLHttpRequest'); 
+        // if (typeof p_limit !== 'undefined')
+        //     _params.search.append('p_limit', ''+p_limit); 
+        // if (typeof p_page !== 'undefined')
+        //     _params.search.append('p_page', ''+p_page); 
+        // if (typeof p_query !== 'undefined')
+        //     _params.search.append('p_query', ''+p_query); 
+        // if (typeof p_institutions !== 'undefined')
+        //     _params.search.append('p_institutions', ''+p_institutions); 
+        // if (typeof p_deleted !== 'undefined')
+        //     _params.search.append('p_deleted', ''+p_deleted); 
+
+
+        // return this.http['get'](_path, _params)
     }
     /**
      * Получает список зданий в постраничном разбиении
