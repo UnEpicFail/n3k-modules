@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AreaComponent } from './area.component';
+import { TerritoryComponent } from './territory.component';
 
-describe('AreaComponent', () => {
-  let component: AreaComponent;
-  let fixture: ComponentFixture<AreaComponent>;
+describe('TerritoryComponent', () => {
+  let component: TerritoryComponent;
+  let fixture: ComponentFixture<TerritoryComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AreaComponent ]
+      declarations: [ TerritoryComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AreaComponent);
+    fixture = TestBed.createComponent(TerritoryComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

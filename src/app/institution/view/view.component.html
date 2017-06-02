@@ -43,8 +43,19 @@
         </div>
         <div class='horizontal-separator'>&nbsp;</div>
     </div>
+    <div *ngIf='selectedTab === "territory"'>
+        <h2>Территория организации</h2>
+        <div class='buttons-array'>
+            <div class='create-new-btn btn'>
+                <span class='icon'><i class="fa fa-plus" aria-hidden="true"></i></span>
+                <span class='text'>Добавить</span>
+            </div> 
+        </div>
+        <div class='horizontal-separator'>&nbsp;</div>
+    </div>
 </n3k-neck>
 
 <app-common *ngIf='selectedTab === "common"' [institution]='institution'></app-common>
 <app-departments *ngIf='selectedTab === "departments"' [institution]='institution'></app-departments>
 <app-buildings *ngIf='selectedTab === "buildings"' [institution]='institution'></app-buildings>
+<app-territory *ngIf='selectedTab === "territory"'  [institution]='institution'></app-territory>

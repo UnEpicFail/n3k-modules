@@ -13,6 +13,10 @@ import { Innovation } from './institution/Innovation';
 import { EducationContract } from './institution/EducationContract';
 import { PublicDigitalService } from './institution/PublicDigitalService';
 import { Territory } from './institution/Territory';
+import { TerritoryList } from './institution/TerritoryList';
+import { TerritoryShort } from './institution/TerritoryShort';
+import { Pagination } from './common/Pagination'
+
 
 @Injectable()
 export class InstitutionService {
@@ -739,16 +743,62 @@ export class InstitutionService {
     public territoryGet(
         id: string,
     ) {
-        let _path = '/institutions/territory/{id}';
-        let _body = '';
-        _path = _path.replace(/{id}/ig, (typeof id !== 'string')?JSON.stringify(id):id);
-        let _params = {
-            headers: new Headers(),
-        }
-        _params.headers.append('X-Requested-With', 'XMLHttpRequest'); 
+
+         let territory = new TerritoryShort({
+            identity: {
+                id: 1
+            },
+            entity_state: {
+                created_at: '',
+                updated_at: '',
+                deleted_at: ''
+            },
+            name: 'Приусадебная',
+            institution_identity: {
+                id: 2
+            },
+            equipment: [
+                {
+                    id: 1,
+                    equipment: {
+                        id: 1,
+                        parent: '',
+                        entity_state: {
+                            created_at: '',
+                            updated_at: '',
+                            deleted_at: ''
+                        },
+                        code: '',
+                        name: ''
+                    },
+                    quantity: 123
+                }
+            ]
+        })
+
+        let res = new Observable(observer => {
+          setTimeout(() => {
+              observer.next(new Response({data: 
+                      territory}));
+          }, 1000);
+
+          setTimeout(() => {
+              observer.complete();
+          }, 3000);
+        })
+
+        return res;
+
+        // let _path = '/institutions/territory/{id}';
+        // let _body = '';
+        // _path = _path.replace(/{id}/ig, (typeof id !== 'string')?JSON.stringify(id):id);
+        // let _params = {
+        //     headers: new Headers(),
+        // }
+        // _params.headers.append('X-Requested-With', 'XMLHttpRequest'); 
 
 
-        return this.http['get'](_path, _params)
+        // return this.http['get'](_path, _params)
     }
     /**
      * Удаляет образовательные организации и связанное юр. лицо, по списку id
@@ -1419,36 +1469,118 @@ export class InstitutionService {
      * @param {number} p_limit - Количество записей 
      * @param {number} p_page - Страница выдачи 
      * @param {string} p_query - Поисковая строка 
-     * @param {string} p_institutions - Образовательные организации 
+     * @param {number[]} p_institutions - Образовательные организации 
      * @param {string} p_deleted - Показывать удаленные 
      */
     public territoryList(
         p_limit?: number,
         p_page?: number,
         p_query?: string,
-        p_institutions?: string,
+        p_institutions?: number[],
         p_deleted?: string,
     ) {
-        let _path = '/institutions/territory/list';
-        let _body = '';
-        let _params = {
-            headers: new Headers(),
-            search: new URLSearchParams(),
-        }
-        _params.headers.append('X-Requested-With', 'XMLHttpRequest'); 
-        if (typeof p_limit !== 'undefined')
-            _params.search.append('p_limit', ''+p_limit); 
-        if (typeof p_page !== 'undefined')
-            _params.search.append('p_page', ''+p_page); 
-        if (typeof p_query !== 'undefined')
-            _params.search.append('p_query', ''+p_query); 
-        if (typeof p_institutions !== 'undefined')
-            _params.search.append('p_institutions', ''+p_institutions); 
-        if (typeof p_deleted !== 'undefined')
-            _params.search.append('p_deleted', ''+p_deleted); 
+
+        let territory1 = new TerritoryShort({
+            identity: {
+                id: 1
+            },
+            entity_state: {
+                created_at: '',
+                updated_at: '',
+                deleted_at: ''
+            },
+            name: 'Основная',
+            institution_identity: {
+                id: 1
+            },
+            equipment: [
+                {
+                    id: 1,
+                    equipment: {
+                        id: 1,
+                        parent: '',
+                        entity_state: {
+                            created_at: '',
+                            updated_at: '',
+                            deleted_at: ''
+                        },
+                        code: '',
+                        name: ''
+                    },
+                    quantity: 123
+                }
+            ]
+        })
+        let territory2 = new TerritoryShort({
+            identity: {
+                id: 2
+            },
+            entity_state: {
+                created_at: '',
+                updated_at: '',
+                deleted_at: ''
+            },
+            name: 'Приусадебная',
+            institution_identity: {
+                id: 1
+            },
+            equipment: [
+                {
+                    id: 1,
+                    equipment: {
+                        id: 1,
+                        parent: '',
+                        entity_state: {
+                            created_at: '',
+                            updated_at: '',
+                            deleted_at: ''
+                        },
+                        code: '',
+                        name: ''
+                    },
+                    quantity: 123
+                }
+            ]
+        })
+
+         let res = new Observable(observer => {
+          setTimeout(() => {
+              observer.next(new Response({data: new Pagination({
+                  items: [
+                      territory1,
+                      territory2
+                  ]
+              })}));
+          }, 1000);
+
+          setTimeout(() => {
+              observer.complete();
+          }, 3000);
+        })
+
+        return res;
 
 
-        return this.http['get'](_path, _params)
+        // let _path = '/institutions/territory/list';
+        // let _body = '';
+        // let _params = {
+        //     headers: new Headers(),
+        //     search: new URLSearchParams(),
+        // }
+        // _params.headers.append('X-Requested-With', 'XMLHttpRequest'); 
+        // if (typeof p_limit !== 'undefined')
+        //     _params.search.append('p_limit', ''+p_limit); 
+        // if (typeof p_page !== 'undefined')
+        //     _params.search.append('p_page', ''+p_page); 
+        // if (typeof p_query !== 'undefined')
+        //     _params.search.append('p_query', ''+p_query); 
+        // if (typeof p_institutions !== 'undefined')
+        //     _params.search.append('p_institutions', ''+p_institutions); 
+        // if (typeof p_deleted !== 'undefined')
+        //     _params.search.append('p_deleted', ''+p_deleted); 
+
+
+        // return this.http['get'](_path, _params)
     }
     /**
      * Получает список образовательных организаций для вывода на карте

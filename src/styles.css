@@ -111,6 +111,13 @@ h3 {
 .create-new-btn:hover {
     background-color: #38B6DE;
 }
+
+.transparent-btn,
+.transparent-btn:hover {
+    background-color: transparent;
+    border-bottom-color: transparent;
+    font-weight: normal;
+}
 /***BTN***/
 
 /***TAB***/

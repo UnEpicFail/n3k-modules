@@ -16,12 +16,12 @@ import { ListComponent } from './list/list.component';
 import { MapListComponent } from './map-list/map-list.component';
 import { CommonComponent } from './view/common/common.component';
 import { BuildingsComponent } from './view/buildings/buildings.component';
-import { AreaComponent } from './view/area/area.component';
 import { ContractsComponent } from './view/contracts/contracts.component';
 import { EducationalServicesComponent } from './view/educational-services/educational-services.component';
 import { ElectronicServicesComponent } from './view/electronic-services/electronic-services.component';
 import { InnovationsComponent } from './view/innovations/innovations.component';
 import { DepartmentsComponent } from './view/departments/departments.component';
+import { TerritoryComponent } from './view/territory/territory.component';
 
 const routes:Routes = [
   {path: 'institution', children: [
@@ -52,12 +52,12 @@ const routes:Routes = [
     YesNo,
     CommonComponent,
     BuildingsComponent,
-    AreaComponent,
     ContractsComponent,
     EducationalServicesComponent,
     ElectronicServicesComponent,
     InnovationsComponent,
     DepartmentsComponent,
+    TerritoryComponent,
   ],
   exports: [ToTime, ToWeekDays, YesNo],
   providers: [InstitutionService],
