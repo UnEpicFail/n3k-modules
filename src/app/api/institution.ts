@@ -10,6 +10,9 @@ import { EducationService } from './institution/EducationService';
 import { Building } from './institution/Building';
 import { Department } from './institution/Department';
 import { Innovation } from './institution/Innovation';
+import { InnovationShort } from './institution/InnovationShort';
+import { InnovationList } from './institution/InnovationList';
+
 import { EducationContract } from './institution/EducationContract';
 import { PublicDigitalService } from './institution/PublicDigitalService';
 import { Territory } from './institution/Territory';
@@ -648,7 +651,7 @@ export class InstitutionService {
 
 
 
-         let res = new Observable(observer => {
+        let res = new Observable(observer => {
           setTimeout(() => {
               observer.next(new Response({data:department}));
           }, 1000);
@@ -682,16 +685,84 @@ export class InstitutionService {
     public innovationGet(
         id: string,
     ) {
-        let _path = '/institutions/innovation/{id}';
-        let _body = '';
-        _path = _path.replace(/{id}/ig, (typeof id !== 'string')?JSON.stringify(id):id);
-        let _params = {
-            headers: new Headers(),
-        }
-        _params.headers.append('X-Requested-With', 'XMLHttpRequest'); 
+
+        let innovation = new Innovation({
+            identity: {
+                id: 1
+            },
+            entity_state: { 
+                created_at: '',
+                updated_at: '',
+                deleted_at: '',
+            },
+            name: 'Сбацай лишнее',
+            level: {
+                id: 1,
+                name: 'Федеральный'
+            },
+            activity_direction: {
+                id: 1,
+                name: 'Занятия техническим творчеством и программированием (при Центрах новых информационных технологий, фаблабах – мастерских и др.)'
+            },
+            activity_start: '',
+            activity_end: '',
+            institution_identity: {
+                id: 1
+            },
+            document: {
+                identity: {
+                    id: 1
+                },
+                entity_state: {
+                    created_at: '',
+                    updated_at: '',
+                    deleted_at: '',
+                },
+                series: '2634',
+                number: '234153',
+                reg_number: '2234124',
+                reg_date: '20.12.2017',
+                issue_date: '20.12.2017',
+                issued_by: 'ГОУ СОШ №41',
+                valid_from: '20.12.2017',
+                valid_to: '20.12.2017',
+                description: `Очевидно проверяется, что постоянная величина стремится к нулю. Художественный талант, в первом приближении, изменяем. Теорема, на первый взгляд, положительна. Типическое, в первом приближении, осмысленно иллюстрирует непосредственный степенной ряд. Система координат использует интеграл Дирихле.
+                            Однако не все знают, что арифметическая прогрессия имитирует анормальный интеграл по ориентированной области. Художественный талант однородно трансформирует элитарный эпитет. Теорема Гаусса - Остроградского стремительно продолжает интеграл Фурье. Математический анализ, как следует из вышесказанного, изящно развивает сангвиник.
+                            Социальная психология искусства вызывает комплекс априорной бисексуальности. Поле направлений последовательно. Умножение двух векторов (векторное) изящно соответствует изоморфный текст.`,
+                type: {
+                    id: 1,
+                    name: ''
+                },
+                status: {
+                    id: 1,
+                    name: 'Действителен'
+                },
+            }
+        })
 
 
-        return this.http['get'](_path, _params)
+        let res = new Observable(observer => {
+          setTimeout(() => {
+              observer.next(new Response({data:innovation}));
+          }, 1000);
+
+          setTimeout(() => {
+              observer.complete();
+          }, 3000);
+        })
+
+        return res;
+
+        // let _path = '/institutions/innovation/{id}';
+        // let _body = '';
+        // _path = _path.replace(/{id}/ig, (typeof id !== 'string')?JSON.stringify(id):id);
+        // let _params = {
+        //     headers: new Headers(),
+        // }
+        // _params.headers.append('X-Requested-With', 'XMLHttpRequest'); 
+
+
+        // return this.http['get'](_path, _params)
     }
     /**
      * Получает договор на осуществление образовательной деятельности по его id
@@ -1414,36 +1485,102 @@ export class InstitutionService {
      * @param {number} p_limit - Количество записей 
      * @param {number} p_page - Страница выдачи 
      * @param {string} p_query - Поисковая строка 
-     * @param {string} p_institutions - Образовательные организации 
+     * @param {number[]} p_institutions - Образовательные организации 
      * @param {string} p_deleted - Показывать удаленные 
      */
     public innovationList(
         p_limit?: number,
         p_page?: number,
         p_query?: string,
-        p_institutions?: string,
+        p_institutions?: number[],
         p_deleted?: string,
     ) {
-        let _path = '/institutions/innovation/list';
-        let _body = '';
-        let _params = {
-            headers: new Headers(),
-            search: new URLSearchParams(),
-        }
-        _params.headers.append('X-Requested-With', 'XMLHttpRequest'); 
-        if (typeof p_limit !== 'undefined')
-            _params.search.append('p_limit', ''+p_limit); 
-        if (typeof p_page !== 'undefined')
-            _params.search.append('p_page', ''+p_page); 
-        if (typeof p_query !== 'undefined')
-            _params.search.append('p_query', ''+p_query); 
-        if (typeof p_institutions !== 'undefined')
-            _params.search.append('p_institutions', ''+p_institutions); 
-        if (typeof p_deleted !== 'undefined')
-            _params.search.append('p_deleted', ''+p_deleted); 
+
+        let innovation1 = new InnovationShort({
+            identity: {
+                id: 1
+            },
+            entity_state: { 
+                created_at: '',
+                updated_at: '',
+                deleted_at: '',
+            },
+            name: 'Сбацай лишнее',
+            level: {
+                id: 1,
+                name: ''
+            },
+            activity_direction: {
+                id: 1,
+                name: ''
+            },
+            activity_start: '',
+            activity_end: '',
+
+        })
+        let innivation2 = new InnovationShort({
+            identity: {
+                id: 2
+            },
+            entity_state: { 
+                created_at: '',
+                updated_at: '',
+                deleted_at: '',
+            },
+            name: 'Убей в себе кредит',
+            level: {
+                id: 1,
+                name: ''
+            },
+            activity_direction: {
+                id: 1,
+                name: ''
+            },
+            activity_start: '',
+            activity_end: '',
+
+        })
+        
+
+        let res = new Observable(observer => {
+          setTimeout(() => {
+              observer.next(new Response({data: new Pagination({
+                  items: [
+                      innovation1,
+                      innivation2
+                  ]
+              })}));
+          }, 1000);
+
+          setTimeout(() => {
+              observer.complete();
+          }, 3000);
+        })
+
+        return res;
 
 
-        return this.http['get'](_path, _params)
+
+        // let _path = '/institutions/innovation/list';
+        // let _body = '';
+        // let _params = {
+        //     headers: new Headers(),
+        //     search: new URLSearchParams(),
+        // }
+        // _params.headers.append('X-Requested-With', 'XMLHttpRequest'); 
+        // if (typeof p_limit !== 'undefined')
+        //     _params.search.append('p_limit', ''+p_limit); 
+        // if (typeof p_page !== 'undefined')
+        //     _params.search.append('p_page', ''+p_page); 
+        // if (typeof p_query !== 'undefined')
+        //     _params.search.append('p_query', ''+p_query); 
+        // if (typeof p_institutions !== 'undefined')
+        //     _params.search.append('p_institutions', ''+p_institutions); 
+        // if (typeof p_deleted !== 'undefined')
+        //     _params.search.append('p_deleted', ''+p_deleted); 
+
+
+        // return this.http['get'](_path, _params)
     }
     /**
      * Получает список договоров на осуществление образовательной деятельности в постраничном разбиении
