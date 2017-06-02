@@ -18,6 +18,8 @@ import { InnovationList } from './institution/InnovationList';
 
 import { EducationContract } from './institution/EducationContract';
 import { PublicDigitalService } from './institution/PublicDigitalService';
+import { PublicDigitalServiceList } from './institution/PublicDigitalServiceList';
+import { PublicDigitalServiceShort } from './institution/PublicDigitalServiceShort';
 import { Territory } from './institution/Territory';
 import { TerritoryList } from './institution/TerritoryList';
 import { TerritoryShort } from './institution/TerritoryShort';
@@ -1852,26 +1854,81 @@ export class InstitutionService {
         p_institutions?: string,
         p_deleted?: string,
     ) {
-        let _path = '/institutions/public_digital_service/list';
-        let _body = '';
-        let _params = {
-            headers: new Headers(),
-            search: new URLSearchParams(),
-        }
-        _params.headers.append('X-Requested-With', 'XMLHttpRequest'); 
-        if (typeof p_limit !== 'undefined')
-            _params.search.append('p_limit', ''+p_limit); 
-        if (typeof p_page !== 'undefined')
-            _params.search.append('p_page', ''+p_page); 
-        if (typeof p_query !== 'undefined')
-            _params.search.append('p_query', ''+p_query); 
-        if (typeof p_institutions !== 'undefined')
-            _params.search.append('p_institutions', ''+p_institutions); 
-        if (typeof p_deleted !== 'undefined')
-            _params.search.append('p_deleted', ''+p_deleted); 
+
+        let publicDigitalService1 = new PublicDigitalServiceShort({
+            identity: {
+                id: 1
+            },
+            entity_state: {
+                created_at: '',
+                updated_at: '',
+                deleted_at: '',
+            },
+            service: {
+                id: 1,
+                name: 'Подготовка к итоговой аттестации'
+            },
+            epgu_url: 'https://confluence.n3demo.ru/pages/viewpage.action?pageId=21169115',
+            rpgu_url: 'https://confluence.n3demo.ru/pages/viewpage.action?pageId=21169115',
+            documentation_url: 'https://confluence.n3demo.ru/pages/viewpage.action?pageId=21169115',
+        })
+
+        let publicDigitalService2 = new PublicDigitalServiceShort({
+            identity: {
+                id: 2
+            },
+            entity_state: {
+                created_at: '',
+                updated_at: '',
+                deleted_at: '',
+            },
+            service: {
+                id: 2,
+                name: 'Группы по адаптации детей к школьным условиям'
+            },
+            epgu_url: 'https://confluence.n3demo.ru/pages/viewpage.action?pageId=21169115',
+            rpgu_url: 'https://confluence.n3demo.ru/pages/viewpage.action?pageId=21169115',
+            documentation_url: 'https://confluence.n3demo.ru/pages/viewpage.action?pageId=21169115',
+        })
+
+        let res = new Observable(observer => {
+          setTimeout(() => {
+              observer.next(new Response({data: new Pagination({
+                  items: [
+                      publicDigitalService1,
+                      publicDigitalService2
+                  ]
+              })}));
+          }, 1000);
+
+          setTimeout(() => {
+              observer.complete();
+          }, 3000);
+        })
+
+        return res;
 
 
-        return this.http['get'](_path, _params)
+        // let _path = '/institutions/public_digital_service/list';
+        // let _body = '';
+        // let _params = {
+        //     headers: new Headers(),
+        //     search: new URLSearchParams(),
+        // }
+        // _params.headers.append('X-Requested-With', 'XMLHttpRequest'); 
+        // if (typeof p_limit !== 'undefined')
+        //     _params.search.append('p_limit', ''+p_limit); 
+        // if (typeof p_page !== 'undefined')
+        //     _params.search.append('p_page', ''+p_page); 
+        // if (typeof p_query !== 'undefined')
+        //     _params.search.append('p_query', ''+p_query); 
+        // if (typeof p_institutions !== 'undefined')
+        //     _params.search.append('p_institutions', ''+p_institutions); 
+        // if (typeof p_deleted !== 'undefined')
+        //     _params.search.append('p_deleted', ''+p_deleted); 
+
+
+        // return this.http['get'](_path, _params)
     }
     /**
      * Получает список территорий в постраничном разбиении

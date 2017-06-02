@@ -72,6 +72,15 @@
             </div> 
         </div>
     </div>
+    <div *ngIf='selectedTab === "electronic-services"'>
+        <h2>Государственные и муниципальные услуги в электронном виде</h2>
+        <div class='buttons-array'>
+            <div class='create-new-btn btn'>
+                <span class='icon'><i class="fa fa-plus" aria-hidden="true"></i></span>
+                <span class='text'>Добавить</span>
+            </div> 
+        </div>
+    </div>
     <div *ngIf='selectedTab === "innovations"'>
         <h2>Инновации</h2>
         <div class='buttons-array'>
@@ -90,8 +99,5 @@
 <app-territory *ngIf='selectedTab === "territory"'  [institution]='institution'></app-territory>
 <app-contracts *ngIf='selectedTab === "contracts"'  [institution]='institution'></app-contracts>
 <app-education-services *ngIf='selectedTab === "education-services"'  [institution]='institution'></app-education-services>
-
-
-
-
+<app-electronic-services *ngIf='selectedTab === "electronic-services"'  [institution]='institution'></app-electronic-services>
 <app-innovations *ngIf='selectedTab === "innovations"'  [institution]='institution'></app-innovations>
