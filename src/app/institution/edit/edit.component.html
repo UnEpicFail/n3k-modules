@@ -1,3 +1,15 @@
-<p>
-  edit works!
-</p>
+<n3k-neck>
+  <a class='bread-crumbs' [routerLink] = '["/institution"]'>Образовательные организации</a>
+    <br>↓
+    <h1>Образовательная организация</h1>
+</n3k-neck>
+<n3k-columns context='form'>
+  <column-1>
+    
+  </column-1>
+  <column-2>
+    <ul>
+      <li *ngFor='let anchor of anchorList'>{{anchor.name}}</li>
+    </ul>
+  </column-2>
+</n3k-columns>

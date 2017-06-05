@@ -7,6 +7,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EditComponent implements OnInit {
 
+  anchorList: {}[] = [
+    {name:'Юридическое лицо'},
+    {name:'Общие сведения'},
+    {name:'Дополнительная информация'},
+    {name:'Контактная информация'},
+    {name:'Общественный орган управления'},
+    {name:'Аккредитация'},
+    {name:'Лицензия'}
+  ]
+
   constructor() { }
 
   ngOnInit() {
