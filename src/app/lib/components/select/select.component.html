@@ -5,8 +5,8 @@
       <tr>
         <td>
           <ul>
-            <li *ngFor='let value of _values' > 
-              <i class="fa fa-times" aria-hidden="true" (click)='unSelect($event, $index)'></i>
+            <li *ngFor='let value of _values; let i = index' > 
+              <i class="fa fa-times" aria-hidden="true" (click)='unSelect($event, i)'></i>
               {{value.name}}
             </li>
           </ul>
