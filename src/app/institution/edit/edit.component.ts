@@ -8,6 +8,8 @@ import { Pagination } from '../../api/common/Pagination';
 
 import { Classifier_listService } from '../../api/classifier_list'
 
+import { AddressComponent } from './address/address.component'
+
 @Component({
   selector: 'app-edit',
   templateUrl: './edit.component.html',

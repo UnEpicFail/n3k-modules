@@ -14,8 +14,8 @@ import { Response } from '../../../api/common/Response'
 export class ContractsComponent implements OnInit {
 
   private _institution: Institution;
-  private _contractList: EducationContractList;
-  private _contract: EducationContract
+  public _contractList: EducationContractList;
+  public _contract: EducationContract
   private selectedContract
 
   @Input()

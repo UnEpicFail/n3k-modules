@@ -12,7 +12,7 @@ import { InstitutionService } from '../../../api/institution'
 })
 export class BuildingsComponent implements OnInit {
 
-  private _institution: InstitutionFull;
+  public _institution: InstitutionFull;
   private _building;
   private selectedBuilding;
   private _seatsSum = {};

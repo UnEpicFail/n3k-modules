@@ -13,7 +13,7 @@ import { EducationServiceList } from '../../../api/institution/EducationServiceL
 export class EducationServicesComponent implements OnInit {
 
   private _institution: Institution
-  private _educationServicesList: EducationServiceList;
+  public _educationServicesList: EducationServiceList;
 
 
   @Input()

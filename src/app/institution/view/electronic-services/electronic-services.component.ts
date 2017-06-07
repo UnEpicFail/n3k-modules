@@ -14,7 +14,7 @@ import { PublicDigitalServiceList } from '../../../api/institution/PublicDigital
 export class ElectronicServicesComponent implements OnInit {
 
   private _institution: Institution;
-  private _publicDigitalServiceList: PublicDigitalServiceList;
+  public _publicDigitalServiceList: PublicDigitalServiceList;
 
 
   @Input()

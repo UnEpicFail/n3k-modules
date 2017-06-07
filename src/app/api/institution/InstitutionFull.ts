@@ -13,7 +13,8 @@ import { PublicDigitalService } from './PublicDigitalService';
 
 
 export class InstitutionFull extends Institution
-{
+{	
+	is_delete: Boolean;
     education_services: EducationService[]; /*Образовательные услуги*/
     buildings: Building[]; /*Здания*/
     territory: Territory[]; /*Территория*/
@@ -25,6 +26,7 @@ export class InstitutionFull extends Institution
     constructor(json) {
         json = (json || {})
         super(json)
+		this.is_delete = (json.is_delete)
 		this.education_services = []
 		if(json["education_services"]){
 			for (let i in json["education_services"]){

@@ -16,8 +16,8 @@ export class InnovationsComponent implements OnInit {
 
   private _institution:Institution
   private selectedInnovation: number;
-  private _innovation: Innovation;
-  private _innovationList: InnovationList;
+  public _innovation: Innovation;
+  public _innovationList: InnovationList;
 
   @Input()
   set institution(institution) {

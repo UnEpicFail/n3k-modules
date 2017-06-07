@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
+
+import { ProgramComponent } from './program.component';
 import { EditComponent } from './edit/edit.component';
 import { ListComponent } from './list/list.component';
 import { MapListComponent } from './map-list/map-list.component';
@@ -21,7 +23,7 @@ const routes:Routes = [
     CommonModule,
     RouterModule.forRoot([])
   ],
-  declarations: [EditComponent, ListComponent, MapListComponent, ViewComponent],
+  declarations: [ProgramComponent, EditComponent, ListComponent, MapListComponent, ViewComponent],
 })
 export class ProgramModule { 
   static getRoutes() {

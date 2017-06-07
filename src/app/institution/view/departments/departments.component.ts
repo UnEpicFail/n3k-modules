@@ -14,7 +14,7 @@ import { InstitutionService } from '../../../api/institution'
 export class DepartmentsComponent{
 
   private _institution: InstitutionFull;
-  private _department;
+  public _department;
   private _contacts = {};
   private _parentName = ''
 

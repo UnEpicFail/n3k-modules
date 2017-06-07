@@ -167,6 +167,10 @@ export class InstitutionService {
                     name: 'Муниципальная'
                 },
                 address: {
+                    region: {
+                        id: 1,
+                        name: 'Санкт-Петербург'
+                    },
                     origin_address: 'Средний пр-кт, 20, 199004, г. Санкт-Петербург'
                 },
                 founders_type: {

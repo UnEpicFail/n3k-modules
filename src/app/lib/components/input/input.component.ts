@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, forwardRef, ElementRef, Renderer2 } from '@angular/core';
+import { Component, OnInit, Input, forwardRef } from '@angular/core';
 import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 
 const CUSTOM_VALUE_ACCESSOR: any = {
@@ -16,21 +16,21 @@ const CUSTOM_VALUE_ACCESSOR: any = {
 })
 export class InputComponent implements OnInit, ControlValueAccessor {
 
-  private _value: string;
-  private _title: string;
-  private _placeholder: string;
+  public _value: string;
+  public _title: string;
+  public _placeholder: string;
  
 
- @Input()
- set title(title){
-   this._title = (title || '')
- }
+  @Input()
+  set title(title){
+    this._title = (title || '')
+  }
 
 
- @Input()
- set placeholder(placeholder){
-   this._placeholder = (placeholder || '')
- }
+  @Input()
+  set placeholder(placeholder){
+    this._placeholder = (placeholder || '')
+  }
 
   onChange = (_) => {};
   onTouched = () => {};
@@ -51,14 +51,19 @@ export class InputComponent implements OnInit, ControlValueAccessor {
   ngOnInit() {
   }
 
-  inputChange(e) {
-    this._value = e
-    this.onChange(this._value);
-    this.onTouched(); 
+  modelChange(value?:any){
+    this._value = (value || '')
+    this.onChange(this._value)
+    this.onTouched()
   }
 
-  isEmpty() {
-    return (typeof this._value === 'undefined' || this._value === '' || this._value === null)
-  }
+  // inputChange(value?:any) {
+  //    this._value = (value || '')
+  //    this.onChange(this._value)
+  //    this.onTouched()
+  // }
 
+  // isEmpty() {
+  //   return (this._value === undefined || this._value === '' || this._value === null)
+  // }
 }

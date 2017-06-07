@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router'; 
 
-
+import { ClassifierComponent } from './classifier.component';
 import { ListComponent } from './list/list.component';
 import { EditComponent } from './edit/edit.component';
 import { ViewComponent } from './view/view.component';
@@ -21,7 +21,7 @@ const routes:Routes = [
     CommonModule,
     RouterModule.forRoot([])
   ],
-  declarations: [ListComponent, EditComponent, ViewComponent]
+  declarations: [ClassifierComponent, ListComponent, EditComponent, ViewComponent]
 })
 export class ClassifierModule { 
   static getRoutes() {

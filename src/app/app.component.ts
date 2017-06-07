@@ -7,13 +7,21 @@ import { Router, NavigationEnd } from '@angular/router';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  menuList:{}[] = [
+  menuList:{
+    link: string,
+    name: string,
+    icon: string,
+    sub?: {
+      link: string,
+      name: string
+    }[]
+  }[] = [
     {link:'journal', name:'Журнал', icon:'icon-book-open', sub:[
       {link:'journal/program', name:'Программы'},
-      {link:'journal/group', name:'Группы'},
+      {link:'journal/group', name:'Группы'}
     ]},
     {link:'institution', name:'Организации', icon:'icon-location-pin'},
-    {link:'classifier', name:'Справочники', icon:'icon-location-pin'},
+    {link:'classifier', name:'Справочники', icon:'icon-location-pin'}
   ]
 
   active = [0, 0];

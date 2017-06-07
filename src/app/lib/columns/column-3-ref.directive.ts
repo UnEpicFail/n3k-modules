@@ -25,6 +25,8 @@ export class Column3RefDirective{
   setPostion(top:string, bottom:string) {
     this.position.top = top
     this.position.bottom = bottom
+    // this.renderer.setElementStyle(this.el.nativeElement, 'top', this.position.top)
+    // this.renderer.setElementStyle(this.el.nativeElement, 'bottom', this.position.bottom)
     this.el.nativeElement.style.top = this.position.top
     this.el.nativeElement.style.bottom = this.position.bottom
   }

@@ -12,6 +12,7 @@ import { N3kNgGridModule } from '../lib/n3k-ng-grid.module';
 import { InstitutionService } from '../api/institution'
 import { Classifier_listService } from '../api/classifier_list';
 
+import { InstitutionComponent } from './institution.component';
 import { ViewComponent, ToWeekDays, ToTime, YesNo } from './view/view.component';
 import { EditComponent } from './edit/edit.component';
 import { ListComponent } from './list/list.component';
@@ -24,6 +25,7 @@ import { ElectronicServicesComponent } from './view/electronic-services/electron
 import { InnovationsComponent } from './view/innovations/innovations.component';
 import { DepartmentsComponent } from './view/departments/departments.component';
 import { TerritoryComponent } from './view/territory/territory.component';
+import { AddressComponent } from './edit/address/address.component';
 
 const routes:Routes = [
   {path: 'institution', children: [
@@ -47,6 +49,7 @@ const routes:Routes = [
     RouterModule.forRoot([]),
   ],
   declarations: [
+    InstitutionComponent,
     ViewComponent, 
     EditComponent, 
     ListComponent, 
@@ -62,6 +65,7 @@ const routes:Routes = [
     InnovationsComponent,
     DepartmentsComponent,
     TerritoryComponent,
+    AddressComponent,
   ],
   exports: [ToTime, ToWeekDays, YesNo],
   providers: [InstitutionService,Classifier_listService],

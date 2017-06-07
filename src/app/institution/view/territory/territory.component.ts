@@ -14,8 +14,8 @@ import { TerritoryShort } from '../../../api/institution/TerritoryShort'
 })
 export class TerritoryComponent implements OnInit {
 
-  private _territoryList
-  private _territory
+  public _territoryList
+  public _territory
   private _institution: Institution;
   private selectedTerritory: number;
   @Input()

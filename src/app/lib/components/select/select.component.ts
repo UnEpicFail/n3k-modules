@@ -24,11 +24,11 @@ const CUSTOM_VALUE_ACCESSOR: any = {
 export class SelectComponent implements OnInit, ControlValueAccessor {
 
 
-  private _selected: boolean = false;
-  private _loading: boolean = false;
-  private _multi: boolean = false;
-  private _title: string;
-  private _placeholder: string;
+  public _selected: boolean = false;
+  public _loading: boolean = false;
+  public _multi: boolean = false;
+  public _title: string;
+  public _placeholder: string;
   private _pagination = new Pagination({})
   private _filter: {
     p_page: number,
@@ -43,9 +43,9 @@ export class SelectComponent implements OnInit, ControlValueAccessor {
     p_sort_direction: 'asc',
     p_sort_field: 'name'
   };
-  private _options: {}[];
+  public _options: {}[];
   private _fromMethod;
-  private _values: any[] = [];
+  public _values: any[] = [];
   private _model;
   
   onChange = (_) => {};
@@ -95,7 +95,7 @@ export class SelectComponent implements OnInit, ControlValueAccessor {
   ngOnInit() {
   }
 
-  private trigger () {
+  public trigger () {
     let optionList = this.el.nativeElement.children[0].children[2]
     this.renderer.setStyle(optionList, 'width', this.el.nativeElement.offsetWidth+'px')
     this._selected = !this._selected;
@@ -166,7 +166,7 @@ export class SelectComponent implements OnInit, ControlValueAccessor {
   }
 
 
-  private onScroll(e) {
+  public onScroll(e) {
     e.stopPropagation();
     e.preventDefault();
     let optionList = this.el.nativeElement.children[0].children[2]
