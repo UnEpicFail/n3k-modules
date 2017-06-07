@@ -10,6 +10,7 @@
 :host /deep/ .column {
     box-sizing: border-box;
     position: fixed;
+    z-index: 1;
 }
 
 /*:host /deep/ .column-1 {

@@ -5,7 +5,47 @@
 </n3k-neck>
 <n3k-columns context='form'>
   <column-1>
-    
+    <form autocomplete="off" #f="ngForm"  (ngSubmit)="onSubmit(f)">
+      <n3k-select
+        [title] = '"ОКТМО"'
+        [placeholder] = '"ОКТМО"'
+        [fromMethod] = 'oktmoService'       
+        [(ngModel)]='_institution.organization.oktmo'
+        name='oktmo'
+      >
+      </n3k-select>
+      <n3k-select
+        [title] = '"Форма собственности"'
+        [placeholder] = '"Форма собственности"'
+        [fromMethod] = 'typeOfOwnershipService'       
+        [(ngModel)]='_institution.organization.type_of_ownership'
+        name='type_of_ownership'
+      >
+      </n3k-select>
+      <n3k-select
+        [title] = '"Вид организации по учредителям"'
+        [placeholder] = '"Вид организации по учредителям"'
+        [fromMethod] = 'oktmoService'       
+        [(ngModel)]='_institution.organization.founders_type'
+        name='founders_type'
+      >
+      </n3k-select>
+      <n3k-select
+        [title] = '"Статус"'
+        [placeholder] = '"Статус"'
+        [fromMethod] = 'statusService'       
+        [(ngModel)]='_institution.organization.status'
+        name='status'
+      >
+      </n3k-select>
+      <br><br><br><br><br>
+      <br><br><br><br><br>
+      <br><br><br><br><br>
+      <br><br><br><br><br>
+      <br><br><br><br><br>
+      <br><br><br><br><br>
+      <input type='submit' value='SUBMIT'>
+    </form>
   </column-1>
   <column-2>
     <ul>

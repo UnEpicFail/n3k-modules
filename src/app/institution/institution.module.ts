@@ -1,14 +1,16 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router'; 
+import { FormsModule } from '@angular/forms';
 
-//import { YaCoreModule }  from '';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 import { YaCoreModule } from '../angular2-yandex-maps/core.module';
 
-import { N3kNgGridModule } from '../lib/n3k-ng-grid.module'
+import { N3kNgGridModule } from '../lib/n3k-ng-grid.module';
 
 import { InstitutionService } from '../api/institution'
+import { Classifier_listService } from '../api/classifier_list';
 
 import { ViewComponent, ToWeekDays, ToTime, YesNo } from './view/view.component';
 import { EditComponent } from './edit/edit.component';
@@ -37,6 +39,8 @@ const routes:Routes = [
 
 @NgModule({
   imports: [
+    BrowserAnimationsModule,
+    FormsModule,
     CommonModule,
     N3kNgGridModule,
     YaCoreModule.forRoot(),
@@ -60,7 +64,7 @@ const routes:Routes = [
     TerritoryComponent,
   ],
   exports: [ToTime, ToWeekDays, YesNo],
-  providers: [InstitutionService],
+  providers: [InstitutionService,Classifier_listService],
   schemas: [],
 })
 export class InstitutionModule { 

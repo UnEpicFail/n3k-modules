@@ -1,0 +1,34 @@
+<div class='select'>
+  <div class='values' [class.multi]='_multi' (click)='trigger()'>
+    <div class='title' *ngIf='_values.length !== 0'>{{_title}}</div>
+    <table>
+      <tr>
+        <td>
+          <ul>
+            <li *ngFor='let value of _values' > 
+              <i class="fa fa-times" aria-hidden="true" (click)='unSelect($event, $index)'></i>
+              {{value.name}}
+            </li>
+          </ul>
+          <div class='placeholder' *ngIf='_values.length === 0'>{{_placeholder}}</div>
+        </td>
+        <td class='icon'>
+          <i class="fa fa-sort-asc" aria-hidden="true" *ngIf='_selected'></i>
+          <i class="fa fa-sort" aria-hidden="true" *ngIf='_multi && !_selected'></i>
+          <i class="fa fa-sort-desc" aria-hidden="true" *ngIf='!_multi && !_selected'></i>
+        </td>
+      </tr>
+    </table>
+  </div>
+
+  <div class='overlay-block' (click)='trigger()' [class.display-none]='!_selected'></div> 
+  <div class='options-list' [class.selected]='_selected' (scroll)='onScroll($event)'>
+    <ul>
+      <li *ngFor='let option of _options' (click)='select(option)'>{{option.name}}</li>
+    </ul>
+    <div class='loading'  [class.display-none]='!_loading'>
+      <i class="fa fa-spinner fa-spin"  aria-hidden="true"></i>
+    </div>
+  </div>
+  <ng-content></ng-content>
+</div>

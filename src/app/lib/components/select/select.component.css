@@ -1,0 +1,90 @@
+
+:host {
+    display: block;
+    overflow: hidden;
+}
+
+.select {
+    font-family: 'ArialMT', 'Arial';
+    font-size: 13px;
+    line-height: 21px;
+    margin-bottom: 10px;
+}
+.values {
+    position: relative;
+    border-bottom: 1px solid #A1A1A1;
+}
+.values table {
+    width: 100%;
+}
+.values td {
+    vertical-align: bottom;
+}
+
+.values li {
+    float: left;
+}
+
+.values.multi li {
+    padding: 5px 10px;
+    margin: 1px;
+    background-color: #A1A1A1;
+}
+
+.icon {
+    color: #A1A1A1;
+    width: 20px;
+}
+
+.options-list {
+    background-color: #fff;
+    display: none;
+    height: 300px;
+    overflow-y: auto;
+
+}
+
+.options-list li{
+    padding: 5px 10px;
+    border-bottom: 1px solid #A1A1A1;
+}
+
+.options-list li:hover {
+    cursor: pointer;
+}
+
+.options-list.selected {
+    z-index: 100;
+    position: fixed;
+    display: block
+}
+
+.title {
+    font-size: 12px;
+}
+.placeholder {
+    color: #A1A1A1;
+}
+
+.display-none {
+    display: none;
+}
+
+.loading {
+    text-align: center;
+    line-height: 300px;
+    font-size: 30px;
+}
+
+.overlay-block:hover{
+    cursor: pointer;
+}
+.overlay-block {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 99;
+    background-color: rgba(128, 128, 128, 0.5)
+}
