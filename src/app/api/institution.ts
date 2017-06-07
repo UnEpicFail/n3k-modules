@@ -112,6 +112,7 @@ export class InstitutionService {
 
             ],
             organization: {
+                name: 'Наименовние юридического лица!!!',
                 owner: {
                     firstname: 'Игорь',
                     surname: 'Петров',

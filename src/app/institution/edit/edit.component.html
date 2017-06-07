@@ -18,7 +18,6 @@
         [title] = '"Форма собственности"'
         [placeholder] = '"Форма собственности"'
         [fromMethod] = 'typeOfOwnershipService'       
-        [multi] = 'true'
         [(ngModel)]='_institution.organization.type_of_ownership'
         name='type_of_ownership'
       >
@@ -39,6 +38,15 @@
         name='status'
       >
       </n3k-select>
+      
+      <n3k-input
+        [title]='"Наименование юридического лица"'
+        [placeholder] = '"Статус"'
+        [(ngModel)]='_institution.organization.name'
+        name='name'
+      ></n3k-input>
+
+
       <br><br><br><br><br>
       <br><br><br><br><br>
       <br><br><br><br><br>

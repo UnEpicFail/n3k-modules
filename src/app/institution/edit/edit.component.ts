@@ -62,7 +62,7 @@ export class EditComponent implements OnInit {
     this.institutionService.institutionGet('1').subscribe(res=>{
       let _res = new Response(res);
       this._institution = new Institution(_res.data);
-      this._institution.organization
+      this._institution.organization.name
     })
 
   }
@@ -71,7 +71,7 @@ export class EditComponent implements OnInit {
 
 
   onSubmit(f) {
-    console.log('this._institution', this._institution.organization.oktmo)
+    console.log('this._institution', this._institution.organization)
     //console.log('f', f.controls)
   }
 }
