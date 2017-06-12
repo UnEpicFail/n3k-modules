@@ -19,13 +19,13 @@ export class Disability
 
     constructor(json) {
         json = (json || {})
-		this.category = json["category"] ? new ClassifierShort(json["category"]) : null ;
-		this.сause = json["сause"] ? new ClassifierShort(json["сause"]) : null ;
-		this.group = json["group"] ? new ClassifierShort(json["group"]) : null ;
+		this.category = new ClassifierShort(json["category"]) ;
+		this.сause = new ClassifierShort(json["сause"]) ;
+		this.group = new ClassifierShort(json["group"]) ;
 		this.date_start = json["date_start"] || null;
 		this.date_end = json["date_end"] || null;
-		this.document_start = json["document_start"] ? new DisabilityStartDocument(json["document_start"]) : null ;
-		this.document_end = json["document_end"] ? new DisabilityEndDocument(json["document_end"]) : null ;
+		this.document_start = new DisabilityStartDocument(json["document_start"]) ;
+		this.document_end = new DisabilityEndDocument(json["document_end"]) ;
        
     }
 

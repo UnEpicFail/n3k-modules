@@ -32,26 +32,26 @@ export class Job
 
     constructor(json) {
         json = (json || {})
-		this.identity = json["identity"] ? new Identity(json["identity"]) : null ;
-		this.entity_state = json["entity_state"] ? new EntityState(json["entity_state"]) : null ;
+		this.identity = new Identity(json["identity"]) ;
+		this.entity_state = new EntityState(json["entity_state"]) ;
 		this.position_name = json["position_name"] || null;
-		this.position = json["position"] ? new ClassifierShort(json["position"]) : null ;
-		this.terms_of_employment = json["terms_of_employment"] ? new ClassifierShort(json["terms_of_employment"]) : null ;
-		this.dismissal_type = json["dismissal_type"] ? new ClassifierShort(json["dismissal_type"]) : null ;
+		this.position = new ClassifierShort(json["position"]) ;
+		this.terms_of_employment = new ClassifierShort(json["terms_of_employment"]) ;
+		this.dismissal_type = new ClassifierShort(json["dismissal_type"]) ;
 		this.date_from = json["date_from"] || null;
 		this.date_to = json["date_to"] || null;
-		this.status = json["status"] ? new ClassifierShort(json["status"]) : null ;
+		this.status = new ClassifierShort(json["status"]) ;
 		this.documents = []
 		if(json["documents"]){
 			for (let i in json["documents"]){
 				this.documents.push(new JobDocument(json["documents"][i]))
 			}
 		}
-		this.person = json["person"] ? new PersonShort(json["person"]) : null ;
-		this.organization = json["organization"] ? new OrganizationShort(json["organization"]) : null ;
+		this.person = new PersonShort(json["person"]) ;
+		this.organization = new OrganizationShort(json["organization"]) ;
 		this.rate = json["rate"] || null;
-		this.department = json["department"] ? new DepartmentShort(json["department"]) : null ;
-		this.meta = json["meta"] ? new JobMeta(json["meta"]) : null ;
+		this.department = new DepartmentShort(json["department"]) ;
+		this.meta = new JobMeta(json["meta"]) ;
        
     }
 

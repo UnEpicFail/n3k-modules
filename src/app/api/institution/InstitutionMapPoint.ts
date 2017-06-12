@@ -13,7 +13,7 @@ export class InstitutionMapPoint
 
     constructor(json) {
         json = (json || {})
-		this.identity = json["identity"] ? new Identity(json["identity"]) : null ;
+		this.identity = new Identity(json["identity"]) ;
 		this.longitude = json["longitude"] || null;
 		this.latitude = json["latitude"] || null;
        

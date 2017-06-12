@@ -15,7 +15,7 @@ export class Territory extends TerritoryShort
     constructor(json) {
         json = (json || {})
         super(json)
-		this.institution_identity = json["institution_identity"] ? new Identity(json["institution_identity"]) : null ;
+		this.institution_identity = new Identity(json["institution_identity"]) ;
 		this.equipment = []
 		if(json["equipment"]){
 			for (let i in json["equipment"]){

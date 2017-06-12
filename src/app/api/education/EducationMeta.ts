@@ -39,8 +39,8 @@ export class EducationMeta
 
     constructor(json) {
         json = (json || {})
-		this.long_treatment_education_kind = json["long_treatment_education_kind"] ? new ClassifierShort(json["long_treatment_education_kind"]) : null ;
-		this.ovz_education_kind = json["ovz_education_kind"] ? new ClassifierShort(json["ovz_education_kind"]) : null ;
+		this.long_treatment_education_kind = new ClassifierShort(json["long_treatment_education_kind"]) ;
+		this.ovz_education_kind = new ClassifierShort(json["ovz_education_kind"]) ;
 		this.independent_language_subjects = []
 		if(json["independent_language_subjects"]){
 			for (let i in json["independent_language_subjects"]){
@@ -57,8 +57,8 @@ export class EducationMeta
 		this.is_visit_extended_day_group = json["is_visit_extended_day_group"] || null;
 		this.is_needs_delivery = json["is_needs_delivery"] || null;
 		this.is_daily_delivery_provided = json["is_daily_delivery_provided"] || null;
-		this.shift = json["shift"] ? new ClassifierShort(json["shift"]) : null ;
-		this.meal = json["meal"] ? new Meal(json["meal"]) : null ;
+		this.shift = new ClassifierShort(json["shift"]) ;
+		this.meal = new Meal(json["meal"]) ;
 		this.hours_of_stay = json["hours_of_stay"] || null;
 		this.finishing_ear = json["finishing_ear"] || null;
 		this.is_scholarship_availability = json["is_scholarship_availability"] || null;

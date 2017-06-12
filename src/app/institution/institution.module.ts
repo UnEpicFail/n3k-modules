@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router'; 
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
@@ -45,6 +45,7 @@ const routes:Routes = [
   imports: [
     BrowserAnimationsModule,
     FormsModule,
+    ReactiveFormsModule,
     CommonModule,
     N3kNgGridModule,
     N3kNgComponentsModule,

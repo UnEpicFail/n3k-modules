@@ -12,8 +12,8 @@ export class Citizenship
 
     constructor(json) {
         json = (json || {})
-		this.country = json["country"] ? new ClassifierShort(json["country"]) : null ;
-		this.type = json["type"] ? new ClassifierShort(json["type"]) : null ;
+		this.country = new ClassifierShort(json["country"]) ;
+		this.type = new ClassifierShort(json["type"]) ;
        
     }
 

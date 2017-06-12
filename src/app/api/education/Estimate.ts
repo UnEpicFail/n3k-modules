@@ -28,17 +28,17 @@ export class Estimate
 
     constructor(json) {
         json = (json || {})
-		this.identity = json["identity"] ? new Identity(json["identity"]) : null ;
-		this.entity_state = json["entity_state"] ? new EntityState(json["entity_state"]) : null ;
+		this.identity = new Identity(json["identity"]) ;
+		this.entity_state = new EntityState(json["entity_state"]) ;
 		this.name = json["name"] || null;
-		this.task = json["task"] ? new Identity(json["task"]) : null ;
+		this.task = new Identity(json["task"]) ;
 		this.comment = json["comment"] || null;
-		this.institution = json["institution"] ? new InstitutionShort(json["institution"]) : null ;
-		this.weight = json["weight"] ? new ClassifierShort(json["weight"]) : null ;
+		this.institution = new InstitutionShort(json["institution"]) ;
+		this.weight = new ClassifierShort(json["weight"]) ;
 		this.value = json["value"] || null;
-		this.methodic = json["methodic"] ? new EstimateMethodic(json["methodic"]) : null ;
-		this.student = json["student"] ? new EducationShort(json["student"]) : null ;
-		this.teacher = json["teacher"] ? new TeacherShort(json["teacher"]) : null ;
+		this.methodic = new EstimateMethodic(json["methodic"]) ;
+		this.student = new EducationShort(json["student"]) ;
+		this.teacher = new TeacherShort(json["teacher"]) ;
 		this.date = json["date"] || null;
        
     }

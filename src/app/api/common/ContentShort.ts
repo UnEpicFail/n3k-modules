@@ -21,14 +21,14 @@ export class ContentShort
 
     constructor(json) {
         json = (json || {})
-		this.identity = json["identity"] ? new Identity(json["identity"]) : null ;
-		this.entity_state = json["entity_state"] ? new EntityState(json["entity_state"]) : null ;
+		this.identity = new Identity(json["identity"]) ;
+		this.entity_state = new EntityState(json["entity_state"]) ;
 		this.name = json["name"] || null;
 		this.description = json["description"] || null;
-		this.level = json["level"] ? new ClassifierShort(json["level"]) : null ;
-		this.type = json["type"] ? new ClassifierShort(json["type"]) : null ;
-		this.parent = json["parent"] ? new Identity(json["parent"]) : null ;
-		this.subject = json["subject"] ? new SubjectShort(json["subject"]) : null ;
+		this.level = new ClassifierShort(json["level"]) ;
+		this.type = new ClassifierShort(json["type"]) ;
+		this.parent = new Identity(json["parent"]) ;
+		this.subject = new SubjectShort(json["subject"]) ;
        
     }
 

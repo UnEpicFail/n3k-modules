@@ -18,12 +18,12 @@ export class SubjectShort
 
     constructor(json) {
         json = (json || {})
-		this.identity = json["identity"] ? new Identity(json["identity"]) : null ;
-		this.entity_state = json["entity_state"] ? new EntityState(json["entity_state"]) : null ;
+		this.identity = new Identity(json["identity"]) ;
+		this.entity_state = new EntityState(json["entity_state"]) ;
 		this.name = json["name"] || null;
 		this.description = json["description"] || null;
-		this.discipline = json["discipline"] ? new ClassifierShort(json["discipline"]) : null ;
-		this.stage = json["stage"] ? new ClassifierShort(json["stage"]) : null ;
+		this.discipline = new ClassifierShort(json["discipline"]) ;
+		this.stage = new ClassifierShort(json["stage"]) ;
        
     }
 

@@ -28,15 +28,15 @@ export class Transaction
 
     constructor(json) {
         json = (json || {})
-		this.identity = json["identity"] ? new Identity(json["identity"]) : null ;
-		this.entity_state = json["entity_state"] ? new EntityState(json["entity_state"]) : null ;
+		this.identity = new Identity(json["identity"]) ;
+		this.entity_state = new EntityState(json["entity_state"]) ;
 		this.datetime_plan = json["datetime_plan"] || null;
 		this.datetime_fact = json["datetime_fact"] || null;
-		this.operation = json["operation"] ? new ClassifierShort(json["operation"]) : null ;
-		this.type = json["type"] ? new ClassifierShort(json["type"]) : null ;
-		this.source = json["source"] ? new Contractor(json["source"]) : null ;
-		this.recipient = json["recipient"] ? new Contractor(json["recipient"]) : null ;
-		this.target = json["target"] ? new Contractor(json["target"]) : null ;
+		this.operation = new ClassifierShort(json["operation"]) ;
+		this.type = new ClassifierShort(json["type"]) ;
+		this.source = new Contractor(json["source"]) ;
+		this.recipient = new Contractor(json["recipient"]) ;
+		this.target = new Contractor(json["target"]) ;
 		this.comment = json["comment"] || null;
 		this.documents = []
 		if(json["documents"]){
@@ -44,8 +44,8 @@ export class Transaction
 				this.documents.push(new PaymentDocument(json["documents"][i]))
 			}
 		}
-		this.source_unit = json["source_unit"] ? new Contractor(json["source_unit"]) : null ;
-		this.target_unit = json["target_unit"] ? new Contractor(json["target_unit"]) : null ;
+		this.source_unit = new Contractor(json["source_unit"]) ;
+		this.target_unit = new Contractor(json["target_unit"]) ;
 		this.sum = json["sum"] || null;
        
     }

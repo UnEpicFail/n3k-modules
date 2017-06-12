@@ -30,7 +30,6 @@ export class AddressComponent implements OnInit, ControlValueAccessor{
   public viewFrom = ''
   public regionService;
   public _address = new Address({});
-  public _edit_address = new Address({});
   public _editState = false;
   public canAddNew = true;
 
@@ -38,16 +37,13 @@ export class AddressComponent implements OnInit, ControlValueAccessor{
   onTouched = () => {};
 
   writeValue(address: any): void {
-    console.log('address', address)
     if (address !== undefined && address !== null) {
       this._address = new Address(address);
-      this._edit_address = this._address
     } else {
       this._address = new Address({});
-      this._edit_address = this._address
     }
 
-    this.canAddNew = this.noAddress();
+    this.canAddNew = this.isEmpty(this._address);
     if(!this.canAddNew){
       this.viewFrom = this.getView();
     }
@@ -55,8 +51,8 @@ export class AddressComponent implements OnInit, ControlValueAccessor{
 
   registerOnChange(fn: (_: any) => void): void { this.onChange = fn; }
   registerOnTouched(fn: () => void): void { this.onTouched = fn; }
-
   constructor(private classifireService: Classifier_listService) {
+
     this.regionService = classifireService.classifierRegionList() 
   }
 
@@ -64,8 +60,28 @@ export class AddressComponent implements OnInit, ControlValueAccessor{
     
   }
 
-  noAddress() {
-    return (typeof this._address === 'undefined' || this._address === null)
+  isEmpty(obj) {
+    let keys = obj.keys()
+    let res = true
+
+    for(let i = 0, max_i = keys.length; i < max_i; i+=1){
+      if (typeof obj[keys[i]] !== 'undefined' && obj[keys[i]] !== null) {
+        if (typeof obj[keys[i]].keys === 'function') {
+          res = res && this.isEmpty(obj[keys[i]]);
+        } else if (Array.isArray(obj[keys[i]])) {
+          if (obj[keys[i]].length > 0) {
+            for (let j = 0, max_j = obj[keys[i]].length; j < max_j; j+=1) {
+              res = res && this.isEmpty(obj[keys[i]][j]);
+            }
+          } else {
+            return true;
+          }
+        } else {
+          return false;
+        }
+      }
+    }
+    return res
   }
 
 
@@ -122,12 +138,12 @@ export class AddressComponent implements OnInit, ControlValueAccessor{
   }
 
   cancel(){
-    this._edit_address = this._address;
     this._editState = false;
   }
 
   submit() {
-    this._address = this._edit_address;
+    this.onChange(this._address)
+    this.onTouched()
     this.viewFrom = this.getView();
     this._editState = false;
     this.canAddNew = false;

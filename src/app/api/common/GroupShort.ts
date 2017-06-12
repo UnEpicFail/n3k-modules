@@ -24,15 +24,15 @@ export class GroupShort
 
     constructor(json) {
         json = (json || {})
-		this.identity = json["identity"] ? new Identity(json["identity"]) : null ;
-		this.entity_state = json["entity_state"] ? new EntityState(json["entity_state"]) : null ;
+		this.identity = new Identity(json["identity"]) ;
+		this.entity_state = new EntityState(json["entity_state"]) ;
 		this.name = json["name"] || null;
-		this.institution = json["institution"] ? new InstitutionShort(json["institution"]) : null ;
-		this.program = json["program"] ? new ProgramShort(json["program"]) : null ;
-		this.age = json["age"] ? new Age(json["age"]) : null ;
+		this.institution = new InstitutionShort(json["institution"]) ;
+		this.program = new ProgramShort(json["program"]) ;
+		this.age = new Age(json["age"]) ;
 		this.date_from = json["date_from"] || null;
 		this.date_to = json["date_to"] || null;
-		this.stage = json["stage"] ? new ClassifierShort(json["stage"]) : null ;
+		this.stage = new ClassifierShort(json["stage"]) ;
        
     }
 

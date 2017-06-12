@@ -13,7 +13,7 @@ export class Financing
     constructor(json) {
         json = (json || {})
 		this.source = json["source"] || null;
-		this.type = json["type"] ? new ClassifierShort(json["type"]) : null ;
+		this.type = new ClassifierShort(json["type"]) ;
        
     }
 

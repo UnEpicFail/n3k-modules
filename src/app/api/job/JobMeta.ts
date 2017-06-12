@@ -27,16 +27,16 @@ export class JobMeta
 		this.employment = json["employment"] || null;
 		this.load = json["load"] || null;
 		this.is_young_specialist = json["is_young_specialist"] || null;
-		this.compatibility = json["compatibility"] ? new ClassifierShort(json["compatibility"]) : null ;
-		this.experience = json["experience"] ? new Experience(json["experience"]) : null ;
+		this.compatibility = new ClassifierShort(json["compatibility"]) ;
+		this.experience = new Experience(json["experience"]) ;
 		this.is_gph_contract = json["is_gph_contract"] || null;
-		this.qualification_category = json["qualification_category"] ? new ClassifierShort(json["qualification_category"]) : null ;
+		this.qualification_category = new ClassifierShort(json["qualification_category"]) ;
 		this.has_individual_employment_plan = json["has_individual_employment_plan"] || null;
 		this.has_effective_contract = json["has_effective_contract"] || null;
 		this.is_quota_workstation_contract = json["is_quota_workstation_contract"] || null;
-		this.mentoring = json["mentoring"] ? new ClassifierShort(json["mentoring"]) : null ;
+		this.mentoring = new ClassifierShort(json["mentoring"]) ;
 		this.young_ward_count = json["young_ward_count"] || null;
-		this.professional_community = json["professional_community"] ? new ClassifierShort(json["professional_community"]) : null ;
+		this.professional_community = new ClassifierShort(json["professional_community"]) ;
        
     }
 

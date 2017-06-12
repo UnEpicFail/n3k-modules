@@ -18,12 +18,12 @@ export class EducationServiceShort
 
     constructor(json) {
         json = (json || {})
-		this.identity = json["identity"] ? new Identity(json["identity"]) : null ;
-		this.entity_state = json["entity_state"] ? new EntityState(json["entity_state"]) : null ;
-		this.institution_identity = json["institution_identity"] ? new Identity(json["institution_identity"]) : null ;
-		this.kind = json["kind"] ? new ClassifierShort(json["kind"]) : null ;
+		this.identity = new Identity(json["identity"]) ;
+		this.entity_state = new EntityState(json["entity_state"]) ;
+		this.institution_identity = new Identity(json["institution_identity"]) ;
+		this.kind = new ClassifierShort(json["kind"]) ;
 		this.name = json["name"] || null;
-		this.direction = json["direction"] ? new ClassifierShort(json["direction"]) : null ;
+		this.direction = new ClassifierShort(json["direction"]) ;
        
     }
 

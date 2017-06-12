@@ -22,8 +22,8 @@ export class Schedule
 
     constructor(json) {
         json = (json || {})
-		this.identity = json["identity"] ? new Identity(json["identity"]) : null ;
-		this.entity_state = json["entity_state"] ? new EntityState(json["entity_state"]) : null ;
+		this.identity = new Identity(json["identity"]) ;
+		this.entity_state = new EntityState(json["entity_state"]) ;
 		this.minute = json["minute"] || null;
 		this.hour = json["hour"] || null;
 		this.day = json["day"] || null;

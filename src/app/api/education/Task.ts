@@ -28,12 +28,12 @@ export class Task
 
     constructor(json) {
         json = (json || {})
-		this.identity = json["identity"] ? new Identity(json["identity"]) : null ;
-		this.entity_state = json["entity_state"] ? new EntityState(json["entity_state"]) : null ;
+		this.identity = new Identity(json["identity"]) ;
+		this.entity_state = new EntityState(json["entity_state"]) ;
 		this.name = json["name"] || null;
 		this.is_require = json["is_require"] || null;
-		this.control_form = json["control_form"] ? new ClassifierShort(json["control_form"]) : null ;
-		this.parent = json["parent"] ? new Identity(json["parent"]) : null ;
+		this.control_form = new ClassifierShort(json["control_form"]) ;
+		this.parent = new Identity(json["parent"]) ;
 		this.variants = []
 		if(json["variants"]){
 			for (let i in json["variants"]){

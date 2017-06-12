@@ -15,11 +15,11 @@ export class PostGraduationSupport
 
     constructor(json) {
         json = (json || {})
-		this.intention = json["intention"] ? new ClassifierShort(json["intention"]) : null ;
-		this.actual_result = json["actual_result"] ? new ClassifierShort(json["actual_result"]) : null ;
+		this.intention = new ClassifierShort(json["intention"]) ;
+		this.actual_result = new ClassifierShort(json["actual_result"]) ;
 		this.institution_name = json["institution_name"] || null;
-		this.institution_type = json["institution_type"] ? new ClassifierShort(json["institution_type"]) : null ;
-		this.stage = json["stage"] ? new ClassifierShort(json["stage"]) : null ;
+		this.institution_type = new ClassifierShort(json["institution_type"]) ;
+		this.stage = new ClassifierShort(json["stage"]) ;
        
     }
 

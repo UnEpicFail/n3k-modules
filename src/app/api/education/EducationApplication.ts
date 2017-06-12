@@ -21,8 +21,8 @@ export class EducationApplication extends Document
 				this.current_status.push(new ClassifierShort(json["current_status"][i]))
 			}
 		}
-		this.stage = json["stage"] ? new ClassifierShort(json["stage"]) : null ;
-		this.preferential_category = json["preferential_category"] ? new ClassifierShort(json["preferential_category"]) : null ;
+		this.stage = new ClassifierShort(json["stage"]) ;
+		this.preferential_category = new ClassifierShort(json["preferential_category"]) ;
        
     }
 

@@ -17,7 +17,7 @@ export class Equipment
         json = (json || {})
 		this.id = json["id"] || null;
 		this.parent = json["parent"] || null;
-		this.entity_state = json["entity_state"] ? new EntityState(json["entity_state"]) : null ;
+		this.entity_state = new EntityState(json["entity_state"]) ;
 		this.code = json["code"] || null;
 		this.name = json["name"] || null;
        

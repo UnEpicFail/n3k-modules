@@ -22,10 +22,10 @@ export class Building extends BuildingShort
     constructor(json) {
         json = (json || {})
         super(json)
-		this.capacity = json["capacity"] ? new Capacity(json["capacity"]) : null ;
-		this.address = json["address"] ? new Address(json["address"]) : null ;
-		this.type = json["type"] ? new ClassifierShort(json["type"]) : null ;
-		this.terrain = json["terrain"] ? new ClassifierShort(json["terrain"]) : null ;
+		this.capacity = new Capacity(json["capacity"]) ;
+		this.address = new Address(json["address"]) ;
+		this.type = new ClassifierShort(json["type"]) ;
+		this.terrain = new ClassifierShort(json["terrain"]) ;
 		this.rooms = []
 		if(json["rooms"]){
 			for (let i in json["rooms"]){

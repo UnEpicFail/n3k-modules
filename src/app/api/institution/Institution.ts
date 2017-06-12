@@ -46,9 +46,9 @@ export class Institution extends InstitutionShort
     constructor(json) {
         json = (json || {})
         super(json)
-		this.organization = json["organization"] ? new Organization(json["organization"]) : null ;
-		this.head = json["head"] ? new JobShort(json["head"]) : null ;
-		this.region = json["region"] ? new ClassifierShort(json["region"]) : null ;
+		this.organization = new Organization(json["organization"]) ;
+		this.head = new JobShort(json["head"]) ;
+		this.region = new ClassifierShort(json["region"]) ;
 		this.shift = []
 		if(json["shift"]){
 			for (let i in json["shift"]){
@@ -56,15 +56,15 @@ export class Institution extends InstitutionShort
 			}
 		}
 		this.status_date = json["status_date"] || null;
-		this.kind = json["kind"] ? new ClassifierShort(json["kind"]) : null ;
-		this.terrain = json["terrain"] ? new ClassifierShort(json["terrain"]) : null ;
+		this.kind = new ClassifierShort(json["kind"]) ;
+		this.terrain = new ClassifierShort(json["terrain"]) ;
 		this.work_time = []
 		if(json["work_time"]){
 			for (let i in json["work_time"]){
 				this.work_time.push(new WorkTime(json["work_time"][i]))
 			}
 		}
-		this.education_language = json["education_language"] ? new ClassifierShort(json["education_language"]) : null ;
+		this.education_language = new ClassifierShort(json["education_language"]) ;
 		this.education_area = []
 		if(json["education_area"]){
 			for (let i in json["education_area"]){
@@ -97,19 +97,19 @@ export class Institution extends InstitutionShort
 		}
 		this.foundation_date = json["foundation_date"] || null;
 		this.description = json["description"] || null;
-		this.address = json["address"] ? new Address(json["address"]) : null ;
-		this.district = json["district"] ? new ClassifierShort(json["district"]) : null ;
-		this.jurisdiction = json["jurisdiction"] ? new ClassifierShort(json["jurisdiction"]) : null ;
-		this.capacity = json["capacity"] ? new Capacity(json["capacity"]) : null ;
+		this.address = new Address(json["address"]) ;
+		this.district = new ClassifierShort(json["district"]) ;
+		this.jurisdiction = new ClassifierShort(json["jurisdiction"]) ;
+		this.capacity = new Capacity(json["capacity"]) ;
 		this.documents = []
 		if(json["documents"]){
 			for (let i in json["documents"]){
 				this.documents.push(new InstitutionDocument(json["documents"][i]))
 			}
 		}
-		this.public_administration = json["public_administration"] ? new PublicAdministration(json["public_administration"]) : null ;
-		this.publication = json["publication"] ? new Publication(json["publication"]) : null ;
-		this.meta = json["meta"] ? new InstitutionMeta(json["meta"]) : null ;
+		this.public_administration = new PublicAdministration(json["public_administration"]) ;
+		this.publication = new Publication(json["publication"]) ;
+		this.meta = new InstitutionMeta(json["meta"]) ;
        
     }
 

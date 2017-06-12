@@ -20,12 +20,12 @@ export class InnovationShort
 
     constructor(json) {
         json = (json || {})
-		this.identity = json["identity"] ? new Identity(json["identity"]) : null ;
-		this.entity_state = json["entity_state"] ? new EntityState(json["entity_state"]) : null ;
-		this.institution_identity = json["institution_identity"] ? new Identity(json["institution_identity"]) : null ;
+		this.identity = new Identity(json["identity"]) ;
+		this.entity_state = new EntityState(json["entity_state"]) ;
+		this.institution_identity = new Identity(json["institution_identity"]) ;
 		this.name = json["name"] || null;
-		this.level = json["level"] ? new ClassifierShort(json["level"]) : null ;
-		this.activity_direction = json["activity_direction"] ? new ClassifierShort(json["activity_direction"]) : null ;
+		this.level = new ClassifierShort(json["level"]) ;
+		this.activity_direction = new ClassifierShort(json["activity_direction"]) ;
 		this.activity_start = json["activity_start"] || null;
 		this.activity_end = json["activity_end"] || null;
        

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm, FormBuilder } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 import { Institution } from '../../api/institution/Institution';
 import { InstitutionService } from '../../api/institution'
@@ -28,24 +28,37 @@ export class EditComponent implements OnInit {
     {name:'Лицензия'}
   ]
 
+  form: FormGroup
+
   _institution: Institution = new Institution({})
 
   constructor(
     private institutionService: InstitutionService,
     private classifireService: Classifier_listService,
+    private fb: FormBuilder,
   ) {
    
     this.institutionService.institutionGet('1').subscribe(res=>{
       let _res = new Response(res);
       this._institution = new Institution(_res.data);
+      this.setForm()
     })
 
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.setForm()
+  }
 
 
-  onSubmit(f) {
+  onSubmit() {
     console.log('this._institution', this._institution.organization)
+    console.log('this.form', this.form)
+  }
+
+  setForm() {
+    this.form = this.fb.group({
+      organization: this._institution.organization
+    })
   }
 }

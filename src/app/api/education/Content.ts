@@ -32,15 +32,15 @@ export class Content
 
     constructor(json) {
         json = (json || {})
-		this.identity = json["identity"] ? new Identity(json["identity"]) : null ;
-		this.entity_state = json["entity_state"] ? new EntityState(json["entity_state"]) : null ;
+		this.identity = new Identity(json["identity"]) ;
+		this.entity_state = new EntityState(json["entity_state"]) ;
 		this.name = json["name"] || null;
 		this.methodology = json["methodology"] || null;
 		this.description = json["description"] || null;
-		this.level = json["level"] ? new ClassifierShort(json["level"]) : null ;
-		this.direction = json["direction"] ? new ClassifierShort(json["direction"]) : null ;
-		this.profession = json["profession"] ? new ClassifierShort(json["profession"]) : null ;
-		this.type = json["type"] ? new ClassifierShort(json["type"]) : null ;
+		this.level = new ClassifierShort(json["level"]) ;
+		this.direction = new ClassifierShort(json["direction"]) ;
+		this.profession = new ClassifierShort(json["profession"]) ;
+		this.type = new ClassifierShort(json["type"]) ;
 		this.adaptives = []
 		if(json["adaptives"]){
 			for (let i in json["adaptives"]){
@@ -59,8 +59,8 @@ export class Content
 				this.professions.push(new ClassifierShort(json["professions"][i]))
 			}
 		}
-		this.parent = json["parent"] ? new ContentShort(json["parent"]) : null ;
-		this.subject = json["subject"] ? new SubjectShort(json["subject"]) : null ;
+		this.parent = new ContentShort(json["parent"]) ;
+		this.subject = new SubjectShort(json["subject"]) ;
 		this.tasks = []
 		if(json["tasks"]){
 			for (let i in json["tasks"]){

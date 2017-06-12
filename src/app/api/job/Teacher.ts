@@ -22,8 +22,8 @@ export class Teacher
 
     constructor(json) {
         json = (json || {})
-		this.identity = json["identity"] ? new Identity(json["identity"]) : null ;
-		this.entity_state = json["entity_state"] ? new EntityState(json["entity_state"]) : null ;
+		this.identity = new Identity(json["identity"]) ;
+		this.entity_state = new EntityState(json["entity_state"]) ;
 		this.name = json["name"] || null;
 		this.job = []
 		if(json["job"]){
@@ -37,8 +37,8 @@ export class Teacher
 				this.subjects.push(new SubjectShort(json["subjects"][i]))
 			}
 		}
-		this.institution = json["institution"] ? new InstitutionShort(json["institution"]) : null ;
-		this.meta = json["meta"] ? new TeacherMeta(json["meta"]) : null ;
+		this.institution = new InstitutionShort(json["institution"]) ;
+		this.meta = new TeacherMeta(json["meta"]) ;
        
     }
 

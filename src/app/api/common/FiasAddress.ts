@@ -21,15 +21,15 @@ export class FiasAddress
     constructor(json) {
         json = (json || {})
 		this.code = json["code"] || null;
-		this.region = json["region"] ? new FiasAddressPart(json["region"]) : null ;
-		this.okrug = json["okrug"] ? new FiasAddressPart(json["okrug"]) : null ;
-		this.district = json["district"] ? new FiasAddressPart(json["district"]) : null ;
-		this.city = json["city"] ? new FiasAddressPart(json["city"]) : null ;
-		this.incity = json["incity"] ? new FiasAddressPart(json["incity"]) : null ;
-		this.municipality = json["municipality"] ? new FiasAddressPart(json["municipality"]) : null ;
-		this.street = json["street"] ? new FiasAddressPart(json["street"]) : null ;
-		this.building = json["building"] ? new FiasAddressPart(json["building"]) : null ;
-		this.flat = json["flat"] ? new FiasAddressPart(json["flat"]) : null ;
+		this.region = new FiasAddressPart(json["region"]) ;
+		this.okrug = new FiasAddressPart(json["okrug"]) ;
+		this.district = new FiasAddressPart(json["district"]) ;
+		this.city = new FiasAddressPart(json["city"]) ;
+		this.incity = new FiasAddressPart(json["incity"]) ;
+		this.municipality = new FiasAddressPart(json["municipality"]) ;
+		this.street = new FiasAddressPart(json["street"]) ;
+		this.building = new FiasAddressPart(json["building"]) ;
+		this.flat = new FiasAddressPart(json["flat"]) ;
        
     }
 

@@ -25,13 +25,13 @@ export class InstitutionShort
 
     constructor(json) {
         json = (json || {})
-		this.identity = json["identity"] ? new Identity(json["identity"]) : null ;
-		this.entity_state = json["entity_state"] ? new EntityState(json["entity_state"]) : null ;
-		this.organization = json["organization"] ? new OrganizationShort(json["organization"]) : null ;
+		this.identity = new Identity(json["identity"]) ;
+		this.entity_state = new EntityState(json["entity_state"]) ;
+		this.organization = new OrganizationShort(json["organization"]) ;
 		this.name = json["name"] || null;
 		this.full_name = json["full_name"] || null;
-		this.type = json["type"] ? new ClassifierShort(json["type"]) : null ;
-		this.status = json["status"] ? new ClassifierShort(json["status"]) : null ;
+		this.type = new ClassifierShort(json["type"]) ;
+		this.status = new ClassifierShort(json["status"]) ;
 		this.direction = []
 		if(json["direction"]){
 			for (let i in json["direction"]){
@@ -44,7 +44,7 @@ export class InstitutionShort
 				this.contacts.push(new Contact(json["contacts"][i]))
 			}
 		}
-		this.address = json["address"] ? new AddressShort(json["address"]) : null ;
+		this.address = new AddressShort(json["address"]) ;
        
     }
 

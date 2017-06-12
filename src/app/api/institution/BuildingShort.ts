@@ -20,13 +20,13 @@ export class BuildingShort
 
     constructor(json) {
         json = (json || {})
-		this.identity = json["identity"] ? new Identity(json["identity"]) : null ;
-		this.entity_state = json["entity_state"] ? new EntityState(json["entity_state"]) : null ;
-		this.institution_identity = json["institution_identity"] ? new Identity(json["institution_identity"]) : null ;
+		this.identity = new Identity(json["identity"]) ;
+		this.entity_state = new EntityState(json["entity_state"]) ;
+		this.institution_identity = new Identity(json["institution_identity"]) ;
 		this.name = json["name"] || null;
-		this.address = json["address"] ? new AddressShort(json["address"]) : null ;
+		this.address = new AddressShort(json["address"]) ;
 		this.is_head = json["is_head"] || null;
-		this.status = json["status"] ? new ClassifierShort(json["status"]) : null ;
+		this.status = new ClassifierShort(json["status"]) ;
        
     }
 

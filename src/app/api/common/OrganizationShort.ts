@@ -17,10 +17,10 @@ export class OrganizationShort
 
     constructor(json) {
         json = (json || {})
-		this.identity = json["identity"] ? new Identity(json["identity"]) : null ;
-		this.entity_state = json["entity_state"] ? new EntityState(json["entity_state"]) : null ;
+		this.identity = new Identity(json["identity"]) ;
+		this.entity_state = new EntityState(json["entity_state"]) ;
 		this.name = json["name"] || null;
-		this.parent = json["parent"] ? new Identity(json["parent"]) : null ;
+		this.parent = new Identity(json["parent"]) ;
 		this.inn = json["inn"] || null;
 		this.ogrn = json["ogrn"] || null;
        

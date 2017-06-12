@@ -19,10 +19,10 @@ export class Address extends AddressShort
         json = (json || {})
         super(json)
 		this.postal_index = json["postal_index"] || null;
-		this.country = json["country"] ? new ClassifierShort(json["country"]) : null ;
-		this.region = json["region"] ? new ClassifierShort(json["region"]) : null ;
-		this.district = json["district"] ? new ClassifierShort(json["district"]) : null ;
-		this.fias = json["fias"] ? new FiasAddress(json["fias"]) : null ;
+		this.country = new ClassifierShort(json["country"]) ;
+		this.region = new ClassifierShort(json["region"]) ;
+		this.district = new ClassifierShort(json["district"]) ;
+		this.fias = new FiasAddress(json["fias"]) ;
        
     }
 

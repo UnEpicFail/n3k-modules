@@ -37,18 +37,18 @@ export class Organization extends OrganizationShort
 		this.okpo = json["okpo"] || null;
 		this.okato = json["okato"] || null;
 		this.kpp = json["kpp"] || null;
-		this.oktmo = json["oktmo"] ? new ClassifierShort(json["oktmo"]) : null ;
+		this.oktmo = new ClassifierShort(json["oktmo"]) ;
 		this.okogu = json["okogu"] || null;
-		this.owner = json["owner"] ? new PersonShort(json["owner"]) : null ;
-		this.head = json["head"] ? new PersonShort(json["head"]) : null ;
-		this.type_of_ownership = json["type_of_ownership"] ? new ClassifierShort(json["type_of_ownership"]) : null ;
-		this.founders_type = json["founders_type"] ? new ClassifierShort(json["founders_type"]) : null ;
-		this.status = json["status"] ? new ClassifierShort(json["status"]) : null ;
-		this.address = json["address"] ? new Address(json["address"]) : null ;
-		this.district = json["district"] ? new ClassifierShort(json["district"]) : null ;
-		this.region = json["region"] ? new ClassifierShort(json["region"]) : null ;
-		this.okopf = json["okopf"] ? new ClassifierShort(json["okopf"]) : null ;
-		this.okfs = json["okfs"] ? new ClassifierShort(json["okfs"]) : null ;
+		this.owner = new PersonShort(json["owner"]) ;
+		this.head = new PersonShort(json["head"]) ;
+		this.type_of_ownership = new ClassifierShort(json["type_of_ownership"]) ;
+		this.founders_type = new ClassifierShort(json["founders_type"]) ;
+		this.status = new ClassifierShort(json["status"]) ;
+		this.address = new Address(json["address"]) ;
+		this.district = new ClassifierShort(json["district"]) ;
+		this.region = new ClassifierShort(json["region"]) ;
+		this.okopf = new ClassifierShort(json["okopf"]) ;
+		this.okfs = new ClassifierShort(json["okfs"]) ;
 		this.okved = []
 		if(json["okved"]){
 			for (let i in json["okved"]){
@@ -61,7 +61,7 @@ export class Organization extends OrganizationShort
 				this.contacts.push(new Contact(json["contacts"][i]))
 			}
 		}
-		this.meta = json["meta"] ? new OrganizationMeta(json["meta"]) : null ;
+		this.meta = new OrganizationMeta(json["meta"]) ;
        
     }
 

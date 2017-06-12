@@ -19,7 +19,7 @@ export class Сonviction
 		this.punishment_period = json["punishment_period"] || null;
 		this.date_start = json["date_start"] || null;
 		this.date_end = json["date_end"] || null;
-		this.punishment = json["punishment"] ? new ClassifierShort(json["punishment"]) : null ;
+		this.punishment = new ClassifierShort(json["punishment"]) ;
        
     }
 

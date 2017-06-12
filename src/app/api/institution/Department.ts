@@ -22,9 +22,9 @@ export class Department extends DepartmentShort
     constructor(json) {
         json = (json || {})
         super(json)
-		this.capacity = json["capacity"] ? new Capacity(json["capacity"]) : null ;
-		this.head = json["head"] ? new JobShort(json["head"]) : null ;
-		this.address = json["address"] ? new Address(json["address"]) : null ;
+		this.capacity = new Capacity(json["capacity"]) ;
+		this.head = new JobShort(json["head"]) ;
+		this.address = new Address(json["address"]) ;
 		this.contacts = []
 		if(json["contacts"]){
 			for (let i in json["contacts"]){

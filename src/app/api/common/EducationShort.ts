@@ -19,11 +19,11 @@ export class EducationShort
 
     constructor(json) {
         json = (json || {})
-		this.identity = json["identity"] ? new Identity(json["identity"]) : null ;
-		this.entity_state = json["entity_state"] ? new EntityState(json["entity_state"]) : null ;
-		this.person = json["person"] ? new PersonShort(json["person"]) : null ;
-		this.program = json["program"] ? new ProgramShort(json["program"]) : null ;
-		this.group = json["group"] ? new GroupShort(json["group"]) : null ;
+		this.identity = new Identity(json["identity"]) ;
+		this.entity_state = new EntityState(json["entity_state"]) ;
+		this.person = new PersonShort(json["person"]) ;
+		this.program = new ProgramShort(json["program"]) ;
+		this.group = new GroupShort(json["group"]) ;
        
     }
 

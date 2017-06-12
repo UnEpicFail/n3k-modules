@@ -78,7 +78,14 @@ export class SelectComponent implements OnInit, ControlValueAccessor {
 
   writeValue(value: any): void {
     if (value !== undefined && value !== null) {
-      this._values = (Array.isArray(value)) ? value: [value];
+      if (!Array.isArray(value)) {
+        value = [value]
+      }
+      for (let i=0, max_i=value.length; i < max_i; i+=1){
+        if (!this.isEmpty(value[i])){
+          this._values.push(value[i])
+        }
+      }
     } else {
       this._values = [];
     }
@@ -176,5 +183,29 @@ export class SelectComponent implements OnInit, ControlValueAccessor {
       this.getOptions();
     }
     return false;
+  }
+
+  private isEmpty(obj) {
+    let keys = obj.keys()
+    let res = true
+
+    for(let i = 0, max_i = keys.length; i < max_i; i+=1){
+      if (typeof obj[keys[i]] !== 'undefined' && obj[keys[i]] !== null) {
+        if (typeof obj[keys[i]].keys === 'function') {
+          res = res && this.isEmpty(obj[keys[i]]);
+        } else if (Array.isArray(obj[keys[i]])) {
+          if (obj[keys[i]].length > 0) {
+            for (let j = 0, max_j = obj[keys[i]].length; j < max_j; j+=1) {
+              res = res && this.isEmpty(obj[keys[i]][j]);
+            }
+          } else {
+            return true;
+          }
+        } else {
+          return false;
+        }
+      }
+    }
+    return res
   }
 }

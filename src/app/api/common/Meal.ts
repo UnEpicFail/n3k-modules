@@ -14,8 +14,8 @@ export class Meal
     constructor(json) {
         json = (json || {})
 		this.id = json["id"] || null;
-		this.meal_type = json["meal_type"] ? new ClassifierShort(json["meal_type"]) : null ;
-		this.financing_type = json["financing_type"] ? new ClassifierShort(json["financing_type"]) : null ;
+		this.meal_type = new ClassifierShort(json["meal_type"]) ;
+		this.financing_type = new ClassifierShort(json["financing_type"]) ;
        
     }
 

@@ -26,17 +26,17 @@ export class Meeting
 
     constructor(json) {
         json = (json || {})
-		this.identity = json["identity"] ? new Identity(json["identity"]) : null ;
-		this.entity_state = json["entity_state"] ? new EntityState(json["entity_state"]) : null ;
+		this.identity = new Identity(json["identity"]) ;
+		this.entity_state = new EntityState(json["entity_state"]) ;
 		this.leader = []
 		if(json["leader"]){
 			for (let i in json["leader"]){
 				this.leader.push(new PersonShort(json["leader"][i]))
 			}
 		}
-		this.examinator = json["examinator"] ? new ProgramShort(json["examinator"]) : null ;
-		this.place = json["place"] ? new Address(json["place"]) : null ;
-		this.content = json["content"] ? new ContentShort(json["content"]) : null ;
+		this.examinator = new ProgramShort(json["examinator"]) ;
+		this.place = new Address(json["place"]) ;
+		this.content = new ContentShort(json["content"]) ;
 		this.groups = []
 		if(json["groups"]){
 			for (let i in json["groups"]){
