@@ -5,7 +5,8 @@ import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 
-import { N3kNgGridModule } from './lib/n3k-ng-grid.module';
+import { N3kNgGridModule } from './lib/n3k-ng-grid/n3k-ng-grid.module';
+import { N3kNgComponentsModule } from './lib/n3k-ng-components/n3k-ng-components.module';
 
 import { InstitutionModule } from './institution/institution.module';
 import { GroupModule } from './group/group.module';
@@ -31,6 +32,7 @@ const rourer = [
     FormsModule,
     HttpModule,
     N3kNgGridModule,
+    N3kNgComponentsModule,
     InstitutionModule,
     ClassifierModule,
     ProgramModule,

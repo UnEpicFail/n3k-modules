@@ -6,7 +6,7 @@ import { FooterComponent } from '../footer/footer.component';
 
 import { PositionService } from '../position.service'
 
-import { MapMouseEvent, MapClickMouseEvent, MarkerClaster }  from '../../angular2-yandex-maps/core.module';
+//import { MapMouseEvent, MapClickMouseEvent, MarkerClaster }  from '../../angular2-yandex-maps/core.module';
 
 @Component({
   selector: 'n3k-grid',
@@ -42,31 +42,54 @@ export class GridComponent {
     this.body  = document.querySelector('body');
     this.scrollPosition = this.body.scrollTop;
 
-    this.positions = this.debounce(() => {
+    // this.positions = this.debounce(() => {
       
-      if (!this.columns.el || !this.header.el || !this.neck.el || !this.footer.el)
-        return
+    //   if (!this.columns.el || !this.header.el || !this.neck.el || !this.footer.el)
+    //     return
       
-      let data = {
-        sc:       this.body.scrollTop,
-        border:   this.header.el.nativeElement.offsetHeight + this.neck.el.nativeElement.offsetHeight,
-        footer:   this.footer.el.nativeElement.offsetHeight,
-        columns:  this.columns.el.nativeElement.offsetHeight,
-        v:        window.innerHeight,
-        sd:       this.body.scrollTop - this.scrollPosition
-      }
+    //   let data = {
+    //     sc:       this.body.scrollTop,
+    //     border:   this.header.el.nativeElement.offsetHeight + this.neck.el.nativeElement.offsetHeight,
+    //     footer:   this.footer.el.nativeElement.offsetHeight,
+    //     columns:  this.columns.el.nativeElement.offsetHeight,
+    //     v:        window.innerHeight,
+    //     sd:       this.body.scrollTop - this.scrollPosition
+    //   }
 
-      if(this.columns.column1)
-        this.checkColumn(this.columns.column1, data);
+    //   if(this.columns.column1)
+    //     this.checkColumn(this.columns.column1, data);
       
-      if(this.columns.column2)
-        this.checkColumn(this.columns.column2, data);
+    //   if(this.columns.column2)
+    //     this.checkColumn(this.columns.column2, data);
       
-      if(this.columns.column3)
-        this.checkColumn(this.columns.column3, data);
-      return true
+    //   if(this.columns.column3)
+    //     this.checkColumn(this.columns.column3, data);
+    //   return true
 
-    }, 0)
+    // }, 0)
+    this.positions = () => {
+        if (!this.columns.el || !this.header.el || !this.neck.el || !this.footer.el)
+          return
+        
+        let data = {
+          sc:       this.body.scrollTop,
+          border:   this.header.el.nativeElement.offsetHeight + this.neck.el.nativeElement.offsetHeight,
+          footer:   this.footer.el.nativeElement.offsetHeight,
+          columns:  this.columns.el.nativeElement.offsetHeight,
+          v:        window.innerHeight,
+          sd:       this.body.scrollTop - this.scrollPosition
+        }
+
+        if(this.columns.column1)
+          this.checkColumn(this.columns.column1, data);
+        
+        if(this.columns.column2)
+          this.checkColumn(this.columns.column2, data);
+        
+        if(this.columns.column3)
+          this.checkColumn(this.columns.column3, data);
+        return true
+    }
 
     window.addEventListener('scroll', this.positions);
     window.addEventListener('resize', this.positions);

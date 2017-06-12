@@ -1,0 +1,45 @@
+ <n3k-select
+        [title] = '"ОКТМО"'
+        [placeholder] = '"ОКТМО"'
+        [fromMethod] = 'oktmoService'       
+        [(ngModel)]='_organization.oktmo'
+        name='oktmo'
+      >
+      </n3k-select>
+      <n3k-select
+        [title] = '"Форма собственности"'
+        [placeholder] = '"Форма собственности"'
+        [fromMethod] = 'typeOfOwnershipService'       
+        [(ngModel)]='_organization.type_of_ownership'
+        name='type_of_ownership'
+      >
+      </n3k-select>
+      <n3k-select
+        [title] = '"Вид организации по учредителям"'
+        [placeholder] = '"Вид организации по учредителям"'
+        [fromMethod] = 'oktmoService'       
+        [(ngModel)]='_organization.founders_type'
+        name='founders_type'
+      >
+      </n3k-select>
+      <n3k-select
+        [title] = '"Статус"'
+        [placeholder] = '"Статус"'
+        [fromMethod] = 'statusService'       
+        [(ngModel)]='_organization.status'
+        name='status'
+      >
+      </n3k-select>
+      
+      <n3k-input
+        [title]='"Наименование юридического лица"'
+        [placeholder] = '"Статус"'
+        [(ngModel)]='_organization.name'
+        name='name'
+      ></n3k-input>
+      <edit-address 
+        [title] = '"Юридический адрес"'
+        [(ngModel)]='_organization.address'
+        (onDelete) = 'onAddressDelete()'
+        name='address'
+      ></edit-address>  

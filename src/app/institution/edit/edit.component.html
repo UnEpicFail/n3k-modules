@@ -6,52 +6,16 @@
 <n3k-columns context='form'>
   <column-1>
     <form autocomplete="off" #f="ngForm"  (ngSubmit)="onSubmit(f)">
-      <n3k-select
-        [title] = '"ОКТМО"'
-        [placeholder] = '"ОКТМО"'
-        [fromMethod] = 'oktmoService'       
-        [(ngModel)]='_institution.organization.oktmo'
-        name='oktmo'
+     <edit-organization
+        [organization] = '_institution.organization'
+     ></edit-organization>
+      <!--<n3k-cloner 
+        [(ngModel)]='_institution.contacts'
+        name='contacts'
       >
-      </n3k-select>
-      <n3k-select
-        [title] = '"Форма собственности"'
-        [placeholder] = '"Форма собственности"'
-        [fromMethod] = 'typeOfOwnershipService'       
-        [(ngModel)]='_institution.organization.type_of_ownership'
-        name='type_of_ownership'
-      >
-      </n3k-select>
-      <n3k-select
-        [title] = '"Вид организации по учредителям"'
-        [placeholder] = '"Вид организации по учредителям"'
-        [fromMethod] = 'oktmoService'       
-        [(ngModel)]='_institution.organization.founders_type'
-        name='founders_type'
-      >
-      </n3k-select>
-      <n3k-select
-        [title] = '"Статус"'
-        [placeholder] = '"Статус"'
-        [fromMethod] = 'statusService'       
-        [(ngModel)]='_institution.organization.status'
-        name='status'
-      >
-      </n3k-select>
+        <edit-address clone *ngFor='let contact of _institution.contacts'></edit-address>  
+      </n3k-cloner>-->
       
-      <n3k-input
-        [title]='"Наименование юридического лица"'
-        [placeholder] = '"Статус"'
-        [(ngModel)]='_institution.organization.name'
-        name='name'
-      ></n3k-input>
-
-
-      <edit-address
-        [(ngModel)] = '_institution.organization.address' 
-        name = 'address'
-        
-      ></edit-address>
 
       <br><br><br><br><br>
       <br><br><br><br><br>

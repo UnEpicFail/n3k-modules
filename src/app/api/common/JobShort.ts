@@ -18,11 +18,11 @@ export class JobShort
 
     constructor(json) {
         json = (json || {})
-		this.identity = new Identity(json["identity"]);
-		this.entity_state = new EntityState(json["entity_state"]);
+		this.identity = json["identity"] ? new Identity(json["identity"]) : null ;
+		this.entity_state = json["entity_state"] ? new EntityState(json["entity_state"]) : null ;
 		this.position_name = json["position_name"] || null;
-		this.position = new ClassifierShort(json["position"]);
-		this.person = new PersonShort(json["person"]);
+		this.position = json["position"] ? new ClassifierShort(json["position"]) : null ;
+		this.person = json["person"] ? new PersonShort(json["person"]) : null ;
        
     }
 

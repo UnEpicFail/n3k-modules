@@ -35,18 +35,18 @@ export class DepartmentsComponent{
 
   getDepartmentTree(departments){
     let _departments = departments.sort(function(a,b){
-      return a.parent.id ? 1 : -1
+      return a.parent ? 1 : -1
     })
     let map = {}, node, roots = [];
     for (let i = 0; i < _departments.length; i += 1) {
-        node = _departments[i];
-        node.childrens = [];
-        map[node.identity.id] = i;
-        if (node.parent.id !== null) {
-            _departments[map[node.parent.id]].childrens.push(node);
-        } else {
-            roots.push(node);
-        }
+      node = _departments[i];
+      node.childrens = [];
+      map[node.identity.id] = i;
+      if (node.parent !== null) {
+          _departments[map[node.parent.id]].childrens.push(node);
+      } else {
+          roots.push(node);
+      }
     }
     return roots
   }

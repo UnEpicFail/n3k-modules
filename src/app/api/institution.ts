@@ -167,11 +167,40 @@ export class InstitutionService {
                     name: 'Муниципальная'
                 },
                 address: {
+                    identity: {
+                        id: 1
+                    },
                     region: {
                         id: 1,
                         name: 'Санкт-Петербург'
                     },
-                    origin_address: 'Средний пр-кт, 20, 199004, г. Санкт-Петербург'
+                    origin_address: 'Средний пр-кт, 20, 199004, г. Санкт-Петербург',
+                    fias: {
+                        region: {
+                            id: 1,
+                            name: 'Ленинградская область'
+                        },
+                        okrug: {},
+                        district: {
+                            id: 1,
+                            name: 'Выборгский район'
+                        },
+                        city: {
+                            id: 1,
+                            name: 'г. Выборг'
+                        },
+                        incity: {},
+                        municipality: {},
+                        street: {
+                            id: 1,
+                            name: 'ул. Ленина'
+                        },
+                        building: {
+                            id: 1,
+                            name: 'д. 30'
+                        },
+                        flat: {},
+                    }
                 },
                 founders_type: {
                     id: 1,
@@ -319,8 +348,11 @@ export class InstitutionService {
                 },
             ],
             region: {
-            id: 1,
-            name: 'Санкт-Петербург'
+                id: 1,
+                name: 'Санкт-Петербург'
+            },
+            identity: {
+                id: 1
             }
         })
 
@@ -719,7 +751,7 @@ export class InstitutionService {
             institution_identity: {
                 id: 1
             },
-            document: {
+            document: [{
                 identity: {
                     id: 1
                 },
@@ -747,7 +779,7 @@ export class InstitutionService {
                     id: 1,
                     name: 'Действителен'
                 },
-            }
+            }]
         })
 
 
@@ -800,7 +832,7 @@ export class InstitutionService {
             },
             group_count: 2,
             contragent_institution: 'ГОУ СОШ № 41, ГОУ СОШ № 83',
-            document: {
+            document: [{
                 identity: {
                     id: 1
                 },
@@ -828,7 +860,7 @@ export class InstitutionService {
                     id: 1,
                     name: 'Действителен'
                 }
-            }
+            }]
         })
 
 

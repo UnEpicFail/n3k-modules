@@ -25,15 +25,15 @@ export class EducationResult extends Document
     constructor(json) {
         json = (json || {})
         super(json)
-		this.person = new EntityState(json["person"]);
-		this.profession = new ClassifierShort(json["profession"]);
-		this.postition = new ClassifierShort(json["postition"]);
+		this.person = json["person"] ? new EntityState(json["person"]) : null ;
+		this.profession = json["profession"] ? new ClassifierShort(json["profession"]) : null ;
+		this.postition = json["postition"] ? new ClassifierShort(json["postition"]) : null ;
 		this.institution_name = json["institution_name"] || null;
-		this.institution = new InstitutionShort(json["institution"]);
-		this.qualification_category = new InstitutionShort(json["qualification_category"]);
-		this.duration = new Duration(json["duration"]);
+		this.institution = json["institution"] ? new InstitutionShort(json["institution"]) : null ;
+		this.qualification_category = json["qualification_category"] ? new InstitutionShort(json["qualification_category"]) : null ;
+		this.duration = json["duration"] ? new Duration(json["duration"]) : null ;
 		this.has_achievement = json["has_achievement"] || null;
-		this.meta = new EducationResultMeta(json["meta"]);
+		this.meta = json["meta"] ? new EducationResultMeta(json["meta"]) : null ;
        
     }
 

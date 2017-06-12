@@ -1,10 +1,39 @@
-<form >
+
+<div class='title'>
+  {{title}}
+</div>
+
+<div *ngIf='canAddNew && !_editState'>
+    <div class='buttons-array'>
+        <div class='create-new-btn btn' (click)='_editState = true'>
+            <span class='icon'><i class="fa fa-plus" aria-hidden="true"></i></span>
+            <span class='text'>Добавить адрес</span>
+        </div> 
+    </div>
+</div>
+<div class = 'clones'>
+  <form *ngIf='_editState' >
       <n3k-select
         [title] = '"Регион"'
         [placeholder] = '"Регион"'
         [fromMethod] = 'regionService'       
-        [(ngModel)]='_address.region'
+        [(ngModel)]='_edit_address.fias.region'
         name='region'
       >
       </n3k-select>
-</form>
+      <div class='buttons-array'>
+        <div class='create-new-btn btn' (click)='submit()'>Сохранить</div>
+        <div class='transparent-btn btn' (click)='cancel()'>Отменить</div>
+      </div>
+  </form>
+  <div *ngIf='!_editState && !canAddNew'>
+    <div class='text'>
+      {{viewFrom}}
+    </div>
+
+    <div class='controll'>
+      <span (click)='_editState = true'><i class='fa fa-pencil'>&nbsp;</i>Редактировать</span>
+      <span (click)='deleteMe()'><i class='fa fa-trash'>&nbsp;</i>Удалить</span>
+    </div>
+  </div>
+</div>

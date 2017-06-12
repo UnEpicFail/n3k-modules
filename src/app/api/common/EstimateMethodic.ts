@@ -18,12 +18,12 @@ export class EstimateMethodic
 
     constructor(json) {
         json = (json || {})
-		this.identity = new Identity(json["identity"]);
-		this.entity_state = new EntityState(json["entity_state"]);
+		this.identity = json["identity"] ? new Identity(json["identity"]) : null ;
+		this.entity_state = json["entity_state"] ? new EntityState(json["entity_state"]) : null ;
 		this.name = json["name"] || null;
 		this.description = json["description"] || null;
-		this.type = new ClassifierShort(json["type"]);
-		this.system = new ClassifierShort(json["system"]);
+		this.type = json["type"] ? new ClassifierShort(json["type"]) : null ;
+		this.system = json["system"] ? new ClassifierShort(json["system"]) : null ;
        
     }
 

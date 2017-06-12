@@ -37,9 +37,9 @@ export class Person extends PersonShort
         super(json)
 		this.birth_place = json["birth_place"] || null;
 		this.death_place = json["death_place"] || null;
-		this.registration_address = new Address(json["registration_address"]);
-		this.residential_address = new Address(json["residential_address"]);
-		this.temporary_address = new Address(json["temporary_address"]);
+		this.registration_address = json["registration_address"] ? new Address(json["registration_address"]) : null ;
+		this.residential_address = json["residential_address"] ? new Address(json["residential_address"]) : null ;
+		this.temporary_address = json["temporary_address"] ? new Address(json["temporary_address"]) : null ;
 		this.contacts = []
 		if(json["contacts"]){
 			for (let i in json["contacts"]){
@@ -88,7 +88,7 @@ export class Person extends PersonShort
 				this.deviant_behavior.push(new ClassifierShort(json["deviant_behavior"][i]))
 			}
 		}
-		this.meta = new PersonMeta(json["meta"]);
+		this.meta = json["meta"] ? new PersonMeta(json["meta"]) : null ;
        
     }
 

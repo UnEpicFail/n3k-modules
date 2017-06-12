@@ -34,22 +34,22 @@ export class Portfolio
 
     constructor(json) {
         json = (json || {})
-		this.identity = new Identity(json["identity"]);
-		this.entity_state = new EntityState(json["entity_state"]);
+		this.identity = json["identity"] ? new Identity(json["identity"]) : null ;
+		this.entity_state = json["entity_state"] ? new EntityState(json["entity_state"]) : null ;
 		this.datetime = json["datetime"] || null;
-		this.person = new PersonShort(json["person"]);
-		this.type = new ClassifierShort(json["type"]);
-		this.kind = new ClassifierShort(json["kind"]);
-		this.event_level = new ClassifierShort(json["event_level"]);
-		this.involvement_level = new ClassifierShort(json["involvement_level"]);
-		this.activity_kind = new ClassifierShort(json["activity_kind"]);
+		this.person = json["person"] ? new PersonShort(json["person"]) : null ;
+		this.type = json["type"] ? new ClassifierShort(json["type"]) : null ;
+		this.kind = json["kind"] ? new ClassifierShort(json["kind"]) : null ;
+		this.event_level = json["event_level"] ? new ClassifierShort(json["event_level"]) : null ;
+		this.involvement_level = json["involvement_level"] ? new ClassifierShort(json["involvement_level"]) : null ;
+		this.activity_kind = json["activity_kind"] ? new ClassifierShort(json["activity_kind"]) : null ;
 		this.awards = []
 		if(json["awards"]){
 			for (let i in json["awards"]){
 				this.awards.push(new ClassifierShort(json["awards"][i]))
 			}
 		}
-		this.rank = new ClassifierShort(json["rank"]);
+		this.rank = json["rank"] ? new ClassifierShort(json["rank"]) : null ;
 		this.documents = []
 		if(json["documents"]){
 			for (let i in json["documents"]){
@@ -58,10 +58,10 @@ export class Portfolio
 		}
 		this.name = json["name"] || null;
 		this.result = json["result"] || null;
-		this.score = new EstimateShort(json["score"]);
+		this.score = json["score"] ? new EstimateShort(json["score"]) : null ;
 		this.comment = json["comment"] || null;
 		this.participation_form = json["participation_form"] || null;
-		this.meta = new PortfolioMeta(json["meta"]);
+		this.meta = json["meta"] ? new PortfolioMeta(json["meta"]) : null ;
        
     }
 

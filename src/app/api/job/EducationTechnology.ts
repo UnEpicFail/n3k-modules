@@ -17,8 +17,8 @@ export class EducationTechnology
 
     constructor(json) {
         json = (json || {})
-		this.identity = new Identity(json["identity"]);
-		this.entity_state = new EntityState(json["entity_state"]);
+		this.identity = json["identity"] ? new Identity(json["identity"]) : null ;
+		this.entity_state = json["entity_state"] ? new EntityState(json["entity_state"]) : null ;
 		this.name = json["name"] || null;
 		this.author = json["author"] || null;
 		this.date_from = json["date_from"] || null;

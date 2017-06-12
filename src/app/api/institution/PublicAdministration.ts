@@ -17,7 +17,7 @@ export class PublicAdministration
     constructor(json) {
         json = (json || {})
 		this.id = json["id"] || null;
-		this.form = new ClassifierShort(json["form"]);
+		this.form = json["form"] ? new ClassifierShort(json["form"]) : null ;
 		this.foundation_cause = json["foundation_cause"] || null;
 		this.foundation_date = json["foundation_date"] || null;
 		this.liquidation_date = json["liquidation_date"] || null;

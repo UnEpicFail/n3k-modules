@@ -4,7 +4,7 @@
 
 import { AddressShort } from './AddressShort';
 import { ClassifierShort } from './ClassifierShort';
-import { FiasAddess } from './FiasAddess';
+import { FiasAddress } from './FiasAddress';
 
 
 export class Address extends AddressShort
@@ -13,16 +13,16 @@ export class Address extends AddressShort
     country: ClassifierShort; /**/
     region: ClassifierShort; /**/
     district: ClassifierShort; /**/
-    fias: FiasAddess; /**/
+    fias: FiasAddress; /**/
 
     constructor(json) {
         json = (json || {})
         super(json)
 		this.postal_index = json["postal_index"] || null;
-		this.country = new ClassifierShort(json["country"]);
-		this.region = new ClassifierShort(json["region"]);
-		this.district = new ClassifierShort(json["district"]);
-		this.fias = new FiasAddess(json["fias"]);
+		this.country = json["country"] ? new ClassifierShort(json["country"]) : null ;
+		this.region = json["region"] ? new ClassifierShort(json["region"]) : null ;
+		this.district = json["district"] ? new ClassifierShort(json["district"]) : null ;
+		this.fias = json["fias"] ? new FiasAddress(json["fias"]) : null ;
        
     }
 

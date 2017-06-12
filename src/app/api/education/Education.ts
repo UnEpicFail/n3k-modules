@@ -41,30 +41,30 @@ export class Education
 
     constructor(json) {
         json = (json || {})
-		this.identity = new Identity(json["identity"]);
-		this.entity_state = new EntityState(json["entity_state"]);
-		this.person = new PersonShort(json["person"]);
-		this.program = new ProgramShort(json["program"]);
-		this.institution = new InstitutionShort(json["institution"]);
-		this.group = new GroupShort(json["group"]);
+		this.identity = json["identity"] ? new Identity(json["identity"]) : null ;
+		this.entity_state = json["entity_state"] ? new EntityState(json["entity_state"]) : null ;
+		this.person = json["person"] ? new PersonShort(json["person"]) : null ;
+		this.program = json["program"] ? new ProgramShort(json["program"]) : null ;
+		this.institution = json["institution"] ? new InstitutionShort(json["institution"]) : null ;
+		this.group = json["group"] ? new GroupShort(json["group"]) : null ;
 		this.date_from = json["date_from"] || null;
 		this.date_to = json["date_to"] || null;
-		this.plan = new PlanShort(json["plan"]);
+		this.plan = json["plan"] ? new PlanShort(json["plan"]) : null ;
 		this.documents = []
 		if(json["documents"]){
 			for (let i in json["documents"]){
 				this.documents.push(new EducationDocument(json["documents"][i]))
 			}
 		}
-		this.form = new ClassifierShort(json["form"]);
-		this.education_result = new EducationResult(json["education_result"]);
-		this.education_application = new EducationApplication(json["education_application"]);
-		this.implement_form = new ClassifierShort(json["implement_form"]);
-		this.financing = new Financing(json["financing"]);
-		this.language = new ClassifierShort(json["language"]);
-		this.stay_mode = new ClassifierShort(json["stay_mode"]);
-		this.ending_reason = new ClassifierShort(json["ending_reason"]);
-		this.meta = new EducationMeta(json["meta"]);
+		this.form = json["form"] ? new ClassifierShort(json["form"]) : null ;
+		this.education_result = json["education_result"] ? new EducationResult(json["education_result"]) : null ;
+		this.education_application = json["education_application"] ? new EducationApplication(json["education_application"]) : null ;
+		this.implement_form = json["implement_form"] ? new ClassifierShort(json["implement_form"]) : null ;
+		this.financing = json["financing"] ? new Financing(json["financing"]) : null ;
+		this.language = json["language"] ? new ClassifierShort(json["language"]) : null ;
+		this.stay_mode = json["stay_mode"] ? new ClassifierShort(json["stay_mode"]) : null ;
+		this.ending_reason = json["ending_reason"] ? new ClassifierShort(json["ending_reason"]) : null ;
+		this.meta = json["meta"] ? new EducationMeta(json["meta"]) : null ;
        
     }
 

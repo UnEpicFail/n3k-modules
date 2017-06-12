@@ -56,14 +56,8 @@ export class InputComponent implements OnInit, ControlValueAccessor {
     this.onChange(this._value)
     this.onTouched()
   }
-
-  // inputChange(value?:any) {
-  //    this._value = (value || '')
-  //    this.onChange(this._value)
-  //    this.onTouched()
-  // }
-
-  // isEmpty() {
-  //   return (this._value === undefined || this._value === '' || this._value === null)
-  // }
+  
+  isEmpty() {
+    return (this._value === undefined || this._value === '' || this._value === null)
+  }
 }

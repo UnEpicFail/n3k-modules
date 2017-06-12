@@ -8,7 +8,7 @@ import { EntityState } from '../common/EntityState';
 export class Equipment
 {
     id: number; /*Идентификатор БД*/
-    parent: string; /*Идентификатор родителя БД*/
+    parent: number; /*Идентификатор родителя БД*/
     entity_state: EntityState; /**/
     code: string; /*Код*/
     name: string; /*Наименование*/
@@ -17,7 +17,7 @@ export class Equipment
         json = (json || {})
 		this.id = json["id"] || null;
 		this.parent = json["parent"] || null;
-		this.entity_state = new EntityState(json["entity_state"]);
+		this.entity_state = json["entity_state"] ? new EntityState(json["entity_state"]) : null ;
 		this.code = json["code"] || null;
 		this.name = json["name"] || null;
        

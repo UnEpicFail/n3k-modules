@@ -15,74 +15,76 @@
           </div>
         </td>
       </tr>
-      <tr>
-        <td colspan='2' style='width:50%'>
-          <h2>Реквизиты документа</h2>
-          <div class='description-block'>
-            <div class='title'>Описание:</div>
-            {{_contract.document.description}}
-          </div>  
-        </td>
-        <td colspan='2' style='width:50%'>
-          <h2>Характеристики</h2>
-          <div class='description-block'>
-            <div class='title'>Количество групп:</div>
-            {{_contract.group_count}}
-          </div>
-          <div class='description-block'>
-            <div class='title'>Учреждения с которыми подписывается:</div>
-            {{_contract.contragent_institution}}
-          </div>
-        </td>
-      </tr>
-      <tr>
-        <td style='width:25%'>
-          <div class='description-block'>
-            <div class='title'>Статус:</div>
-            {{_contract.document.status.name}}
-          </div>
-          <div class='description-block'>
-            <div class='title'>Серия:</div>
-            {{_contract.document.series}}
-          </div>
-          <div class='description-block'>
-            <div class='title'>Номер:</div>
-            {{_contract.document.number}}
-          </div>
-          <div class='description-block'>
-            <div class='title'>Регистрационный номер:</div>
-            {{_contract.document.reg_number}}
-          </div>
-          <div class='description-block'>
-            <div class='title'>Дата регистрации:</div>
-            {{_contract.document.reg_date}}
-          </div>
-        </td>
-        <td style='width:25%'>
-          <div class='description-block'>
-            <div class='title'>Дата выпуска:</div>
-            {{_contract.document.issue_date}}
-          </div>
-          <div class='description-block'>
-            <div class='title'>Кто выпустил:</div>
-            {{_contract.document.issued_by}}
-          </div>
-          <div class='description-block'>
-            <div class='title'>Действителен от:</div>
-            {{_contract.document.valid_from}}
-          </div>
-          <div class='description-block'>
-            <div class='title'>Действителен до:</div>
-            {{_contract.document.valid_to}}
-          </div>
-          <div class='description-block'>
-            <div class='title'>Файлы:</div>
-            
-          </div>
-        </td>
-        <td style='width:25%'></td>
-        <td style='width:25%'></td>
-      </tr>
+      <div *ngFor = 'let document of _contract.document'>
+        <tr>
+          <td colspan='2' style='width:50%'>
+            <h2>Реквизиты документа</h2>
+            <div class='description-block'>
+              <div class='title'>Описание:</div>
+              {{document.description}}
+            </div>  
+          </td>
+          <td colspan='2' style='width:50%'>
+            <h2>Характеристики</h2>
+            <div class='description-block'>
+              <div class='title'>Количество групп:</div>
+              {{_contract.group_count}}
+            </div>
+            <div class='description-block'>
+              <div class='title'>Учреждения с которыми подписывается:</div>
+              {{_contract.contragent_institution}}
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td style='width:25%'>
+            <div class='description-block'>
+              <div class='title'>Статус:</div>
+              {{document.status.name}}
+            </div>
+            <div class='description-block'>
+              <div class='title'>Серия:</div>
+              {{document.series}}
+            </div>
+            <div class='description-block'>
+              <div class='title'>Номер:</div>
+              {{document.number}}
+            </div>
+            <div class='description-block'>
+              <div class='title'>Регистрационный номер:</div>
+              {{document.reg_number}}
+            </div>
+            <div class='description-block'>
+              <div class='title'>Дата регистрации:</div>
+              {{document.reg_date}}
+            </div>
+          </td>
+          <td style='width:25%'>
+            <div class='description-block'>
+              <div class='title'>Дата выпуска:</div>
+              {{document.issue_date}}
+            </div>
+            <div class='description-block'>
+              <div class='title'>Кто выпустил:</div>
+              {{document.issued_by}}
+            </div>
+            <div class='description-block'>
+              <div class='title'>Действителен от:</div>
+              {{document.valid_from}}
+            </div>
+            <div class='description-block'>
+              <div class='title'>Действителен до:</div>
+              {{document.valid_to}}
+            </div>
+            <div class='description-block'>
+              <div class='title'>Файлы:</div>
+              
+            </div>
+          </td>
+          <td style='width:25%'></td>
+          <td style='width:25%'></td>
+        </tr>
+      </div>
     </table>
   </column-1>
   <column-2>

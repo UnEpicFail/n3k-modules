@@ -5,6 +5,7 @@ import { Institution } from '../../api/institution/Institution';
 import { InstitutionService } from '../../api/institution'
 import { Response } from '../../api/common/Response';
 import { Pagination } from '../../api/common/Pagination';
+import { Address } from '../../api/common/Address';
 
 import { Classifier_listService } from '../../api/classifier_list'
 
@@ -27,44 +28,16 @@ export class EditComponent implements OnInit {
     {name:'Лицензия'}
   ]
 
-  // fb;
-  oktmoService;
-  typeOfOwnershipService;
-  foundersTypeService;
-  statusService;
-  //form;
-
-  
-  //selectedOktmo
-
   _institution: Institution = new Institution({})
 
-  // oktmo = {
-  //   value: []
-  // };
-  // oktmo2 = {
-  //   value: []
-  // }
   constructor(
     private institutionService: InstitutionService,
     private classifireService: Classifier_listService,
   ) {
-
-    // this.fb = new FormBuilder();
-    this.oktmoService = classifireService.classifierOktmoList();
-    this.typeOfOwnershipService = classifireService.classifierTypeOfOwnershipList();
-    this.foundersTypeService = classifireService.classifierFoundersTypeList();
-    this.statusService = classifireService.classifierOrganizationStatusList();
-    // this.form = this.fb.group({
-    //   oktmo: JSON.stringify({id: 1, name:'from Edit'})
-    // })
-    // setTimeout(()=>{
-    //   this.oktmo.value = [{id: 1, name:'Первое значение из справочника'}]
-    // },1000)
+   
     this.institutionService.institutionGet('1').subscribe(res=>{
       let _res = new Response(res);
       this._institution = new Institution(_res.data);
-      this._institution.organization.name
     })
 
   }
@@ -74,6 +47,5 @@ export class EditComponent implements OnInit {
 
   onSubmit(f) {
     console.log('this._institution', this._institution.organization)
-    //console.log('f', f.controls)
   }
 }

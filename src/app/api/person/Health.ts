@@ -31,20 +31,20 @@ export class Health
     constructor(json) {
         json = (json || {})
 		this.date = json["date"] || null;
-		this.group = new ClassifierShort(json["group"]);
-		this.group_document = new HealthGroupDocument(json["group_document"]);
-		this.sport_group = new ClassifierShort(json["sport_group"]);
+		this.group = json["group"] ? new ClassifierShort(json["group"]) : null ;
+		this.group_document = json["group_document"] ? new HealthGroupDocument(json["group_document"]) : null ;
+		this.sport_group = json["sport_group"] ? new ClassifierShort(json["sport_group"]) : null ;
 		this.is_need_adaptive = json["is_need_adaptive"] || null;
 		this.is_need_long_treatment = json["is_need_long_treatment"] || null;
-		this.long_treatment_document = new LongTreatmentDocument(json["long_treatment_document"]);
+		this.long_treatment_document = json["long_treatment_document"] ? new LongTreatmentDocument(json["long_treatment_document"]) : null ;
 		this.is_need_tutor = json["is_need_tutor"] || null;
 		this.is_need_assistant = json["is_need_assistant"] || null;
-		this.occupational_injuries = new ClassifierShort(json["occupational_injuries"]);
-		this.ovz_category = new ClassifierShort(json["ovz_category"]);
-		this.pmpk_ovz_document = new PmpkOvzDocument(json["pmpk_ovz_document"]);
-		this.ovz_education_kind = new ClassifierShort(json["ovz_education_kind"]);
-		this.long_treatment_education_kind = new ClassifierShort(json["long_treatment_education_kind"]);
-		this.education_kind_document = new HealthEducationKindDocument(json["education_kind_document"]);
+		this.occupational_injuries = json["occupational_injuries"] ? new ClassifierShort(json["occupational_injuries"]) : null ;
+		this.ovz_category = json["ovz_category"] ? new ClassifierShort(json["ovz_category"]) : null ;
+		this.pmpk_ovz_document = json["pmpk_ovz_document"] ? new PmpkOvzDocument(json["pmpk_ovz_document"]) : null ;
+		this.ovz_education_kind = json["ovz_education_kind"] ? new ClassifierShort(json["ovz_education_kind"]) : null ;
+		this.long_treatment_education_kind = json["long_treatment_education_kind"] ? new ClassifierShort(json["long_treatment_education_kind"]) : null ;
+		this.education_kind_document = json["education_kind_document"] ? new HealthEducationKindDocument(json["education_kind_document"]) : null ;
 		this.violations = []
 		if(json["violations"]){
 			for (let i in json["violations"]){

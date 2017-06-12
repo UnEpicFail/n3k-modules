@@ -3,7 +3,6 @@
  */
 
 import { BuildingShort } from './BuildingShort';
-import { Identity } from '../common/Identity';
 import { Capacity } from '../common/Capacity';
 import { Address } from '../common/Address';
 import { ClassifierShort } from '../common/ClassifierShort';
@@ -13,7 +12,6 @@ import { PlaceEquipment } from './PlaceEquipment';
 
 export class Building extends BuildingShort
 {
-    institution_identity: Identity; /**/
     capacity: Capacity; /**/
     address: Address; /**/
     type: ClassifierShort; /**/
@@ -24,11 +22,10 @@ export class Building extends BuildingShort
     constructor(json) {
         json = (json || {})
         super(json)
-		this.institution_identity = new Identity(json["institution_identity"]);
-		this.capacity = new Capacity(json["capacity"]);
-		this.address = new Address(json["address"]);
-		this.type = new ClassifierShort(json["type"]);
-		this.terrain = new ClassifierShort(json["terrain"]);
+		this.capacity = json["capacity"] ? new Capacity(json["capacity"]) : null ;
+		this.address = json["address"] ? new Address(json["address"]) : null ;
+		this.type = json["type"] ? new ClassifierShort(json["type"]) : null ;
+		this.terrain = json["terrain"] ? new ClassifierShort(json["terrain"]) : null ;
 		this.rooms = []
 		if(json["rooms"]){
 			for (let i in json["rooms"]){

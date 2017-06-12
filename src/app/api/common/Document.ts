@@ -25,8 +25,8 @@ export class Document
 
     constructor(json) {
         json = (json || {})
-		this.identity = new Identity(json["identity"]);
-		this.entity_state = new EntityState(json["entity_state"]);
+		this.identity = json["identity"] ? new Identity(json["identity"]) : null ;
+		this.entity_state = json["entity_state"] ? new EntityState(json["entity_state"]) : null ;
 		this.series = json["series"] || null;
 		this.number = json["number"] || null;
 		this.reg_number = json["reg_number"] || null;
@@ -36,8 +36,8 @@ export class Document
 		this.valid_from = json["valid_from"] || null;
 		this.valid_to = json["valid_to"] || null;
 		this.description = json["description"] || null;
-		this.type = new ClassifierShort(json["type"]);
-		this.status = new ClassifierShort(json["status"]);
+		this.type = json["type"] ? new ClassifierShort(json["type"]) : null ;
+		this.status = json["status"] ? new ClassifierShort(json["status"]) : null ;
        
     }
 

@@ -9,6 +9,7 @@ import { EstimateShort } from '../common/EstimateShort';
 import { Duration } from '../common/Duration';
 import { Financing } from '../common/Financing';
 import { Age } from '../common/Age';
+import { Capacity } from '../common/Capacity';
 import { Publication } from '../common/Publication';
 import { ProgramMeta } from './ProgramMeta';
 import { ProgramDocument } from './ProgramDocument';
@@ -37,7 +38,7 @@ export class Program extends ProgramShort
     duration: Duration; /**/
     financing: Financing; /**/
     age: Age; /**/
-    capacity: Age; /**/
+    capacity: Capacity; /**/
     publication: Publication; /**/
     meta: ProgramMeta; /**/
     documents: ProgramDocument[]; /*Массив документов программы*/
@@ -47,8 +48,8 @@ export class Program extends ProgramShort
         json = (json || {})
         super(json)
 		this.code = json["code"] || null;
-		this.institution = new InstitutionShort(json["institution"]);
-		this.level = new ClassifierShort(json["level"]);
+		this.institution = json["institution"] ? new InstitutionShort(json["institution"]) : null ;
+		this.level = json["level"] ? new ClassifierShort(json["level"]) : null ;
 		this.stages = []
 		if(json["stages"]){
 			for (let i in json["stages"]){
@@ -128,12 +129,12 @@ export class Program extends ProgramShort
 				this.arts.push(new ClassifierShort(json["arts"][i]))
 			}
 		}
-		this.duration = new Duration(json["duration"]);
-		this.financing = new Financing(json["financing"]);
-		this.age = new Age(json["age"]);
-		this.capacity = new Age(json["capacity"]);
-		this.publication = new Publication(json["publication"]);
-		this.meta = new ProgramMeta(json["meta"]);
+		this.duration = json["duration"] ? new Duration(json["duration"]) : null ;
+		this.financing = json["financing"] ? new Financing(json["financing"]) : null ;
+		this.age = json["age"] ? new Age(json["age"]) : null ;
+		this.capacity = json["capacity"] ? new Capacity(json["capacity"]) : null ;
+		this.publication = json["publication"] ? new Publication(json["publication"]) : null ;
+		this.meta = json["meta"] ? new ProgramMeta(json["meta"]) : null ;
 		this.documents = []
 		if(json["documents"]){
 			for (let i in json["documents"]){

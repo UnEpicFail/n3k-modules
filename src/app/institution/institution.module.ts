@@ -7,7 +7,8 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 import { YaCoreModule } from '../angular2-yandex-maps/core.module';
 
-import { N3kNgGridModule } from '../lib/n3k-ng-grid.module';
+import { N3kNgGridModule } from '../lib/n3k-ng-grid/n3k-ng-grid.module';
+import { N3kNgComponentsModule } from '../lib/n3k-ng-components/n3k-ng-components.module';
 
 import { InstitutionService } from '../api/institution'
 import { Classifier_listService } from '../api/classifier_list';
@@ -26,6 +27,7 @@ import { InnovationsComponent } from './view/innovations/innovations.component';
 import { DepartmentsComponent } from './view/departments/departments.component';
 import { TerritoryComponent } from './view/territory/territory.component';
 import { AddressComponent } from './edit/address/address.component';
+import { OrganizationComponent } from './edit/organization-form/organization-form.component';
 
 const routes:Routes = [
   {path: 'institution', children: [
@@ -45,6 +47,7 @@ const routes:Routes = [
     FormsModule,
     CommonModule,
     N3kNgGridModule,
+    N3kNgComponentsModule,
     YaCoreModule.forRoot(),
     RouterModule.forRoot([]),
   ],
@@ -66,6 +69,7 @@ const routes:Routes = [
     DepartmentsComponent,
     TerritoryComponent,
     AddressComponent,
+    OrganizationComponent,
   ],
   exports: [ToTime, ToWeekDays, YesNo],
   providers: [InstitutionService,Classifier_listService],

@@ -13,7 +13,7 @@ export class HardSituation
 
     constructor(json) {
         json = (json || {})
-		this.situation = new ClassifierShort(json["situation"]);
+		this.situation = json["situation"] ? new ClassifierShort(json["situation"]) : null ;
 		this.date_start = json["date_start"] || null;
 		this.date_end = json["date_end"] || null;
        

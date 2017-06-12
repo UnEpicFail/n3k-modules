@@ -8,12 +8,17 @@ import { EducationContractDocument } from './EducationContractDocument';
 
 export class EducationContract extends EducationContractShort
 {
-    document: EducationContractDocument; /**/
+    document: EducationContractDocument[]; /*Документы*/
 
     constructor(json) {
         json = (json || {})
         super(json)
-		this.document = new EducationContractDocument(json["document"]);
+		this.document = []
+		if(json["document"]){
+			for (let i in json["document"]){
+				this.document.push(new EducationContractDocument(json["document"][i]))
+			}
+		}
        
     }
 

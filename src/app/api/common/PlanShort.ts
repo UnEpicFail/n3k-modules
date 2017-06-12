@@ -14,12 +14,12 @@ export class PlanShort
     name: string; /*Название*/
     stages: ClassifierShort[]; /*Этапы освоения образовательной программы доступные в плане*/
     direction: ClassifierShort; /**/
-    profession: ClassifierShort; /**/
+    professions: ClassifierShort; /**/
 
     constructor(json) {
         json = (json || {})
-		this.identity = new Identity(json["identity"]);
-		this.entity_state = new EntityState(json["entity_state"]);
+		this.identity = json["identity"] ? new Identity(json["identity"]) : null ;
+		this.entity_state = json["entity_state"] ? new EntityState(json["entity_state"]) : null ;
 		this.name = json["name"] || null;
 		this.stages = []
 		if(json["stages"]){
@@ -27,8 +27,8 @@ export class PlanShort
 				this.stages.push(new ClassifierShort(json["stages"][i]))
 			}
 		}
-		this.direction = new ClassifierShort(json["direction"]);
-		this.profession = new ClassifierShort(json["profession"]);
+		this.direction = json["direction"] ? new ClassifierShort(json["direction"]) : null ;
+		this.professions = json["professions"] ? new ClassifierShort(json["professions"]) : null ;
        
     }
 

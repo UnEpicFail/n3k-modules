@@ -19,11 +19,11 @@ export class Subject extends SubjectShort
     constructor(json) {
         json = (json || {})
         super(json)
-		this.specify = new ClassifierShort(json["specify"]);
+		this.specify = json["specify"] ? new ClassifierShort(json["specify"]) : null ;
 		this.is_deep = json["is_deep"] || null;
-		this.duration = new Duration(json["duration"]);
-		this.component = new ClassifierShort(json["component"]);
-		this.meta = new SubjectMeta(json["meta"]);
+		this.duration = json["duration"] ? new Duration(json["duration"]) : null ;
+		this.component = json["component"] ? new ClassifierShort(json["component"]) : null ;
+		this.meta = json["meta"] ? new SubjectMeta(json["meta"]) : null ;
        
     }
 

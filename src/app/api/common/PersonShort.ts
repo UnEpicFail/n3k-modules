@@ -24,8 +24,8 @@ export class PersonShort
 
     constructor(json) {
         json = (json || {})
-		this.identity = new Identity(json["identity"]);
-		this.entity_state = new EntityState(json["entity_state"]);
+		this.identity = json["identity"] ? new Identity(json["identity"]) : null ;
+		this.entity_state = json["entity_state"] ? new EntityState(json["entity_state"]) : null ;
 		this.firstname = json["firstname"] || null;
 		this.surname = json["surname"] || null;
 		this.middlename = json["middlename"] || null;
@@ -37,8 +37,8 @@ export class PersonShort
 				this.identity_documents.push(new IdentityDocument(json["identity_documents"][i]))
 			}
 		}
-		this.sex = new ClassifierShort(json["sex"]);
-		this.citizenship = new Citizenship(json["citizenship"]);
+		this.sex = json["sex"] ? new ClassifierShort(json["sex"]) : null ;
+		this.citizenship = json["citizenship"] ? new Citizenship(json["citizenship"]) : null ;
        
     }
 

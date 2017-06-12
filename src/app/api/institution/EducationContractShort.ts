@@ -11,15 +11,17 @@ export class EducationContractShort
 {
     identity: Identity; /**/
     entity_state: EntityState; /**/
+    institution_identity: Identity; /**/
     subject: ClassifierShort; /**/
     group_count: number; /*Количество групп*/
     contragent_institution: string; /*Название учереждения с которым подписан договор*/
 
     constructor(json) {
         json = (json || {})
-		this.identity = new Identity(json["identity"]);
-		this.entity_state = new EntityState(json["entity_state"]);
-		this.subject = new ClassifierShort(json["subject"]);
+		this.identity = json["identity"] ? new Identity(json["identity"]) : null ;
+		this.entity_state = json["entity_state"] ? new EntityState(json["entity_state"]) : null ;
+		this.institution_identity = json["institution_identity"] ? new Identity(json["institution_identity"]) : null ;
+		this.subject = json["subject"] ? new ClassifierShort(json["subject"]) : null ;
 		this.group_count = json["group_count"] || null;
 		this.contragent_institution = json["contragent_institution"] || null;
        

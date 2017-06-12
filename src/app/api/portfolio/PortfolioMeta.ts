@@ -19,15 +19,15 @@ export class PortfolioMeta
 
     constructor(json) {
         json = (json || {})
-		this.academic_degree = new ClassifierShort(json["academic_degree"]);
-		this.academic_title = new ClassifierShort(json["academic_title"]);
+		this.academic_degree = json["academic_degree"] ? new ClassifierShort(json["academic_degree"]) : null ;
+		this.academic_title = json["academic_title"] ? new ClassifierShort(json["academic_title"]) : null ;
 		this.scientific_adviser = json["scientific_adviser"] || null;
 		this.product = json["product"] || null;
-		this.education_level = new ClassifierShort(json["education_level"]);
-		this.sport_event_type = new ClassifierShort(json["sport_event_type"]);
-		this.sport_kind = new ClassifierShort(json["sport_kind"]);
-		this.art_kind = new ClassifierShort(json["art_kind"]);
-		this.sport_result = new ClassifierShort(json["sport_result"]);
+		this.education_level = json["education_level"] ? new ClassifierShort(json["education_level"]) : null ;
+		this.sport_event_type = json["sport_event_type"] ? new ClassifierShort(json["sport_event_type"]) : null ;
+		this.sport_kind = json["sport_kind"] ? new ClassifierShort(json["sport_kind"]) : null ;
+		this.art_kind = json["art_kind"] ? new ClassifierShort(json["art_kind"]) : null ;
+		this.sport_result = json["sport_result"] ? new ClassifierShort(json["sport_result"]) : null ;
        
     }
 

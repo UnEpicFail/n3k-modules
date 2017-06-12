@@ -11,7 +11,7 @@ export { ResponseMessage } from './ResponseMessage';
 export { ResponseValidation } from './ResponseValidation';
 export { Response } from './Response';
 export { FiasAddressPart } from './FiasAddressPart';
-export { FiasAddess } from './FiasAddess';
+export { FiasAddress } from './FiasAddress';
 export { AddressShort } from './AddressShort';
 export { Address } from './Address';
 export { Pagination } from './Pagination';

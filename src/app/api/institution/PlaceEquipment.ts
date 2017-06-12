@@ -14,7 +14,7 @@ export class PlaceEquipment
     constructor(json) {
         json = (json || {})
 		this.id = json["id"] || null;
-		this.equipment = new Equipment(json["equipment"]);
+		this.equipment = json["equipment"] ? new Equipment(json["equipment"]) : null ;
 		this.quantity = json["quantity"] || null;
        
     }
