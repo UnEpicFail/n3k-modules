@@ -1,4 +1,5 @@
- <form [formGroup]="form">
+ <fieldset [formGroup]="form">
+  <h2>Юридическое лицо</h2>
   <n3k-select
     [title] = '"ОКТМО"'
     [placeholder] = '"ОКТМО"'
@@ -38,4 +39,4 @@
     formControlName = 'address'
     (onDelete) = 'onAddressDelete()'
   ></edit-address>  
-</form>
+</fieldset>

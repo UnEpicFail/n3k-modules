@@ -77,6 +77,7 @@ export class SelectComponent implements OnInit, ControlValueAccessor {
   }
 
   writeValue(value: any): void {
+    this._values = []
     if (value !== undefined && value !== null) {
       if (!Array.isArray(value)) {
         value = [value]
@@ -86,8 +87,6 @@ export class SelectComponent implements OnInit, ControlValueAccessor {
           this._values.push(value[i])
         }
       }
-    } else {
-      this._values = [];
     }
   }
 
@@ -136,7 +135,7 @@ export class SelectComponent implements OnInit, ControlValueAccessor {
 
   private select(option) {
     if (this._multi){
-      if ( this.searchInValues(option.id) === false ) {
+      if ( this.searchInValues(option) === false ) {
         this._values.push(option)
       } 
     } else {
@@ -156,11 +155,11 @@ export class SelectComponent implements OnInit, ControlValueAccessor {
     return false;
   }
 
-  private searchInValues(id) {
+  private searchInValues(option) {
     let max_i = this._values.length
     if (max_i > 0) {
       for (let i = 0; i < max_i; i+=1 ){
-        if ( this._values[i].id === id) {
+        if ( this._values[i] === option) {
           return i
         }
       }

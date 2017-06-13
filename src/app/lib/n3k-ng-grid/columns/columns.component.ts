@@ -35,10 +35,10 @@ export class ColumnsComponent implements AfterContentInit , OnDestroy{
   column1: Column1RefDirective
 
   @ContentChild(Column2RefDirective)
-  column2: Column1RefDirective
+  column2: Column2RefDirective
 
   @ContentChild(Column3RefDirective)
-  column3: Column1RefDirective
+  column3: Column3RefDirective
 
   constructor(public el: ElementRef, private ps: PositionService) {
     ps.addColumn(this)    

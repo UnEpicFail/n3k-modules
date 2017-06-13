@@ -23,6 +23,15 @@ h1 {
     color: #000;
 }
 
+h2 {
+    font-family: 'RobotoSlab-Regular', 'Roboto Slab';
+    font-size: 26px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 48px;
+    color: #000;
+}
+
 h3 {
     font-family: "RobotoSlab-Regular", "Roboto Slab";
     font-size: 16px;
@@ -32,6 +41,9 @@ h3 {
     color: #000;
 }
 
+fieldset {
+    border-width: 0;
+}
 
 .horizontal-separator {
     line-height: 0px;
@@ -197,3 +209,23 @@ h3 {
 }
 
 /***Tree-List***/
+
+
+/***Anchor-Menu***/
+
+.anchor-menu {
+    font-size: 13px;
+    font-family: 'ArialMT', 'Arial';
+    color: #000000;
+}
+
+.anchor-menu .anchor-item {
+    text-decoration: underline;
+    margin-bottom: 20px;
+}
+
+.anchor-menu .anchor-item:hover {
+    cursor: pointer
+}
+
+/***Anchor-Menu***/

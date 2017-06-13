@@ -6,16 +6,14 @@
 <n3k-columns context='form'>
   <column-1>
     <form [formGroup]="form" (submit)='onSubmit()'>
-     <edit-organization
-        formControlName='organization'
-     ></edit-organization>
-      <!--<n3k-cloner 
-        [(ngModel)]='_institution.contacts'
-        name='contacts'
-      >
-        <edit-address clone *ngFor='let contact of _institution.contacts'></edit-address>  
-      </n3k-cloner>-->
       
+      <anchor-target name='organization'></anchor-target>
+
+      <edit-organization 
+          formControlName='organization'
+      ></edit-organization>
+      
+      <anchor-target name='common'></anchor-target>
 
       <br><br><br><br><br>
       <br><br><br><br><br>
@@ -27,8 +25,9 @@
     </form>
   </column-1>
   <column-2>
-    <ul>
-      <li *ngFor='let anchor of anchorList'>{{anchor.name}}</li>
-    </ul>
+    <anchor-menu 
+      [list]='anchorList'
+      [anchors]='anchors'
+    ></anchor-menu>
   </column-2>
 </n3k-columns>

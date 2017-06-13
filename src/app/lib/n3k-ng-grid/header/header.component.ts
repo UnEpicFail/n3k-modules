@@ -1,4 +1,5 @@
 import { Component, OnInit, ElementRef } from '@angular/core';
+import { PositionService } from '../position.service'
 
 @Component({
   selector: 'n3k-header',
@@ -7,7 +8,9 @@ import { Component, OnInit, ElementRef } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(public el: ElementRef) { }
+  constructor(public el: ElementRef, private ps: PositionService) { 
+    ps.addHeader(this);
+  }
 
   ngOnInit() {
   }

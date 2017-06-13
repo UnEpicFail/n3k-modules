@@ -2,4 +2,33 @@
     font-family: 'ArialMT', 'Arial';
     font-size: 12px;
     line-height: 21px;
+    color: #A1A1A1;
+}
+
+.clones {
+    background-color: #F2F2F2;
+    padding: 20px 25px;
+}
+.clones .view-text {
+    margin-bottom: 35px;
+    font-family: 'ArialMT', 'Arial';
+    color: #000000;
+}
+
+.clones .controll {
+    font-family: 'ArialMT', 'Arial';
+    color: #999999;
+    font-size: 13px;
+}
+.clones .controll .text {
+    text-decoration: underline;
+}
+
+.clones .controll-element {
+    margin-right: 40px;
+}
+
+.clones .controll-element:hover {
+    cursor: pointer;
+    color: #000;
 }
