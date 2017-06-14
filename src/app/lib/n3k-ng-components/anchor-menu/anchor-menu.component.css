@@ -1,0 +1,14 @@
+.anchor-menu {
+    font-size: 13px;
+    font-family: 'ArialMT', 'Arial';
+    color: #000000;
+}
+
+.anchor-menu .anchor-item {
+    text-decoration: underline;
+    margin-bottom: 20px;
+}
+
+.anchor-menu .anchor-item:hover {
+    cursor: pointer
+}

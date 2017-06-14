@@ -9,20 +9,20 @@
                 </td>
                 <td style='width: 25%'>
                     <div class='description-block'>
-                        <div class='title'>Район:</div>
+                        <div class='description-block-title'>Район:</div>
                         {{_institution.district.name}}
                     </div>
                     <div class='description-block'>
-                        <div class='title'>Уровень образования:</div>
+                        <div class='description-block-title'>Уровень образования:</div>
                         <div *ngFor='let level of _institution.levels'>{{level.name}}</div>
                     </div>
                     
                     <div class='description-block'>
-                        <div class='title'>Сайт:</div>
+                        <div class='description-block-title'>Сайт:</div>
                         <a href='_contacts[1]'>{{_contacts[1]}}</a>
                     </div>
                     <div class='description-block'>
-                        <div class='title'>Телефон:</div>
+                        <div class='description-block-title'>Телефон:</div>
                         {{_contacts[2]}}
                     </div>
                 </td>
@@ -33,94 +33,94 @@
             <tr>
                 <td style='width: 25%'>
                     <div class='description-block'>
-                        <div class='title'>Полное наименование организации:</div>
+                        <div class='description-block-title'>Полное наименование организации:</div>
                         {{_institution.full_name}}
                     </div>
                     <div class='description-block'>
                         {{_institution.name}}
                     </div>
                     <div class='description-block'>
-                        <div class='title'>Краткое наименование организации:</div>
+                        <div class='description-block-title'>Краткое наименование организации:</div>
                         <div class='title'>Адреса обслуживаемой территории:</div>
                         <div *ngFor='let area of _institution.education_area'>{{area.origin_address}}</div>
                     </div>
                 </td>
                 <td style='width: 25%'>
                     <div class='description-block'>
-                        <div class='title'>Подведомственность:</div>
+                        <div class='description-block-title'>Подведомственность:</div>
                         {{_institution}}
                     </div>
                     <div class='description-block'>
-                        <div class='title'>Регион:</div>
+                        <div class='description-block-title'>Регион:</div>
                         {{_institution.region.name}}
                     </div>
                     <div class='description-block'>
-                        <div class='title'>Район:</div>
+                        <div class='description-block-title'>Район:</div>
                         {{_institution.district.name}}
                     </div>
                     <div class='description-block'>
-                        <div class='title'>Уровень образования:</div>
+                        <div class='description-block-title'>Уровень образования:</div>
                         <div *ngFor='let level of _institution.levels'>{{level.name}}</div>
                     </div>
                     <div class='description-block'>
-                        <div class='title'>Тип местности:</div>
+                        <div class='description-block-title'>Тип местности:</div>
                         {{_institution}}
                     </div>
                     <div class='description-block'>
-                        <div class='title'>Основной язык обучения:</div>
+                        <div class='description-block-title'>Основной язык обучения:</div>
                         {{_institution.education_language.name}}
                     </div>
                     <div class='description-block'>
-                        <div class='title'>Тип питания:</div>
+                        <div class='description-block-title'>Тип питания:</div>
                         <div *ngFor='let meal of _institution.meals'>{{meal.meal_type.name}}</div>
                     </div>
                     <div class='description-block'>
-                        <div class='title'>Образовательные услуги:</div>
+                        <div class='description-block-title'>Образовательные услуги:</div>
                         <div *ngFor='let services of _institution.education_services'>{{services.name}}</div>
                     </div>
                 </td>
 
                 <td style='width: 25%'>
                     <div class='description-block'>
-                        <div class='title'>Фактическая наполняемость:</div>
+                        <div class='description-block-title'>Фактическая наполняемость:</div>
                         {{_institution.meta.occupied_place}}
                     </div>
                     <div class='description-block'>
-                        <div class='title'>Предельная наполняемость:</div>
+                        <div class='description-block-title'>Предельная наполняемость:</div>
                         {{_institution.meta.total_place}}
                     </div>
                     <div class='description-block'>
-                        <div class='title'>Количество смен:</div>
+                        <div class='description-block-title'>Количество смен:</div>
                         <div *ngFor='let shift of _institution.shift'>{{shift.name}}</div>
                     </div>
                     <div class='description-block'>
-                        <div class='title'>Время работы:</div>
+                        <div class='description-block-title'>Время работы:</div>
                         {{_institution.meta.schedule_string}}
                     </div>
                     <div class='description-block'>
-                        <div class='title'>Типы групп ОВЗ доступные в ОО:</div>
+                        <div class='description-block-title'>Типы групп ОВЗ доступные в ОО:</div>
                         <div *ngFor='let ovz_group_types of _institution.ovz_group_types'>{{ovz_group_types.name}}</div>
                     </div>
                     <div class='description-block'>
-                        <div class='title'>Дата образования организации:</div>
+                        <div class='description-block-title'>Дата образования организации:</div>
                         {{_institution.foundation_date}}
                     </div>
                 </td>
                 <td style='width: 25%'>
                     <div class='description-block'>
-                        <div class='title'>Тип организации:</div>
+                        <div class='description-block-title'>Тип организации:</div>
                         {{_institution.type.name}}
                     </div>
                     <div class='description-block'>
-                        <div class='title'>Вид организации:</div>
+                        <div class='description-block-title'>Вид организации:</div>
                         {{_institution.organization.founders_type.name}}
                     </div>
                     <div class='description-block'>
-                        <div class='title'>Заведующий:</div>
+                        <div class='description-block-title'>Заведующий:</div>
                         {{_institution}}
                     </div>
                     <div class='description-block'>
-                        <div class='title'>Телефон руководителя:</div>
+                        <div class='description-block-title'>Телефон руководителя:</div>
                         {{_institution}}
                     </div>
                 </td>
@@ -131,51 +131,51 @@
             <tr>
                 <td style='width: 25%'>
                     <div class='description-block'>
-                        <div class='title'>Дополнительное наименование организации:</div>
+                        <div class='description-block-title'>Дополнительное наименование организации:</div>
                         {{_institution.meta.additional_name}}
                     </div>
                     <div class='description-block'>
-                        <div class='title'>Дополнительное наименование организации (на момент реорганизации):</div>
+                        <div class='description-block-title'>Дополнительное наименование организации (на момент реорганизации):</div>
                         {{_institution.meta.reorganization_name}}
                     </div>
                     <div class='description-block'>
-                        <div class='title'>Ссылка на образовательную программу на официальном сайте:</div>
+                        <div class='description-block-title'>Ссылка на образовательную программу на официальном сайте:</div>
                         <a href='{{_institution.meta.educational_program_url'>{{_institution.meta.educational_program_url}}</a>
                     </div>
                     <div class='description-block'>
-                        <div class='title'>Организация разработчика «Электронного дневника»:</div>
+                        <div class='description-block-title'>Организация разработчика «Электронного дневника»:</div>
                         {{_institution.meta.electronic_diary_vendor}}
                     </div>
                 </td>
                 <td style='width: 25%'>
                     <div class='description-block'>
-                        <div class='title'>Название информационной системы «Электронного дневника»:</div>
+                        <div class='description-block-title'>Название информационной системы «Электронного дневника»:</div>
                         {{_institution.meta.electronic_diary_name}}
                     </div>
                     <div class='description-block'>
-                        <div class='title'>Ссылка для входа на сервис «Электронный дневник»:</div>
+                        <div class='description-block-title'>Ссылка для входа на сервис «Электронный дневник»:</div>
                         <a href='{{_institution.meta.electronic_diary_url'>{{_institution.meta.electronic_diary_name}}</a>
                     </div>
                     <div class='description-block'>
-                        <div class='title'>Будет запись в 1 класс:</div>
+                        <div class='description-block-title'>Будет запись в 1 класс:</div>
                         {{_institution.meta.is_first_class | yesNo}}
                     </div>
                     <div class='description-block'>
-                        <div class='title'>Общее количество сотрудников:</div>
+                        <div class='description-block-title'>Общее количество сотрудников:</div>
                         {{_institution.meta.employee_count}}
                     </div>
                     <div class='description-block'>
-                        <div class='title'>Ссылка на устав:</div>
+                        <div class='description-block-title'>Ссылка на устав:</div>
                         <a href='{{_institution.meta.statute_url'>{{_institution.meta.statute_url}}</a>
                     </div>
                     <div class='description-block'>
-                        <div class='title'>Направление подготвки, специальности, профессии (кроме общего образования):</div>
+                        <div class='description-block-title'>Направление подготвки, специальности, профессии (кроме общего образования):</div>
                         {{_institution.meta.direction_for_ip}}
                     </div>
                 </td>
                 <td style='width: 25%'>
                     <div class='description-block'>
-                        <div class='title'>Режим (часы, дни):</div>
+                        <div class='description-block-title'>Режим (часы, дни):</div>
                         <div *ngFor='let work_time of _institution.work_time'>
                             <div>{{work_time.week_days | toWeekDays}}</div>
                             <div>
@@ -184,29 +184,29 @@
                         </div>
                     </div>
                     <div class='description-block'>
-                        <div class='title'>Наличие требуемой численности преподователей общепрофессиональных и специальных дисциплин, связанных с ИТ:</div>
+                        <div class='description-block-title'>Наличие требуемой численности преподователей общепрофессиональных и специальных дисциплин, связанных с ИТ:</div>
                         {{_institution.meta.has_it_teachers | yesNo}}
                     </div>
                     <div class='description-block'>
-                        <div class='title'>Переведено на нормативно-бюджетное финансирование:</div>
+                        <div class='description-block-title'>Переведено на нормативно-бюджетное финансирование:</div>
                         {{_institution.meta.is_budget_transfered | yesNo}}
                     </div>
                     <div class='description-block'>
-                        <div class='title'>Наличие бухгалтерии:</div>
+                        <div class='description-block-title'>Наличие бухгалтерии:</div>
                         {{_institution.meta.has_bookkeeping | yesNo}}
                     </div>
                     <div class='description-block'>
-                        <div class='title'>Малокомплектное (для школ):</div>
+                        <div class='description-block-title'>Малокомплектное (для школ):</div>
                         {{_institution.meta.is_small_setted | yesNo}}
                     </div>
                 </td>
                 <td style='width: 25%'>
                     <div class='description-block'>
-                        <div class='title'>Использование современных оценочных процедур для оценки достижений по ФГОС:</div>
+                        <div class='description-block-title'>Использование современных оценочных процедур для оценки достижений по ФГОС:</div>
                         <div *ngFor='let fgos of _institution.meta.fgos_scoring'>{{fgos.name}}</div>
                     </div>
                     <div class='description-block'>
-                        <div class='title'>Характеристики сайта ОО:</div>
+                        <div class='description-block-title'>Характеристики сайта ОО:</div>
                         <div *ngFor='let site_characteristics of _institution.meta.site_characteristics'>{{site_characteristics.name}}</div>
                     </div>
                 </td>
@@ -217,33 +217,33 @@
             <tr>
                 <td style='width: 25%'>
                     <div class='description-block'>
-                        <div class='title'>Почтовый адрес:</div>
+                        <div class='description-block-title'>Почтовый адрес:</div>
                         {{_institution}}
                     </div>
                     <div class='description-block'>
-                        <div class='title'>Телефон:</div>
-                        {{_institution}}
-                    </div>
-                </td>
-                <td style='width: 25%'>
-                    <div class='description-block'>
-                        <div class='title'>Дополнительный телефон:</div>
-                        {{_institution}}
-                    </div>
-                    <div class='description-block'>
-                        <div class='title'>Факс:</div>
+                        <div class='description-block-title'>Телефон:</div>
                         {{_institution}}
                     </div>
                 </td>
                 <td style='width: 25%'>
                     <div class='description-block'>
-                        <div class='title'>Email:</div>
+                        <div class='description-block-title'>Дополнительный телефон:</div>
+                        {{_institution}}
+                    </div>
+                    <div class='description-block'>
+                        <div class='description-block-title'>Факс:</div>
                         {{_institution}}
                     </div>
                 </td>
                 <td style='width: 25%'>
                     <div class='description-block'>
-                        <div class='title'>Сайт:</div>
+                        <div class='description-block-title'>Email:</div>
+                        {{_institution}}
+                    </div>
+                </td>
+                <td style='width: 25%'>
+                    <div class='description-block'>
+                        <div class='description-block-title'>Сайт:</div>
                         {{_institution}}
                     </div>
                 </td>
@@ -262,95 +262,95 @@
             <tr>
                 <td style='width: 25%'>
                     <div class='description-block'>
-                        <div class='title'>Статус:</div>
+                        <div class='description-block-title'>Статус:</div>
                         {{_institution.organization.status.name}}
                     </div>
                     <div class='description-block'>
-                        <div class='title'>Юридический адрес:</div>
+                        <div class='description-block-title'>Юридический адрес:</div>
                         {{_institution.organization.address.origin_address}}
                     </div>
                     <div class='description-block'>
-                        <div class='title'>Форма собственности:</div>
+                        <div class='description-block-title'>Форма собственности:</div>
                         {{_institution.organization.type_of_ownership.name}}
                     </div>
                     <div class='description-block'>
-                        <div class='title'>Филиалы:</div>
+                        <div class='description-block-title'>Филиалы:</div>
                         {{_institution}}
                     </div>
                     <div class='description-block'>
-                        <div class='title'>Головная организация:</div>
+                        <div class='description-block-title'>Головная организация:</div>
                         {{_institution}}
                     </div>
                     <div class='description-block'>
-                        <div class='title'>Вид организации по учредителям:</div>
+                        <div class='description-block-title'>Вид организации по учредителям:</div>
                         {{_institution}}
                     </div>
                 </td>
                 <td style='width: 25%'>
                     <div class='description-block'>
-                        <div class='title'>Регион:</div>
+                        <div class='description-block-title'>Регион:</div>
                         {{_institution.organization.region.name}}
                     </div>
                     <div class='description-block'>
-                        <div class='title'>Район:</div>
+                        <div class='description-block-title'>Район:</div>
                         {{_institution.organization.district.name}}
                     </div>
                     <div class='description-block'>
-                        <div class='title'>Головная организация:</div>
+                        <div class='description-block-title'>Головная организация:</div>
                         {{_institution}}
                     </div>
                     <div class='description-block'>
-                        <div class='title'>OKOGU:</div>
+                        <div class='description-block-title'>OKOGU:</div>
                         {{_institution.organization.okogu}}
                     </div>
                     <div class='description-block'>
-                        <div class='title'>КПП:</div>
+                        <div class='description-block-title'>КПП:</div>
                         {{_institution.organization.kpp}}
                     </div>
                 </td>
                 <td style='width: 25%'>
                     <div class='description-block'>
-                        <div class='title'>ОГРН:</div>
+                        <div class='description-block-title'>ОГРН:</div>
                         {{_institution.organization.ogrn}}
                     </div>
                     <div class='description-block'>
-                        <div class='title'>Пержний ОГРН:</div>
+                        <div class='description-block-title'>Пержний ОГРН:</div>
                         {{_institution}}
                     </div>
                     <div class='description-block'>
-                        <div class='title'>ОКОПФ:</div>
+                        <div class='description-block-title'>ОКОПФ:</div>
                         {{_institution.organization.okopf.name}}
                     </div>
                     <div class='description-block'>
-                        <div class='title'>ОКТМО:</div>
+                        <div class='description-block-title'>ОКТМО:</div>
                         {{_institution.organization.oktmo.name}}
                     </div>
                     <div class='description-block'>
-                        <div class='title'>ОКФС:</div>
+                        <div class='description-block-title'>ОКФС:</div>
                         {{_institution.organization.okfs.name}}
                     </div>
                 </td>
                 <td style='width: 25%'>
                     <div class='description-block'>
-                        <div class='title'>ИНН:</div>
+                        <div class='description-block-title'>ИНН:</div>
                         {{_institution.organization.inn}}
                     </div>
                     <div class='description-block'>
-                        <div class='title'>ОКАТО:</div>
+                        <div class='description-block-title'>ОКАТО:</div>
                         {{_institution.organization.okato}}
                     </div>
                     <div class='description-block'>
-                        <div class='title'>ОКВЭД:</div>
+                        <div class='description-block-title'>ОКВЭД:</div>
                         <div *ngFor='let okved of _institution.organization.okved'>{{okved.name}}</div>
                     </div>
                     <div class='description-block'>
-                        <div class='title'>ФИО владельца:</div>
+                        <div class='description-block-title'>ФИО владельца:</div>
                         {{_institution.organization.owner.surname}} 
                         {{_institution.organization.owner.firstname}} 
                         {{_institution.organization.owner.middlename}}
                     </div>
                     <div class='description-block'>
-                        <div class='title'>Гражданство:</div>
+                        <div class='description-block-title'>Гражданство:</div>
                         {{_institution.organization.owner.citizenship.country.name}}
                     </div>
                 </td>
@@ -361,49 +361,49 @@
             <tr>
                 <td srtyle='width: 25%'>
                     <div class='description-block'>
-                        <div class='title'>Серия:</div>
+                        <div class='description-block-title'>Серия:</div>
                         {{_institution}}
                     </div>
                     <div class='description-block'>
-                        <div class='title'>Номер:</div>
+                        <div class='description-block-title'>Номер:</div>
                         {{_institution}}
                     </div>
                     <div class='description-block'>
-                        <div class='title'>Регистрационный номер:</div>
-                        {{_institution}}
-                    </div>
-                </td>                
-                <td srtyle='width: 25%'>
-                    <div class='description-block'>
-                        <div class='title'>Дата регистрации:</div>
-                        {{_institution}}
-                    </div>
-                    <div class='description-block'>
-                        <div class='title'>Дата выпуска:</div>
-                        {{_institution}}
-                    </div>
-                    <div class='description-block'>
-                        <div class='title'>Кто выпустил:</div>
+                        <div class='description-block-title'>Регистрационный номер:</div>
                         {{_institution}}
                     </div>
                 </td>                
                 <td srtyle='width: 25%'>
                     <div class='description-block'>
-                        <div class='title'>Действителен от:</div>
+                        <div class='description-block-title'>Дата регистрации:</div>
                         {{_institution}}
                     </div>
                     <div class='description-block'>
-                        <div class='title'>Действителен до:</div>
+                        <div class='description-block-title'>Дата выпуска:</div>
+                        {{_institution}}
+                    </div>
+                    <div class='description-block'>
+                        <div class='description-block-title'>Кто выпустил:</div>
                         {{_institution}}
                     </div>
                 </td>                
                 <td srtyle='width: 25%'>
                     <div class='description-block'>
-                        <div class='title'>Статус:</div>
+                        <div class='description-block-title'>Действителен от:</div>
                         {{_institution}}
                     </div>
                     <div class='description-block'>
-                        <div class='title'>Файлы:</div>
+                        <div class='description-block-title'>Действителен до:</div>
+                        {{_institution}}
+                    </div>
+                </td>                
+                <td srtyle='width: 25%'>
+                    <div class='description-block'>
+                        <div class='description-block-title'>Статус:</div>
+                        {{_institution}}
+                    </div>
+                    <div class='description-block'>
+                        <div class='description-block-title'>Файлы:</div>
                         {{_institution}}
                     </div>
                 </td>                
@@ -414,49 +414,49 @@
             <tr>
                 <td srtyle='width: 25%'>
                     <div class='description-block'>
-                        <div class='title'>Серия:</div>
+                        <div class='description-block-title'>Серия:</div>
                         {{_institution}}
                     </div>
                     <div class='description-block'>
-                        <div class='title'>Номер:</div>
+                        <div class='description-block-title'>Номер:</div>
                         {{_institution}}
                     </div>
                     <div class='description-block'>
-                        <div class='title'>Регистрационный номер:</div>
-                        {{_institution}}
-                    </div>
-                </td>                
-                <td srtyle='width: 25%'>
-                    <div class='description-block'>
-                        <div class='title'>Дата регистрации:</div>
-                        {{_institution}}
-                    </div>
-                    <div class='description-block'>
-                        <div class='title'>Дата выпуска:</div>
-                        {{_institution}}
-                    </div>
-                    <div class='description-block'>
-                        <div class='title'>Кто выпустил:</div>
+                        <div class='description-block-title'>Регистрационный номер:</div>
                         {{_institution}}
                     </div>
                 </td>                
                 <td srtyle='width: 25%'>
                     <div class='description-block'>
-                        <div class='title'>Действителен от:</div>
+                        <div class='description-block-title'>Дата регистрации:</div>
                         {{_institution}}
                     </div>
                     <div class='description-block'>
-                        <div class='title'>Действителен до:</div>
+                        <div class='description-block-title'>Дата выпуска:</div>
+                        {{_institution}}
+                    </div>
+                    <div class='description-block'>
+                        <div class='description-block-title'>Кто выпустил:</div>
                         {{_institution}}
                     </div>
                 </td>                
                 <td srtyle='width: 25%'>
                     <div class='description-block'>
-                        <div class='title'>Статус:</div>
+                        <div class='description-block-title'>Действителен от:</div>
                         {{_institution}}
                     </div>
                     <div class='description-block'>
-                        <div class='title'>Файлы:</div>
+                        <div class='description-block-title'>Действителен до:</div>
+                        {{_institution}}
+                    </div>
+                </td>                
+                <td srtyle='width: 25%'>
+                    <div class='description-block'>
+                        <div class='description-block-title'>Статус:</div>
+                        {{_institution}}
+                    </div>
+                    <div class='description-block'>
+                        <div class='description-block-title'>Файлы:</div>
                         {{_institution}}
                     </div>
                 </td>                

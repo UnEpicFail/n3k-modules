@@ -1,5 +1,50 @@
  <fieldset [formGroup]="form">
   <h2>Юридическое лицо</h2>
+  
+  <n3k-input
+    [title]='"Наименование юридического лица"'
+    [placeholder] = '"Наименование юридического лица"'
+    formControlName = 'name'
+  ></n3k-input>
+
+  <n3k-input
+    [title]='"ИНН"'
+    [placeholder] = '"ИНН"'
+    formControlName = 'inn'
+  ></n3k-input>
+  
+  <n3k-input
+    [title]='"ОГРН"'
+    [placeholder] = '"ОГРН"'
+    formControlName = 'ogrn'
+  ></n3k-input>
+  
+  <fieldset formGroupName="meta">
+    <n3k-input
+      [title]='"Прежний ОГРН"'
+      [placeholder] = '"Прежний ОГРН"'
+      formControlName = 'previous_ogrn'
+    ></n3k-input>
+  </fieldset>
+
+  <n3k-input
+    [title]='"ОКПО"'
+    [placeholder] = '"ОКПО"'
+    formControlName = 'okpo'
+  ></n3k-input>
+
+  <n3k-input
+    [title]='"ОКАТО"'
+    [placeholder] = '"ОКАТО"'
+    formControlName = 'okato'
+  ></n3k-input>
+
+  <n3k-input
+    [title]='"КПП"'
+    [placeholder] = '"КПП"'
+    formControlName = 'kpp'
+  ></n3k-input>
+
   <n3k-select
     [title] = '"ОКТМО"'
     [placeholder] = '"ОКТМО"'
@@ -7,6 +52,14 @@
     formControlName = 'oktmo'
   >
   </n3k-select>
+  
+  <n3k-input
+    [title]='"ОКОГУ"'
+    [placeholder] = '"ОКОГУ"'
+    formControlName = 'okogu'
+  ></n3k-input>
+
+
   <n3k-select
     [title] = '"Форма собственности"'
     [placeholder] = '"Форма собственности"'
@@ -14,6 +67,7 @@
     formControlName = 'type_of_ownership'
   >
   </n3k-select>
+  
   <n3k-select
     [title] = '"Вид организации по учредителям"'
     [placeholder] = '"Вид организации по учредителям"'
@@ -21,6 +75,7 @@
     formControlName = 'founders_type'
   >
   </n3k-select>
+  
   <n3k-select
     [title] = '"Статус"'
     [placeholder] = '"Статус"'
@@ -29,14 +84,59 @@
   >
   </n3k-select>
 
-  <n3k-input
-    [title]='"Наименование юридического лица"'
-    [placeholder] = '"Статус"'
-    formControlName = 'name'
-  ></n3k-input>
   <edit-address 
     [title] = '"Юридический адрес"'
     formControlName = 'address'
     (onDelete) = 'onAddressDelete()'
-  ></edit-address>  
+  ></edit-address>
+    
+  <n3k-select
+    [title] = '"Регион"'
+    [placeholder] = '"Регион"'
+    [fromMethod] = 'regionService'       
+    formControlName = 'region'
+  >
+  </n3k-select>
+    
+  <n3k-select
+    [title] = '"Район"'
+    [placeholder] = '"Район"'
+    [fromMethod] = 'districtService'       
+    formControlName = 'district'
+  >
+  </n3k-select>
+    
+  <n3k-select
+    [title] = '"ОКОПФ"'
+    [placeholder] = '"ОКОПФ"'
+    [fromMethod] = 'okopfService'       
+    formControlName = 'okopf'
+  >
+  </n3k-select>
+    
+  <n3k-select
+    [title] = '"ОКФС"'
+    [placeholder] = '"ОКФС"'
+    [fromMethod] = 'okfsService'       
+    formControlName = 'okfs'
+  >
+  </n3k-select>
+    
+  <n3k-select
+    [title] = '"ОКВЭД"'
+    [placeholder] = '"ОКВЭД"'
+    [fromMethod] = 'okvedService'       
+    [multi] = 'true'
+    formControlName = 'okved'
+  >
+  </n3k-select>
+
+  <edit-person
+    [title] = '"Владелец"'
+    formControlName = 'owner'
+    (onDelete) = 'onOwnerDelete()'
+  >
+  </edit-person>
+   
+    
 </fieldset>

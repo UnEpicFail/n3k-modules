@@ -42,10 +42,10 @@ export class DepartmentsComponent{
       node = _departments[i];
       node.childrens = [];
       map[node.identity.id] = i;
-      if (node.parent !== null) {
-          _departments[map[node.parent.id]].childrens.push(node);
+      if (node.parent.id !== null) {
+        _departments[map[node.parent.id]].childrens.push(node);
       } else {
-          roots.push(node);
+        roots.push(node);
       }
     }
     return roots

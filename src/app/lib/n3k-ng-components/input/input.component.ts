@@ -36,6 +36,7 @@ export class InputComponent implements OnInit, ControlValueAccessor {
   onTouched = () => {};
 
   writeValue(value: any): void {
+    console.log('value',value)
     if (value !== undefined && value !== null) {
       this._value = value;
     } else {

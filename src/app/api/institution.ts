@@ -131,6 +131,7 @@ export class InstitutionService {
                 ],
                 okato: '49210804000',
                 inn: 5303001700,
+                okpo: 41231123,
                 okfs: {
                     id: 1,
                     name: '49210804000'
@@ -158,10 +159,6 @@ export class InstitutionService {
                     id: 1,
                     name: 'Муниципальная'
                 },
-                // founders_type: {
-                //   id: 1,
-                //   name: 'Муниципальное образование'
-                // },
                 type_of_ownership: {
                     id: 1,
                     name: 'Муниципальная'
@@ -205,6 +202,9 @@ export class InstitutionService {
                 founders_type: {
                     id: 1,
                     name: 'Сад'
+                },
+                meta: {
+                    previous_ogrn: ['1025301788422']
                 }
             },
             type: {

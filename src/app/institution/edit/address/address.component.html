@@ -21,6 +21,80 @@
       name='region'
     >
     </n3k-select>
+    
+    <n3k-select
+      [title] = '"Округ"'
+      [placeholder] = '"Округ"'
+      [fromMethod] = 'regionService'       
+      [(ngModel)]='_address.fias.okrug'
+      name='okrug'
+    >
+    </n3k-select>
+    
+    <n3k-select
+      [title] = '"Район"'
+      [placeholder] = '"Район"'
+      [fromMethod] = 'regionService'       
+      [(ngModel)]='_address.fias.district'
+      name='district'
+    >
+    </n3k-select>
+    
+    <n3k-select
+      [title] = '"Город"'
+      [placeholder] = '"Город"'
+      [fromMethod] = 'regionService'       
+      [(ngModel)]='_address.fias.city'
+      name='city'
+    >
+    </n3k-select>
+    
+    <n3k-select
+      [title] = '"Внутренние территории"'
+      [placeholder] = '"Внутренние территории"'
+      [fromMethod] = 'regionService'       
+      [(ngModel)]='_address.fias.incity'
+      name='incity'
+    >
+    </n3k-select>
+    
+    <n3k-select
+      [title] = '"Муниципалитет"'
+      [placeholder] = '"Муниципалитет"'
+      [fromMethod] = 'regionService'       
+      [(ngModel)]='_address.fias.municipality'
+      name='municipality'
+    >
+    </n3k-select>
+    
+    <n3k-select
+      [title] = '"Улица"'
+      [placeholder] = '"Улица"'
+      [fromMethod] = 'regionService'       
+      [(ngModel)]='_address.fias.street'
+      name='street'
+    >
+    </n3k-select>
+    
+    <n3k-select
+      [title] = '"Здание"'
+      [placeholder] = '"Здание"'
+      [fromMethod] = 'regionService'       
+      [(ngModel)]='_address.fias.building'
+      name='building'
+    >
+    </n3k-select>
+    
+    <n3k-select
+      [title] = '"Квартира"'
+      [placeholder] = '"Квартира"'
+      [fromMethod] = 'regionService'       
+      [(ngModel)]='_address.fias.flat'
+      name='flat'
+    >
+    </n3k-select>
+    
+
     <div class='buttons-array'>
       <div class='create-new-btn btn' (click)='submit()'><span class='text'>Сохранить</span></div>
       <div class='transparent-btn btn' (click)='cancel()'><span class='text'>Отменить</span></div>
