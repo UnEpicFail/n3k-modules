@@ -29,6 +29,7 @@ import { TerritoryComponent } from './view/territory/territory.component';
 import { AddressComponent } from './edit/address/address.component';
 import { OrganizationComponent } from './edit/organization-form/organization-form.component';
 import { PersonComponent } from './edit/person/person.component';
+import { JobComponent } from './edit/job/job.component';
 
 const routes:Routes = [
   {path: 'institution', children: [
@@ -73,6 +74,7 @@ const routes:Routes = [
     AddressComponent,
     OrganizationComponent,
     PersonComponent,
+    JobComponent,
   ],
   exports: [ToTime, ToWeekDays, YesNo],
   providers: [InstitutionService,Classifier_listService],

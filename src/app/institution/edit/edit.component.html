@@ -14,13 +14,16 @@
       ></edit-organization>
       
       <anchor-target name='common'></anchor-target>
+      <h2>Общие сведения</h2>
+      
 
-      <br><br><br><br><br>
-      <br><br><br><br><br>
-      <br><br><br><br><br>
-      <br><br><br><br><br>
-      <br><br><br><br><br>
-      <br><br><br><br><br>
+      <edit-job
+        [title] = '"Руководитель"'
+        formControlName = 'head'
+        (onDelete) = 'onHeadDelete()'
+      ></edit-job>
+      
+      
       <input type='submit' value='SUBMIT'>
     </form>
   </column-1>

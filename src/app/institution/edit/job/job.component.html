@@ -1,0 +1,78 @@
+<div class='title'>
+  {{title}}
+</div>
+
+<div *ngIf='canAddNew && !_editState'>
+    <div class='buttons-array'>
+        <div class='default-btn btn' (click)='_editState = true'>
+            <span class='icon'><i class="fa fa-plus" aria-hidden="true"></i></span>
+            <span class='text'>Добавить руководителя</span>
+        </div> 
+    </div>
+</div>
+
+<div class = 'clones' *ngIf='_editState' >
+    
+  <n3k-input
+    [title]='"Фамилия"'
+    [placeholder] = '"Фамилия"'
+    [(ngModel)] = '_job.person.surname'
+  ></n3k-input>
+    
+  <n3k-input
+    [title]='"Имя"'
+    [placeholder] = '"Имя"'
+    [(ngModel)] = '_job.person.firstname'
+  ></n3k-input>
+    
+  <n3k-input
+    [title]='"Отчество"'
+    [placeholder] = '"Отчество"'
+    [(ngModel)] = '_job.person.middlename'
+  ></n3k-input>
+  
+  <n3k-select
+    [title] = '"Должность"'
+    [placeholder] = '"Должность"'
+    [fromMethod] = 'positionService'       
+    [(ngModel)] = '_job.position'
+  >
+  </n3k-select>
+
+    <div class='buttons-array'>
+      <div class='create-new-btn btn' (click)='submit()'><span class='text'>Сохранить</span></div>
+      <div class='transparent-btn btn' (click)='cancel()'><span class='text'>Отменить</span></div>
+    </div>
+</div>
+
+
+<div class = 'clones' *ngIf='!_editState && !canAddNew'>
+  <div>
+    <div class='view-text'>
+      <div class='description-block'>
+        <div class='description-block-title'>
+          ФИО:
+        </div>
+        {{_job.person.surname}} {{_job.person.firstname}} {{_job.person.middlename}}
+      </div>
+
+      <div class='description-block'>
+        <div class='description-block-title'>
+          Должность:
+        </div>
+        {{_job.position.name}}
+      </div>
+    </div>
+
+    <div class='controll'>
+      <span class='controll-element' (click)='_editState = true'>
+        <i class='fa fa-pencil'>&nbsp;</i>
+        <span class='text'>Редактировать</span>
+      </span>
+      <span class='controll-element' (click)='deleteMe()'>
+        <i class='fa fa-trash'>&nbsp;</i>
+        <span class='text'>Удалить</span>
+      </span>
+    </div>
+  </div>
+</div>

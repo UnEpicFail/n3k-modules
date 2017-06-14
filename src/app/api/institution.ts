@@ -44,6 +44,17 @@ export class InstitutionService {
         id: string,
     ) {
         let institution = new InstitutionFull({
+            head: {
+                position: {
+                    id: 1,
+                    name: 'Директор'
+                },
+                person: {
+                    firstname: 'Игорь',
+                    surname: 'Петров',
+                    middlename: 'Владимирович',
+                }
+            },
             buildings: [
                 {
                     identity: {

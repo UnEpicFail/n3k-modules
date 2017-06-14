@@ -5,8 +5,9 @@ import { AnchornTargetRefDirective } from '../../lib/n3k-ng-components/anchor-me
 import { Institution } from '../../api/institution/Institution';
 import { InstitutionService } from '../../api/institution'
 import { Response } from '../../api/common/Response';
-import { Pagination } from '../../api/common/Pagination';
-import { Address } from '../../api/common/Address';
+import { JobShort } from '../../api/common/JobShort';
+
+
 
 import { Classifier_listService } from '../../api/classifier_list'
 
@@ -60,7 +61,13 @@ export class EditComponent implements OnInit {
 
   setForm() {
     this.form = this.fb.group({
-      organization: this._institution.organization
+      organization: this._institution.organization,
+      head: this._institution.head
     })
+  }
+
+  onHeadDelete() {
+    this._institution.head = new JobShort({})
+    this.setForm()
   }
 }

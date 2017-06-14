@@ -16,6 +16,7 @@
 }
 .values table {
     width: 100%;
+    background-color: #fff;
 }
 .values td {
     vertical-align: bottom;
