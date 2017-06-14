@@ -4,7 +4,8 @@ import { CommonModule } from '@angular/common';
 import { SelectComponent } from './select/select.component';
 import { CloneRefDirective, ClonnerComponent } from './clonner/clonner.component';
 import { InputComponent } from './input/input.component';
-import { AnchorMenuComponent, AnchornTargetRefDirective } from './anchor-menu/anchor-menu.component'
+import { AnchorMenuComponent, AnchornTargetRefDirective } from './anchor-menu/anchor-menu.component';
+import { WysiwygComponent } from './wysiwyg/wysiwyg.component'
 
 @NgModule({
   imports: [
@@ -17,7 +18,8 @@ import { AnchorMenuComponent, AnchornTargetRefDirective } from './anchor-menu/an
     InputComponent, 
     CloneRefDirective, 
     AnchorMenuComponent,
-    AnchornTargetRefDirective, 
+    AnchornTargetRefDirective,
+    WysiwygComponent, 
   ],
   exports: [ 
     SelectComponent, 
@@ -25,7 +27,8 @@ import { AnchorMenuComponent, AnchornTargetRefDirective } from './anchor-menu/an
     InputComponent, 
     CloneRefDirective, 
     AnchorMenuComponent,
-    AnchornTargetRefDirective 
+    AnchornTargetRefDirective,
+    WysiwygComponent,
   ]
 })
 export class N3kNgComponentsModule { }

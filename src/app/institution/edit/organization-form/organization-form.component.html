@@ -131,12 +131,18 @@
   >
   </n3k-select>
 
+  <fieldset formGroupName="meta">
+    <n3k-wysiwyg
+      [title] = '"Описание"'
+      [placeholder] = '"Описание"'
+      formControlName = 'description'
+    ></n3k-wysiwyg>
+  </fieldset>
+  
   <edit-person
     [title] = '"Владелец"'
     formControlName = 'owner'
     (onDelete) = 'onOwnerDelete()'
   >
   </edit-person>
-   
-    
 </fieldset>

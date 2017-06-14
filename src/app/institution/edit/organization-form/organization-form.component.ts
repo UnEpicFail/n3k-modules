@@ -1,4 +1,4 @@
-import { Component, forwardRef } from '@angular/core';
+import { Component, forwardRef, AfterViewInit, OnDestroy } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 
@@ -35,6 +35,7 @@ export class OrganizationComponent implements ControlValueAccessor {
   public okfsService;
   public okvedService;
   public _organization: Organization = new Organization({});
+  editor
   
   onChange = (_) => {};
   onTouched = () => {};
@@ -104,7 +105,7 @@ export class OrganizationComponent implements ControlValueAccessor {
     this.setForm()
   }
 
-  onOwnerDelete(index){
+  onOwnerDelete(index) {
     this._organization.owner = new PersonShort({})
     this.setForm()
   }

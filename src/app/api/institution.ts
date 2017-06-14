@@ -204,7 +204,8 @@ export class InstitutionService {
                     name: 'Сад'
                 },
                 meta: {
-                    previous_ogrn: ['1025301788422']
+                    previous_ogrn: ['1025301788422'],
+                    description: 'Описание Юридического Лица'
                 }
             },
             type: {
