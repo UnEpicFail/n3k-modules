@@ -16,6 +16,13 @@ const CUSTOM_VALUE_ACCESSOR: any = {
 export class WysiwygComponent implements ControlValueAccessor, AfterViewInit {
 
   public editor;
+  public _id = '' 
+    + String.fromCharCode(Math.floor(Math.floor(Math.random() * 10) * 2.5) + 97)
+    + String.fromCharCode(Math.floor(Math.floor(Math.random() * 10) * 2.5) + 97)
+    + String.fromCharCode(Math.floor(Math.floor(Math.random() * 10) * 2.5) + 97)
+    + String.fromCharCode(Math.floor(Math.floor(Math.random() * 10) * 2.5) + 97)
+    + String.fromCharCode(Math.floor(Math.floor(Math.random() * 10) * 2.5) + 97)
+    + String.fromCharCode(Math.floor(Math.floor(Math.random() * 10) * 2.5) + 97);
   public _value: string;
   public _title: string;
   public _placeholder: string;
@@ -26,10 +33,14 @@ export class WysiwygComponent implements ControlValueAccessor, AfterViewInit {
     this._title = (title || '')
   }
 
-
   @Input()
   set placeholder(placeholder){
     this._placeholder = (placeholder || '')
+  }
+
+  @Input()
+  set id(id) {
+    this._id = (id || this._id)
   }
 
   onChange = (_) => {};
@@ -51,9 +62,10 @@ export class WysiwygComponent implements ControlValueAccessor, AfterViewInit {
 
   constructor() { }
 
-  ngAfterViewInit(){
+  ngAfterViewInit()
+  {
     tinymce.init({
-      selector: 'textarea',
+      selector: '#'+this._id,
       language: 'ru',
       language_url: '../../../../assets/langs/ru.js',
       plugins: ['link', 'paste', 'table', 'autoresize', 'charmap', 'contextmenu', 'textcolor'],

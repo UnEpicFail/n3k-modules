@@ -1,0 +1,72 @@
+
+<div class='title'>
+  {{title}}
+</div>
+
+<div *ngIf='!_editState'>
+    <div class='buttons-array'>
+        <div class='default-btn btn' (click)='_editState = true'>
+            <span class='icon'><i class="fa fa-plus" aria-hidden="true"></i></span>
+            <span class='text'>Добавить</span>
+        </div> 
+    </div>
+</div>
+
+<div *ngFor='let work_time of _work_times'>
+
+
+  <div class = 'clones' *ngIf='_editState'>
+
+      <n3k-input
+        [title] = '"Время начала"'
+        [placeholder] = '"Время начала"'    
+        [(ngModel)]='work_time.begin_time'
+        name='begin_time'
+      ></n3k-input>
+
+      <n3k-input
+        [title] = '"Время завершения"'
+        [placeholder] = '"Время завершения"'    
+        [(ngModel)]='work_time.end_time'
+        name='end_time'
+      ></n3k-input>
+      
+      <n3k-select
+        [title] = '"День недели"'
+        [placeholder] = '"День недели"'
+        [options] = 'workTimeOptions'
+        [beforeSetValue] = 'beforeSetValue'
+        [beforeGetValue] = 'beforeGetValue'
+        [multi] = 'true'     
+        [(ngModel)]='work_time.week_days'
+        name='week_days'
+      >
+      </n3k-select>
+      
+
+      <div class='buttons-array'>
+        <div class='create-new-btn btn' (click)='submit()'><span class='text'>Сохранить</span></div>
+        <div class='transparent-btn btn' (click)='cancel()'><span class='text'>Отменить</span></div>
+      </div>
+  </div>
+  <div class = 'clones' *ngIf='!_editState'>
+    <div>
+      <div class='view-text'>
+        {{work_time.week_days | toWeekDays}}, {{work_time.begin_time | toTime}}—{{work_time.end_time | toTime}}
+      </div>
+
+      <div class='controll'>
+        <span class='controll-element' (click)='_editState = true'>
+          <i class='fa fa-pencil'>&nbsp;</i>
+          <span class='text'>Редактировать</span>
+        </span>
+        <span class='controll-element' (click)='deleteMe(work_time.id)'>
+          <i class='fa fa-trash'>&nbsp;</i>
+          <span class='text'>Удалить</span>
+        </span>
+      </div>
+    </div>
+  </div>
+
+</div>
+

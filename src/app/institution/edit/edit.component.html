@@ -19,11 +19,124 @@
 
       <edit-job
         [title] = '"Руководитель"'
-        formControlName = 'head'
         (onDelete) = 'onHeadDelete()'
+        formControlName = 'head'
       ></edit-job>
       
+      <n3k-select
+        [title] = '"Регион"'
+        [placeholder] = '"Регион"'
+        [fromMethod] = 'regionService'
+        formControlName = 'region'
+      ></n3k-select>
       
+      <n3k-select
+        [title] = '"Район"'
+        [placeholder] = '"Район"'
+        [fromMethod] = 'districtService'
+        formControlName = 'district'
+      ></n3k-select>
+
+      <n3k-input
+        [title] = '"Наименование образовательной организации"'
+        [placeholder] = '"Наименование образовательной организации"'
+        formControlName = 'full_name'
+      ></n3k-input>
+
+      <n3k-input
+        [title] = '"Краткое наименование"'
+        [placeholder] = '"Краткое наименование"'
+        formControlName = 'name'
+      ></n3k-input>
+            
+      <n3k-select
+        [title] = '"Смены"'
+        [placeholder] = '"Смены"'
+        [multi] = 'true'
+        [fromMethod] = 'shiftService'
+        formControlName = 'shift'
+      ></n3k-select>
+            
+      <n3k-select
+        [title] = '"Статус"'
+        [placeholder] = '"Статус"'
+        [fromMethod] = 'statusService'
+        formControlName = 'status'
+      ></n3k-select>
+            
+      <n3k-select
+        [title] = '"Тип организации"'
+        [placeholder] = '"Тип организации"'
+        [fromMethod] = 'typeService'
+        formControlName = 'type'
+      ></n3k-select>
+            
+      <n3k-select
+        [title] = '"Вид организации"'
+        [placeholder] = '"Вид организации"'
+        [fromMethod] = 'kindService'
+        formControlName = 'kind'
+      ></n3k-select>
+            
+      <n3k-select
+        [title] = '"Тип местности"'
+        [placeholder] = '"Тип местности"'
+        [fromMethod] = 'terrainService'
+        formControlName = 'terrain'
+      ></n3k-select>
+
+      <edit-work-time
+        [title] = '"Время работы"'
+        (onDelete) = 'onWorkTimeDelete(event)'
+        formControlName = 'work_time'
+      ></edit-work-time>
+
+      <n3k-select
+        [title] = '"Основной язык обучения"'
+        [placeholder] = '"Основной язык обучения"'
+        [fromMethod] = 'educationLanguageService'
+        formControlName = 'education_language'
+      ></n3k-select>
+
+      <!-- Адреса обслуживаемой территории education_area -->
+
+      <n3k-select
+        [title] = '"Уровень образования"'
+        [placeholder] = '"Уровень образования"'
+        [multi] = 'true'
+        [fromMethod] = 'levelsService'
+        formControlName = 'levels'
+      ></n3k-select>
+
+      <!-- Тип питания meals -->
+
+      <n3k-select
+        [title] = '"Типы групп ОВЗ доступные в ОО"'
+        [placeholder] = '"Типы групп ОВЗ доступные в ОО"'
+        [multi] = 'true'
+        [fromMethod] = 'ovzGroupTypesService'
+        formControlName = 'ovz_group_types'
+      ></n3k-select>
+
+      <!-- Дата образования организации foundation_date -->
+
+      <n3k-select
+        [title] = '"Подведомственность"'
+        [placeholder] = '"Подведомственность"'
+        [fromMethod] = 'jurisdictionService'
+        formControlName = 'jurisdiction'
+      ></n3k-select>
+
+      <n3k-wysiwyg
+        [title] = '"Описание"'
+        [placeholder] = '"Описание"'
+        formControlName = 'description'
+      ></n3k-wysiwyg>
+
+      <!-- Картинка для анонса -->
+
+      <!-- Вместительность capacity -->
+
       <input type='submit' value='SUBMIT'>
     </form>
   </column-1>

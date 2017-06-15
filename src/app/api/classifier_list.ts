@@ -229,26 +229,29 @@ export class Classifier_listService {
         p_sort_direction?: string,
         p_sort_field?: string,
     ) {
-        let _path = '/classifiers/institution-status/list';
-        let _body = '';
-        let _params = {
-            headers: new Headers(),
-            search: new URLSearchParams(),
-        }
-        _params.headers.append('X-Requested-With', 'XMLHttpRequest'); 
-        if (typeof p_limit !== 'undefined')
-            _params.search.append('p_limit', ''+p_limit); 
-        if (typeof p_page !== 'undefined')
-            _params.search.append('p_page', ''+p_page); 
-        if (typeof p_query !== 'undefined')
-            _params.search.append('p_query', ''+p_query); 
-        if (typeof p_sort_direction !== 'undefined')
-            _params.search.append('p_sort_direction', ''+p_sort_direction); 
-        if (typeof p_sort_field !== 'undefined')
-            _params.search.append('p_sort_field', ''+p_sort_field); 
+
+        return this.fakeClassifireData;
+
+        // let _path = '/classifiers/institution-status/list';
+        // let _body = '';
+        // let _params = {
+        //     headers: new Headers(),
+        //     search: new URLSearchParams(),
+        // }
+        // _params.headers.append('X-Requested-With', 'XMLHttpRequest'); 
+        // if (typeof p_limit !== 'undefined')
+        //     _params.search.append('p_limit', ''+p_limit); 
+        // if (typeof p_page !== 'undefined')
+        //     _params.search.append('p_page', ''+p_page); 
+        // if (typeof p_query !== 'undefined')
+        //     _params.search.append('p_query', ''+p_query); 
+        // if (typeof p_sort_direction !== 'undefined')
+        //     _params.search.append('p_sort_direction', ''+p_sort_direction); 
+        // if (typeof p_sort_field !== 'undefined')
+        //     _params.search.append('p_sort_field', ''+p_sort_field); 
 
 
-        return this.http['get'](_path, _params)
+        // return this.http['get'](_path, _params)
     }
     /**
      * 
@@ -310,26 +313,29 @@ export class Classifier_listService {
         p_sort_direction?: string,
         p_sort_field?: string,
     ) {
-        let _path = '/classifiers/district/list';
-        let _body = '';
-        let _params = {
-            headers: new Headers(),
-            search: new URLSearchParams(),
-        }
-        _params.headers.append('X-Requested-With', 'XMLHttpRequest'); 
-        if (typeof p_limit !== 'undefined')
-            _params.search.append('p_limit', ''+p_limit); 
-        if (typeof p_page !== 'undefined')
-            _params.search.append('p_page', ''+p_page); 
-        if (typeof p_query !== 'undefined')
-            _params.search.append('p_query', ''+p_query); 
-        if (typeof p_sort_direction !== 'undefined')
-            _params.search.append('p_sort_direction', ''+p_sort_direction); 
-        if (typeof p_sort_field !== 'undefined')
-            _params.search.append('p_sort_field', ''+p_sort_field); 
+
+        return this.fakeClassifireData;
+
+        // let _path = '/classifiers/district/list';
+        // let _body = '';
+        // let _params = {
+        //     headers: new Headers(),
+        //     search: new URLSearchParams(),
+        // }
+        // _params.headers.append('X-Requested-With', 'XMLHttpRequest'); 
+        // if (typeof p_limit !== 'undefined')
+        //     _params.search.append('p_limit', ''+p_limit); 
+        // if (typeof p_page !== 'undefined')
+        //     _params.search.append('p_page', ''+p_page); 
+        // if (typeof p_query !== 'undefined')
+        //     _params.search.append('p_query', ''+p_query); 
+        // if (typeof p_sort_direction !== 'undefined')
+        //     _params.search.append('p_sort_direction', ''+p_sort_direction); 
+        // if (typeof p_sort_field !== 'undefined')
+        //     _params.search.append('p_sort_field', ''+p_sort_field); 
 
 
-        return this.http['get'](_path, _params)
+        // return this.http['get'](_path, _params)
     }
     /**
      * 
@@ -1294,26 +1300,29 @@ export class Classifier_listService {
         p_sort_direction?: string,
         p_sort_field?: string,
     ) {
-        let _path = '/classifiers/education-shift/list';
-        let _body = '';
-        let _params = {
-            headers: new Headers(),
-            search: new URLSearchParams(),
-        }
-        _params.headers.append('X-Requested-With', 'XMLHttpRequest'); 
-        if (typeof p_limit !== 'undefined')
-            _params.search.append('p_limit', ''+p_limit); 
-        if (typeof p_page !== 'undefined')
-            _params.search.append('p_page', ''+p_page); 
-        if (typeof p_query !== 'undefined')
-            _params.search.append('p_query', ''+p_query); 
-        if (typeof p_sort_direction !== 'undefined')
-            _params.search.append('p_sort_direction', ''+p_sort_direction); 
-        if (typeof p_sort_field !== 'undefined')
-            _params.search.append('p_sort_field', ''+p_sort_field); 
+
+        return this.fakeClassifireData;
+
+        // let _path = '/classifiers/education-shift/list';
+        // let _body = '';
+        // let _params = {
+        //     headers: new Headers(),
+        //     search: new URLSearchParams(),
+        // }
+        // _params.headers.append('X-Requested-With', 'XMLHttpRequest'); 
+        // if (typeof p_limit !== 'undefined')
+        //     _params.search.append('p_limit', ''+p_limit); 
+        // if (typeof p_page !== 'undefined')
+        //     _params.search.append('p_page', ''+p_page); 
+        // if (typeof p_query !== 'undefined')
+        //     _params.search.append('p_query', ''+p_query); 
+        // if (typeof p_sort_direction !== 'undefined')
+        //     _params.search.append('p_sort_direction', ''+p_sort_direction); 
+        // if (typeof p_sort_field !== 'undefined')
+        //     _params.search.append('p_sort_field', ''+p_sort_field); 
 
 
-        return this.http['get'](_path, _params)
+        // return this.http['get'](_path, _params)
     }
     /**
      * 
@@ -1333,26 +1342,29 @@ export class Classifier_listService {
         p_sort_direction?: string,
         p_sort_field?: string,
     ) {
-        let _path = '/classifiers/institution-type/list';
-        let _body = '';
-        let _params = {
-            headers: new Headers(),
-            search: new URLSearchParams(),
-        }
-        _params.headers.append('X-Requested-With', 'XMLHttpRequest'); 
-        if (typeof p_limit !== 'undefined')
-            _params.search.append('p_limit', ''+p_limit); 
-        if (typeof p_page !== 'undefined')
-            _params.search.append('p_page', ''+p_page); 
-        if (typeof p_query !== 'undefined')
-            _params.search.append('p_query', ''+p_query); 
-        if (typeof p_sort_direction !== 'undefined')
-            _params.search.append('p_sort_direction', ''+p_sort_direction); 
-        if (typeof p_sort_field !== 'undefined')
-            _params.search.append('p_sort_field', ''+p_sort_field); 
+
+        this.fakeClassifireData;
+
+        // let _path = '/classifiers/institution-type/list';
+        // let _body = '';
+        // let _params = {
+        //     headers: new Headers(),
+        //     search: new URLSearchParams(),
+        // }
+        // _params.headers.append('X-Requested-With', 'XMLHttpRequest'); 
+        // if (typeof p_limit !== 'undefined')
+        //     _params.search.append('p_limit', ''+p_limit); 
+        // if (typeof p_page !== 'undefined')
+        //     _params.search.append('p_page', ''+p_page); 
+        // if (typeof p_query !== 'undefined')
+        //     _params.search.append('p_query', ''+p_query); 
+        // if (typeof p_sort_direction !== 'undefined')
+        //     _params.search.append('p_sort_direction', ''+p_sort_direction); 
+        // if (typeof p_sort_field !== 'undefined')
+        //     _params.search.append('p_sort_field', ''+p_sort_field); 
 
 
-        return this.http['get'](_path, _params)
+        // return this.http['get'](_path, _params)
     }
     /**
      * 
@@ -1372,26 +1384,30 @@ export class Classifier_listService {
         p_sort_direction?: string,
         p_sort_field?: string,
     ) {
-        let _path = '/classifiers/institution-kind/list';
-        let _body = '';
-        let _params = {
-            headers: new Headers(),
-            search: new URLSearchParams(),
-        }
-        _params.headers.append('X-Requested-With', 'XMLHttpRequest'); 
-        if (typeof p_limit !== 'undefined')
-            _params.search.append('p_limit', ''+p_limit); 
-        if (typeof p_page !== 'undefined')
-            _params.search.append('p_page', ''+p_page); 
-        if (typeof p_query !== 'undefined')
-            _params.search.append('p_query', ''+p_query); 
-        if (typeof p_sort_direction !== 'undefined')
-            _params.search.append('p_sort_direction', ''+p_sort_direction); 
-        if (typeof p_sort_field !== 'undefined')
-            _params.search.append('p_sort_field', ''+p_sort_field); 
 
 
-        return this.http['get'](_path, _params)
+        return this.fakeClassifireData;
+
+        // let _path = '/classifiers/institution-kind/list';
+        // let _body = '';
+        // let _params = {
+        //     headers: new Headers(),
+        //     search: new URLSearchParams(),
+        // }
+        // _params.headers.append('X-Requested-With', 'XMLHttpRequest'); 
+        // if (typeof p_limit !== 'undefined')
+        //     _params.search.append('p_limit', ''+p_limit); 
+        // if (typeof p_page !== 'undefined')
+        //     _params.search.append('p_page', ''+p_page); 
+        // if (typeof p_query !== 'undefined')
+        //     _params.search.append('p_query', ''+p_query); 
+        // if (typeof p_sort_direction !== 'undefined')
+        //     _params.search.append('p_sort_direction', ''+p_sort_direction); 
+        // if (typeof p_sort_field !== 'undefined')
+        //     _params.search.append('p_sort_field', ''+p_sort_field); 
+
+
+        // return this.http['get'](_path, _params)
     }
     /**
      * 
@@ -1404,33 +1420,36 @@ export class Classifier_listService {
      * @param {string} p_sort_direction - Направление сортировок [DESC,ASC]
      * @param {string} p_sort_field - Поля для сортировок 
      */
-    public classifierTerrainKindList(
+    public classifierTerrainTypeList(
         p_limit?: number,
         p_page?: number,
         p_query?: string,
         p_sort_direction?: string,
         p_sort_field?: string,
     ) {
-        let _path = '/classifiers/terrain-kind/list';
-        let _body = '';
-        let _params = {
-            headers: new Headers(),
-            search: new URLSearchParams(),
-        }
-        _params.headers.append('X-Requested-With', 'XMLHttpRequest'); 
-        if (typeof p_limit !== 'undefined')
-            _params.search.append('p_limit', ''+p_limit); 
-        if (typeof p_page !== 'undefined')
-            _params.search.append('p_page', ''+p_page); 
-        if (typeof p_query !== 'undefined')
-            _params.search.append('p_query', ''+p_query); 
-        if (typeof p_sort_direction !== 'undefined')
-            _params.search.append('p_sort_direction', ''+p_sort_direction); 
-        if (typeof p_sort_field !== 'undefined')
-            _params.search.append('p_sort_field', ''+p_sort_field); 
+
+        return this.fakeClassifireData;
+
+        // let _path = '/classifiers/terrain-kind/list';
+        // let _body = '';
+        // let _params = {
+        //     headers: new Headers(),
+        //     search: new URLSearchParams(),
+        // }
+        // _params.headers.append('X-Requested-With', 'XMLHttpRequest'); 
+        // if (typeof p_limit !== 'undefined')
+        //     _params.search.append('p_limit', ''+p_limit); 
+        // if (typeof p_page !== 'undefined')
+        //     _params.search.append('p_page', ''+p_page); 
+        // if (typeof p_query !== 'undefined')
+        //     _params.search.append('p_query', ''+p_query); 
+        // if (typeof p_sort_direction !== 'undefined')
+        //     _params.search.append('p_sort_direction', ''+p_sort_direction); 
+        // if (typeof p_sort_field !== 'undefined')
+        //     _params.search.append('p_sort_field', ''+p_sort_field); 
 
 
-        return this.http['get'](_path, _params)
+        // return this.http['get'](_path, _params)
     }
     /**
      * 
@@ -1450,26 +1469,29 @@ export class Classifier_listService {
         p_sort_direction?: string,
         p_sort_field?: string,
     ) {
-        let _path = '/classifiers/language/list';
-        let _body = '';
-        let _params = {
-            headers: new Headers(),
-            search: new URLSearchParams(),
-        }
-        _params.headers.append('X-Requested-With', 'XMLHttpRequest'); 
-        if (typeof p_limit !== 'undefined')
-            _params.search.append('p_limit', ''+p_limit); 
-        if (typeof p_page !== 'undefined')
-            _params.search.append('p_page', ''+p_page); 
-        if (typeof p_query !== 'undefined')
-            _params.search.append('p_query', ''+p_query); 
-        if (typeof p_sort_direction !== 'undefined')
-            _params.search.append('p_sort_direction', ''+p_sort_direction); 
-        if (typeof p_sort_field !== 'undefined')
-            _params.search.append('p_sort_field', ''+p_sort_field); 
+
+        return this.fakeClassifireData;
+
+        // let _path = '/classifiers/language/list';
+        // let _body = '';
+        // let _params = {
+        //     headers: new Headers(),
+        //     search: new URLSearchParams(),
+        // }
+        // _params.headers.append('X-Requested-With', 'XMLHttpRequest'); 
+        // if (typeof p_limit !== 'undefined')
+        //     _params.search.append('p_limit', ''+p_limit); 
+        // if (typeof p_page !== 'undefined')
+        //     _params.search.append('p_page', ''+p_page); 
+        // if (typeof p_query !== 'undefined')
+        //     _params.search.append('p_query', ''+p_query); 
+        // if (typeof p_sort_direction !== 'undefined')
+        //     _params.search.append('p_sort_direction', ''+p_sort_direction); 
+        // if (typeof p_sort_field !== 'undefined')
+        //     _params.search.append('p_sort_field', ''+p_sort_field); 
 
 
-        return this.http['get'](_path, _params)
+        // return this.http['get'](_path, _params)
     }
     /**
      * 
@@ -1489,26 +1511,29 @@ export class Classifier_listService {
         p_sort_direction?: string,
         p_sort_field?: string,
     ) {
-        let _path = '/classifiers/education-level/list';
-        let _body = '';
-        let _params = {
-            headers: new Headers(),
-            search: new URLSearchParams(),
-        }
-        _params.headers.append('X-Requested-With', 'XMLHttpRequest'); 
-        if (typeof p_limit !== 'undefined')
-            _params.search.append('p_limit', ''+p_limit); 
-        if (typeof p_page !== 'undefined')
-            _params.search.append('p_page', ''+p_page); 
-        if (typeof p_query !== 'undefined')
-            _params.search.append('p_query', ''+p_query); 
-        if (typeof p_sort_direction !== 'undefined')
-            _params.search.append('p_sort_direction', ''+p_sort_direction); 
-        if (typeof p_sort_field !== 'undefined')
-            _params.search.append('p_sort_field', ''+p_sort_field); 
+
+        return this.fakeClassifireData;
+
+        // let _path = '/classifiers/education-level/list';
+        // let _body = '';
+        // let _params = {
+        //     headers: new Headers(),
+        //     search: new URLSearchParams(),
+        // }
+        // _params.headers.append('X-Requested-With', 'XMLHttpRequest'); 
+        // if (typeof p_limit !== 'undefined')
+        //     _params.search.append('p_limit', ''+p_limit); 
+        // if (typeof p_page !== 'undefined')
+        //     _params.search.append('p_page', ''+p_page); 
+        // if (typeof p_query !== 'undefined')
+        //     _params.search.append('p_query', ''+p_query); 
+        // if (typeof p_sort_direction !== 'undefined')
+        //     _params.search.append('p_sort_direction', ''+p_sort_direction); 
+        // if (typeof p_sort_field !== 'undefined')
+        //     _params.search.append('p_sort_field', ''+p_sort_field); 
 
 
-        return this.http['get'](_path, _params)
+        // return this.http['get'](_path, _params)
     }
     /**
      * 
@@ -1528,26 +1553,29 @@ export class Classifier_listService {
         p_sort_direction?: string,
         p_sort_field?: string,
     ) {
-        let _path = '/classifiers/meal-type/list';
-        let _body = '';
-        let _params = {
-            headers: new Headers(),
-            search: new URLSearchParams(),
-        }
-        _params.headers.append('X-Requested-With', 'XMLHttpRequest'); 
-        if (typeof p_limit !== 'undefined')
-            _params.search.append('p_limit', ''+p_limit); 
-        if (typeof p_page !== 'undefined')
-            _params.search.append('p_page', ''+p_page); 
-        if (typeof p_query !== 'undefined')
-            _params.search.append('p_query', ''+p_query); 
-        if (typeof p_sort_direction !== 'undefined')
-            _params.search.append('p_sort_direction', ''+p_sort_direction); 
-        if (typeof p_sort_field !== 'undefined')
-            _params.search.append('p_sort_field', ''+p_sort_field); 
+
+        return this.fakeClassifireData
+
+        // let _path = '/classifiers/meal-type/list';
+        // let _body = '';
+        // let _params = {
+        //     headers: new Headers(),
+        //     search: new URLSearchParams(),
+        // }
+        // _params.headers.append('X-Requested-With', 'XMLHttpRequest'); 
+        // if (typeof p_limit !== 'undefined')
+        //     _params.search.append('p_limit', ''+p_limit); 
+        // if (typeof p_page !== 'undefined')
+        //     _params.search.append('p_page', ''+p_page); 
+        // if (typeof p_query !== 'undefined')
+        //     _params.search.append('p_query', ''+p_query); 
+        // if (typeof p_sort_direction !== 'undefined')
+        //     _params.search.append('p_sort_direction', ''+p_sort_direction); 
+        // if (typeof p_sort_field !== 'undefined')
+        //     _params.search.append('p_sort_field', ''+p_sort_field); 
 
 
-        return this.http['get'](_path, _params)
+        // return this.http['get'](_path, _params)
     }
     /**
      * 
@@ -1645,26 +1673,29 @@ export class Classifier_listService {
         p_sort_direction?: string,
         p_sort_field?: string,
     ) {
-        let _path = '/classifiers/ovz-group-types/list';
-        let _body = '';
-        let _params = {
-            headers: new Headers(),
-            search: new URLSearchParams(),
-        }
-        _params.headers.append('X-Requested-With', 'XMLHttpRequest'); 
-        if (typeof p_limit !== 'undefined')
-            _params.search.append('p_limit', ''+p_limit); 
-        if (typeof p_page !== 'undefined')
-            _params.search.append('p_page', ''+p_page); 
-        if (typeof p_query !== 'undefined')
-            _params.search.append('p_query', ''+p_query); 
-        if (typeof p_sort_direction !== 'undefined')
-            _params.search.append('p_sort_direction', ''+p_sort_direction); 
-        if (typeof p_sort_field !== 'undefined')
-            _params.search.append('p_sort_field', ''+p_sort_field); 
+
+        return this.fakeClassifireData;
+
+        // let _path = '/classifiers/ovz-group-types/list';
+        // let _body = '';
+        // let _params = {
+        //     headers: new Headers(),
+        //     search: new URLSearchParams(),
+        // }
+        // _params.headers.append('X-Requested-With', 'XMLHttpRequest'); 
+        // if (typeof p_limit !== 'undefined')
+        //     _params.search.append('p_limit', ''+p_limit); 
+        // if (typeof p_page !== 'undefined')
+        //     _params.search.append('p_page', ''+p_page); 
+        // if (typeof p_query !== 'undefined')
+        //     _params.search.append('p_query', ''+p_query); 
+        // if (typeof p_sort_direction !== 'undefined')
+        //     _params.search.append('p_sort_direction', ''+p_sort_direction); 
+        // if (typeof p_sort_field !== 'undefined')
+        //     _params.search.append('p_sort_field', ''+p_sort_field); 
 
 
-        return this.http['get'](_path, _params)
+        // return this.http['get'](_path, _params)
     }
     /**
      * 
@@ -1684,26 +1715,29 @@ export class Classifier_listService {
         p_sort_direction?: string,
         p_sort_field?: string,
     ) {
-        let _path = '/classifiers/jurisdiction/list';
-        let _body = '';
-        let _params = {
-            headers: new Headers(),
-            search: new URLSearchParams(),
-        }
-        _params.headers.append('X-Requested-With', 'XMLHttpRequest'); 
-        if (typeof p_limit !== 'undefined')
-            _params.search.append('p_limit', ''+p_limit); 
-        if (typeof p_page !== 'undefined')
-            _params.search.append('p_page', ''+p_page); 
-        if (typeof p_query !== 'undefined')
-            _params.search.append('p_query', ''+p_query); 
-        if (typeof p_sort_direction !== 'undefined')
-            _params.search.append('p_sort_direction', ''+p_sort_direction); 
-        if (typeof p_sort_field !== 'undefined')
-            _params.search.append('p_sort_field', ''+p_sort_field); 
+
+        return this.fakeClassifireData;
+
+        // let _path = '/classifiers/jurisdiction/list';
+        // let _body = '';
+        // let _params = {
+        //     headers: new Headers(),
+        //     search: new URLSearchParams(),
+        // }
+        // _params.headers.append('X-Requested-With', 'XMLHttpRequest'); 
+        // if (typeof p_limit !== 'undefined')
+        //     _params.search.append('p_limit', ''+p_limit); 
+        // if (typeof p_page !== 'undefined')
+        //     _params.search.append('p_page', ''+p_page); 
+        // if (typeof p_query !== 'undefined')
+        //     _params.search.append('p_query', ''+p_query); 
+        // if (typeof p_sort_direction !== 'undefined')
+        //     _params.search.append('p_sort_direction', ''+p_sort_direction); 
+        // if (typeof p_sort_field !== 'undefined')
+        //     _params.search.append('p_sort_field', ''+p_sort_field); 
 
 
-        return this.http['get'](_path, _params)
+        // return this.http['get'](_path, _params)
     }
     /**
      * 

@@ -9,12 +9,13 @@ import { YaCoreModule } from '../angular2-yandex-maps/core.module';
 
 import { N3kNgGridModule } from '../lib/n3k-ng-grid/n3k-ng-grid.module';
 import { N3kNgComponentsModule } from '../lib/n3k-ng-components/n3k-ng-components.module';
+import { N3kNgPipesModule } from '../lib/n3k-ng-pipes/n3k-ng-pipes.module';
 
 import { InstitutionService } from '../api/institution'
 import { Classifier_listService } from '../api/classifier_list';
 
 import { InstitutionComponent } from './institution.component';
-import { ViewComponent, ToWeekDays, ToTime, YesNo } from './view/view.component';
+import { ViewComponent} from './view/view.component';
 import { EditComponent } from './edit/edit.component';
 import { ListComponent } from './list/list.component';
 import { MapListComponent } from './map-list/map-list.component';
@@ -30,6 +31,7 @@ import { AddressComponent } from './edit/address/address.component';
 import { OrganizationComponent } from './edit/organization-form/organization-form.component';
 import { PersonComponent } from './edit/person/person.component';
 import { JobComponent } from './edit/job/job.component';
+import { WorkTimeComponent } from './edit/work-time/work-time.component';
 
 const routes:Routes = [
   {path: 'institution', children: [
@@ -51,6 +53,7 @@ const routes:Routes = [
     CommonModule,
     N3kNgGridModule,
     N3kNgComponentsModule,
+    N3kNgPipesModule,
     YaCoreModule.forRoot(),
     RouterModule.forRoot([]),
   ],
@@ -60,9 +63,6 @@ const routes:Routes = [
     EditComponent, 
     ListComponent, 
     MapListComponent,
-    ToTime,
-    ToWeekDays,
-    YesNo,
     CommonComponent,
     BuildingsComponent,
     ContractsComponent,
@@ -75,9 +75,10 @@ const routes:Routes = [
     OrganizationComponent,
     PersonComponent,
     JobComponent,
+    WorkTimeComponent,
   ],
-  exports: [ToTime, ToWeekDays, YesNo],
-  providers: [InstitutionService,Classifier_listService],
+  exports: [],
+  providers: [InstitutionService, Classifier_listService],
   schemas: [],
 })
 export class InstitutionModule { 

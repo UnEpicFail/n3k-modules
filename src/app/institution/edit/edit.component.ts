@@ -35,6 +35,19 @@ export class EditComponent implements OnInit {
 
   _institution: Institution = new Institution({})
 
+  regionService
+  districtService
+  shiftService
+  statusService
+  typeService
+  kindService
+  terrainService
+  educationLanguageService
+  levelsService
+  ovzGroupTypesService
+  jurisdictionService
+
+
   @ViewChildren(AnchornTargetRefDirective) anchors:QueryList<AnchornTargetRefDirective>
 
   constructor(
@@ -48,6 +61,17 @@ export class EditComponent implements OnInit {
       this.setForm()
     })
 
+    this.regionService = classifireService.classifierRegionList()
+    this.districtService = classifireService.classifierDistrictList()
+    this.shiftService = classifireService.classifierEducationShiftList()
+    this.statusService = classifireService.classifierInstitutionStatusList()
+    this.typeService = classifireService.classifierInstitutionTypeList()
+    this.kindService = classifireService.classifierInstitutionKindList()
+    this.terrainService = classifireService.classifierTerrainTypeList()
+    this.educationLanguageService = classifireService.classifierLanguageList()
+    this.levelsService = classifireService.classifierEducationLevelList()
+    this.ovzGroupTypesService = classifireService.classifierOvzGroupTypesList()
+    this.jurisdictionService = classifireService.classifierJurisdictionList()
   }
 
   ngOnInit() {
@@ -60,14 +84,39 @@ export class EditComponent implements OnInit {
   }
 
   setForm() {
+    let i = this._institution
     this.form = this.fb.group({
-      organization: this._institution.organization,
-      head: this._institution.head
+      organization: [i.organization],
+      head: [i.head],
+      region: [i.region],
+      district: [i.district],
+      full_name: [i.full_name],
+      name: [i.name],
+      shift: [i.shift],
+      status: [i.status],
+      type: [i.type],
+      kind: [i.kind],
+      terrain: [i.terrain],
+      work_time: [i.work_time],
+      education_language: [i.education_language],
+      //education_area: [i.education_area],
+      levels: [i.levels],
+      //meals: [i.meals],
+      ovz_group_types: [i.ovz_group_types],
+      //foundation_date: [i.foundation_date],
+      jurisdiction: [i.jurisdiction],
+      description: [i.description],
+      //img????
+      //capacity: [i.capacity],      
     })
   }
 
   onHeadDelete() {
     this._institution.head = new JobShort({})
     this.setForm()
+  }
+
+  onWorkTimeDelete(e) {
+    console.log('onWorkTimeDelete', e)
   }
 }

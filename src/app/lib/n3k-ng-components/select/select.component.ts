@@ -76,7 +76,15 @@ export class SelectComponent implements OnInit, ControlValueAccessor {
     this._placeholder = placeholder
   }
 
+  @Input() beforeSetValue
+  @Input() beforeGetValue
+  @Input() beforeSetData
+
+
   writeValue(value: any): void {
+    if(typeof this.beforeSetValue === 'function') {
+      value = this.beforeSetValue(value)
+    }
     this._values = []
     if (value !== undefined && value !== null) {
       if (!Array.isArray(value)) {
@@ -128,7 +136,8 @@ export class SelectComponent implements OnInit, ControlValueAccessor {
         this._loading = false;
         let _res = new Response(res);
         this._pagination = new Pagination(_res.data)
-        this._options =  ( this._options ) ? this._options.concat(this._pagination.items) : this._pagination.items ;
+        let items = ( typeof this.beforeSetData === 'function') ? this.beforeSetData(this._pagination.items) : this._pagination.items 
+        this._options =  ( this._options ) ? this._options.concat(items) : items ;
       })
     }
   }
@@ -168,7 +177,8 @@ export class SelectComponent implements OnInit, ControlValueAccessor {
   }
 
   private getValues() {
-    return (this._multi) ? this._values : (this._values[0] || null)
+    let v = (typeof this.beforeGetValue === 'function') ? this.beforeGetValue(this._values) : this._values
+    return (this._multi) ? v : (v[0] || null)
   }
 
 

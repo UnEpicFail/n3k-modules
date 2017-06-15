@@ -1,5 +1,5 @@
 
-import { Component, OnInit, Pipe, PipeTransform , Input} from '@angular/core';
+import { Component, OnInit, Input} from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { InstitutionFull } from '../../api/institution/InstitutionFull';
@@ -7,29 +7,6 @@ import { Response } from '../../api/common/Response';
 
 import { InstitutionService } from '../../api/institution'
 
-
-@Pipe({name: 'toWeekDays'})
-export class ToWeekDays implements PipeTransform {
-  transform(value: number[], exponent: string): string {
-    let days = ['','Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб', 'Вс']
-    return days[value[0]] + ((value.length>1)? '-'+days[value.slice(-1)[0]] : '');
-  }
-}
-
-@Pipe({name: 'toTime'})
-export class ToTime implements PipeTransform {
-  transform(value: string, exponent: string): string {
-    let arr = value.split(':')
-    return parseInt(arr[0],10)+':'+arr[1];
-  }
-}
-
-@Pipe({name: 'yesNo'})
-export class YesNo implements PipeTransform {
-  transform(value: boolean, exponent: string): string {
-    return (value) ? 'Да' : 'Нет';
-  }
-}
 
 @Component({
   selector: 'app-view',
