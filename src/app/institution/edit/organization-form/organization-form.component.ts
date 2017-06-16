@@ -100,7 +100,7 @@ export class OrganizationComponent implements ControlValueAccessor {
     })
   }
 
-  onAddressDelete(index) {
+  onAddressDelete(identity) {
     this._organization.address = new Address({})
     this.setForm()
   }

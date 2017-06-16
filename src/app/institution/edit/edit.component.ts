@@ -85,6 +85,7 @@ export class EditComponent implements OnInit {
 
   setForm() {
     let i = this._institution
+
     this.form = this.fb.group({
       organization: [i.organization],
       head: [i.head],
@@ -99,9 +100,9 @@ export class EditComponent implements OnInit {
       terrain: [i.terrain],
       work_time: [i.work_time],
       education_language: [i.education_language],
-      //education_area: [i.education_area],
+      education_area: [i.education_area],
       levels: [i.levels],
-      //meals: [i.meals],
+      meals: [i.meals],
       ovz_group_types: [i.ovz_group_types],
       //foundation_date: [i.foundation_date],
       jurisdiction: [i.jurisdiction],
@@ -116,7 +117,52 @@ export class EditComponent implements OnInit {
     this.setForm()
   }
 
-  onWorkTimeDelete(e) {
-    console.log('onWorkTimeDelete', e)
+  onWorkTimeDelete(id) {
+    let index = this.getWorkTimeIndex(id)
+    if (index){
+      this._institution.work_time.splice(index, 1)
+    }
+  }
+  
+  getWorkTimeIndex(id) {
+    for (let i = 0, max_i = this._institution.work_time.length; i < max_i; i += 1){
+      if (this._institution.work_time[i].id === id){
+        return i
+      }
+    }
+    return false
+  }
+
+  onEducationAreaDelete(identity) {
+    let index = this.getEducationAreaIndex(identity)
+    if (index) {
+      this._institution.education_area.splice(index, 1)
+    }
+  }
+
+  getEducationAreaIndex(identity) {
+    for (let i = 0, max_i = this._institution.education_area.length; i < max_i; i += 1){
+      if (this._institution.education_area[i].identity === identity) {
+        return i
+      }
+    }
+    return false
+  }
+
+
+  onMealDelete(id) {
+     let index = this.getMealIndex(id)
+    if (index) {
+      this._institution.meals.splice(index, 1)
+    }
+  }
+
+  getMealIndex(id) {
+    for (let i = 0, max_i = this._institution.meals.length; i < max_i; i += 1){
+      if (this._institution.meals[i].id === id) {
+        return i
+      }
+    }
+    return false
   }
 }

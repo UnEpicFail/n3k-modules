@@ -32,6 +32,7 @@ import { OrganizationComponent } from './edit/organization-form/organization-for
 import { PersonComponent } from './edit/person/person.component';
 import { JobComponent } from './edit/job/job.component';
 import { WorkTimeComponent } from './edit/work-time/work-time.component';
+import { MealsComponent } from './edit/meals/meals.component';
 
 const routes:Routes = [
   {path: 'institution', children: [
@@ -76,6 +77,7 @@ const routes:Routes = [
     PersonComponent,
     JobComponent,
     WorkTimeComponent,
+    MealsComponent,
   ],
   exports: [],
   providers: [InstitutionService, Classifier_listService],

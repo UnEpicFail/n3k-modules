@@ -8,6 +8,7 @@
 .clones {
     background-color: #F2F2F2;
     padding: 20px 25px;
+    margin: 2px 0; 
 }
 .clones .view-text {
     margin-bottom: 35px;

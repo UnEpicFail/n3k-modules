@@ -12,37 +12,26 @@
     </div>
 </div>
 
-<div *ngFor='let work_time of _work_times; let i = index'>
+<div *ngFor='let meal of _meals; let i = index'>
 
 
   <div class = 'clones' *ngIf='_editState[i]'>
 
-      <n3k-input
-        [title] = '"Время начала"'
-        [placeholder] = '"Время начала"'    
-        [(ngModel)]='work_time.begin_time'
-        name='begin_time'
-      ></n3k-input>
-
-      <n3k-input
-        [title] = '"Время завершения"'
-        [placeholder] = '"Время завершения"'    
-        [(ngModel)]='work_time.end_time'
-        name='end_time'
-      ></n3k-input>
+      <n3k-select
+        [title] = '"Тип питания"'
+        [placeholder] = '"Тип питания"'
+        [fromMethod] = 'mealTypeService'       
+        [(ngModel)]='meal.meal_type'
+        name='meal_type'
+      ></n3k-select>
       
       <n3k-select
-        [title] = '"День недели"'
-        [placeholder] = '"День недели"'
-        [options] = 'workTimeOptions'
-        [beforeSetValue] = 'beforeSetValue'
-        [beforeGetValue] = 'beforeGetValue'
-        [multi] = 'true'     
-        [(ngModel)]='work_time.week_days'
-        name='week_days'
-      >
-      </n3k-select>
-      
+        [title] = '"Тип финансирования"'
+        [placeholder] = '"Тип финансирования"'
+        [fromMethod] = 'financingTypeService'       
+        [(ngModel)]='meal.financing_type'
+        name='financing_type'
+      ></n3k-select>      
 
       <div class='buttons-array'>
         <div class='create-new-btn btn' (click)='submit(i)'><span class='text'>Сохранить</span></div>
@@ -52,7 +41,19 @@
   <div class = 'clones' *ngIf='!_editState[i]'>
     <div>
       <div class='view-text'>
-        {{work_time.week_days | toWeekDays}}, {{work_time.begin_time | toTime}}—{{work_time.end_time | toTime}}
+       <div class='description-block'>
+          <div class='description-block-title'>
+            Тип питания:
+          </div>
+          {{meal.meal_type.name}}
+        </div>
+      </div>
+
+      <div class='description-block'>
+          <div class='description-block-title'>
+            Тип финансирования:
+          </div>
+          {{meal.financing_type.name}}
       </div>
 
       <div class='controll'>

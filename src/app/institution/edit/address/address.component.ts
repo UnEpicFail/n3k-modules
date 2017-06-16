@@ -23,9 +23,16 @@ export class AddressComponent implements OnInit, ControlValueAccessor{
 
   @Input() title:string
 
+  _limit:number = Infinity
+  @Input()
+  set limit(limit) {
+    if(limit){
+      this._limit = limit
+    }
+  }
+
   @Output() onDelete = new EventEmitter()
 
-  public viewFrom = ''
   public regionService;
   public okrugService;
   public districtService;
@@ -35,24 +42,44 @@ export class AddressComponent implements OnInit, ControlValueAccessor{
   public streetService;
   public buildingService;
   public flatService; 
-  public _address = new Address({});
-  public _editState = false;
+  public _address: Address[] = [];
+  public _editState = [];
+  public viewFrom = [];
   public canAddNew = true;
+  public _notArray = false;
+
 
   onChange = (_) => {};
   onTouched = () => {};
 
   writeValue(address: any): void {
-    if (address !== undefined && address !== null) {
-      this._address = new Address(address);
-    } else {
-      this._address = new Address({});
+    this._address = []
+    if (!Array.isArray(address)) {
+      this._notArray = true
+      address = (address !== undefined && address !== null) ? [address] : []
+    }
+    
+    for (let i = 0, max_i = address.length; i < max_i; i += 1) {
+      if (!this.isEmpty(address[i])) {
+        this._address.push(new Address(address[i]))
+        this._editState.push(false)
+        this.viewFrom.push(this.getView(address[i]))
+      }
     }
 
-    this.canAddNew = this.isEmpty(this._address);
-    if(!this.canAddNew){
-      this.viewFrom = this.getView();
-    }
+
+    this.canAddNew = (this._limit > this._address.length);
+
+    // if (address !== undefined && address !== null) {
+    //   this._address = new Address(address);
+    // } else {
+    //   this._address = new Address({});
+    // }
+
+    // this.canAddNew = this.isEmpty(this._address);
+    // if(!this.canAddNew){
+    //   this.viewFrom = this.getView();
+    // }
   }
 
   registerOnChange(fn: (_: any) => void): void { this.onChange = fn; }
@@ -99,68 +126,88 @@ export class AddressComponent implements OnInit, ControlValueAccessor{
   }
 
 
-  getView() {
-    if(!this._address.fias)
+  getView(address) {
+    if(!address.fias)
       return ''
 
 
-    let a = this._address.fias 
+    let fias = address.fias
     let text = [];
 
-
-    if (a.region.name) {
-      text.push(a.region.name)
+    if (fias.region.name) {
+      text.push(fias.region.name)
     }
 
-    if (a.okrug.name) {
-      text.push(a.okrug.name)
+    if (fias.okrug.name) {
+      text.push(fias.okrug.name)
     }
 
-    if (a.district.name) {
-      text.push(a.district.name)
+    if (fias.district.name) {
+      text.push(fias.district.name)
     }
 
-    if (a.city.name) {
-      text.push(a.city.name)
+    if (fias.city.name) {
+      text.push(fias.city.name)
     }
 
-    if (a.incity.name) {
-      text.push(a.incity.name)
+    if (fias.incity.name) {
+      text.push(fias.incity.name)
     }
 
-    if (a.municipality.name) {
-      text.push(a.municipality.name)
+    if (fias.municipality.name) {
+      text.push(fias.municipality.name)
     }
 
-    if (a.street.name) {
-      text.push(a.street.name)
+    if (fias.street.name) {
+      text.push(fias.street.name)
     }
 
-    if (a.building.name) {
-      text.push(a.building.name)
+    if (fias.building.name) {
+      text.push(fias.building.name)
     }
 
-    if (a.flat.name) {
-      text.push(a.flat.name)
+    if (fias.flat.name) {
+      text.push(fias.flat.name)
     }
 
     return text.join(', ')
   }
 
-  deleteMe() {
-    this.onDelete.emit(this._address.identity);
+  deleteMe(index) {
+    if (!this.isEmpty(this._address[index].identity)) {
+      this.onDelete.emit(this._address[index].identity);
+    }
+
+    this._address.splice(index, 1)
+    this._editState.splice(index, 1)
+    this.viewFrom.splice(index, 1)
+    this.canAddNew = (this._limit > this._address.length);
   }
 
-  cancel() {
-    this._editState = false;
+  cancel(index) {
+    if (this.isEmpty(this._address[index])) {
+      this._editState.splice(index, 1)
+      this.viewFrom.splice(index, 1)
+      this._address.splice(index, 1)
+      this.canAddNew = (this._limit > this._address.length);
+    } else {
+      this._editState[index] = false;
+
+    }
   }
 
-  submit() {
-    this.onChange(this._address)
+  submit(index) {
+    this.onChange ( (this._notArray) ? this._address[0] : this._address )
     this.onTouched()
-    this.viewFrom = this.getView();
-    this._editState = false;
-    this.canAddNew = false;
+    this.viewFrom[index] = this.getView(this._address[index]);
+    this._editState[index] = false;
+    this.canAddNew = (this._limit > this._address.length);
+  }
+
+  addNew() {
+    this._address.unshift(new Address({}))
+    this._editState.unshift(true)
+    this.viewFrom.unshift('')
   }
 }
 

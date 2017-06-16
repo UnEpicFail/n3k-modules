@@ -86,8 +86,9 @@
 
   <edit-address 
     [title] = '"Юридический адрес"'
+    (onDelete) = 'onAddressDelete($event)'
+    [limit] = '1'
     formControlName = 'address'
-    (onDelete) = 'onAddressDelete()'
   ></edit-address>
     
   <n3k-select

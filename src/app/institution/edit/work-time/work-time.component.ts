@@ -25,8 +25,7 @@ export class WorkTimeComponent implements OnInit, ControlValueAccessor {
   @Output() onDelete = new EventEmitter()
 
   public _work_times: WorkTime[] = [];
-  public _editState = false;
-  public canAddNew = true;
+  public _editState = [];
   public workTimeOptions = [
     new ClassifierShort({id: 1, name: 'Пн'}),
     new ClassifierShort({id: 2, name: 'Вт'}),
@@ -49,23 +48,15 @@ export class WorkTimeComponent implements OnInit, ControlValueAccessor {
       for (let i = 0, max_i = work_times.length; i < max_i; i += 1) {
         if(!this.isEmpty(work_times[i])){
           this._work_times.push(new WorkTime(work_times[i]));
+          this._editState.push(false)
         }
       }
     } else {
       if(work_times && !this.isEmpty(work_times)){
         this._work_times.push(new WorkTime(work_times));
+        this._editState.push(false)
       }
     }
-    // if (work_times !== undefined && work_times !== null) {
-    //   this._work_times = new WorkTime(work_times);
-    // } else {
-    //   this._work_times = new WorkTime({});
-    // }
-
-    // this.canAddNew = this.isEmpty(this._work_times);
-    // if(!this.canAddNew){
-    //   this.viewFrom = this.getView();
-    // }
   }
 
   registerOnChange(fn: (_: any) => void): void { this.onChange = fn; }
@@ -142,21 +133,32 @@ export class WorkTimeComponent implements OnInit, ControlValueAccessor {
     return res
   }
 
-  deleteMe(id) {
-    if (id) {
-      this.onDelete.emit(id);
+  addNew() {
+    this._work_times.unshift(new WorkTime({}))
+    this._editState.unshift(true)
+  }
+
+  deleteMe(i) {
+    if (this._work_times[i].id) {
+      this.onDelete.emit(this._work_times[i].id);
+    } 
+
+    this._work_times.splice(i, 1);
+    this._editState.splice(i, 1);
+  }
+
+  cancel(i) {
+    if (!this._work_times[i].id) {
+      this._work_times.splice(i, 1);
+      this._editState.splice(i, 1);
     }
+    this._editState[i] = false;
   }
 
-  cancel() {
-    this._editState = false;
-  }
-
-  submit() {
+  submit(i) {
     this.onChange(this._work_times)
     this.onTouched()
-    this._editState = false;
-    this.canAddNew = false;
+    this._editState[i] = false;
   }
 
 }

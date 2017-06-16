@@ -6,8 +6,11 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class ToTimePipe implements PipeTransform {
 
   transform(value: string, exponent: string): string {
-    let arr = value.split(':')
-    return parseInt(arr[0],10)+':'+arr[1];
+    if(!value){
+      return '';
+    }
+      let arr = value.split(':')
+      return parseInt(arr[0],10)+':'+arr[1];
   }
 
 }

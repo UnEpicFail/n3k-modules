@@ -6,6 +6,10 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class ToWeekDaysPipe implements PipeTransform {
 
   transform(value: number[], exponent: string): string {
+    if (!value) {
+      return ''
+    }
+    
     let days = ['','Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб', 'Вс']
     let inOrder = true;
     let prev

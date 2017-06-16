@@ -87,7 +87,7 @@
 
       <edit-work-time
         [title] = '"Время работы"'
-        (onDelete) = 'onWorkTimeDelete(event)'
+        (onDelete) = 'onWorkTimeDelete($event)'
         formControlName = 'work_time'
       ></edit-work-time>
 
@@ -98,7 +98,11 @@
         formControlName = 'education_language'
       ></n3k-select>
 
-      <!-- Адреса обслуживаемой территории education_area -->
+      <edit-address 
+        [title] = '"Адреса обслуживаемой территории"'
+        (onDelete) = 'onEducationAreaDelete($event)'
+        formControlName = 'education_area'
+      ></edit-address>
 
       <n3k-select
         [title] = '"Уровень образования"'
@@ -109,6 +113,12 @@
       ></n3k-select>
 
       <!-- Тип питания meals -->
+
+      <edit-meals
+        [title] = '"Питание"'
+        (onDelete) = 'onMealDelete($event)'
+        formControlName = 'meals'
+      ></edit-meals>
 
       <n3k-select
         [title] = '"Типы групп ОВЗ доступные в ОО"'

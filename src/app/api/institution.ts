@@ -301,6 +301,10 @@ export class InstitutionService {
                     meal_type: {
                         id: 1,
                         name: 'Горячее питание'
+                    },
+                    financing_type: {
+                        id: 1,
+                        name: 'Платное'
                     }
                 }
             ],
@@ -347,16 +351,132 @@ export class InstitutionService {
             description: 'Политехнический университет - многофункциональное государственное высшее учебное заведение. В 2010 году он получил статус национального исследовательского университета, что явилось признанием его роли и возможностей как в области подготовки кадров, так и в мультидисциплинарных научных исследованиях и разработках. В рейтинге технических университетов России Политехнический неизменно занимает ведущие позиции.',
             education_area: [
                 {
-                    origin_address: 'Московский 1'
+                    identity: {
+                        id: 1
+                    },
+                    origin_address: 'Московский 1',
+                    fias: {
+                        region: {
+                            id: 1,
+                            name: 'Ленинградская область'
+                        },
+                        okrug: {},
+                        district: {
+                            id: 1,
+                            name: 'Выборгский район'
+                        },
+                        city: {
+                            id: 1,
+                            name: 'г. Выборг'
+                        },
+                        incity: {},
+                        municipality: {},
+                        street: {
+                            id: 1,
+                            name: 'ул. Ленина'
+                        },
+                        building: {
+                            id: 1,
+                            name: 'д. 30'
+                        },
+                        flat: {},
+                    }
+                    
+                },
+                {   identity: {
+                        id: 2
+                    },
+                    origin_address: 'Московский 2',
+                    fias: {
+                        region: {
+                            id: 1,
+                            name: 'Ленинградская область'
+                        },
+                        okrug: {},
+                        district: {
+                            id: 1,
+                            name: 'Выборгский район'
+                        },
+                        city: {
+                            id: 1,
+                            name: 'г. Выборг'
+                        },
+                        incity: {},
+                        municipality: {},
+                        street: {
+                            id: 1,
+                            name: 'ул. Ленина'
+                        },
+                        building: {
+                            id: 1,
+                            name: 'д. 30'
+                        },
+                        flat: {},
+                    }
                 },
                 {
-                    origin_address: 'Московский 2'
+                    identity: {
+                        id: 3
+                    },
+                    origin_address: 'Московский 3',
+                    fias: {
+                        region: {
+                            id: 1,
+                            name: 'Ленинградская область'
+                        },
+                        okrug: {},
+                        district: {
+                            id: 1,
+                            name: 'Выборгский район'
+                        },
+                        city: {
+                            id: 1,
+                            name: 'г. Выборг'
+                        },
+                        incity: {},
+                        municipality: {},
+                        street: {
+                            id: 1,
+                            name: 'ул. Ленина'
+                        },
+                        building: {
+                            id: 1,
+                            name: 'д. 30'
+                        },
+                        flat: {},
+                    }
                 },
                 {
-                    origin_address: 'Московский 3'
-                },
-                {
-                    origin_address: 'Московский 4'
+                    identity: {
+                        id: 4
+                    },
+                    origin_address: 'Московский 4',
+                    fias: {
+                        region: {
+                            id: 1,
+                            name: 'Ленинградская область'
+                        },
+                        okrug: {},
+                        district: {
+                            id: 1,
+                            name: 'Выборгский район'
+                        },
+                        city: {
+                            id: 1,
+                            name: 'г. Выборг'
+                        },
+                        incity: {},
+                        municipality: {},
+                        street: {
+                            id: 1,
+                            name: 'ул. Ленина'
+                        },
+                        building: {
+                            id: 1,
+                            name: 'д. 30'
+                        },
+                        flat: {},
+                    }
                 },
             ],
             region: {
