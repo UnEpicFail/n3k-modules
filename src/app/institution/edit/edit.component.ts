@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChildren, QueryList } from '@angular/core';
+import { Component, OnInit, AfterContentChecked, ViewChildren, QueryList } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { AnchornTargetRefDirective } from '../../lib/n3k-ng-components/anchor-menu/anchor-menu.component'
 
@@ -19,7 +19,7 @@ import { AddressComponent } from './address/address.component'
   templateUrl: './edit.component.html',
   styleUrls: ['./edit.component.css']
 })
-export class EditComponent implements OnInit {
+export class EditComponent implements OnInit, AfterContentChecked {
 
   anchorList: {}[] = [
     {name:'Юридическое лицо', target: 'organization'},
@@ -47,8 +47,8 @@ export class EditComponent implements OnInit {
   ovzGroupTypesService
   jurisdictionService
 
-
-  @ViewChildren(AnchornTargetRefDirective) anchors:QueryList<AnchornTargetRefDirective>
+  anchors:QueryList<AnchornTargetRefDirective>
+  @ViewChildren(AnchornTargetRefDirective) _anchors:QueryList<AnchornTargetRefDirective>
 
   constructor(
     private institutionService: InstitutionService,
@@ -76,6 +76,10 @@ export class EditComponent implements OnInit {
 
   ngOnInit() {
     this.setForm()
+  }
+
+  ngAfterContentChecked() {
+    this.anchors = this._anchors
   }
 
   onSubmit() {

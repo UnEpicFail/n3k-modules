@@ -15,8 +15,7 @@ import { PositionService } from '../../n3k-ng-grid/position.service'
 })
 
 export class AnchornTargetRefDirective {
-  
-  
+   
   @Input('name') name
 
   constructor(private el: ElementRef, private renderer: Renderer) {
@@ -34,16 +33,18 @@ export class AnchornTargetRefDirective {
 })
 export class AnchorMenuComponent {
 
-  _list
+  _list: {}[] = []
   @Input('list')
   set list(list) {
     this._list = (list || [])
   }
 
-  _anchors: QueryList<AnchornTargetRefDirective>
+  _anchors: QueryList<AnchornTargetRefDirective> 
   @Input('anchors')
   set anchors(anchors) {
-    this._anchors = anchors
+    if(anchors){
+      this._anchors = anchors
+    }
   }
 
   neck
