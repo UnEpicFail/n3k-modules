@@ -1,6 +1,9 @@
 import { Component, OnInit, AfterContentChecked, ViewChildren, QueryList } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+// import { DatePickerOptions, DateModel } from 'ng2-datepicker';
 import { AnchornTargetRefDirective } from '../../lib/n3k-ng-components/anchor-menu/anchor-menu.component'
+
+
 
 import { Institution } from '../../api/institution/Institution';
 import { InstitutionService } from '../../api/institution'
@@ -46,6 +49,7 @@ export class EditComponent implements OnInit, AfterContentChecked {
   levelsService
   ovzGroupTypesService
   jurisdictionService
+  foundationDateOptions
 
   anchors:QueryList<AnchornTargetRefDirective>
   @ViewChildren(AnchornTargetRefDirective) _anchors:QueryList<AnchornTargetRefDirective>
@@ -60,6 +64,16 @@ export class EditComponent implements OnInit, AfterContentChecked {
       this._institution = new Institution(_res.data);
       this.setForm()
     })
+
+    this.foundationDateOptions = {
+      format: 'DD.MM.YYYY',
+      title: 'Дата образования организации',
+      placeholder: 'Дата образования организации',
+    }
+
+    // this.foundationDateOptions = new DatePickerOptions({
+    //   format: 'DD.MM.YYYY'
+    // });
 
     this.regionService = classifireService.classifierRegionList()
     this.districtService = classifireService.classifierDistrictList()
@@ -108,7 +122,7 @@ export class EditComponent implements OnInit, AfterContentChecked {
       levels: [i.levels],
       meals: [i.meals],
       ovz_group_types: [i.ovz_group_types],
-      //foundation_date: [i.foundation_date],
+      foundation_date: [i.foundation_date],
       jurisdiction: [i.jurisdiction],
       description: [i.description],
       //img????

@@ -16,7 +16,7 @@ const CUSTOM_VALUE_ACCESSOR: any = {
 })
 export class InputComponent implements OnInit, ControlValueAccessor {
 
-  public _value: string;
+  public _value: string = '';
   public _title: string;
   public _placeholder: string;
  

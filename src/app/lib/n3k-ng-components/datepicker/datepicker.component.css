@@ -1,0 +1,108 @@
+
+
+:host {
+    display: block;
+    overflow: hidden;
+}
+
+.datepicker {
+    position: relative;
+    font-family: 'ArialMT', 'Arial';
+    font-size: 13px;
+    line-height: 21px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #A1A1A1;
+}
+
+.datepicker input {
+    width: 100%;
+    border: 0;
+    line-height: 21px;
+}
+
+.datepicker .title {
+    font-size: 12px;
+    color: #A1A1A1;
+}
+
+.icon {
+    color: #A1A1A1;
+    width: 20px;
+    text-align: center;
+}
+
+.datepicker table {
+    width: 100%;
+    background-color: #fff;
+}
+
+.datepicker td {
+    vertical-align: bottom;
+}
+
+.datepicker td:hover {
+    cursor: pointer;
+}
+
+.controll-element,
+.week-day,
+.day {
+    text-align: center;
+    line-height: 28px;
+    color: #A1A1A1;
+    border: 1px solid #fff;
+}
+
+.controll-element.active:hover,
+.day:hover {
+    cursor: pointer;
+}
+
+.preview-month {
+    
+}
+
+.controll-element,
+.current-month {
+    color: #000;
+}
+
+.next-month {
+    
+}
+
+.today {
+    border-color: #00f
+}
+
+.display-none {
+    display: none !important;
+}
+
+.selected-date {
+    background-color: #e1e1e1
+}
+
+.overlay-block:hover{
+    cursor: pointer;
+}
+
+.overlay-block {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 99;
+    background-color: rgba(128, 128, 128, 0.5)
+}
+
+.overlay-datelist {
+    z-index: 100;
+    position: fixed;
+    display: block
+}
+
+.overlay-datelist table {
+    width: 100%;
+}
