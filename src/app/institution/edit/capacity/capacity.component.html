@@ -1,0 +1,126 @@
+
+<div class='title'>
+  {{title}}
+</div>
+
+<div *ngIf='canAddNew' >
+    <div class='buttons-array'>
+        <div class='default-btn btn' (click)='addNew()'>
+            <span class='icon'><i class="fa fa-plus" aria-hidden="true"></i></span>
+            <span class='text'>Добавить вместимость</span>
+        </div> 
+    </div>
+</div>
+<div class='clones' *ngFor='let capacity of _capacitis; let i = index'>
+  <div *ngIf='_editState[i]' >
+      
+      <n3k-input
+        [title] = '"Предельная наполняемость"'
+        [placeholder] = '"Предельная наполняемость"'
+        [(ngModel)] = 'capacity.total'
+        name = 'total'
+      ></n3k-input>
+      
+      <n3k-input
+        [title] = '"Фактическая наполненность"'
+        [placeholder] = '"Фактическая наполненность"'
+        [(ngModel)] = 'capacity.current'
+        name = 'current'
+      ></n3k-input>
+      
+      <n3k-input
+        [title] = '"Количество вакантных мест"'
+        [placeholder] = '"Количество вакантных мест"'
+        [(ngModel)] = 'capacity.vacant'
+        name = 'vacant'
+      ></n3k-input>
+      
+      <n3k-input
+        [title] = '"Количество бюджетных мест"'
+        [placeholder] = '"Количество бюджетных мест"'
+        [(ngModel)] = 'capacity.budget'
+        name = 'budget'
+      ></n3k-input>
+      
+      <n3k-input
+        [title] = '"Количество контрактных мест"'
+        [placeholder] = '"Количество контрактных мест"'
+        [(ngModel)] = 'capacity.contract'
+        name = 'contract'
+      ></n3k-input>
+      
+      <n3k-input
+        [title] = '"Количество целевых мест"'
+        [placeholder] = '"Количество целевых мест"'
+        [(ngModel)] = 'capacity.target'
+        name = 'target'
+      ></n3k-input>
+
+      <div class='buttons-array'>
+        <div class='create-new-btn btn' (click)='submit(i)'><span class='text'>Сохранить</span></div>
+        <div class='transparent-btn btn' (click)='cancel(i)'><span class='text'>Отменить</span></div>
+      </div>
+  </div>
+
+  <div *ngIf='!_editState[i]'>
+    <div>
+      <div class='view-text'>
+        
+        <div class='description-block'>
+            <div class='description-block-title'>
+                Предельная наполняемость:
+            </div>
+            {{capacity.total}}
+        </div>
+
+        <div class='description-block'>
+            <div class='description-block-title'>
+                Фактическая наполненность:
+            </div>
+            {{capacity.current}}
+        </div>
+
+        <div class='description-block'>
+            <div class='description-block-title'>
+                Количество вакантных мест:
+            </div>
+            {{capacity.vacant}}
+        </div>
+
+        <div class='description-block'>
+            <div class='description-block-title'>
+                Количество бюджетных мест:
+            </div>
+            {{capacity.budget}}
+        </div>
+
+        <div class='description-block'>
+            <div class='description-block-title'>
+                Количество контрактных мест:
+            </div>
+            {{capacity.contract}}
+        </div>
+
+        <div class='description-block'>
+            <div class='description-block-title'>
+                Количество целевых мест:
+            </div>
+            {{capacity.target}}
+        </div>
+
+
+      </div>
+
+      <div class='controll'>
+        <span class='controll-element' (click)='_editState[i] = true'>
+          <i class='fa fa-pencil'>&nbsp;</i>
+          <span class='text'>Редактировать</span>
+        </span>
+        <span class='controll-element' (click)='deleteMe(i)'>
+          <i class='fa fa-trash'>&nbsp;</i>
+          <span class='text'>Удалить</span>
+        </span>
+      </div>
+    </div>
+  </div>
+</div>

@@ -9,6 +9,7 @@ import { Institution } from '../../api/institution/Institution';
 import { InstitutionService } from '../../api/institution'
 import { Response } from '../../api/common/Response';
 import { JobShort } from '../../api/common/JobShort';
+import { Capacity } from '../../api/common/Capacity';
 
 
 
@@ -27,7 +28,7 @@ export class EditComponent implements OnInit, AfterContentChecked {
   anchorList: {}[] = [
     {name:'Юридическое лицо', target: 'organization'},
     {name:'Общие сведения', target: 'common'},
-    {name:'Дополнительная информация', target: 'organization'},
+    {name:'Дополнительная информация', target: 'additional'},
     {name:'Контактная информация', target: 'organization'},
     {name:'Общественный орган управления', target: 'organization'},
     {name:'Аккредитация', target: 'organization'},
@@ -126,7 +127,8 @@ export class EditComponent implements OnInit, AfterContentChecked {
       jurisdiction: [i.jurisdiction],
       description: [i.description],
       //img????
-      //capacity: [i.capacity],      
+      capacity: [i.capacity],
+      meta: [i.meta]
     })
   }
 
@@ -167,9 +169,8 @@ export class EditComponent implements OnInit, AfterContentChecked {
     return false
   }
 
-
   onMealDelete(id) {
-     let index = this.getMealIndex(id)
+    let index = this.getMealIndex(id)
     if (index) {
       this._institution.meals.splice(index, 1)
     }
@@ -182,5 +183,10 @@ export class EditComponent implements OnInit, AfterContentChecked {
       }
     }
     return false
+  }
+
+  onCapacityDelete(id) {
+    this._institution.capacity = new Capacity({});
+    this.setForm();
   }
 }

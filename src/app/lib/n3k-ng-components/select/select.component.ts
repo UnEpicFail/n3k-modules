@@ -23,7 +23,6 @@ const CUSTOM_VALUE_ACCESSOR: any = {
 })
 export class SelectComponent implements OnInit, ControlValueAccessor {
 
-
   public _selected: boolean = false;
   public _loading: boolean = false;
   public _multi: boolean = false;

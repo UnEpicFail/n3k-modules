@@ -1,0 +1,122 @@
+ <fieldset [formGroup]="form">
+  <h2>Дополнительная информация</h2>
+  
+  <n3k-input
+    [title]='"Дополнительное наименование образовательной организации"'
+    [placeholder] = '"Дополнительное наименование образовательной организации"'
+    formControlName = 'additional_name'
+  ></n3k-input>
+
+  <n3k-input
+    [title]='"Дополнительное наименование (на момент реорганизации)"'
+    [placeholder] = '"Дополнительное наименование (на момент реорганизации)"'
+    formControlName = 'reorganization_name'
+  ></n3k-input>
+
+  <n3k-input
+    [title]='"Ссылка на образовательную программу на официальном сайте"'
+    [placeholder] = '"Ссылка на образовательную программу на официальном сайте"'
+    formControlName = 'educational_program_url'
+  ></n3k-input>
+
+  <n3k-input
+    [title]='"Укажите организацию разработчика «Электронного дневника»"'
+    [placeholder] = '"Укажите организацию разработчика «Электронного дневника»"'
+    formControlName = 'electronic_diary_vendor'
+  ></n3k-input>
+
+  <n3k-input
+    [title]='"Укажите название информационной системы «Электронного дневника»"'
+    [placeholder] = '"Укажите название информационной системы «Электронного дневника»"'
+    formControlName = 'electronic_diary_name'
+  ></n3k-input>
+
+  <n3k-input
+    [title]='"Укажите ссылку для входа на сервис «Электронный дневник»"'
+    [placeholder] = '"Укажите ссылку для входа на сервис «Электронный дневник»"'
+    formControlName = 'electronic_diary_url'
+  ></n3k-input>
+
+  <label>
+    <input 
+      type='checkbox'
+      formControlName = 'is_first_class'
+    >
+    Будет запись в 1 класс
+  </label>
+
+  <n3k-input
+    [title] = '"Общее количество сотрудников"'
+    [placeholder] = '"Общее количество сотрудников"'
+    formControlName = 'employee_count'
+  ></n3k-input>
+
+  <n3k-input
+    [title] = '"Ссылка на устав"'
+    [placeholder] = '"Ссылка на устав"'
+    formControlName = 'statute_url'
+  ></n3k-input>
+
+  <n3k-input
+    [title] = '"Направление подготвки, специальности, профессии (кроме общего образования)"'
+    [placeholder] = '"Направление подготвки, специальности, профессии (кроме общего образования)"'
+    formControlName = 'direction_for_ip'
+  ></n3k-input>
+  
+  <label>
+    <input 
+      type='checkbox'
+      formControlName = 'has_bookkeeping'
+    >
+    Наличие бухгалтерии
+  </label>
+
+  <label>
+    <input 
+      type='checkbox'
+      formControlName = 'is_small_setted'
+    >
+    Малокомплектное (для школ)
+  </label>
+
+  <n3k-input
+    [title] = '"Режим (часы, дни)"'
+    [placeholder] = '"Режим (часы, дни)"'
+    formControlName = 'schedule_string'
+  ></n3k-input>
+
+  <label>
+    <input 
+      type='checkbox'
+      formControlName = 'has_it_teachers'
+    >
+    Наличие требуемой численности преподователей общепрофессиональных и специальных дисциплин, связанных с ИТ
+  </label>
+
+  <label>
+    <input 
+      type='checkbox'
+      formControlName = 'is_budget_transfered'
+    >
+    Переведено на нормативно-бюджетное финансирование
+  </label>
+
+  <n3k-select
+    [title] = '"Использование современных оценочных процедур для оценки достижений по ФГОС"'
+    [placeholder] = '"Использование современных оценочных процедур для оценки достижений по ФГОС"'
+    [fromMethod] = 'fgosScoringService'
+    [multi] = 'true'
+    formControlName = 'fgos_scoring'
+  ></n3k-select>
+
+  <n3k-select
+    [title] = '"Характеристики сайта ОО"'
+    [placeholder] = '"Характеристики сайта ОО"'
+    [fromMethod] = 'siteCharacteristicsService'
+    [multi] = 'true'
+    formControlName = 'site_characteristics'
+  ></n3k-select>
+  
+
+
+ </fieldset>

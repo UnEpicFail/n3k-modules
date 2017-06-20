@@ -33,7 +33,8 @@ import { PersonComponent } from './edit/person/person.component';
 import { JobComponent } from './edit/job/job.component';
 import { WorkTimeComponent } from './edit/work-time/work-time.component';
 import { MealsComponent } from './edit/meals/meals.component';
-import { DatePickerModule } from 'ng2-datepicker';
+import { CapacityComponent } from './edit/capacity/capacity.component';
+import { MetaFormComponent } from './edit/meta-form/meta-form.component';
 
 const routes:Routes = [
   {path: 'institution', children: [
@@ -56,7 +57,6 @@ const routes:Routes = [
     N3kNgGridModule,
     N3kNgComponentsModule,
     N3kNgPipesModule,
-    DatePickerModule,
     YaCoreModule.forRoot(),
     RouterModule.forRoot([]),
   ],
@@ -80,6 +80,8 @@ const routes:Routes = [
     JobComponent,
     WorkTimeComponent,
     MealsComponent,
+    CapacityComponent,
+    MetaFormComponent,
   ],
   exports: [],
   providers: [InstitutionService, Classifier_listService],

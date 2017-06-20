@@ -111,8 +111,6 @@
         formControlName = 'levels'
       ></n3k-select>
 
-      <!-- Тип питания meals -->
-
       <edit-meals
         [title] = '"Питание"'
         (onDelete) = 'onMealDelete($event)'
@@ -127,7 +125,6 @@
         formControlName = 'ovz_group_types'
       ></n3k-select>
 
-      <!-- Дата образования организации foundation_date -->
       <n3k-datepicker 
         [options]="foundationDateOptions"
         formControlName="foundation_date"
@@ -148,10 +145,21 @@
         formControlName = 'description'
       ></n3k-wysiwyg>
      
-
       <!-- Картинка для анонса -->
 
-      <!-- Вместительность capacity -->
+      <edit-capacity
+        [title] = '"Вместительность"'
+        [limit] = '1'
+        (onDelete) = 'onCapacityDelete($event)'
+        formControlName = 'capacity'
+      ></edit-capacity>
+
+      <anchor-target name='additional'></anchor-target>
+
+      <edit-meta
+        formControlName = 'meta'
+      ></edit-meta>
+
 
       <input type='submit' value='SUBMIT'>
     </form>
