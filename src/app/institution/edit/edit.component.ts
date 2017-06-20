@@ -30,7 +30,7 @@ export class EditComponent implements OnInit, AfterContentChecked {
     {name:'Общие сведения', target: 'common'},
     {name:'Дополнительная информация', target: 'additional'},
     {name:'Контактная информация', target: 'organization'},
-    {name:'Общественный орган управления', target: 'organization'},
+    {name:'Общественный орган управления', target: 'public_administration'},
     {name:'Аккредитация', target: 'organization'},
     {name:'Лицензия', target: 'organization'}
   ]
@@ -128,7 +128,8 @@ export class EditComponent implements OnInit, AfterContentChecked {
       description: [i.description],
       //img????
       capacity: [i.capacity],
-      meta: [i.meta]
+      meta: [i.meta],
+      public_administration: [i.public_administration]
     })
   }
 

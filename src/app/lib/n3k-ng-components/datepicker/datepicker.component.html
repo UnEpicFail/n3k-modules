@@ -1,5 +1,5 @@
 <div class='datepicker'>
-  <div class='title' *ngIf='_value.length !== 0'>{{_options.title}}</div>
+  <div class='title' [class.display-none]='_value.length === 0'>{{_options.title}}</div>
   <table>
     <tr (click)='trigger()'>
       <td>

@@ -9,11 +9,9 @@ const CUSTOM_VALUE_ACCESSOR: any = {
 
 
 export class DatepickerComponentOptions {
-  format: string
   title: string
   placeholder: string
   constructor(obj) {
-    this.format = (obj.format || '')
     this.title = (obj.title || '')
     this.placeholder = (obj.placeholder || '')
   }
@@ -67,8 +65,11 @@ export class DatepickerComponent implements OnInit, ControlValueAccessor {
   }
 
   getMonth(d) {
-    d = d.split('.')
-    d = d[1]+'.'+d[0]+'.'+d[2]
+    if(d)
+    {
+      d = d.split('.')
+      d = d[1]+'.'+d[0]+'.'+d[2]
+    }
     let DATE = new Date((d || new Date()));
     if (DATE) {
       this._month = []
@@ -143,6 +144,15 @@ export class DatepickerComponent implements OnInit, ControlValueAccessor {
     let dateList = this.el.nativeElement.children[0].children[3]
     this.renderer.setStyle(dateList, 'width', this.el.nativeElement.offsetWidth+'px')
     this._selected = !this._selected;
+    setTimeout(()=>{
+      if (
+        dateList.offsetTop + dateList.offsetHeight > window.innerHeight
+      ) {
+        this.renderer.setStyle(dateList, 'top', dateList.offsetTop - dateList.offsetHeight - this.el.nativeElement.children[0].children[1].offsetHeight+'px')
+      } else {
+        this.renderer.setStyle(dateList, 'top', 'auto')
+      }
+    }, 1);
   }
 
   selectDate(day) {

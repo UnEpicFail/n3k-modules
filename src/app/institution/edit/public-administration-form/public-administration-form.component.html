@@ -1,0 +1,35 @@
+<fieldset [formGroup]="form">
+  <h2>Орган общественного управления</h2>
+
+  <n3k-select
+    [title] = '"Форма"'
+    [placeholder] = '"Форма"'
+    [fromMethod] = 'publicAdministrationFormService'
+    formControlName = 'public_administration_form'
+  ></n3k-select>
+
+  <n3k-input
+    [title] = '"Основания для создания"'
+    [placeholder] = '"Основания для создания"'
+    formControlName = 'foundation_cause'
+  ></n3k-input>
+
+  <n3k-datepicker 
+    [options]="foundationDateOptions"
+    formControlName="foundation_date"
+  >
+  </n3k-datepicker>
+
+  <n3k-datepicker 
+    [options]="liquidationDateOptions"
+    formControlName="liquidation_date"
+  >
+  </n3k-datepicker>
+
+  <n3k-input
+    [title] = '"Полномочия"'
+    [placeholder] = '"Полномочия"'
+    formControlName = 'powers'
+  ></n3k-input>
+
+</fieldset>

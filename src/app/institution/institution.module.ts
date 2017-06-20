@@ -35,6 +35,7 @@ import { WorkTimeComponent } from './edit/work-time/work-time.component';
 import { MealsComponent } from './edit/meals/meals.component';
 import { CapacityComponent } from './edit/capacity/capacity.component';
 import { MetaFormComponent } from './edit/meta-form/meta-form.component';
+import { PublicAdministrationFormComponent } from './edit/public-administration-form/public-administration-form.component';
 
 const routes:Routes = [
   {path: 'institution', children: [
@@ -82,6 +83,7 @@ const routes:Routes = [
     MealsComponent,
     CapacityComponent,
     MetaFormComponent,
+    PublicAdministrationFormComponent,
   ],
   exports: [],
   providers: [InstitutionService, Classifier_listService],
