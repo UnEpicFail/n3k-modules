@@ -13,6 +13,7 @@ import { GroupModule } from './group/group.module';
 import { ProgramModule } from './program/program.module';
 import { ClassifierModule } from './classifier/classifier.module';
 
+
 const rourer = [
   {path:'journal',  children: [
     GroupModule.getRoutes(),

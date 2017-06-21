@@ -1,4 +1,4 @@
-import { Directive, Renderer, ElementRef } from '@angular/core';
+import { Directive, Renderer2, ElementRef } from '@angular/core';
 
 @Directive({
   selector: 'n3k-columns column-3'
@@ -13,9 +13,9 @@ export class Column3RefDirective{
   ownScroll:number = undefined
 
 
-  constructor(private renderer: Renderer, private el: ElementRef) {
-    renderer.setElementClass(el.nativeElement, 'column', true);
-    renderer.setElementClass(el.nativeElement, 'column-3', true);
+  constructor(private renderer: Renderer2, private el: ElementRef) {
+    renderer.addClass(el.nativeElement, 'column');
+    renderer.addClass(el.nativeElement, 'column-3');
   }
 
   getHeight(){

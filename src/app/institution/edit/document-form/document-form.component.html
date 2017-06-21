@@ -1,0 +1,32 @@
+<n3k-input
+  [title] = '"Серия бланка"'
+  [placeholder] = '"Серия бланка"'
+  [(ngModel)] = '_document.series'
+  name = 'series'
+></n3k-input>
+
+<n3k-input
+  [title] = '"Номер бланка"'
+  [placeholder] = '"Номер бланка"'
+  [(ngModel)] = '_document.number'
+  name = 'number'
+></n3k-input>
+
+<n3k-input
+  [title] = '"Реестровый номер свидетельства о государственной аккредитации образовательной деятельности для организаций, которые должны проходить аккредитацию"'
+  [placeholder] = '"Реестровый номер свидетельства о государственной аккредитации образовательной деятельности для организаций, которые должны проходить аккредитацию"'
+  [(ngModel)] = '_document.reg_number'
+  name = 'reg_number'
+></n3k-input>
+
+<n3k-datepicker
+  [options] = '_issueDateOptions'
+  [(ngModel)] = '_document.issue_date'
+  name = 'issue_date'
+></n3k-datepicker>
+
+<n3k-datepicker
+  [options] = '_validToOptions'
+  [(ngModel)] = '_document.valid_to'
+  name = 'valid_to'
+></n3k-datepicker>
