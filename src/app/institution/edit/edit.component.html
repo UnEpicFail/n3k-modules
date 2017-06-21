@@ -6,7 +6,7 @@
 <n3k-columns context='form'>
   <column-1>
     <form [formGroup]="form" (submit)='onSubmit()'>
-      
+
       <anchor-target name='organization'></anchor-target>
 
       <edit-organization 
@@ -180,6 +180,23 @@
       <edit-contacts
         formControlName = 'contacts'
       ></edit-contacts>
+
+      <anchor-target name='contacts'></anchor-target>
+
+      <h2>Акктредитация</h2>
+
+      <edit-document
+        formControlName = 'accreditation'
+      ></edit-document>
+
+      <anchor-target name='contacts'></anchor-target>
+
+      <h2>Лицензия на осуществление образовательной деятельности</h2>
+
+      <edit-document
+        formControlName = 'license'
+      ></edit-document>
+
 
       <input type='submit' value='SUBMIT'>
     </form>

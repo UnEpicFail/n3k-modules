@@ -10,13 +10,13 @@ import { Response } from '../../api/common/Response';
 import { JobShort } from '../../api/common/JobShort';
 import { Capacity } from '../../api/common/Capacity';
 import { Address } from '../../api/common/Address';
+import { Document } from '../../api/common/Document';
 
 
 
 import { Classifier_listService } from '../../api/classifier_list'
 
 import { AddressComponent } from './address/address.component'
-
 
 @Component({
   selector: 'app-edit',
@@ -51,6 +51,7 @@ export class EditComponent implements OnInit, AfterContentChecked {
   ovzGroupTypesService
   jurisdictionService
   foundationDateOptions
+  buttonsOptions
 
   anchors:QueryList<AnchornTargetRefDirective>
   @ViewChildren(AnchornTargetRefDirective) _anchors:QueryList<AnchornTargetRefDirective>
@@ -70,10 +71,6 @@ export class EditComponent implements OnInit, AfterContentChecked {
       title: 'Дата образования организации',
       placeholder: 'Дата образования организации',
     }
-
-    // this.foundationDateOptions = new DatePickerOptions({
-    //   format: 'DD.MM.YYYY'
-    // });
 
     this.regionService = classifireService.classifierRegionList()
     this.districtService = classifireService.classifierDistrictList()
@@ -99,6 +96,10 @@ export class EditComponent implements OnInit, AfterContentChecked {
   onSubmit() {
     console.log('this._institution', this._institution.organization)
     console.log('this.form', this.form)
+  }
+
+  onCancel() {
+    
   }
 
   setForm() {
@@ -129,7 +130,9 @@ export class EditComponent implements OnInit, AfterContentChecked {
       meta: [i.meta],
       public_administration: [i.public_administration],
       address: [i.address],
-      contacts: [i.contacts]
+      contacts: [i.contacts],
+      accreditation: [this.getFromDocuments(i.documents, 'accreditation')],
+      license: [this.getFromDocuments(i.documents, 'license')]
     })
   }
 
@@ -193,5 +196,18 @@ export class EditComponent implements OnInit, AfterContentChecked {
 
   onAddressDelete(id) {
     this._institution.address = new Address({});
+  }
+
+  getFromDocuments(docs, type) {
+    
+    if (docs) {
+      docs.map(doc => {
+        if(doc.type.code === type) {
+          return doc
+        }
+      })
+    }
+
+    return new Document({})
   }
 }

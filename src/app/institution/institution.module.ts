@@ -37,6 +37,7 @@ import { CapacityComponent } from './edit/capacity/capacity.component';
 import { MetaFormComponent } from './edit/meta-form/meta-form.component';
 import { PublicAdministrationFormComponent } from './edit/public-administration-form/public-administration-form.component';
 import { ContactsFormComponent } from './edit/contacts-form/contacts-form.component';
+import { DocumentFormComponent } from './edit/document-form/document-form.component';
 
 const routes:Routes = [
   {path: 'institution', children: [
@@ -86,6 +87,7 @@ const routes:Routes = [
     MetaFormComponent,
     PublicAdministrationFormComponent,
     ContactsFormComponent,
+    DocumentFormComponent,
   ],
   exports: [],
   providers: [InstitutionService, Classifier_listService],
