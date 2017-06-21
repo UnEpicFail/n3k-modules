@@ -163,8 +163,23 @@
       <anchor-target name='public_administration'></anchor-target>
 
       <edit-public-administration
-        formControlname = 'public_administration'
+        formControlName = 'public_administration'
       ></edit-public-administration>
+
+      <anchor-target name='contacts'></anchor-target>
+
+      <h2>Контактная информация</h2>
+
+      <edit-address 
+        [title] = '"Почтовый адрес"'
+        (onDelete) = 'onAddressDelete($event)'
+        [limit] = '1'
+        formControlName = 'address'
+      ></edit-address>
+      
+      <edit-contacts
+        formControlName = 'contacts'
+      ></edit-contacts>
 
       <input type='submit' value='SUBMIT'>
     </form>

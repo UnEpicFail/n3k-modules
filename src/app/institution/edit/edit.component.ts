@@ -1,6 +1,5 @@
 import { Component, OnInit, AfterContentChecked, ViewChildren, QueryList } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-// import { DatePickerOptions, DateModel } from 'ng2-datepicker';
 import { AnchornTargetRefDirective } from '../../lib/n3k-ng-components/anchor-menu/anchor-menu.component'
 
 
@@ -10,6 +9,7 @@ import { InstitutionService } from '../../api/institution'
 import { Response } from '../../api/common/Response';
 import { JobShort } from '../../api/common/JobShort';
 import { Capacity } from '../../api/common/Capacity';
+import { Address } from '../../api/common/Address';
 
 
 
@@ -29,8 +29,8 @@ export class EditComponent implements OnInit, AfterContentChecked {
     {name:'Юридическое лицо', target: 'organization'},
     {name:'Общие сведения', target: 'common'},
     {name:'Дополнительная информация', target: 'additional'},
-    {name:'Контактная информация', target: 'organization'},
     {name:'Общественный орган управления', target: 'public_administration'},
+    {name:'Контактная информация', target: 'contacts'},
     {name:'Аккредитация', target: 'organization'},
     {name:'Лицензия', target: 'organization'}
   ]
@@ -67,7 +67,6 @@ export class EditComponent implements OnInit, AfterContentChecked {
     })
 
     this.foundationDateOptions = {
-      format: 'DD.MM.YYYY',
       title: 'Дата образования организации',
       placeholder: 'Дата образования организации',
     }
@@ -104,7 +103,6 @@ export class EditComponent implements OnInit, AfterContentChecked {
 
   setForm() {
     let i = this._institution
-
     this.form = this.fb.group({
       organization: [i.organization],
       head: [i.head],
@@ -129,7 +127,9 @@ export class EditComponent implements OnInit, AfterContentChecked {
       //img????
       capacity: [i.capacity],
       meta: [i.meta],
-      public_administration: [i.public_administration]
+      public_administration: [i.public_administration],
+      address: [i.address],
+      contacts: [i.contacts]
     })
   }
 
@@ -189,5 +189,9 @@ export class EditComponent implements OnInit, AfterContentChecked {
   onCapacityDelete(id) {
     this._institution.capacity = new Capacity({});
     this.setForm();
+  }
+
+  onAddressDelete(id) {
+    this._institution.address = new Address({});
   }
 }

@@ -332,10 +332,47 @@ export class InstitutionService {
                     name: 'Высшее образование'
                 }
             ],
+            address: {
+                identity: {
+                    id: 1
+                },
+                region: {
+                    id: 1,
+                    name: 'Санкт-Петербург'
+                },
+                origin_address: 'Средний пр-кт, 20, 199004, г. Санкт-Петербург',
+                fias: {
+                    region: {
+                        id: 1,
+                        name: 'Ленинградская область'
+                    },
+                    okrug: {},
+                    district: {
+                        id: 1,
+                        name: 'Выборгский район'
+                    },
+                    city: {
+                        id: 1,
+                        name: 'г. Выборг'
+                    },
+                    incity: {},
+                    municipality: {},
+                    street: {
+                        id: 1,
+                        name: 'ул. Ленина'
+                    },
+                    building: {
+                        id: 1,
+                        name: 'д. 30'
+                    },
+                    flat: {},
+                }
+            },
             contacts: [
                 {
                     type:{
                         id: 1,
+                        code: 'site',
                         name: 'site'
                     },
                     value: 'spbstu.ru'
@@ -343,6 +380,7 @@ export class InstitutionService {
                 {
                     type:{
                         id: 2,
+                        code: 'phone',
                         name: 'phone'
                     },
                     value: '88123237728'
