@@ -7,8 +7,9 @@ import { InputComponent } from './input/input.component';
 import { AnchorMenuComponent, AnchornTargetRefDirective } from './anchor-menu/anchor-menu.component';;
 import { WysiwygComponent } from './wysiwyg/wysiwyg.component';
 import { DatepickerComponent } from './datepicker/datepicker.component';
+import { CheckboxComponent } from './checkbox/checkbox.component'
 
-import { N3kNgFlyDirective } from './fly.directive'
+import { N3kNgFlyDirective } from './fly.directive';
  
 @NgModule({
   imports: [
@@ -25,6 +26,7 @@ import { N3kNgFlyDirective } from './fly.directive'
     WysiwygComponent,
     DatepickerComponent,
     N3kNgFlyDirective,
+    CheckboxComponent,
   ],
   exports: [ 
     SelectComponent, 
@@ -36,6 +38,7 @@ import { N3kNgFlyDirective } from './fly.directive'
     WysiwygComponent,
     DatepickerComponent,
     N3kNgFlyDirective,
+    CheckboxComponent,
   ]
 })
 export class N3kNgComponentsModule { }

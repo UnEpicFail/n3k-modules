@@ -1,0 +1,22 @@
+.checkbox {
+    font-size: 16px;
+    color: #666666;
+    font-family: 'ArialMT', 'Arial';
+    line-height: 21px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #A1A1A1;
+    overflow-wrap: break-word;
+}
+.input {
+    width: 15px;
+    padding: 0px;
+    margin: 0px;
+}
+
+.input input {
+    margin: 0px;
+}
+
+td {
+    vertical-align: top;
+}

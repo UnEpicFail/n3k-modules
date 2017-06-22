@@ -1,5 +1,6 @@
 import { Component, OnInit, AfterContentChecked, ViewChildren, QueryList } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { Location } from '@angular/common'; 
 import { AnchornTargetRefDirective } from '../../lib/n3k-ng-components/anchor-menu/anchor-menu.component'
 
 
@@ -60,6 +61,7 @@ export class EditComponent implements OnInit, AfterContentChecked {
     private institutionService: InstitutionService,
     private classifireService: Classifier_listService,
     private fb: FormBuilder,
+    private location: Location
   ) {
     this.institutionService.institutionGet('1').subscribe(res=>{
       let _res = new Response(res);
@@ -99,7 +101,7 @@ export class EditComponent implements OnInit, AfterContentChecked {
   }
 
   onCancel() {
-    
+    this.location.back();
   }
 
   setForm() {

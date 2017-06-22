@@ -1,4 +1,13 @@
 <div class='input'>
-  <div class='title' *ngIf='_value.length !== 0'>{{_title}}</div>
-  <input [placeholder]='_placeholder' [ngModel]='_value' (ngModelChange)='modelChange($event)'>
+  <div class='title' [class.visibility-hidden]='_value === ""'>{{_title}}</div>
+  <table>
+    <tr>
+      <td>
+        <input [placeholder]='_placeholder' [ngModel]='_value' (ngModelChange)='modelChange($event)'>
+      </td>
+      <td class='icon' *ngIf='_searchIcon'>
+        <i class="fa fa-search" aria-hidden="true"></i>
+      </td>
+    </tr>
+  </table>
 </div>

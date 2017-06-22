@@ -13,6 +13,7 @@ export class N3kNgFlyDirective {
       renderer.setStyle(el.nativeElement, 'width', el.nativeElement.parentNode.offsetWidth+'px')
       renderer.setStyle(el.nativeElement, 'position', 'fixed')
       renderer.setStyle(el.nativeElement, 'bottom', '0px')
+      renderer.setStyle(el.nativeElement, 'height', '41px')
       renderer.setStyle(el.nativeElement, 'display', 'block')
       renderer.setStyle(el.nativeElement, 'background-color', '#CBCBCB')
     })

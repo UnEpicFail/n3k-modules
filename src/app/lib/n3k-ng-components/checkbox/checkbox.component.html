@@ -1,0 +1,14 @@
+<div class='checkbox'>
+  <label>
+    <table>
+      <tr>
+        <td class='input'>
+          <input type='checkbox' [ngModel]='_value' (ngModelChange)='modelChange($event)'>
+        </td>
+        <td>
+          {{_title}}
+        </td>
+      </tr>
+    </table>
+  </label>
+</div>

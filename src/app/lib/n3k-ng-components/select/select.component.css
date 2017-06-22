@@ -32,6 +32,11 @@
     background-color: #A1A1A1;
 }
 
+.visibility-hidden {
+    visibility: hidden
+}
+
+
 .icon {
     color: #A1A1A1;
     width: 20px;

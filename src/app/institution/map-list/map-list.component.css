@@ -25,4 +25,6 @@
     cursor: pointer;
 }
 
-
+.padding-right-1-column {
+    padding-right: 4.2vw;
+}

@@ -1,6 +1,6 @@
 <div class='select'>
   <div class='values' [class.multi]='_multi' (click)='trigger()'>
-    <div class='title' *ngIf='_values.length !== 0'>{{_title}}</div>
+    <div class='title' [class.visibility-hidden]='_values.length === 0'>{{_title}}</div>
     <table>
       <tr>
         <td>
