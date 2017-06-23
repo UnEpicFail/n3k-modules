@@ -6,6 +6,7 @@ import { Observable } from 'rxjs'
 import { Response } from './common/Response'
 import { Institution } from './institution/Institution';
 import { InstitutionFull } from './institution/InstitutionFull';
+import { InstitutionList } from './institution/InstitutionList';
 import { EducationService } from './institution/EducationService';
 import { EducationServiceShort } from './institution/EducationServiceShort';
 import { EducationServiceList } from './institution/EducationServiceList';
@@ -1520,57 +1521,96 @@ export class InstitutionService {
     public institutionList(
         p_limit?: number,
         p_page?: number,
-        p_query?: string,
-        p_regions?: string,
-        p_districts?: string,
-        p_institution_types?: string,
-        p_institution_kinds?: string,
-        p_education_levels?: string,
-        p_okopfs?: string,
-        p_okfses?: string,
-        p_institution_statuses?: string,
-        p_jurisdictions?: string,
-        p_education_orientations?: string,
-        p_deleted?: string,
+        p_query?: number[],
+        p_regions?: number[],
+        p_districts?: number[],
+        p_institution_types?: number[],
+        p_institution_kinds?: number[],
+        p_education_levels?: number[],
+        p_okopfs?: number[],
+        p_okfses?: number[],
+        p_institution_statuses?: number[],
+        p_jurisdictions?: number[],
+        p_education_orientations?: number[],
+        p_deleted?: boolean,
     ) {
-        let _path = '/institutions/institution/list';
-        let _body = '';
-        let _params = {
-            headers: new Headers(),
-            search: new URLSearchParams(),
-        }
-        _params.headers.append('X-Requested-With', 'XMLHttpRequest'); 
-        if (typeof p_limit !== 'undefined')
-            _params.search.append('p_limit', ''+p_limit); 
-        if (typeof p_page !== 'undefined')
-            _params.search.append('p_page', ''+p_page); 
-        if (typeof p_query !== 'undefined')
-            _params.search.append('p_query', ''+p_query); 
-        if (typeof p_regions !== 'undefined')
-            _params.search.append('p_regions', ''+p_regions); 
-        if (typeof p_districts !== 'undefined')
-            _params.search.append('p_districts', ''+p_districts); 
-        if (typeof p_institution_types !== 'undefined')
-            _params.search.append('p_institution_types', ''+p_institution_types); 
-        if (typeof p_institution_kinds !== 'undefined')
-            _params.search.append('p_institution_kinds', ''+p_institution_kinds); 
-        if (typeof p_education_levels !== 'undefined')
-            _params.search.append('p_education_levels', ''+p_education_levels); 
-        if (typeof p_okopfs !== 'undefined')
-            _params.search.append('p_okopfs', ''+p_okopfs); 
-        if (typeof p_okfses !== 'undefined')
-            _params.search.append('p_okfses', ''+p_okfses); 
-        if (typeof p_institution_statuses !== 'undefined')
-            _params.search.append('p_institution_statuses', ''+p_institution_statuses); 
-        if (typeof p_jurisdictions !== 'undefined')
-            _params.search.append('p_jurisdictions', ''+p_jurisdictions); 
-        if (typeof p_education_orientations !== 'undefined')
-            _params.search.append('p_education_orientations', ''+p_education_orientations); 
-        if (typeof p_deleted !== 'undefined')
-            _params.search.append('p_deleted', ''+p_deleted); 
+
+        let list = []
+
+        for (let i=0; i<20; i+=1) {
+            list.push({
+                identity: {id: i+1},
+                name:'Детский сад №1 "Калинка"',
+                status: {id:1, name:'Функционирует'},
+                address: {
+                    origin_address: 'Ленинградская область. г. Выборг. ул. Ленина, д. 3'
+                },
+                contacts: [
+                    {type:{id:1, code:'phone'}, value: '8813454332'},
+                    {type:{id:2, code:'email'}, value: 'gboo1.ru'}
+                ]
+            })
+        } 
+
+        let res = new Observable(observer => {
+          setTimeout(() => {
+              observer.next(new Response({data: new InstitutionList({
+                items: list,
+                before: 0,
+                current: 1,
+                last: 20,
+                next: 2,
+                total_pages: 20,
+                total_items: 400
+              })}))
+          }, 1000);
+
+          setTimeout(() => {
+              observer.complete();
+          }, 3000);
+        })
+
+        return res;
 
 
-        return this.http['get'](_path, _params)
+        // let _path = '/institutions/institution/list';
+        // let _body = '';
+        // let _params = {
+        //     headers: new Headers(),
+        //     search: new URLSearchParams(),
+        // }
+        // _params.headers.append('X-Requested-With', 'XMLHttpRequest'); 
+        // if (typeof p_limit !== 'undefined')
+        //     _params.search.append('p_limit', ''+p_limit); 
+        // if (typeof p_page !== 'undefined')
+        //     _params.search.append('p_page', ''+p_page); 
+        // if (typeof p_query !== 'undefined')
+        //     _params.search.append('p_query', ''+p_query); 
+        // if (typeof p_regions !== 'undefined')
+        //     _params.search.append('p_regions', ''+p_regions); 
+        // if (typeof p_districts !== 'undefined')
+        //     _params.search.append('p_districts', ''+p_districts); 
+        // if (typeof p_institution_types !== 'undefined')
+        //     _params.search.append('p_institution_types', ''+p_institution_types); 
+        // if (typeof p_institution_kinds !== 'undefined')
+        //     _params.search.append('p_institution_kinds', ''+p_institution_kinds); 
+        // if (typeof p_education_levels !== 'undefined')
+        //     _params.search.append('p_education_levels', ''+p_education_levels); 
+        // if (typeof p_okopfs !== 'undefined')
+        //     _params.search.append('p_okopfs', ''+p_okopfs); 
+        // if (typeof p_okfses !== 'undefined')
+        //     _params.search.append('p_okfses', ''+p_okfses); 
+        // if (typeof p_institution_statuses !== 'undefined')
+        //     _params.search.append('p_institution_statuses', ''+p_institution_statuses); 
+        // if (typeof p_jurisdictions !== 'undefined')
+        //     _params.search.append('p_jurisdictions', ''+p_jurisdictions); 
+        // if (typeof p_education_orientations !== 'undefined')
+        //     _params.search.append('p_education_orientations', ''+p_education_orientations); 
+        // if (typeof p_deleted !== 'undefined')
+        //     _params.search.append('p_deleted', ''+p_deleted); 
+
+
+        // return this.http['get'](_path, _params)
     }
     /**
      * Получает список образовательных услуг для УФТТ 3.0 в постраничном разбиении

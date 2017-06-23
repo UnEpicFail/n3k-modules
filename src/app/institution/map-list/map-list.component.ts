@@ -7,6 +7,8 @@ import { MapMouseEvent, MapClickMouseEvent, MarkerClaster }  from '../../angular
 import { InstitutionService } from '../../api/institution'
 import { Classifier_listService } from '../../api/classifier_list';
 import { ClassifierShort } from '../../api/common/ClassifierShort';
+import { Response } from '../../api/common/Response';
+import { InstitutionList } from '../../api/institution/InstitutionList'
 
 @Component({
   selector: 'app-map-list',
@@ -18,7 +20,10 @@ export class MapListComponent implements OnInit {
 
   filter: FormGroup
   selectedTab: string = 'map';
-  list: InstitutionShort[] = [];
+  list: InstitutionList = new InstitutionList([]);
+  pagination: {page:number} = {
+    page: 1
+  }
 
   districtsService
   educationLeveService
@@ -33,26 +38,10 @@ export class MapListComponent implements OnInit {
     private router: Router,
     private ar:ActivatedRoute,
     private classifierService: Classifier_listService,
+    private institutionService: InstitutionService
   ) { 
 
-
-
-    for (let i=0; i<20; i+=1) {
-      this.list.push(
-        new InstitutionShort({
-          identity: {id: i+1},
-          name:'Детский сад №1 "Калинка"',
-          status: {id:1, name:'Функционирует'},
-          address: {
-            origin_address: 'Ленинградская область. г. Выборг. ул. Ленина, д. 3'
-          },
-          contacts: [
-            {type:{id:1, code:'phone'}, value: '8813454332'},
-            {type:{id:2, code:'email'}, value: 'gboo1.ru'}
-          ]
-        })
-      )
-    } 
+    
     this.setFilter()
 
     this.districtsService = classifierService.classifierDistrictList()
@@ -115,6 +104,8 @@ export class MapListComponent implements OnInit {
         this.previewQuery = data.p_query
       }
     })
+
+    this.getList();
   }
   
   get isActiveMap() {
@@ -163,4 +154,72 @@ export class MapListComponent implements OnInit {
     return (Object.keys(_data).length === 0) ? '' : _data 
   }
   
+  getList(){
+    let p_limit = 20
+    let p_page = this.pagination.page
+    let p_query = this.filter.value.p_query
+    let p_regions = []
+    let p_districts = []
+    if (Array.isArray(this.filter.value.p_districts)) {
+      this.filter.value.p_districts.map(district => {
+        p_districts.push(district.id)
+      })
+    }
+    let p_institution_types = []
+    if (Array.isArray(this.filter.value.p_institution_types)) {
+      this.filter.value.p_institution_types.map(institution_type => {
+        p_institution_types.push(institution_type.id)
+      })
+    }
+    let p_institution_kinds = []
+    let p_education_levels = []
+    if (Array.isArray(this.filter.value.p_education_levels)) {
+      this.filter.value.p_education_levels.map(education_level => {
+        p_education_levels.push(education_level.id)
+      })
+    }
+    let p_okopfs = []
+    let p_okfses = []
+    if (Array.isArray(this.filter.value.p_okfses)) {
+      this.filter.value.p_okfses.map(okfs => {
+        p_okfses.push(okfs.id)
+      })
+    }
+    let p_institution_statuses = []
+    if (Array.isArray(this.filter.value.p_institution_statuses)) {
+      this.filter.value.p_institution_statuses.map(institution_status => {
+        p_institution_statuses.push(institution_status.id)
+      })
+    }
+    let p_jurisdictions = []
+    let p_education_orientations = []
+    let p_deleted = this.filter.value.p_deleted
+
+
+    this.institutionService.institutionList(
+      p_limit,
+      p_page,
+      p_query,
+      p_regions,
+      p_districts,
+      p_institution_types,
+      p_institution_kinds,
+      p_education_levels,
+      p_okopfs,
+      p_okfses,
+      p_institution_statuses,
+      p_jurisdictions,
+      p_education_orientations,
+      p_deleted,
+    ).subscribe(
+      res => {
+        let responce = new Response(res)
+        this.list = new InstitutionList(responce.data)
+      },
+      err => {
+        console.error('error err', err)
+      }
+    )
+  }
+
 }
