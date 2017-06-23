@@ -97,7 +97,16 @@ export class EditComponent implements OnInit, AfterContentChecked {
 
   onSubmit() {
     console.log('this._institution', this._institution.organization)
-    console.log('this.form', this.form)
+    console.log('this.form', this.form.value)
+    this.form.value.accreditation.type = {code:'accreditation'}
+    this.form.value.license.type = {code:'license'}
+    let inst = new Institution(this.form.value)
+    inst.documents.push(this.form.value.accreditation)
+    inst.documents.push(this.form.value.license)
+    this.institutionService.institutionSave(inst).subscribe(
+      res => { console.log('success res', res)},
+      err => { console.error('error err', err)}
+    )
   }
 
   onCancel() {
