@@ -10,19 +10,12 @@ import { ClassifierShort } from '../../api/common/ClassifierShort';
 import { Response } from '../../api/common/Response';
 import { InstitutionList } from '../../api/institution/InstitutionList'
 
-import { DatepickerComponentOptions } from '../../lib/n3k-ng-components/datepicker/datepicker.component'
-
 @Component({
   selector: 'app-map-list',
   templateUrl: './map-list.component.html',
   styleUrls: ['./map-list.component.css']
 })
 export class MapListComponent implements OnInit {
-  
-  dpO: DatepickerComponentOptions = {
-    title:'1111',
-    placeholder: '1111'
-  }
 
   filter: FormGroup
   selectedTab: string = 'map';
