@@ -98,11 +98,20 @@
 }
 
 .overlay-datelist {
-    z-index: 100;
+    z-index: 3002;
     position: fixed;
-    display: block
+    display: block;
+    background-color: #fff;
 }
 
 .overlay-datelist table {
     width: 100%;
+}
+
+.visibility-hidden {
+    visibility: hidden
+}
+
+.no-padding {
+    padding: 0px;
 }

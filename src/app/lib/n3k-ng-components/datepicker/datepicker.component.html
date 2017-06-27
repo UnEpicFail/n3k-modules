@@ -1,5 +1,5 @@
 <div class='datepicker'>
-  <div class='title' [class.display-none]='_value.length === 0'>{{_options.title}}</div>
+  <div class='title' [class.visibility-hidden]='_value.length === 0'>{{_options.title}}</div>
   <table>
     <tr (click)='trigger()'>
       <td>
@@ -14,48 +14,49 @@
       </td>
     </tr>
   </table>
-  <div class="overlay-block" [class.display-none]='!_selected' (click)='_selected = false'></div>
-  <div class="overlay-datelist" [class.display-none]='!_selected'>
-    <table>
-      <thead>
-        <tr>
-          <td class = 'controll-element active' (click)='previewMonth()'>
-            <
-          </td>
-          <td class = 'controll-element' colspan="2">
-            {{monthList[month_position]}}
-          </td>
-          <td class = 'controll-element active' (click)='nextMonth()'>
-            >
-          </td>
-          <td class = 'controll-element active' (click)='previewYear()'>
-            <
-          </td>
-          <td class = 'controll-element'>
-            {{year_position}}
-          </td>
-          <td class = 'controll-element active' (click)='nextYear()'>
-            >
+  <div class='visibility-hidden'>
+    <div class="overlay-datelist">
+      <table>
+        <thead>
+          <tr>
+            <td class = 'controll-element active' (click)='previewMonth()'>
+              <
+            </td>
+            <td class = 'controll-element' colspan="2">
+              {{monthList[month_position]}}
+            </td>
+            <td class = 'controll-element active' (click)='nextMonth()'>
+              >
+            </td>
+            <td class = 'controll-element active' (click)='previewYear()'>
+              <
+            </td>
+            <td class = 'controll-element no-padding'>
+              {{year_position}}
+            </td>
+            <td class = 'controll-element active' (click)='nextYear()'>
+              >
+            </td>
+          </tr>
+          <tr>
+            <td class = 'week-day' *ngFor = "let weekDay of weekDays">
+              {{weekDay}}
+            </td>
+          </tr>
+        </thead>
+        <tr *ngFor = "let week of _month">
+          <td class = 'day' 
+            [class.preview-month] = 'day.previewMonth' 
+            [class.current-month] = 'day.currentMonth' 
+            [class.next-month] = 'day.nextMonth'
+            [class.today] = 'day.tody'
+            [class.selected-date] = 'day.selectedDate'
+            (click) = 'selectDate(day)'
+            *ngFor = "let day of week">
+            {{day.date}}
           </td>
         </tr>
-        <tr>
-          <td class = 'week-day' *ngFor = "let weekDay of weekDays">
-            {{weekDay}}
-          </td>
-        </tr>
-      </thead>
-      <tr *ngFor = "let week of _month">
-        <td class = 'day' 
-          [class.preview-month] = 'day.previewMonth' 
-          [class.current-month] = 'day.currentMonth' 
-          [class.next-month] = 'day.nextMonth'
-          [class.today] = 'day.tody'
-          [class.selected-date] = 'day.selectedDate'
-          (click) = 'selectDate(day)'
-          *ngFor = "let day of week">
-          {{day.date}}
-        </td>
-      </tr>
-    </table>
-  </div>
+      </table>
+    </div>
+  </div> 
 </div>

@@ -1,6 +1,9 @@
 import { Component, OnInit, Input, forwardRef, ElementRef, Renderer2 } from '@angular/core';
 import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 
+import { OverlayService } from '../overlay.service'
+import { PositionService } from '../../n3k-ng-grid/position.service'
+
 const CUSTOM_VALUE_ACCESSOR: any = {
   provide: NG_VALUE_ACCESSOR,
   useExisting: forwardRef(() => DatepickerComponent),
@@ -21,17 +24,20 @@ export class DatepickerComponentOptions {
   selector: 'n3k-datepicker',
   templateUrl: './datepicker.component.html',
   styleUrls: ['./datepicker.component.css'],
-  providers: [CUSTOM_VALUE_ACCESSOR]
+  providers: [CUSTOM_VALUE_ACCESSOR, OverlayService]
 })
 export class DatepickerComponent implements OnInit, ControlValueAccessor {
 
 
-  _selected: boolean = false
   _month: {}[][] = []
   _options: DatepickerComponentOptions
   _value: string = ''
   year_position
   month_position
+  overlayDown
+  dateList
+  neck
+  header
 
   monthList = ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь']
   weekDays = ['Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб', 'Вс']
@@ -52,7 +58,20 @@ export class DatepickerComponent implements OnInit, ControlValueAccessor {
   registerOnChange(fn: (_: any) => void): void { this.onChange = fn; }
   registerOnTouched(fn: () => void): void { this.onTouched = fn; }
 
-  constructor(private el: ElementRef, private renderer: Renderer2) { }
+  constructor(
+    private el: ElementRef,
+    private renderer: Renderer2,
+    private overlay :OverlayService,
+    private positionService: PositionService
+  ) {
+    positionService.neck.subscribe( neck => {
+      this.neck = neck
+    })  
+
+    positionService.header.subscribe( header => {
+      this.header = header
+    })  
+  }
 
   ngOnInit() {
   }
@@ -141,23 +160,30 @@ export class DatepickerComponent implements OnInit, ControlValueAccessor {
 
   trigger() {
     this.getMonth(this._value)
-    let dateList = this.el.nativeElement.children[0].children[3]
-    this.renderer.setStyle(dateList, 'width', this.el.nativeElement.offsetWidth+'px')
-    this._selected = !this._selected;
+    this.dateList = this.el.nativeElement.children[0].children[2].children[0]
+    this.renderer.setStyle(this.dateList, 'width', this.el.nativeElement.offsetWidth+'px')
     setTimeout(()=>{
-      if (
-        dateList.offsetTop + dateList.offsetHeight > window.innerHeight
-      ) {
-        this.renderer.setStyle(dateList, 'top', dateList.offsetTop - dateList.offsetHeight - this.el.nativeElement.children[0].children[1].offsetHeight+'px')
-      } else {
-        this.renderer.setStyle(dateList, 'top', 'auto')
-      }
+      // if (
+      //   this.dateList.offsetTop + this.dateList.offsetHeight > window.innerHeight
+      // ) {
+      //   this.renderer.setStyle(this.dateList, 'top', this.dateList.offsetTop - this.dateList.offsetHeight - this.el.nativeElement.children[0].children[1].offsetHeight+'px')
+      // } else {
+      //   this.renderer.setStyle(this.dateList, 'top', 'auto')
+      // }
+      this.renderer.setStyle(this.dateList, 'top', 
+        this.el.nativeElement.offsetTop + this.el.nativeElement.offsetHeight + this.getClosestColumn(this.el.nativeElement) + 'px')
+
+      this.overlayDown = this.overlay.up(() =>{
+        this.renderer.appendChild(this.el.nativeElement.children[0].children[2], this.dateList)
+      })
+      this.renderer.setStyle(this.dateList, 'left', this.el.nativeElement.parentNode.offsetLeft+'px')
+      this.renderer.appendChild(document.body, this.dateList)
     }, 1);
   }
 
   selectDate(day) {
-    this._selected = false;
     this._value = day.date + '.' + ((day.month < 9) ?  '0' + (parseInt(day.month) + 1) : parseInt(day.month) + 1) + '.' + day.year
+    this.overlayDown()
   }
 
   previewMonth() {
@@ -195,5 +221,16 @@ export class DatepickerComponent implements OnInit, ControlValueAccessor {
   checkSelectedDate(day, month, year){
     month = (parseInt(month) < 9) ? '0' + (parseInt(month)+1) : parseInt(month)+1
     return (day+'.'+month+'.'+year === this._value)
+  }
+
+  private getClosestColumn (el){
+    if (!el.parentNode.getAttribute){
+      return 0
+    }
+    if (el.parentNode.getAttribute('column')) {
+      return el.parentNode.offsetTop
+    } else {
+      return this.getClosestColumn(el.parentNode)
+    }
   }
 }

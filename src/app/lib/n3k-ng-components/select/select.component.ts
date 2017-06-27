@@ -1,12 +1,12 @@
 import { Component, OnInit, Input, forwardRef, ElementRef, Renderer2 } from '@angular/core';
-
-import {
-  NG_VALUE_ACCESSOR, 
-  ControlValueAccessor 
-} from '@angular/forms';
+import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 
 import { Response } from '../../../api/common/Response';
 import { Pagination } from '../../../api/common/Pagination';
+
+import { OverlayService } from '../overlay.service'
+import { PositionService } from '../../n3k-ng-grid/position.service'
+
 
 const CUSTOM_VALUE_ACCESSOR: any = {
   provide: NG_VALUE_ACCESSOR,
@@ -19,7 +19,7 @@ const CUSTOM_VALUE_ACCESSOR: any = {
   selector: 'n3k-select',
   templateUrl: './select.component.html',
   styleUrls: ['./select.component.css'],
-  providers: [CUSTOM_VALUE_ACCESSOR]
+  providers: [CUSTOM_VALUE_ACCESSOR, OverlayService]
 })
 export class SelectComponent implements OnInit, ControlValueAccessor {
 
@@ -28,7 +28,8 @@ export class SelectComponent implements OnInit, ControlValueAccessor {
   public _multi: boolean = false;
   public _title: string;
   public _placeholder: string;
-  private _pagination = new Pagination({})
+  private _pagination = new Pagination({});
+  private optionList
   private _filter: {
     p_page: number,
     p_limin: number,
@@ -46,6 +47,9 @@ export class SelectComponent implements OnInit, ControlValueAccessor {
   private _fromMethod;
   public _values: any[] = [];
   private _model;
+  private overlayDown;
+  private header;
+  private neck;
   
   onChange = (_) => {};
   onTouched = () => {};
@@ -102,24 +106,48 @@ export class SelectComponent implements OnInit, ControlValueAccessor {
 
   constructor(
     private el: ElementRef,
-    private renderer: Renderer2
-  ) { }
+    private renderer: Renderer2,
+    private overlay: OverlayService,
+    private positionService: PositionService
+  ) {
+
+    positionService.neck.subscribe( neck => {
+      this.neck = neck
+    })  
+
+    positionService.header.subscribe( header => {
+      this.header = header
+    })  
+
+  }
 
   ngOnInit() {
   }
 
   public trigger () {
-    let optionList = this.el.nativeElement.children[0].children[2]
-    this.renderer.setStyle(optionList, 'width', this.el.nativeElement.offsetWidth+'px')
-    this._selected = !this._selected;
+
+    this.optionList = this.el.nativeElement.children[0].children[1].children[0]
+    this.renderer.setStyle(this.optionList, 'width', this.el.nativeElement.offsetWidth+'px')
+    this._selected = true;
     setTimeout(()=>{
-      if (
-        optionList.offsetTop + optionList.offsetHeight > window.innerHeight
-      ) {
-          this.renderer.setStyle(optionList, 'top', optionList.offsetTop - 300 - this.el.nativeElement.children[0].children[0].offsetHeight+'px')
-      } else {
-        this.renderer.setStyle(optionList, 'top', 'auto')
-      }
+      // if (
+      //   this.optionList.offsetTop + this.optionList.offsetHeight > window.innerHeight
+      // ) {
+      //     this.renderer.setStyle(this.optionList, 'top', this.optionList.offsetTop - 300 - this.el.nativeElement.children[0].children[0].offsetHeight+'px')
+      // } else {
+      //   this.renderer.setStyle(this.optionList, 'top', 'auto')
+      // }
+      
+      this.renderer.setStyle(this.optionList, 'top', 
+        this.el.nativeElement.offsetTop + this.el.nativeElement.offsetHeight + this.getClosestColumn(this.el.nativeElement) + 'px')
+
+      this.overlayDown = this.overlay.up(() =>{
+        this._selected = false
+        this.renderer.appendChild(this.el.nativeElement.children[0].children[1], this.optionList)
+      })
+      this.renderer.setStyle(this.optionList, 'left', this.el.nativeElement.parentNode.offsetLeft+'px')
+      this.renderer.appendChild(document.body, this.optionList)
+
     }, 1);
     if (!this._options) {
       this.getOptions();
@@ -149,7 +177,9 @@ export class SelectComponent implements OnInit, ControlValueAccessor {
     } else {
       this._values[0] = option
     }
-    this._selected = false
+
+    this.overlayDown()
+
     this.onChange(this.getValues());
     this.onTouched(); 
  }
@@ -184,8 +214,8 @@ export class SelectComponent implements OnInit, ControlValueAccessor {
   public onScroll(e) {
     e.stopPropagation();
     e.preventDefault();
-    let optionList = this.el.nativeElement.children[0].children[2]
-    if (optionList.scrollHeight-optionList.offsetHeight === optionList.scrollTop 
+    // let optionList = this.el.nativeElement.children[0].children[2]
+    if (this.optionList.scrollHeight-this.optionList.offsetHeight === this.optionList.scrollTop 
       && this._pagination.next ) {
       this._filter.p_page = this._pagination.next
       this.getOptions();
@@ -216,4 +246,16 @@ export class SelectComponent implements OnInit, ControlValueAccessor {
     }
     return res
   }
+
+  private getClosestColumn (el){
+    if (!el.parentNode.getAttribute){
+      return 0
+    }
+    if (el.parentNode.getAttribute('column')) {
+      return el.parentNode.offsetTop
+    } else {
+      return this.getClosestColumn(el.parentNode)
+    }
+  }
 }
+

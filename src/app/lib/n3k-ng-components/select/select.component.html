@@ -21,13 +21,14 @@
     </table>
   </div>
 
-  <div class='overlay-block' (click)='trigger()' [class.display-none]='!_selected'></div> 
-  <div class='options-list' [class.selected]='_selected' (scroll)='onScroll($event)'>
-    <ul>
-      <li *ngFor='let option of _options' (click)='select(option)'>{{option.name}}</li>
-    </ul>
-    <div class='loading'  [class.display-none]='!_loading'>
-      <i class="fa fa-spinner fa-spin"  aria-hidden="true"></i>
+  <div class="visibility-hidden">
+    <div class='options-list' (scroll)='onScroll($event)'>
+      <ul>
+        <li *ngFor='let option of _options' (click)='select(option)'>{{option.name}}</li>
+      </ul>
+      <div class='loading'  [class.display-none]='!_loading'>
+        <i class="fa fa-spinner fa-spin"  aria-hidden="true"></i>
+      </div>
     </div>
   </div>
   <ng-content></ng-content>

@@ -1361,7 +1361,7 @@ export class Classifier_listService {
         p_sort_field?: string,
     ) {
 
-        this.fakeClassifireData;
+        return this.fakeClassifireData;
 
         // let _path = '/classifiers/institution-type/list';
         // let _body = '';

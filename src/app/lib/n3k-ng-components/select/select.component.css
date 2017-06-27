@@ -45,9 +45,11 @@
 
 .options-list {
     background-color: #fff;
-    display: none;
     height: 300px;
     overflow-y: auto;
+    z-index: 3002;
+    position: fixed;
+    display: block
 
 }
 
@@ -60,11 +62,6 @@
     cursor: pointer;
 }
 
-.options-list.selected {
-    z-index: 3002;
-    position: fixed;
-    display: block
-}
 
 .title {
     font-size: 12px;

@@ -16,6 +16,7 @@ export class Column2RefDirective{
   constructor(private renderer: Renderer2, private el: ElementRef) {
     renderer.addClass(el.nativeElement, 'column');
     renderer.addClass(el.nativeElement, 'column-2');
+    renderer.setAttribute(this.el.nativeElement, 'column', 'true') 
   }
 
   getHeight(){
