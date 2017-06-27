@@ -19,7 +19,7 @@ export class MapListComponent implements OnInit {
 
   filter: FormGroup
   selectedTab: string = 'map';
-  list: InstitutionList = new InstitutionList([]);
+  list: InstitutionList = new InstitutionList({});
   pagination: {page:number} = {
     page: 1
   }

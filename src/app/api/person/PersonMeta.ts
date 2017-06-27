@@ -6,17 +6,19 @@
 
 export class PersonMeta
 {
+    _isEmpty: boolean /*указывает на то пустой ли объект*/
     previous_firstname: string; /*Предыдущее имя*/
     previous_surname: string; /*Предыдущая фамилия*/
     previous_middlename: string; /*Предыдущее отчество*/
     change_name_reason: string; /*Причина смены ФИО*/
-    is_pensioner: string; /*Пенсионер*/
-    is_well_maintained_apartment: string; /*Проживает в благоустроенной квартире*/
-    is_labor_exchange: string; /*Стоит на бирже труда*/
+    is_pensioner: boolean; /*Пенсионер*/
+    is_well_maintained_apartment: boolean; /*Проживает в благоустроенной квартире*/
+    is_labor_exchange: boolean; /*Стоит на бирже труда*/
     last_medical_commission_date: string; /*Дата последней мед коммиссии*/
 
     constructor(json) {
         json = (json || {})
+        this._isEmpty = this._isEmpty = this.isEmpty(json)
 		this.previous_firstname = json["previous_firstname"] || null;
 		this.previous_surname = json["previous_surname"] || null;
 		this.previous_middlename = json["previous_middlename"] || null;
@@ -30,5 +32,25 @@ export class PersonMeta
 
     keys() {
         return Object.keys(this)
+    }
+
+    isEmpty(json) {
+        if (typeof json !== 'object'){
+            return true
+        }
+        
+        let res = true 
+        Object.keys(json).map(i => {
+            if (Array.isArray(json[i])){
+                json[i].map(j => {
+                    res = res && this.isEmpty(json[i][j])
+                })
+            } else if (typeof json[i] === 'object') {
+                res = res && this.isEmpty(json[i])
+            } else {
+                res =  res && (json[i] === null || typeof(json[i]) === 'undefined') 
+            }
+        })
+        return res
     }
 }

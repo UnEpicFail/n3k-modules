@@ -11,15 +11,16 @@ import { HealthEducationKindDocument } from './HealthEducationKindDocument';
 
 export class Health
 {
+    _isEmpty: boolean /*указывает на то пустой ли объект*/
     date: string; /*Дата на которую фиксируется информация*/
     group: ClassifierShort; /**/
     group_document: HealthGroupDocument; /**/
     sport_group: ClassifierShort; /**/
-    is_need_adaptive: string; /*Наличие потребности в адаптивной программе обучения*/
-    is_need_long_treatment: string; /*Наличие потребности в длительном лечении*/
+    is_need_adaptive: boolean; /*Наличие потребности в адаптивной программе обучения*/
+    is_need_long_treatment: boolean; /*Наличие потребности в длительном лечении*/
     long_treatment_document: LongTreatmentDocument; /**/
-    is_need_tutor: string; /*Наличие потребности в тьюторе*/
-    is_need_assistant: string; /*Наличие потребности в ассистенте*/
+    is_need_tutor: boolean; /*Наличие потребности в тьюторе*/
+    is_need_assistant: boolean; /*Наличие потребности в ассистенте*/
     occupational_injuries: ClassifierShort; /**/
     ovz_category: ClassifierShort; /**/
     pmpk_ovz_document: PmpkOvzDocument; /**/
@@ -30,6 +31,7 @@ export class Health
 
     constructor(json) {
         json = (json || {})
+        this._isEmpty = this._isEmpty = this.isEmpty(json)
 		this.date = json["date"] || null;
 		this.group = new ClassifierShort(json["group"]) ;
 		this.group_document = new HealthGroupDocument(json["group_document"]) ;
@@ -56,5 +58,25 @@ export class Health
 
     keys() {
         return Object.keys(this)
+    }
+
+    isEmpty(json) {
+        if (typeof json !== 'object'){
+            return true
+        }
+        
+        let res = true 
+        Object.keys(json).map(i => {
+            if (Array.isArray(json[i])){
+                json[i].map(j => {
+                    res = res && this.isEmpty(json[i][j])
+                })
+            } else if (typeof json[i] === 'object') {
+                res = res && this.isEmpty(json[i])
+            } else {
+                res =  res && (json[i] === null || typeof(json[i]) === 'undefined') 
+            }
+        })
+        return res
     }
 }

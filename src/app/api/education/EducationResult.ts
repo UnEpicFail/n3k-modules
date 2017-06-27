@@ -12,6 +12,7 @@ import { EducationResultMeta } from './EducationResultMeta';
 
 export class EducationResult extends Document
 {
+    _isEmpty: boolean /*указывает на то пустой ли объект*/
     person: EntityState; /**/
     profession: ClassifierShort; /**/
     postition: ClassifierShort; /**/
@@ -19,12 +20,13 @@ export class EducationResult extends Document
     institution: InstitutionShort; /**/
     qualification_category: InstitutionShort; /**/
     duration: Duration; /**/
-    has_achievement: string; /*Документ об образовании и о квалификации с отличием*/
+    has_achievement: boolean; /*Документ об образовании и о квалификации с отличием*/
     meta: EducationResultMeta; /**/
 
     constructor(json) {
         json = (json || {})
         super(json)
+        this._isEmpty = this._isEmpty = this.isEmpty(json)
 		this.person = new EntityState(json["person"]) ;
 		this.profession = new ClassifierShort(json["profession"]) ;
 		this.postition = new ClassifierShort(json["postition"]) ;
@@ -39,5 +41,25 @@ export class EducationResult extends Document
 
     keys() {
         return Object.keys(this)
+    }
+
+    isEmpty(json) {
+        if (typeof json !== 'object'){
+            return true
+        }
+        
+        let res = true 
+        Object.keys(json).map(i => {
+            if (Array.isArray(json[i])){
+                json[i].map(j => {
+                    res = res && this.isEmpty(json[i][j])
+                })
+            } else if (typeof json[i] === 'object') {
+                res = res && this.isEmpty(json[i])
+            } else {
+                res =  res && (json[i] === null || typeof(json[i]) === 'undefined') 
+            }
+        })
+        return res
     }
 }

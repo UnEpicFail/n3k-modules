@@ -10,6 +10,7 @@ import { OrganizationShort } from '../common/OrganizationShort';
 
 export class StaffingTable
 {
+    _isEmpty: boolean /*указывает на то пустой ли объект*/
     identity: Identity; /**/
     entity_state: EntityState; /**/
     position_name: string; /*Название должности*/
@@ -19,6 +20,7 @@ export class StaffingTable
 
     constructor(json) {
         json = (json || {})
+        this._isEmpty = this._isEmpty = this.isEmpty(json)
 		this.identity = new Identity(json["identity"]) ;
 		this.entity_state = new EntityState(json["entity_state"]) ;
 		this.position_name = json["position_name"] || null;
@@ -30,5 +32,25 @@ export class StaffingTable
 
     keys() {
         return Object.keys(this)
+    }
+
+    isEmpty(json) {
+        if (typeof json !== 'object'){
+            return true
+        }
+        
+        let res = true 
+        Object.keys(json).map(i => {
+            if (Array.isArray(json[i])){
+                json[i].map(j => {
+                    res = res && this.isEmpty(json[i][j])
+                })
+            } else if (typeof json[i] === 'object') {
+                res = res && this.isEmpty(json[i])
+            } else {
+                res =  res && (json[i] === null || typeof(json[i]) === 'undefined') 
+            }
+        })
+        return res
     }
 }

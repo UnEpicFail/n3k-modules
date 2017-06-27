@@ -8,18 +8,20 @@ import { EducationTechnology } from './EducationTechnology';
 
 export class TeacherMeta
 {
-    is_using_pc_in_education: string; /*Использует ПК в учебном процессе*/
+    _isEmpty: boolean /*указывает на то пустой ли объект*/
+    is_using_pc_in_education: boolean; /*Использует ПК в учебном процессе*/
     teacher_support: ClassifierShort[]; /*Поддержка педагогических работников*/
     education_technology: EducationTechnology[]; /*Используемые образовательные технология*/
-    is_ovz_correction_class: string; /*Является учителем в специальных (коррекционных) классах Для детей с ограниченными возможностями здоровья при общеобразовательных учреждениях*/
-    is_ovz_regular_class: string; /*Обучает детей с ОВЗ, обучающимися в обычных классах*/
-    is_ovz_payment: string; /*Получение доплаты за обучение детей с ОВЗ*/
-    is_preschool: string; /*Работает с дошкольными группами*/
-    has_adaptive_physical_training_skill: string; /*Наличие образования по специальности «Адаптивная физическая культура и спорт»*/
+    is_ovz_correction_class: boolean; /*Является учителем в специальных (коррекционных) классах Для детей с ограниченными возможностями здоровья при общеобразовательных учреждениях*/
+    is_ovz_regular_class: boolean; /*Обучает детей с ОВЗ, обучающимися в обычных классах*/
+    is_ovz_payment: boolean; /*Получение доплаты за обучение детей с ОВЗ*/
+    is_preschool: boolean; /*Работает с дошкольными группами*/
+    has_adaptive_physical_training_skill: boolean; /*Наличие образования по специальности «Адаптивная физическая культура и спорт»*/
     assessment: string; /*Результаты аттестации*/
 
     constructor(json) {
         json = (json || {})
+        this._isEmpty = this._isEmpty = this.isEmpty(json)
 		this.is_using_pc_in_education = json["is_using_pc_in_education"] || null;
 		this.teacher_support = []
 		if(json["teacher_support"]){
@@ -44,5 +46,25 @@ export class TeacherMeta
 
     keys() {
         return Object.keys(this)
+    }
+
+    isEmpty(json) {
+        if (typeof json !== 'object'){
+            return true
+        }
+        
+        let res = true 
+        Object.keys(json).map(i => {
+            if (Array.isArray(json[i])){
+                json[i].map(j => {
+                    res = res && this.isEmpty(json[i][j])
+                })
+            } else if (typeof json[i] === 'object') {
+                res = res && this.isEmpty(json[i])
+            } else {
+                res =  res && (json[i] === null || typeof(json[i]) === 'undefined') 
+            }
+        })
+        return res
     }
 }

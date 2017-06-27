@@ -11,6 +11,7 @@ import { Contact } from '../common/Contact';
 
 export class Department extends DepartmentShort
 {
+    _isEmpty: boolean /*указывает на то пустой ли объект*/
     capacity: Capacity; /**/
     head: JobShort; /**/
     address: Address; /**/
@@ -22,6 +23,7 @@ export class Department extends DepartmentShort
     constructor(json) {
         json = (json || {})
         super(json)
+        this._isEmpty = this._isEmpty = this.isEmpty(json)
 		this.capacity = new Capacity(json["capacity"]) ;
 		this.head = new JobShort(json["head"]) ;
 		this.address = new Address(json["address"]) ;
@@ -39,5 +41,25 @@ export class Department extends DepartmentShort
 
     keys() {
         return Object.keys(this)
+    }
+
+    isEmpty(json) {
+        if (typeof json !== 'object'){
+            return true
+        }
+        
+        let res = true 
+        Object.keys(json).map(i => {
+            if (Array.isArray(json[i])){
+                json[i].map(j => {
+                    res = res && this.isEmpty(json[i][j])
+                })
+            } else if (typeof json[i] === 'object') {
+                res = res && this.isEmpty(json[i])
+            } else {
+                res =  res && (json[i] === null || typeof(json[i]) === 'undefined') 
+            }
+        })
+        return res
     }
 }

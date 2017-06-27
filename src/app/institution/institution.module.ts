@@ -39,6 +39,7 @@ import { PublicAdministrationFormComponent } from './edit/public-administration-
 import { ContactsFormComponent } from './edit/contacts-form/contacts-form.component';
 import { DocumentFormComponent } from './edit/document-form/document-form.component';
 import { DepartmentComponent } from './edit/department/department.component';
+import { ContactComponent } from './edit/contact/contact.component';
 
 const routes:Routes = [
   {path: 'institution', children: [
@@ -92,6 +93,7 @@ const routes:Routes = [
     ContactsFormComponent,
     DocumentFormComponent,
     DepartmentComponent,
+    ContactComponent,
   ],
   exports: [],
   providers: [InstitutionService, Classifier_listService],

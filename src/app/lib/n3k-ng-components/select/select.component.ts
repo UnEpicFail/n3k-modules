@@ -228,19 +228,21 @@ export class SelectComponent implements OnInit, ControlValueAccessor {
     let res = true
 
     for(let i = 0, max_i = keys.length; i < max_i; i+=1){
-      if (typeof obj[keys[i]] !== 'undefined' && obj[keys[i]] !== null) {
-        if (typeof obj[keys[i]].keys === 'function') {
-          res = res && this.isEmpty(obj[keys[i]]);
-        } else if (Array.isArray(obj[keys[i]])) {
-          if (obj[keys[i]].length > 0) {
-            for (let j = 0, max_j = obj[keys[i]].length; j < max_j; j+=1) {
-              res = res && this.isEmpty(obj[keys[i]][j]);
+      if (keys[i] !== '_isEmpty'){
+        if (typeof obj[keys[i]] !== 'undefined' && obj[keys[i]] !== null) {
+          if (typeof obj[keys[i]].keys === 'function') {
+            res = res && this.isEmpty(obj[keys[i]]);
+          } else if (Array.isArray(obj[keys[i]])) {
+            if (obj[keys[i]].length > 0) {
+              for (let j = 0, max_j = obj[keys[i]].length; j < max_j; j+=1) {
+                res = res && this.isEmpty(obj[keys[i]][j]);
+              }
+            } else {
+              return true;
             }
           } else {
-            return true;
+            return false;
           }
-        } else {
-          return false;
         }
       }
     }

@@ -12,6 +12,7 @@ import { TeacherShort } from '../common/TeacherShort';
 
 export class Group extends GroupShort
 {
+    _isEmpty: boolean /*указывает на то пустой ли объект*/
     capacity: Capacity; /**/
     category: ClassifierShort[]; /*Категория группы (для ДОО)*/
     place: ClassifierShort; /**/
@@ -21,9 +22,9 @@ export class Group extends GroupShort
     work_time: WorkTime[]; /*Время работы*/
     shifts: ClassifierShort[]; /*Смена*/
     meal: Meal[]; /*Питание*/
-    is_sleep: string; /*Организация девного сна*/
-    is_ready_for_completion: string; /*Готова для комплектования*/
-    is_finish: string; /*Выпускная*/
+    is_sleep: boolean; /*Организация девного сна*/
+    is_ready_for_completion: boolean; /*Готова для комплектования*/
+    is_finish: boolean; /*Выпускная*/
     status: ClassifierShort; /**/
     specify: ClassifierShort; /**/
     parent: GroupShort; /**/
@@ -32,6 +33,7 @@ export class Group extends GroupShort
     constructor(json) {
         json = (json || {})
         super(json)
+        this._isEmpty = this._isEmpty = this.isEmpty(json)
 		this.capacity = new Capacity(json["capacity"]) ;
 		this.category = []
 		if(json["category"]){
@@ -73,5 +75,25 @@ export class Group extends GroupShort
 
     keys() {
         return Object.keys(this)
+    }
+
+    isEmpty(json) {
+        if (typeof json !== 'object'){
+            return true
+        }
+        
+        let res = true 
+        Object.keys(json).map(i => {
+            if (Array.isArray(json[i])){
+                json[i].map(j => {
+                    res = res && this.isEmpty(json[i][j])
+                })
+            } else if (typeof json[i] === 'object') {
+                res = res && this.isEmpty(json[i])
+            } else {
+                res =  res && (json[i] === null || typeof(json[i]) === 'undefined') 
+            }
+        })
+        return res
     }
 }

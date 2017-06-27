@@ -9,36 +9,38 @@ import { PostGraduationSupport } from './PostGraduationSupport';
 
 export class EducationMeta
 {
+    _isEmpty: boolean /*указывает на то пустой ли объект*/
     long_treatment_education_kind: ClassifierShort; /**/
     ovz_education_kind: ClassifierShort; /**/
     independent_language_subjects: ClassifierShort[]; /*Языки, изучаемые как самостоятельный предмет*/
     optionally_studied_language: ClassifierShort[]; /*Языки, изучаемые факультативно или в кружках*/
     fogs_information: string; /*Информация об обучении по ФГОС*/
-    is_visit_extended_day_group: string; /*Посещение группы продленного дня*/
-    is_needs_delivery: string; /*Нуждается в подвозе*/
-    is_daily_delivery_provided: string; /*Обеспечен ежедневный подвоз*/
+    is_visit_extended_day_group: boolean; /*Посещение группы продленного дня*/
+    is_needs_delivery: boolean; /*Нуждается в подвозе*/
+    is_daily_delivery_provided: boolean; /*Обеспечен ежедневный подвоз*/
     shift: ClassifierShort; /**/
     meal: Meal; /**/
     hours_of_stay: number; /*Количество часов пребывания*/
     finishing_ear: number; /*Ожидаемый год выпуска*/
-    is_scholarship_availability: string; /*Наличие стипендии*/
-    has_other_material_support: string; /*Наличие стипендии*/
-    has_scholarship_fund_support: string; /*Наличие материальной поддержки из стипендиального фонда*/
-    is_hostel_needed: string; /*Наличие материальной поддержки из стипендиального фонда*/
-    is_opk_education_contract: string; /*Признак обучения на основе контракта в соответствии с государственным планом Подготовки специалистов для организаций ОПК*/
-    is_individual_training_plan: string; /*Индивидуальный план обучения*/
-    is_use_dot: string; /*Применение дистанционных образовательных технологий*/
-    is_dot_only: string; /*Обучение с использованием исключительно дистанционных образовательных технологий*/
-    is_use_specialized_equipment: string; /*Использование специализированного оборудования*/
-    is_use_network_form: string; /*Применение сетевой формы реализации образовательных программ*/
-    application_for_admission_url: string; /*Гипер ссылка на заявление на приём*/
-    is_gia_admitted: string; /*Допущен до ГИА*/
-    is_resigned_for_the_second_year: string; /*Оставлен на повторный год обучения*/
+    is_scholarship_availability: boolean; /*Наличие стипендии*/
+    has_other_material_support: boolean; /*Наличие стипендии*/
+    has_scholarship_fund_support: boolean; /*Наличие материальной поддержки из стипендиального фонда*/
+    is_hostel_needed: boolean; /*Наличие материальной поддержки из стипендиального фонда*/
+    is_opk_education_contract: boolean; /*Признак обучения на основе контракта в соответствии с государственным планом Подготовки специалистов для организаций ОПК*/
+    is_individual_training_plan: boolean; /*Индивидуальный план обучения*/
+    is_use_dot: boolean; /*Применение дистанционных образовательных технологий*/
+    is_dot_only: boolean; /*Обучение с использованием исключительно дистанционных образовательных технологий*/
+    is_use_specialized_equipment: boolean; /*Использование специализированного оборудования*/
+    is_use_network_form: boolean; /*Применение сетевой формы реализации образовательных программ*/
+    application_for_admission_url: boolean; /*Гипер ссылка на заявление на приём*/
+    is_gia_admitted: boolean; /*Допущен до ГИА*/
+    is_resigned_for_the_second_year: boolean; /*Оставлен на повторный год обучения*/
     additional_characteristics: ClassifierShort[]; /*Дополнительные характеристики*/
     post_graduation_support: PostGraduationSupport[]; /*Поствыпускное сопровождение*/
 
     constructor(json) {
         json = (json || {})
+        this._isEmpty = this._isEmpty = this.isEmpty(json)
 		this.long_treatment_education_kind = new ClassifierShort(json["long_treatment_education_kind"]) ;
 		this.ovz_education_kind = new ClassifierShort(json["ovz_education_kind"]) ;
 		this.independent_language_subjects = []
@@ -91,5 +93,25 @@ export class EducationMeta
 
     keys() {
         return Object.keys(this)
+    }
+
+    isEmpty(json) {
+        if (typeof json !== 'object'){
+            return true
+        }
+        
+        let res = true 
+        Object.keys(json).map(i => {
+            if (Array.isArray(json[i])){
+                json[i].map(j => {
+                    res = res && this.isEmpty(json[i][j])
+                })
+            } else if (typeof json[i] === 'object') {
+                res = res && this.isEmpty(json[i])
+            } else {
+                res =  res && (json[i] === null || typeof(json[i]) === 'undefined') 
+            }
+        })
+        return res
     }
 }

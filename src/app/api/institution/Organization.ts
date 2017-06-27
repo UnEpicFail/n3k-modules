@@ -12,6 +12,7 @@ import { OrganizationMeta } from './OrganizationMeta';
 
 export class Organization extends OrganizationShort
 {
+    _isEmpty: boolean /*указывает на то пустой ли объект*/
     okpo: string; /*ОКПО*/
     okato: string; /*ОКATO*/
     kpp: string; /*КПП*/
@@ -34,6 +35,7 @@ export class Organization extends OrganizationShort
     constructor(json) {
         json = (json || {})
         super(json)
+        this._isEmpty = this._isEmpty = this.isEmpty(json)
 		this.okpo = json["okpo"] || null;
 		this.okato = json["okato"] || null;
 		this.kpp = json["kpp"] || null;
@@ -67,5 +69,25 @@ export class Organization extends OrganizationShort
 
     keys() {
         return Object.keys(this)
+    }
+
+    isEmpty(json) {
+        if (typeof json !== 'object'){
+            return true
+        }
+        
+        let res = true 
+        Object.keys(json).map(i => {
+            if (Array.isArray(json[i])){
+                json[i].map(j => {
+                    res = res && this.isEmpty(json[i][j])
+                })
+            } else if (typeof json[i] === 'object') {
+                res = res && this.isEmpty(json[i])
+            } else {
+                res =  res && (json[i] === null || typeof(json[i]) === 'undefined') 
+            }
+        })
+        return res
     }
 }

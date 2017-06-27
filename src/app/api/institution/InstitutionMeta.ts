@@ -7,6 +7,7 @@ import { ClassifierShort } from '../common/ClassifierShort';
 
 export class InstitutionMeta
 {
+    _isEmpty: boolean /*указывает на то пустой ли объект*/
     id: number; /*Идентификатор БД*/
     reorganization_name: string; /*Дополнительное наименование (на момент реорганизации)*/
     additional_name: string; /*Дополнительное наименование образовательной организации*/
@@ -16,22 +17,23 @@ export class InstitutionMeta
     electronic_diary_vendor: string; /*Организация разработчика "Электронного дневника"*/
     electronic_diary_name: string; /*Название информационной системы "Электронного дневника"*/
     electronic_diary_url: string; /*Ссылка для входа на сервис "Электронный дневник"*/
-    is_first_class: string; /*Будет запись в 1 класс в текущем году*/
-    is_site_initialized: string; /*Сайт инициализирован*/
+    is_first_class: boolean; /*Будет запись в 1 класс в текущем году*/
+    is_site_initialized: boolean; /*Сайт инициализирован*/
     employee_count: number; /*Общее количество сотрудников*/
     statute_url: string; /*Ссылка на устав*/
     direction_for_ip: string; /*Направление подготвки, специальности, профессии (кроме общего образования)*/
-    has_bookkeeping: string; /*Наличие бухгалтерии*/
-    is_small_setted: string; /*Малокомплектное (для школ)*/
+    has_bookkeeping: boolean; /*Наличие бухгалтерии*/
+    is_small_setted: boolean; /*Малокомплектное (для школ)*/
     schedule_string: string; /*Режим (часы, дни)*/
-    has_it_teachers: string; /*Наличие требуемой численности преподователей общепрофессиональных и специальных дисциплин, связанных с ИТ*/
-    is_budget_transfered: string; /*Переведено на нормативно-бюджетное финансирование*/
+    has_it_teachers: boolean; /*Наличие требуемой численности преподователей общепрофессиональных и специальных дисциплин, связанных с ИТ*/
+    is_budget_transfered: boolean; /*Переведено на нормативно-бюджетное финансирование*/
     fgos_scoring: ClassifierShort[]; /*Использование современных оценочных процедур для оценки достижений по ФГОС*/
     site_characteristics: ClassifierShort[]; /*Характеристики сайта ОО*/
     description: string; /*Описание*/
 
     constructor(json) {
         json = (json || {})
+        this._isEmpty = this._isEmpty = this.isEmpty(json)
 		this.id = json["id"] || null;
 		this.reorganization_name = json["reorganization_name"] || null;
 		this.additional_name = json["additional_name"] || null;
@@ -69,5 +71,25 @@ export class InstitutionMeta
 
     keys() {
         return Object.keys(this)
+    }
+
+    isEmpty(json) {
+        if (typeof json !== 'object'){
+            return true
+        }
+        
+        let res = true 
+        Object.keys(json).map(i => {
+            if (Array.isArray(json[i])){
+                json[i].map(j => {
+                    res = res && this.isEmpty(json[i][j])
+                })
+            } else if (typeof json[i] === 'object') {
+                res = res && this.isEmpty(json[i])
+            } else {
+                res =  res && (json[i] === null || typeof(json[i]) === 'undefined') 
+            }
+        })
+        return res
     }
 }

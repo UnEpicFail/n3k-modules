@@ -8,22 +8,24 @@ import { Experience } from './Experience';
 
 export class JobMeta
 {
+    _isEmpty: boolean /*указывает на то пустой ли объект*/
     employment: number; /*Занятость*/
     load: number; /*Нагрузка*/
-    is_young_specialist: string; /*Молодой специалист*/
+    is_young_specialist: boolean; /*Молодой специалист*/
     compatibility: ClassifierShort; /**/
     experience: Experience; /**/
-    is_gph_contract: string; /*Работает по договору ГПХ*/
+    is_gph_contract: boolean; /*Работает по договору ГПХ*/
     qualification_category: ClassifierShort; /**/
-    has_individual_employment_plan: string; /*Наличие индивидуального плана трудоустройства*/
-    has_effective_contract: string; /*Наличие эффективного контракта*/
-    is_quota_workstation_contract: string; /*Трудоустройство на квотированное или специально рабочее место*/
+    has_individual_employment_plan: boolean; /*Наличие индивидуального плана трудоустройства*/
+    has_effective_contract: boolean; /*Наличие эффективного контракта*/
+    is_quota_workstation_contract: boolean; /*Трудоустройство на квотированное или специально рабочее место*/
     mentoring: ClassifierShort; /**/
     young_ward_count: number; /*Наставничество (количество курируемых молодых специалистов)*/
     professional_community: ClassifierShort; /**/
 
     constructor(json) {
         json = (json || {})
+        this._isEmpty = this._isEmpty = this.isEmpty(json)
 		this.employment = json["employment"] || null;
 		this.load = json["load"] || null;
 		this.is_young_specialist = json["is_young_specialist"] || null;
@@ -42,5 +44,25 @@ export class JobMeta
 
     keys() {
         return Object.keys(this)
+    }
+
+    isEmpty(json) {
+        if (typeof json !== 'object'){
+            return true
+        }
+        
+        let res = true 
+        Object.keys(json).map(i => {
+            if (Array.isArray(json[i])){
+                json[i].map(j => {
+                    res = res && this.isEmpty(json[i][j])
+                })
+            } else if (typeof json[i] === 'object') {
+                res = res && this.isEmpty(json[i])
+            } else {
+                res =  res && (json[i] === null || typeof(json[i]) === 'undefined') 
+            }
+        })
+        return res
     }
 }

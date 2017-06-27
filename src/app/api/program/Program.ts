@@ -18,6 +18,7 @@ import { PlanShort } from '../common/PlanShort';
 
 export class Program extends ProgramShort
 {
+    _isEmpty: boolean /*указывает на то пустой ли объект*/
     code: string; /*Код*/
     institution: InstitutionShort; /**/
     level: ClassifierShort; /**/
@@ -33,7 +34,7 @@ export class Program extends ProgramShort
     implement_forms: ClassifierShort[]; /*Форма реализации*/
     forms: ClassifierShort[]; /*Форма обучения*/
     scores: EstimateShort[]; /*Проходной бал*/
-    is_short: string; /*Сокращенная программа*/
+    is_short: boolean; /*Сокращенная программа*/
     arts: ClassifierShort[]; /*Виды искуства*/
     duration: Duration; /**/
     financing: Financing; /**/
@@ -47,6 +48,7 @@ export class Program extends ProgramShort
     constructor(json) {
         json = (json || {})
         super(json)
+        this._isEmpty = this._isEmpty = this.isEmpty(json)
 		this.code = json["code"] || null;
 		this.institution = new InstitutionShort(json["institution"]) ;
 		this.level = new ClassifierShort(json["level"]) ;
@@ -152,5 +154,25 @@ export class Program extends ProgramShort
 
     keys() {
         return Object.keys(this)
+    }
+
+    isEmpty(json) {
+        if (typeof json !== 'object'){
+            return true
+        }
+        
+        let res = true 
+        Object.keys(json).map(i => {
+            if (Array.isArray(json[i])){
+                json[i].map(j => {
+                    res = res && this.isEmpty(json[i][j])
+                })
+            } else if (typeof json[i] === 'object') {
+                res = res && this.isEmpty(json[i])
+            } else {
+                res =  res && (json[i] === null || typeof(json[i]) === 'undefined') 
+            }
+        })
+        return res
     }
 }

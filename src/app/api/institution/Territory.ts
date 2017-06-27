@@ -3,19 +3,18 @@
  */
 
 import { TerritoryShort } from './TerritoryShort';
-import { Identity } from '../common/Identity';
 import { PlaceEquipment } from './PlaceEquipment';
 
 
 export class Territory extends TerritoryShort
 {
-    institution_identity: Identity; /**/
+    _isEmpty: boolean /*указывает на то пустой ли объект*/
     equipment: PlaceEquipment[]; /*Оснащение*/
 
     constructor(json) {
         json = (json || {})
         super(json)
-		this.institution_identity = new Identity(json["institution_identity"]) ;
+        this._isEmpty = this._isEmpty = this.isEmpty(json)
 		this.equipment = []
 		if(json["equipment"]){
 			for (let i in json["equipment"]){
@@ -27,5 +26,25 @@ export class Territory extends TerritoryShort
 
     keys() {
         return Object.keys(this)
+    }
+
+    isEmpty(json) {
+        if (typeof json !== 'object'){
+            return true
+        }
+        
+        let res = true 
+        Object.keys(json).map(i => {
+            if (Array.isArray(json[i])){
+                json[i].map(j => {
+                    res = res && this.isEmpty(json[i][j])
+                })
+            } else if (typeof json[i] === 'object') {
+                res = res && this.isEmpty(json[i])
+            } else {
+                res =  res && (json[i] === null || typeof(json[i]) === 'undefined') 
+            }
+        })
+        return res
     }
 }

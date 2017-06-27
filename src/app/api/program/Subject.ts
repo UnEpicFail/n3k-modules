@@ -10,8 +10,9 @@ import { SubjectMeta } from './SubjectMeta';
 
 export class Subject extends SubjectShort
 {
+    _isEmpty: boolean /*указывает на то пустой ли объект*/
     specify: ClassifierShort; /**/
-    is_deep: string; /*Углубленное изучение*/
+    is_deep: boolean; /*Углубленное изучение*/
     duration: Duration; /**/
     component: ClassifierShort; /**/
     meta: SubjectMeta; /**/
@@ -19,6 +20,7 @@ export class Subject extends SubjectShort
     constructor(json) {
         json = (json || {})
         super(json)
+        this._isEmpty = this._isEmpty = this.isEmpty(json)
 		this.specify = new ClassifierShort(json["specify"]) ;
 		this.is_deep = json["is_deep"] || null;
 		this.duration = new Duration(json["duration"]) ;
@@ -29,5 +31,25 @@ export class Subject extends SubjectShort
 
     keys() {
         return Object.keys(this)
+    }
+
+    isEmpty(json) {
+        if (typeof json !== 'object'){
+            return true
+        }
+        
+        let res = true 
+        Object.keys(json).map(i => {
+            if (Array.isArray(json[i])){
+                json[i].map(j => {
+                    res = res && this.isEmpty(json[i][j])
+                })
+            } else if (typeof json[i] === 'object') {
+                res = res && this.isEmpty(json[i])
+            } else {
+                res =  res && (json[i] === null || typeof(json[i]) === 'undefined') 
+            }
+        })
+        return res
     }
 }

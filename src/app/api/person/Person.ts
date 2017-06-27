@@ -17,6 +17,7 @@ import { PersonMeta } from './PersonMeta';
 
 export class Person extends PersonShort
 {
+    _isEmpty: boolean /*указывает на то пустой ли объект*/
     birth_place: string; /*Место рождения*/
     death_place: string; /*Дата смерти*/
     registration_address: Address; /**/
@@ -35,6 +36,7 @@ export class Person extends PersonShort
     constructor(json) {
         json = (json || {})
         super(json)
+        this._isEmpty = this._isEmpty = this.isEmpty(json)
 		this.birth_place = json["birth_place"] || null;
 		this.death_place = json["death_place"] || null;
 		this.registration_address = new Address(json["registration_address"]) ;
@@ -94,5 +96,25 @@ export class Person extends PersonShort
 
     keys() {
         return Object.keys(this)
+    }
+
+    isEmpty(json) {
+        if (typeof json !== 'object'){
+            return true
+        }
+        
+        let res = true 
+        Object.keys(json).map(i => {
+            if (Array.isArray(json[i])){
+                json[i].map(j => {
+                    res = res && this.isEmpty(json[i][j])
+                })
+            } else if (typeof json[i] === 'object') {
+                res = res && this.isEmpty(json[i])
+            } else {
+                res =  res && (json[i] === null || typeof(json[i]) === 'undefined') 
+            }
+        })
+        return res
     }
 }

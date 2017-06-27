@@ -54,13 +54,14 @@ export class AddressComponent implements OnInit, ControlValueAccessor{
 
   writeValue(address: any): void {
     this._address = []
+    this.viewFrom = []
     if (!Array.isArray(address)) {
       this._notArray = true
       address = (address !== undefined && address !== null) ? [address] : []
     }
     
     for (let i = 0, max_i = address.length; i < max_i; i += 1) {
-      if (!this.isEmpty(address[i])) {
+      if (!address[i]._isEmpty) {
         this._address.push(new Address(address[i]))
         this._editState.push(false)
         this.viewFrom.push(this.getView(address[i]))
@@ -69,17 +70,6 @@ export class AddressComponent implements OnInit, ControlValueAccessor{
 
 
     this.canAddNew = (this._limit > this._address.length);
-
-    // if (address !== undefined && address !== null) {
-    //   this._address = new Address(address);
-    // } else {
-    //   this._address = new Address({});
-    // }
-
-    // this.canAddNew = this.isEmpty(this._address);
-    // if(!this.canAddNew){
-    //   this.viewFrom = this.getView();
-    // }
   }
 
   registerOnChange(fn: (_: any) => void): void { this.onChange = fn; }
@@ -101,32 +91,10 @@ export class AddressComponent implements OnInit, ControlValueAccessor{
     
   }
 
-  isEmpty(obj) {
-    let keys = obj.keys()
-    let res = true
-
-    for(let i = 0, max_i = keys.length; i < max_i; i+=1){
-      if (typeof obj[keys[i]] !== 'undefined' && obj[keys[i]] !== null) {
-        if (typeof obj[keys[i]].keys === 'function') {
-          res = res && this.isEmpty(obj[keys[i]]);
-        } else if (Array.isArray(obj[keys[i]])) {
-          if (obj[keys[i]].length > 0) {
-            for (let j = 0, max_j = obj[keys[i]].length; j < max_j; j+=1) {
-              res = res && this.isEmpty(obj[keys[i]][j]);
-            }
-          } else {
-            return true;
-          }
-        } else {
-          return false;
-        }
-      }
-    }
-    return res
-  }
 
 
   getView(address) {
+
     if(!address.fias)
       return ''
 
@@ -174,7 +142,7 @@ export class AddressComponent implements OnInit, ControlValueAccessor{
   }
 
   deleteMe(index) {
-    if (!this.isEmpty(this._address[index].identity)) {
+    if (!this._address[index].identity._isEmpty) {
       this.onDelete.emit(this._address[index].identity);
     }
 
@@ -185,7 +153,7 @@ export class AddressComponent implements OnInit, ControlValueAccessor{
   }
 
   cancel(index) {
-    if (this.isEmpty(this._address[index])) {
+    if (this._address[index]._isEmpty) {
       this._editState.splice(index, 1)
       this.viewFrom.splice(index, 1)
       this._address.splice(index, 1)

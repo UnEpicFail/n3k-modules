@@ -7,6 +7,7 @@ import { ClassifierShort } from '../common/ClassifierShort';
 
 export class PortfolioMeta
 {
+    _isEmpty: boolean /*указывает на то пустой ли объект*/
     academic_degree: ClassifierShort; /**/
     academic_title: ClassifierShort; /**/
     scientific_adviser: string; /*Научный руководитель*/
@@ -19,6 +20,7 @@ export class PortfolioMeta
 
     constructor(json) {
         json = (json || {})
+        this._isEmpty = this._isEmpty = this.isEmpty(json)
 		this.academic_degree = new ClassifierShort(json["academic_degree"]) ;
 		this.academic_title = new ClassifierShort(json["academic_title"]) ;
 		this.scientific_adviser = json["scientific_adviser"] || null;
@@ -33,5 +35,25 @@ export class PortfolioMeta
 
     keys() {
         return Object.keys(this)
+    }
+
+    isEmpty(json) {
+        if (typeof json !== 'object'){
+            return true
+        }
+        
+        let res = true 
+        Object.keys(json).map(i => {
+            if (Array.isArray(json[i])){
+                json[i].map(j => {
+                    res = res && this.isEmpty(json[i][j])
+                })
+            } else if (typeof json[i] === 'object') {
+                res = res && this.isEmpty(json[i])
+            } else {
+                res =  res && (json[i] === null || typeof(json[i]) === 'undefined') 
+            }
+        })
+        return res
     }
 }

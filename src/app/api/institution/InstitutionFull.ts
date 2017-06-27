@@ -14,6 +14,7 @@ import { PublicDigitalService } from './PublicDigitalService';
 
 export class InstitutionFull extends Institution
 {
+    _isEmpty: boolean /*указывает на то пустой ли объект*/
     education_services: EducationService[]; /*Образовательные услуги*/
     buildings: Building[]; /*Здания*/
     territory: Territory[]; /*Территория*/
@@ -25,6 +26,7 @@ export class InstitutionFull extends Institution
     constructor(json) {
         json = (json || {})
         super(json)
+        this._isEmpty = this._isEmpty = this.isEmpty(json)
 		this.education_services = []
 		if(json["education_services"]){
 			for (let i in json["education_services"]){
@@ -72,5 +74,25 @@ export class InstitutionFull extends Institution
 
     keys() {
         return Object.keys(this)
+    }
+
+    isEmpty(json) {
+        if (typeof json !== 'object'){
+            return true
+        }
+        
+        let res = true 
+        Object.keys(json).map(i => {
+            if (Array.isArray(json[i])){
+                json[i].map(j => {
+                    res = res && this.isEmpty(json[i][j])
+                })
+            } else if (typeof json[i] === 'object') {
+                res = res && this.isEmpty(json[i])
+            } else {
+                res =  res && (json[i] === null || typeof(json[i]) === 'undefined') 
+            }
+        })
+        return res
     }
 }

@@ -46,13 +46,13 @@ export class WorkTimeComponent implements OnInit, ControlValueAccessor {
     this._work_times = [];
     if (Array.isArray(work_times)) {
       for (let i = 0, max_i = work_times.length; i < max_i; i += 1) {
-        if(!this.isEmpty(work_times[i])){
+        if(!work_times[i]._isEmpty){
           this._work_times.push(new WorkTime(work_times[i]));
           this._editState.push(false)
         }
       }
     } else {
-      if(work_times && !this.isEmpty(work_times)){
+      if(work_times && !work_times._isEmpty){
         this._work_times.push(new WorkTime(work_times));
         this._editState.push(false)
       }
@@ -107,30 +107,6 @@ export class WorkTimeComponent implements OnInit, ControlValueAccessor {
   }
 
   ngOnInit() {
-  }
-
-  isEmpty(obj) {
-    let keys = obj.keys()
-    let res = true
-
-    for(let i = 0, max_i = keys.length; i < max_i; i+=1){
-      if (typeof obj[keys[i]] !== 'undefined' && obj[keys[i]] !== null) {
-        if (typeof obj[keys[i]].keys === 'function') {
-          res = res && this.isEmpty(obj[keys[i]]);
-        } else if (Array.isArray(obj[keys[i]])) {
-          if (obj[keys[i]].length > 0) {
-            for (let j = 0, max_j = obj[keys[i]].length; j < max_j; j+=1) {
-              res = res && this.isEmpty(obj[keys[i]][j]);
-            }
-          } else {
-            return true;
-          }
-        } else {
-          return false;
-        }
-      }
-    }
-    return res
   }
 
   addNew() {
