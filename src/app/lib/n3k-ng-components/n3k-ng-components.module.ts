@@ -8,6 +8,8 @@ import { AnchorMenuComponent, AnchornTargetRefDirective } from './anchor-menu/an
 import { WysiwygComponent } from './wysiwyg/wysiwyg.component';
 import { DatepickerComponent } from './datepicker/datepicker.component';
 import { CheckboxComponent } from './checkbox/checkbox.component'
+import { PagerComponent } from './pager/pager.component';
+import { OverlayService } from './overlay.service'
 
 import { N3kNgFlyDirective } from './fly.directive';
  
@@ -15,6 +17,9 @@ import { N3kNgFlyDirective } from './fly.directive';
   imports: [
     CommonModule,
     FormsModule
+  ],
+  providers: [
+    OverlayService
   ],
   declarations: [ 
     SelectComponent,
@@ -27,6 +32,7 @@ import { N3kNgFlyDirective } from './fly.directive';
     DatepickerComponent,
     N3kNgFlyDirective,
     CheckboxComponent,
+    PagerComponent,
   ],
   exports: [ 
     SelectComponent, 
@@ -39,6 +45,7 @@ import { N3kNgFlyDirective } from './fly.directive';
     DatepickerComponent,
     N3kNgFlyDirective,
     CheckboxComponent,
+    PagerComponent,
   ]
 })
 export class N3kNgComponentsModule { }

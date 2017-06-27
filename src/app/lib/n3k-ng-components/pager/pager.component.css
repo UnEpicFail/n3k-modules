@@ -1,0 +1,68 @@
+.pager {
+    position: fixed;
+    bottom: 0px;
+}
+
+.pager .page,
+.pager .next,
+.pager .prev {
+    float: left;
+    line-height: 40px;
+    text-align: center;
+    color: #fff;
+    background-color: rgba(153, 153, 153, 0.9);
+    border-bottom: 3px solid rgba(102, 102, 102, 0.9);
+    overflow: hidden;
+    white-space: nowrap;
+    box-sizing: border-box;
+}
+
+.pager .page:hover,
+.pager .next:hover,
+.pager .prev:hover,
+.pop-up .item:hover {
+    cursor: pointer;
+}
+
+.pager .prev {
+    width: 40px;
+}
+
+.pager .next {
+    width: 40px;
+}
+
+.pager .page { 
+    padding: 0 20px;
+    text-align: left;
+    margin-left: 1px;
+}
+
+.pop-up {
+    line-height: 40px;
+    text-align: center;
+    color: #fff;
+    position: fixed;
+    margin-left: 81px;
+    bottom: 42px;
+    padding: 20px 20px;
+    background-color: rgba(153, 153, 153, 0.9);
+    z-index: 3002;
+}
+
+.overlay-block:hover{
+    cursor: pointer;
+}
+.overlay-block {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 3001;
+    background-color: rgba(128, 128, 128, 0.5)
+}
+
+.visibility-hidden {
+    visibility: hidden
+}

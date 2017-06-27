@@ -20,6 +20,7 @@ export class ViewComponent implements OnInit {
 
   selectedTab: string
   selectedId: string
+  selectedListItem: string
 
   tabs = [
     {
@@ -70,6 +71,7 @@ export class ViewComponent implements OnInit {
     this.ar.params.subscribe(params => {
       this.selectedTab = params.tab
       this.selectedId = params.id;
+      this.selectedListItem = params.selected
       institutionService.institutionGet(params.id).subscribe(res => {
         let _res = new Response(res)
         this.institution = new InstitutionFull(_res.data)

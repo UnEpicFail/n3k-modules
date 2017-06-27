@@ -1,0 +1,20 @@
+<div class='pager'>
+  <div class='prev'>
+    <i class="fa fa-angle-left" aria-hidden="true"></i>
+  </div>
+  <div class='next'>
+    <i class="fa fa-angle-right" aria-hidden="true"></i>
+  </div>
+  <div class='page' (click)='trigger()'>
+    {{pager.ranges[pager.page-1]}} из {{pager.total_items}}&nbsp;
+    <i class="fa fa-sort-desc" aria-hidden="true" *ngIf='_selected'></i>
+    <i class="fa fa-sort-asc" aria-hidden="true" *ngIf='!_selected'></i>
+  </div>
+</div>
+<div class='visibility-hidden'>
+  <div class='pop-up'>
+    <div class='item' *ngFor = 'let page of pager.ranges; let i = $index' >
+      {{page}}
+    </div>
+  </div>
+</div>

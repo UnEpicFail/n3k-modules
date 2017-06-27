@@ -50,6 +50,10 @@ fieldset {
     padding: 0;
 }
 
+.loading {
+    line-height: 300px;
+    text-align: center;
+}
 
 .horizontal-separator {
     line-height: 0px;

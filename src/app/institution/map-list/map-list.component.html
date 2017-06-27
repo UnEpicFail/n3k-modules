@@ -61,23 +61,25 @@
         formControlName = 'p_institution_statuses'
       ></n3k-select>
 
-      <!--<n3k-checkbox
+      <n3k-checkbox
         [title] = '"Показывать заблокированные"'
         formControlName = 'p_deleted'
-      ></n3k-checkbox>-->
-
+      ></n3k-checkbox>
     </form>
   </column-1>
   <column-2>
-    <div *ngFor='let item of list.items' class='list-item' (click)='selectListItem(item.identity.id)'>
-      <div><h3>{{item.name}}</h3></div>
-      <div><i class='fa fa-flag status-{{item.status.id}}'></i> {{item.status.name}}</div>
-      <div>
-        {{item.address.origin_address}}
-        <span *ngIf="getFromArray(item.contacts, 'phone')">, {{getFromArray(item.contacts, 'phone')}}</span>
-        <span *ngIf="getFromArray(item.contacts, 'email')">, {{getFromArray(item.contacts, 'email')}}</span>
+    <div class='list'>
+      <div *ngFor='let item of list.items' class='list-item' (click)='selectListItem(item.identity.id)'>
+        <div><h3>{{item.name}}</h3></div>
+        <div><i class='fa fa-flag status-{{item.status.id}}'></i> {{item.status.name}}</div>
+        <div>
+          {{item.address.origin_address}}
+          <span *ngIf="getFromArray(item.contacts, 'phone')">, {{getFromArray(item.contacts, 'phone')}}</span>
+          <span *ngIf="getFromArray(item.contacts, 'email')">, {{getFromArray(item.contacts, 'email')}}</span>
+        </div>
       </div>
     </div>
+    <n3k-pager></n3k-pager>
   </column-2>
   <column-3 *ngIf='selectedTab === "map"'>
     <ya-map [latitude]="55.76" [longitude]="37.64">

@@ -61,7 +61,7 @@
 }
 
 .options-list.selected {
-    z-index: 100;
+    z-index: 3002;
     position: fixed;
     display: block
 }
@@ -93,6 +93,6 @@
     left: 0;
     right: 0;
     bottom: 0;
-    z-index: 99;
+    z-index: 3001;
     background-color: rgba(128, 128, 128, 0.5)
 }
