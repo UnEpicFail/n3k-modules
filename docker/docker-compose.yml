@@ -1,0 +1,12 @@
+version: '2.1'
+
+services:
+  n3k-modules:
+    image: netrika/angular4
+    container_name: n3k-modules
+    volumes:
+      - ../:/n3k-modules
+    ports:
+      - 4242:4200
+    # docker-compose run n3k-modules bash -c "cd /n3k-modules/ && ng build"
+    # docker-compose run --service-ports n3k-modules bash -c "cd /n3k-modules/ && ng serve"
