@@ -13,7 +13,7 @@ export class OrganizationMeta
 
     constructor(json) {
         json = (json || {})
-        this._isEmpty = this._isEmpty = this.isEmpty(json)
+        this._isEmpty = this.isEmpty(json)
 		this.id = json["id"] || null;
 		this.previous_ogrn = []
 		if(json["previous_ogrn"]){
@@ -30,20 +30,22 @@ export class OrganizationMeta
     }
 
     isEmpty(json) {
-        if (typeof json !== 'object'){
+        if (json === null || typeof json !== 'object'){
             return true
         }
-        
+
         let res = true 
         Object.keys(json).map(i => {
-            if (Array.isArray(json[i])){
-                json[i].map(j => {
-                    res = res && this.isEmpty(json[i][j])
-                })
-            } else if (typeof json[i] === 'object') {
-                res = res && this.isEmpty(json[i])
-            } else {
-                res =  res && (json[i] === null || typeof(json[i]) === 'undefined') 
+            if (i !== '_isEmpty') {
+                if (Array.isArray(json[i])){
+                    json[i].map(j => {
+                        res = res && this.isEmpty(json[i][j])
+                    })
+                } else if (typeof json[i] === 'object') {
+                    res = res && this.isEmpty(json[i])
+                } else {
+                    res =  res && (json[i] === null || typeof(json[i]) === 'undefined') 
+                }
             }
         })
         return res

@@ -155,8 +155,9 @@ export class EditComponent implements OnInit, AfterContentChecked {
 
   onWorkTimeDelete(id) {
     let index = this.getWorkTimeIndex(id)
-    if (index){
+    if (typeof index === 'number'){
       this._institution.work_time.splice(index, 1)
+      this.setForm()
     }
   }
   
@@ -171,8 +172,9 @@ export class EditComponent implements OnInit, AfterContentChecked {
 
   onEducationAreaDelete(identity) {
     let index = this.getEducationAreaIndex(identity)
-    if (index) {
+    if (typeof index === 'number') {
       this._institution.education_area.splice(index, 1)
+      this.setForm()
     }
   }
 
@@ -187,8 +189,9 @@ export class EditComponent implements OnInit, AfterContentChecked {
 
   onMealDelete(id) {
     let index = this.getMealIndex(id)
-    if (index) {
+    if (typeof index === 'number') {
       this._institution.meals.splice(index, 1)
+      this.setForm()
     }
   }
 

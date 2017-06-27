@@ -175,6 +175,25 @@ export class DepartmentComponent implements OnInit, AfterContentChecked {
 
   onAddressDelete() {
     this._department.address = new Address({});
+    this.setForm();
+  }
+
+  onContactDelete(identity) {
+    let index = this.getContactIndex(identity)
+    console.log(index)
+    if(typeof index === 'number'){
+      this._department.contacts.splice(index, 1)
+      this.setForm()
+    }
+  }
+
+  getContactIndex(identity) {
+    for (let i = 0, max_i = this._department.contacts.length; i < max_i; i += 1){
+      if (this._department.contacts[i].identity.id === identity.id){
+        return i
+      }
+    }
+    return false
   }
 
   onSubmit() {

@@ -802,6 +802,32 @@ export class InstitutionService {
             },
             address: {
                 origin_address: 'Средний пр-кт, 20, 199004, г. Великий Новгород',
+                fias: {
+                    region: {
+                        id: 1,
+                        name: 'Ленинградская область'
+                    },
+                    okrug: {},
+                    district: {
+                        id: 1,
+                        name: 'Выборгский район'
+                    },
+                    city: {
+                        id: 1,
+                        name: 'г. Выборг'
+                    },
+                    incity: {},
+                    municipality: {},
+                    street: {
+                        id: 1,
+                        name: 'ул. Ленина'
+                    },
+                    building: {
+                        id: 1,
+                        name: 'д. 30'
+                    },
+                    flat: {},
+                },
                 longitude: 38.6, /*Долгота*/
                 latitude: 55.847, /*Широта*/
             },

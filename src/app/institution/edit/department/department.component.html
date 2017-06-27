@@ -81,7 +81,11 @@
         ></edit-address>
 
 
-        
+        <edit-contact
+            [title] = '"Контактные данные"'
+            (onDelete) = 'onContactDelete($event)'
+            formControlName = 'contacts'
+        ></edit-contact>
         
         <div class='buttons-array' fly>
             <div class='create-new-btn btn' (click)='onSubmit()'>

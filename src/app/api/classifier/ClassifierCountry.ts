@@ -15,7 +15,7 @@ export class ClassifierCountry extends Classifier
     constructor(json) {
         json = (json || {})
         super(json)
-        this._isEmpty = this._isEmpty = this.isEmpty(json)
+        this._isEmpty = this.isEmpty(json)
 		this.alfa2 = json["alfa2"] || null;
 		this.alfa3 = json["alfa3"] || null;
 		this.full_name = json["full_name"] || null;
@@ -27,20 +27,22 @@ export class ClassifierCountry extends Classifier
     }
 
     isEmpty(json) {
-        if (typeof json !== 'object'){
+        if (json === null || typeof json !== 'object'){
             return true
         }
-        
+
         let res = true 
         Object.keys(json).map(i => {
-            if (Array.isArray(json[i])){
-                json[i].map(j => {
-                    res = res && this.isEmpty(json[i][j])
-                })
-            } else if (typeof json[i] === 'object') {
-                res = res && this.isEmpty(json[i])
-            } else {
-                res =  res && (json[i] === null || typeof(json[i]) === 'undefined') 
+            if (i !== '_isEmpty') {
+                if (Array.isArray(json[i])){
+                    json[i].map(j => {
+                        res = res && this.isEmpty(json[i][j])
+                    })
+                } else if (typeof json[i] === 'object') {
+                    res = res && this.isEmpty(json[i])
+                } else {
+                    res =  res && (json[i] === null || typeof(json[i]) === 'undefined') 
+                }
             }
         })
         return res
