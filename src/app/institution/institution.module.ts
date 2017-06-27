@@ -38,6 +38,7 @@ import { MetaFormComponent } from './edit/meta-form/meta-form.component';
 import { PublicAdministrationFormComponent } from './edit/public-administration-form/public-administration-form.component';
 import { ContactsFormComponent } from './edit/contacts-form/contacts-form.component';
 import { DocumentFormComponent } from './edit/document-form/document-form.component';
+import { DepartmentComponent } from './edit/department/department.component';
 
 const routes:Routes = [
   {path: 'institution', children: [
@@ -45,6 +46,8 @@ const routes:Routes = [
     {path: 'list/:filter', component: ListComponent},
     {path: 'edit', component: EditComponent},
     {path: 'edit/:id', component: EditComponent},
+    {path: 'view/:institutionId/departments/edit', component: DepartmentComponent},      
+    {path: 'view/:institutionId/departments/edit/:departmentId', component: DepartmentComponent},      
     {path: 'view/:id/:tab', component: ViewComponent},      
     {path: '', component: MapListComponent},
     {path: ':filter', component: MapListComponent},
@@ -88,6 +91,7 @@ const routes:Routes = [
     PublicAdministrationFormComponent,
     ContactsFormComponent,
     DocumentFormComponent,
+    DepartmentComponent,
   ],
   exports: [],
   providers: [InstitutionService, Classifier_listService],

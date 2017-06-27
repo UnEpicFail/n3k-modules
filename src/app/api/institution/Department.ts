@@ -15,7 +15,7 @@ export class Department extends DepartmentShort
     head: JobShort; /**/
     address: Address; /**/
     contacts: Contact[]; /*Контактная информация*/
-    is_based_on_another_organization: string; /*Разпологается на базе другого учреждения*/
+    is_based_on_another_organization: boolean; /*Разпологается на базе другого учреждения*/
     foundation_date: string; /*Дата создания*/
     liquidation_date: string; /*Дата ликвидации*/
 

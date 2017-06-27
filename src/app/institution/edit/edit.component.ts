@@ -32,8 +32,8 @@ export class EditComponent implements OnInit, AfterContentChecked {
     {name:'Дополнительная информация', target: 'additional'},
     {name:'Общественный орган управления', target: 'public_administration'},
     {name:'Контактная информация', target: 'contacts'},
-    {name:'Аккредитация', target: 'organization'},
-    {name:'Лицензия', target: 'organization'}
+    {name:'Аккредитация', target: 'accreditation'},
+    {name:'Лицензия', target: 'license'}
   ]
 
   form: FormGroup
@@ -207,6 +207,7 @@ export class EditComponent implements OnInit, AfterContentChecked {
 
   onAddressDelete(id) {
     this._institution.address = new Address({});
+    this.setForm();
   }
 
   getFromDocuments(docs, type) {

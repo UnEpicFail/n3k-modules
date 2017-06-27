@@ -26,7 +26,7 @@
     <div *ngIf='selectedTab === "departments"'>
         <h2>Подразделения</h2>
         <div class='buttons-array'>
-            <div class='create-new-btn btn'>
+            <div class='create-new-btn btn' [routerLink] = '["edit"]'>
                 <span class='icon'><i class="fa fa-plus" aria-hidden="true"></i></span>
                 <span class='text'>Добавить</span>
             </div> 
