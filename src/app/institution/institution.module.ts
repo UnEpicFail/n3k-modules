@@ -42,7 +42,9 @@ import { DepartmentComponent } from './edit/department/department.component';
 import { ContactComponent } from './edit/contact/contact.component';
 import { BuildingComponent } from './edit/building/building.component';
 import { EquipmentComponent } from './edit/equipment/equipment.component';
-import { TerritoryComponent } from './edit/territory/territory.component'
+import { TerritoryComponent } from './edit/territory/territory.component';
+import { ContractComponent } from './edit/contract/contract.component';
+import { EducationContractDocumentComponent } from './edit/education-contract-document/education-contract-document.component'
 
 const routes:Routes = [
   {path: 'institution', children: [
@@ -56,6 +58,8 @@ const routes:Routes = [
     {path: 'view/:institutionId/buildings/edit/:buildingId', component: BuildingComponent},      
     {path: 'view/:institutionId/territories/edit', component: TerritoryComponent},      
     {path: 'view/:institutionId/territories/edit/:territoryId', component: TerritoryComponent},      
+    {path: 'view/:institutionId/contracts/edit', component: ContractComponent},      
+    {path: 'view/:institutionId/contracts/edit/:contractId', component: ContractComponent},      
     {path: 'view/:id/:tab', component: ViewComponent},      
     {path: '', component: MapListComponent},
     {path: ':filter', component: MapListComponent},
@@ -104,6 +108,8 @@ const routes:Routes = [
     BuildingComponent,
     EquipmentComponent,
     TerritoryComponent,
+    ContractComponent,
+    EducationContractDocumentComponent,
   ],
   exports: [],
   providers: [InstitutionService, Classifier_listService],

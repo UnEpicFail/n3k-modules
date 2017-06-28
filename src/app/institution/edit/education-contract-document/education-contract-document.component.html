@@ -1,0 +1,154 @@
+
+<div class='title'>
+  {{title}}
+</div>
+
+<div *ngIf='canAddNew' >
+    <div class='buttons-array'>
+        <div class='default-btn btn' (click)='addNew()'>
+            <span class='icon'><i class="fa fa-plus" aria-hidden="true"></i></span>
+            <span class='text'>Добавить</span>
+        </div> 
+    </div>
+</div>
+<div class='clones' *ngFor='let document of _documents; let i = index'>
+  <div *ngIf='_editState[i]' >
+    
+    <n3k-select
+      [title] = '"Статус документа"'
+      [placeholder] = '"Статус документа"'
+      [fromMethod] = 'statusService'       
+      [(ngModel)]='document.status'
+      name='status'
+    ></n3k-select>
+
+    <n3k-input
+      [title] = '"Серия"'
+      [placeholder] = '"Серия"'
+      [(ngModel)]='document.series'
+      name='series'
+    ></n3k-input>
+
+    <n3k-input
+      [title] = '"Номер"'
+      [placeholder] = '"Номер"'
+      [(ngModel)]='document.number'
+      name='number'
+    ></n3k-input>
+
+    <n3k-input
+      [title] = '"Реестровый номер"'
+      [placeholder] = '"Реестровый номер"'
+      [(ngModel)]='document.reg_number'
+      name='reg_number'
+    ></n3k-input>
+
+    <n3k-datepicker
+      [options] = 'issueDateOptions'
+      [(ngModel)]='document.issue_date'
+      name='issue_date'
+    ></n3k-datepicker>
+
+    <n3k-datepicker
+      [options] = 'regDateOptions'
+      [(ngModel)]='document.reg_date'
+      name='reg_date'
+    ></n3k-datepicker>
+
+    <n3k-input
+      [title] = '"Кто выпустил"'
+      [placeholder] = '"Кто выпустил"'
+      [(ngModel)]='document.issued_by'
+      name='issued_by'
+    ></n3k-input>
+  
+    <n3k-datepicker
+      [options] = 'validFromOptions'
+      [(ngModel)]='document.valid_from'
+      name='valid_from'
+    ></n3k-datepicker>
+
+    <n3k-datepicker
+      [options] = 'validToOptions'
+      [(ngModel)]='document.valid_to'
+      name='valid_to'
+    ></n3k-datepicker>
+
+    <div class='buttons-array'>
+      <div class='create-new-btn btn' (click)='submit(i)'><span class='text'>Сохранить</span></div>
+      <div class='transparent-btn btn' (click)='cancel(i)'><span class='text'>Отменить</span></div>
+    </div>
+  </div>
+
+  <div *ngIf='!_editState[i]'>
+    <div>
+      <div class='view-text'>
+        <div class='description-block'>
+          <div class='description-block-title'>
+            Статус документа:
+          </div>
+          {{document.status.name}}
+        </div>
+        <div class='description-block'>
+          <div class='description-block-title'>
+            Серия:
+          </div>
+          {{document.series}}
+        </div>
+        <div class='description-block'>
+          <div class='description-block-title'>
+            Номер:
+          </div>
+          {{document.number}}
+        </div>
+        <div class='description-block'>
+          <div class='description-block-title'>
+            Реестровый номер:
+          </div>
+          {{document.reg_number}}
+        </div>
+        <div class='description-block'>
+          <div class='description-block-title'>
+            Дата впустка:
+          </div>
+          {{document.issue_date}}
+        </div>
+        <div class='description-block'>
+          <div class='description-block-title'>
+            Дата регистрации:
+          </div>
+          {{document.reg_date}}
+        </div>
+        <div class='description-block'>
+          <div class='description-block-title'>
+            Кто выпустил:
+          </div>
+          {{document.issued_by}}
+        </div>
+        <div class='description-block'>
+          <div class='description-block-title'>
+            Действителен от:
+          </div>
+          {{document.valid_from}}
+        </div>
+        <div class='description-block'>
+          <div class='description-block-title'>
+            Действителен до:
+          </div>
+          {{document.valid_to}}
+        </div>
+      </div>
+
+      <div class='controll'>
+        <span class='controll-element' (click)='_editState[i] = true'>
+          <i class='fa fa-pencil'>&nbsp;</i>
+          <span class='text'>Редактировать</span>
+        </span>
+        <span class='controll-element' (click)='deleteMe(i)'>
+          <i class='fa fa-trash'>&nbsp;</i>
+          <span class='text'>Удалить</span>
+        </span>
+      </div>
+    </div>
+  </div>
+</div>

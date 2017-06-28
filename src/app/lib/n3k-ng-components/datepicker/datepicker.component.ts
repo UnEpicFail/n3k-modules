@@ -183,6 +183,8 @@ export class DatepickerComponent implements OnInit, ControlValueAccessor {
 
   selectDate(day) {
     this._value = day.date + '.' + ((day.month < 9) ?  '0' + (parseInt(day.month) + 1) : parseInt(day.month) + 1) + '.' + day.year
+    this.onChange(this._value)
+    this.onTouched()
     this.overlayDown()
   }
 
