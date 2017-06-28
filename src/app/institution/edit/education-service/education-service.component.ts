@@ -8,22 +8,24 @@ import { Classifier_listService } from '../../../api/classifier_list'
 import { InstitutionService } from '../../../api/institution'
 import { Response } from '../../../api/common/Response'
 import { Institution } from '../../../api/institution/Institution'
-import { EducationContract } from '../../../api/institution/EducationContract'
+import { EducationService } from '../../../api/institution/EducationService'
 
 @Component({
-  selector: 'app-contract',
-  templateUrl: './contract.component.html',
-  styleUrls: ['./contract.component.css']
+  selector: 'app-education-service',
+  templateUrl: './education-service.component.html',
+  styleUrls: ['./education-service.component.css']
 })
-export class ContractComponent implements OnInit {
+export class EducationServiceComponent implements OnInit {
 
   form: FormGroup = new FormGroup({})
-  institutionId
+   institutionId
   _institution: Institution = new Institution({})
-  _contract: EducationContract = new EducationContract({})
+  _service: EducationService = new EducationService({})
   contractId
 
-  subjectService
+  kindService
+  directionService
+
 
   constructor(
     private fb: FormBuilder,
@@ -31,9 +33,13 @@ export class ContractComponent implements OnInit {
     private classifireService: Classifier_listService,
     private ar: ActivatedRoute,
     private router: Router
-  ) { 
+  ) {
+    this.kindService = classifireService.classifierEducationServiceKindList()
+    this.directionService = classifireService.classifierServiceDirectionList()
 
-    this.subjectService = classifireService.classifierEducationContractSubjectList()
+
+
+    this.setForm()
 
   }
 
@@ -56,7 +62,7 @@ export class ContractComponent implements OnInit {
         } else {
           this.institutionServise.buildingGet(this.contractId).subscribe(data => {
             let res = new Response(data);
-            this._contract = new EducationContract(res.data)
+            this._service = new EducationService(res.data)
             this.setForm()
           })
         }
@@ -64,13 +70,12 @@ export class ContractComponent implements OnInit {
     );
   }
 
-  setForm () {
-    let c = this._contract
+  setForm() {
+    let s = this._service
     this.form = this.fb.group({
-      document: [c.document],
-      subject: [c.subject],
-      group_count: [c.group_count],
-      contragent_institution: [c.contragent_institution],
+      kind: [s.kind],
+      name: [s.name],
+      direction: [s.direction],
     })
   }
 
@@ -79,7 +84,7 @@ export class ContractComponent implements OnInit {
   }
 
   back() {
-    this.router.navigate(['/institution/view/'+this.institutionId+'/contracts'])
+    this.router.navigate(['/institution/view/'+this.institutionId+'/education-services'])
   }
 
 }
