@@ -26,7 +26,7 @@ import { EducationServicesComponent } from './view/education-services/education-
 import { ElectronicServicesComponent } from './view/electronic-services/electronic-services.component';
 import { InnovationsComponent } from './view/innovations/innovations.component';
 import { DepartmentsComponent } from './view/departments/departments.component';
-import { TerritoryComponent } from './view/territory/territory.component';
+import { TerritoriesComponent } from './view/territories/territories.component';
 import { AddressComponent } from './edit/address/address.component';
 import { OrganizationComponent } from './edit/organization-form/organization-form.component';
 import { PersonComponent } from './edit/person/person.component';
@@ -42,6 +42,7 @@ import { DepartmentComponent } from './edit/department/department.component';
 import { ContactComponent } from './edit/contact/contact.component';
 import { BuildingComponent } from './edit/building/building.component';
 import { EquipmentComponent } from './edit/equipment/equipment.component';
+import { TerritoryComponent } from './edit/territory/territory.component'
 
 const routes:Routes = [
   {path: 'institution', children: [
@@ -53,6 +54,8 @@ const routes:Routes = [
     {path: 'view/:institutionId/departments/edit/:departmentId', component: DepartmentComponent},      
     {path: 'view/:institutionId/buildings/edit', component: BuildingComponent},      
     {path: 'view/:institutionId/buildings/edit/:buildingId', component: BuildingComponent},      
+    {path: 'view/:institutionId/territories/edit', component: TerritoryComponent},      
+    {path: 'view/:institutionId/territories/edit/:territoryId', component: TerritoryComponent},      
     {path: 'view/:id/:tab', component: ViewComponent},      
     {path: '', component: MapListComponent},
     {path: ':filter', component: MapListComponent},
@@ -84,7 +87,7 @@ const routes:Routes = [
     ElectronicServicesComponent,
     InnovationsComponent,
     DepartmentsComponent,
-    TerritoryComponent,
+    TerritoriesComponent,
     AddressComponent,
     OrganizationComponent,
     PersonComponent,
@@ -100,6 +103,7 @@ const routes:Routes = [
     ContactComponent,
     BuildingComponent,
     EquipmentComponent,
+    TerritoryComponent,
   ],
   exports: [],
   providers: [InstitutionService, Classifier_listService],

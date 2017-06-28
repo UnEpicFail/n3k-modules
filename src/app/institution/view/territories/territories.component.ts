@@ -8,11 +8,11 @@ import { TerritoryList } from '../../../api/institution/TerritoryList'
 import { TerritoryShort } from '../../../api/institution/TerritoryShort'
 
 @Component({
-  selector: 'app-territory',
-  templateUrl: './territory.component.html',
-  styleUrls: ['./territory.component.css']
+  selector: 'app-territories',
+  templateUrl: './territories.component.html',
+  styleUrls: ['./territories.component.css']
 })
-export class TerritoryComponent implements OnInit {
+export class TerritoriesComponent implements OnInit {
 
   public _territoryList
   public _territory

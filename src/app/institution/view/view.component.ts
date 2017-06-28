@@ -39,8 +39,8 @@ export class ViewComponent implements OnInit {
       name: 'Здания',
     },
     {
-      id: 'territory',
-      link: '../territory',
+      id: 'territories',
+      link: '../territories',
       name: 'Територия',
     },
     {

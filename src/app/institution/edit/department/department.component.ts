@@ -1,6 +1,5 @@
 import { Component, OnInit, QueryList, ViewChildren, AfterContentChecked} from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
-import { Location } from '@angular/common'; 
 import {Router, ActivatedRoute, Params} from '@angular/router';
 
 import { AnchornTargetRefDirective } from '../../../lib/n3k-ng-components/anchor-menu/anchor-menu.component'

@@ -9,26 +9,23 @@ import { Classifier_listService } from '../../../api/classifier_list'
 import { InstitutionService } from '../../../api/institution'
 import { Response } from '../../../api/common/Response'
 import { Institution } from '../../../api/institution/Institution'
-import { Building } from '../../../api/institution/Building'
-
-
+import { Territory } from '../../../api/institution/Territory'
 
 @Component({
-  selector: 'app-building',
-  templateUrl: './building.component.html',
-  styleUrls: ['./building.component.css']
+  selector: 'app-territory',
+  templateUrl: './territory.component.html',
+  styleUrls: ['./territory.component.css']
 })
-export class BuildingComponent implements OnInit, AfterContentChecked {
+export class TerritoryComponent implements OnInit, AfterContentChecked {
 
   form: FormGroup = new FormGroup({})
   institutionId
   _institution: Institution = new Institution({})
-  _building: Building = new Building({})
-  buildingId
+  _territory: Territory = new Territory({})
+  territoryId
 
   anchorList: {}[] = [
     {name:'Общие сведения', target: 'common'},
-    {name:'Контактная информация', target: 'contacts'},
     {name:'Оснащение', target: 'equipment'},
   ]
 
@@ -45,18 +42,12 @@ export class BuildingComponent implements OnInit, AfterContentChecked {
     private classifireService: Classifier_listService,
     private ar: ActivatedRoute,
     private router: Router
-  ) {
-    this.setForm()
-
-    this.statusService = this.classifireService.classifierBuildingStatusList()
-    this.typeService = this.classifireService.classifierBuildingTypeList()
-    this.terrainService = this.classifireService.classifierTerrainTypeList()
-  }
+  ) { }
 
   ngOnInit() {
     this.ar.params.subscribe((params:Params) => {
     this.institutionId = params['institutionId']
-    this.buildingId = params['buildingId']
+    this.territoryId = params['territoryId']
 
       if (!this.institutionId)
         return
@@ -67,12 +58,12 @@ export class BuildingComponent implements OnInit, AfterContentChecked {
         this.setForm()
       })
 
-      if (!this.buildingId) {
+      if (!this.territoryId) {
         this.setForm()
       } else {
-        this.institutionServise.buildingGet(this.buildingId).subscribe(data => {
+        this.institutionServise.buildingGet(this.territoryId).subscribe(data => {
           let res = new Response(data);
-          this._building = new Building(res.data)
+          this._territory = new Territory(res.data)
           this.setForm()
         })
       }
@@ -85,20 +76,10 @@ export class BuildingComponent implements OnInit, AfterContentChecked {
   }
 
   setForm () {
-    let b = this._building;
+    let t = this._territory
     this.form = this.fb.group({
-      capacity: [b.capacity],
-      address: [b.address],
-      type: [b.type],
-      terrain: [b.terrain],
-      rooms: [b.rooms],
-      equipment: [b.equipment],
-      identity: [b.identity],
-      entity_state: [b.entity_state],
-      institution_identity: [b.institution_identity],
-      name: [b.name],
-      is_head: [b.is_head],
-      status: [b.status],
+      name: [t.name],
+      equipment: [t.equipment],
     })
   }
 
@@ -107,7 +88,7 @@ export class BuildingComponent implements OnInit, AfterContentChecked {
   }
 
   back() {
-    this.router.navigate(['/institution/view/'+this.institutionId+'/buildings'])
+    this.router.navigate(['/institution/view/'+this.institutionId+'/territories'])
   }
 
 }

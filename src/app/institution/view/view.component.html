@@ -43,7 +43,7 @@
         </div>
         <div class='horizontal-separator'>&nbsp;</div>
     </div>
-    <div *ngIf='selectedTab === "territory"'>
+    <div *ngIf='selectedTab === "territories"'>
         <h2>Территория организации</h2>
         <div class='buttons-array'>
             <div class='create-new-btn btn' [routerLink] = '["edit"]'>
@@ -96,7 +96,7 @@
 <app-common *ngIf='selectedTab === "common"' [institution]='institution'></app-common>
 <app-departments *ngIf='selectedTab === "departments"' [institution]='institution'></app-departments>
 <app-buildings *ngIf='selectedTab === "buildings"' [institution]='institution'></app-buildings>
-<app-territory *ngIf='selectedTab === "territory"'  [institution]='institution'></app-territory>
+<app-territories *ngIf='selectedTab === "territories"'  [institution]='institution'></app-territories>
 <app-contracts *ngIf='selectedTab === "contracts"'  [institution]='institution'></app-contracts>
 <app-education-services *ngIf='selectedTab === "education-services"'  [institution]='institution'></app-education-services>
 <app-electronic-services *ngIf='selectedTab === "electronic-services"'  [institution]='institution'></app-electronic-services>
