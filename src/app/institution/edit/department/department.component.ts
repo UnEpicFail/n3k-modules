@@ -56,9 +56,9 @@ export class DepartmentComponent implements OnInit, AfterContentChecked {
     private fb: FormBuilder,
     private institutionServise: InstitutionService,
     private classifireService: Classifier_listService,
-    private ar: ActivatedRoute
+    private ar: ActivatedRoute,
+    private router: Router
   ) {
-    this.setForm()
 
     this.beforeParntSetValue = values => {
       if (!values) {
@@ -108,6 +108,7 @@ export class DepartmentComponent implements OnInit, AfterContentChecked {
       return res;
     }
 
+    this.setForm()
 
     this.kindService = classifireService.classifierInstitutionKindList()
     this.parentService = institutionServise.institutionList
@@ -201,7 +202,7 @@ export class DepartmentComponent implements OnInit, AfterContentChecked {
   }
 
   back() {
-    
+    this.router.navigate(['/institution/view/'+this.institutionId+'/departments'])
   }
 
 }

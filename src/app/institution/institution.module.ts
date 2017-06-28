@@ -40,6 +40,8 @@ import { ContactsFormComponent } from './edit/contacts-form/contacts-form.compon
 import { DocumentFormComponent } from './edit/document-form/document-form.component';
 import { DepartmentComponent } from './edit/department/department.component';
 import { ContactComponent } from './edit/contact/contact.component';
+import { BuildingComponent } from './edit/building/building.component';
+import { EquipmentComponent } from './edit/equipment/equipment.component';
 
 const routes:Routes = [
   {path: 'institution', children: [
@@ -49,6 +51,8 @@ const routes:Routes = [
     {path: 'edit/:id', component: EditComponent},
     {path: 'view/:institutionId/departments/edit', component: DepartmentComponent},      
     {path: 'view/:institutionId/departments/edit/:departmentId', component: DepartmentComponent},      
+    {path: 'view/:institutionId/buildings/edit', component: BuildingComponent},      
+    {path: 'view/:institutionId/buildings/edit/:buildingId', component: BuildingComponent},      
     {path: 'view/:id/:tab', component: ViewComponent},      
     {path: '', component: MapListComponent},
     {path: ':filter', component: MapListComponent},
@@ -94,6 +98,8 @@ const routes:Routes = [
     DocumentFormComponent,
     DepartmentComponent,
     ContactComponent,
+    BuildingComponent,
+    EquipmentComponent,
   ],
   exports: [],
   providers: [InstitutionService, Classifier_listService],
