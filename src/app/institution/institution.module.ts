@@ -45,7 +45,8 @@ import { EquipmentComponent } from './edit/equipment/equipment.component';
 import { TerritoryComponent } from './edit/territory/territory.component';
 import { ContractComponent } from './edit/contract/contract.component';
 import { EducationContractDocumentComponent } from './edit/education-contract-document/education-contract-document.component';
-import { EducationServiceComponent } from './edit/education-service/education-service.component'
+import { EducationServiceComponent } from './edit/education-service/education-service.component';
+import { ElectronicServiceComponent } from './edit/electronic-service/electronic-service.component'
 
 const routes:Routes = [
   {path: 'institution', children: [
@@ -62,7 +63,9 @@ const routes:Routes = [
     {path: 'view/:institutionId/contracts/edit', component: ContractComponent},      
     {path: 'view/:institutionId/contracts/edit/:contractId', component: ContractComponent},      
     {path: 'view/:institutionId/education-services/edit', component: EducationServiceComponent},      
-    {path: 'view/:institutionId/education-services/edit/:contractId', component: EducationServiceComponent},      
+    {path: 'view/:institutionId/education-services/edit/:serviceId', component: EducationServiceComponent},      
+    {path: 'view/:institutionId/electronic-services/edit', component: ElectronicServiceComponent},      
+    {path: 'view/:institutionId/electronic-services/edit/:serviceId', component: ElectronicServiceComponent},      
     {path: 'view/:id/:tab', component: ViewComponent},      
     {path: '', component: MapListComponent},
     {path: ':filter', component: MapListComponent},
@@ -114,6 +117,7 @@ const routes:Routes = [
     ContractComponent,
     EducationContractDocumentComponent,
     EducationServiceComponent,
+    ElectronicServiceComponent,
   ],
   exports: [],
   providers: [InstitutionService, Classifier_listService],

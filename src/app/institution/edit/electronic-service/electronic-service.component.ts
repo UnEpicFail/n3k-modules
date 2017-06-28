@@ -8,24 +8,22 @@ import { Classifier_listService } from '../../../api/classifier_list'
 import { InstitutionService } from '../../../api/institution'
 import { Response } from '../../../api/common/Response'
 import { Institution } from '../../../api/institution/Institution'
-import { EducationService } from '../../../api/institution/EducationService'
+import { PublicDigitalService } from '../../../api/institution/PublicDigitalService'
 
 @Component({
-  selector: 'app-education-service',
-  templateUrl: './education-service.component.html',
-  styleUrls: ['./education-service.component.css']
+  selector: 'app-electronic-service',
+  templateUrl: './electronic-service.component.html',
+  styleUrls: ['./electronic-service.component.css']
 })
-export class EducationServiceComponent implements OnInit {
+export class ElectronicServiceComponent implements OnInit {
 
   form: FormGroup = new FormGroup({})
    institutionId
   _institution: Institution = new Institution({})
-  _service: EducationService = new EducationService({})
+  _service: PublicDigitalService = new PublicDigitalService({})
   serviceId
 
   kindService
-  directionService
-
 
   constructor(
     private fb: FormBuilder,
@@ -34,10 +32,8 @@ export class EducationServiceComponent implements OnInit {
     private ar: ActivatedRoute,
     private router: Router
   ) {
+   
     this.kindService = classifireService.classifierEducationServiceKindList()
-    this.directionService = classifireService.classifierServiceDirectionList()
-
-
 
     this.setForm()
 
@@ -57,12 +53,13 @@ export class EducationServiceComponent implements OnInit {
           this.setForm()
         })
 
+
         if (!this.serviceId) {
           this.setForm()
         } else {
-          this.institutionServise.educationServiceGet(this.serviceId).subscribe(data => {
+          this.institutionServise.publicDigitalServiceGet(this.serviceId).subscribe(data => {
             let res = new Response(data);
-            this._service = new EducationService(res.data)
+            this._service = new PublicDigitalService(res.data)
             this.setForm()
           })
         }
@@ -73,9 +70,10 @@ export class EducationServiceComponent implements OnInit {
   setForm() {
     let s = this._service
     this.form = this.fb.group({
-      kind: [s.kind],
-      name: [s.name],
-      direction: [s.direction],
+      service: [s.service],
+      epgu_url: [s.epgu_url],
+      rpgu_url: [s.rpgu_url],
+      documentation_url: [s.documentation_url],
     })
   }
 
@@ -88,3 +86,4 @@ export class EducationServiceComponent implements OnInit {
   }
 
 }
+
