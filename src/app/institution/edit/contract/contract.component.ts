@@ -54,7 +54,7 @@ export class ContractComponent implements OnInit {
         if (!this.contractId) {
           this.setForm()
         } else {
-          this.institutionServise.buildingGet(this.contractId).subscribe(data => {
+          this.institutionServise.educationContractGet(this.contractId).subscribe(data => {
             let res = new Response(data);
             this._contract = new EducationContract(res.data)
             this.setForm()
@@ -75,7 +75,23 @@ export class ContractComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log('this.form', this.form.value)  
+    this._contract = new EducationContract({
+      identity: this._contract.identity,
+      entity_state: this._contract.entity_state,
+      institution_identity: this._institution.identity,
+      document: this.form.value.document,
+      subject: this.form.value.subject,
+      group_count: this.form.value.group_count,
+      contragent_institution: this.form.value.contragent_institution,
+    })
+    this.institutionServise.educationContractSave(this._contract).subscribe(
+      res => {
+        console.log('success res', res)
+      },
+      err => {
+        console.error('err', err)
+      }
+    )
   }
 
   back() {

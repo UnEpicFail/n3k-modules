@@ -155,8 +155,6 @@ export class DepartmentComponent implements OnInit, AfterContentChecked {
       is_based_on_another_organization: [d.is_based_on_another_organization],
       foundation_date: [d.foundation_date],
       liquidation_date: [d.liquidation_date],
-      entity_state: [d.entity_state],
-      institution_identity: [d.institution_identity],
       name: [d.name],
       parent: [this._institution],
       kind: [d.kind],
@@ -197,6 +195,29 @@ export class DepartmentComponent implements OnInit, AfterContentChecked {
   }
 
   onSubmit() {
+    this._department = new Department({
+      identity: this._department.identity,
+      entity_state: this._department.entity_state,
+      institution_identity: this._institution.identity,
+      capacity: this.form.value.capacity,
+      head: this.form.value.head,
+      address: this.form.value.address,
+      contacts: this.form.value.contacts,
+      is_based_on_another_organization: this.form.value.is_based_on_another_organization,
+      foundation_date: this.form.value.foundation_date,
+      liquidation_date: this.form.value.liquidation_date,
+      name: this.form.value.name,
+      parent: this.form.value.parent,
+      kind: this.form.value.kind,
+    })
+    this.institutionServise.departmentSave(this._department).subscribe(
+      res => {
+        console.log('success res', res)
+      },
+      err => {
+        console.error('err', err)
+      }
+    )
     console.log('this.form', this.form.value)  
   }
 

@@ -26,7 +26,7 @@ export class WysiwygComponent implements ControlValueAccessor, AfterViewInit {
   public _value: string;
   public _title: string;
   public _placeholder: string;
- 
+  private ready = false;
 
   @Input()
   set title(title){
@@ -52,9 +52,7 @@ export class WysiwygComponent implements ControlValueAccessor, AfterViewInit {
     } else {
       this._value = '';
     }
-    if (this.editor) {
-      this.editor.setContent(this._value)
-    }
+    this.setValue()
   }
 
   registerOnChange(fn: (_: any) => void): void { this.onChange = fn; }
@@ -72,6 +70,7 @@ export class WysiwygComponent implements ControlValueAccessor, AfterViewInit {
       contextmenu: "link  textcolor| charmap",
       skin_url: '../../../../assets/skins/lightgray',
       toolbar: ['charmap table paste link'],
+      init_instance_callback: ()=>{this.ready = true},
       setup: editor => {
         this.editor = editor;
         editor.on('keyup', () => {
@@ -87,5 +86,12 @@ export class WysiwygComponent implements ControlValueAccessor, AfterViewInit {
 
   }
 
+  setValue() {
+    if (!this.ready) {
+      setTimeout(() => {this.setValue()},1)
+    } else {
+      this.editor.setContent(this._value)
+    }
+  }
 
 }

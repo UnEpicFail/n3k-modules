@@ -80,7 +80,23 @@ export class EducationServiceComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log('this.form', this.form.value)  
+    this._service = new EducationService({
+      identity: this._service.identity,
+      entity_state: this._service.entity_state,
+      institution_identity: this._institution.identity,
+      kind: this.form.value.kind,
+      name: this.form.value.name,
+      direction: this.form.value.direction,
+    })
+
+    this.institutionServise.educationServiceSave(this._service).subscribe(
+      res => {
+        console.log('success res', res)
+      },
+      err => {
+        console.error('err', err)
+      }
+    )
   }
 
   back() {

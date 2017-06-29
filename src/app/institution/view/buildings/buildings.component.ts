@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Router } from '@angular/router'
 
 import { InstitutionFull } from '../../../api/institution/InstitutionFull';
 import { Response } from '../../../api/common/Response';
@@ -26,7 +27,10 @@ export class BuildingsComponent implements OnInit {
     }
   }  
 
-  constructor(private is: InstitutionService) { }
+  constructor(
+    private is: InstitutionService,
+    private router: Router
+  ) { }
 
   ngOnInit() {
   }
@@ -46,5 +50,9 @@ export class BuildingsComponent implements OnInit {
         this._totalSeatsSum += this._seatsSum[i]
       };
     })
+  }
+
+  addNewRoom() {
+    this.router.navigate(['edit/'+this.selectedBuilding+'/room'])
   }
 }

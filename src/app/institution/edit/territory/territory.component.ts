@@ -84,7 +84,21 @@ export class TerritoryComponent implements OnInit, AfterContentChecked {
   }
 
   onSubmit() {
-    console.log('this.form', this.form.value)  
+    this._territory = new Territory({
+      identity: this._territory.identity,
+      entity_state: this._territory.entity_state,
+      institution_identity: this._institution.identity,
+      name: this.form.value.name,
+      equipment: this.form.value.equipment,
+    })
+    this.institutionServise.territorySave(this._territory).subscribe(
+      res => {
+        console.log('res', res)
+      },
+      err => {
+        console.error('err', err)
+      }
+    )
   }
 
   back() {

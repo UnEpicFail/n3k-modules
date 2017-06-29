@@ -78,7 +78,23 @@ export class ElectronicServiceComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log('this.form', this.form.value)  
+    this._service = new PublicDigitalService({
+      identity: this._service.identity,
+      entity_state: this._service.entity_state,
+      institution_identity: this._institution.identity,
+      service: this.form.value.service,
+      epgu_url: this.form.value.epgu_url,
+      rpgu_url: this.form.value.rpgu_url,
+      documentation_url: this.form.value.documentation_url,
+    })
+    this.institutionServise.publicDigitalServiceSave(this._service).subscribe(
+      res => {
+        console.log('success res', res)
+      },
+      err => {
+        console.error('err', err)
+      }
+    )
   }
 
   back() {

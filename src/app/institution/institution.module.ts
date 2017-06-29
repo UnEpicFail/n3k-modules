@@ -46,7 +46,9 @@ import { TerritoryComponent } from './edit/territory/territory.component';
 import { ContractComponent } from './edit/contract/contract.component';
 import { EducationContractDocumentComponent } from './edit/education-contract-document/education-contract-document.component';
 import { EducationServiceComponent } from './edit/education-service/education-service.component';
-import { ElectronicServiceComponent } from './edit/electronic-service/electronic-service.component'
+import { ElectronicServiceComponent } from './edit/electronic-service/electronic-service.component';
+import { InnovationComponent } from './edit/innovation/innovation.component';
+import { RoomComponent } from './edit/room/room.component'
 
 const routes:Routes = [
   {path: 'institution', children: [
@@ -58,6 +60,8 @@ const routes:Routes = [
     {path: 'view/:institutionId/departments/edit/:departmentId', component: DepartmentComponent},      
     {path: 'view/:institutionId/buildings/edit', component: BuildingComponent},      
     {path: 'view/:institutionId/buildings/edit/:buildingId', component: BuildingComponent},      
+    {path: 'view/:institutionId/buildings/edit/:buildingId/room', component: RoomComponent},      
+    {path: 'view/:institutionId/buildings/edit/:buildingId/room/:roomId', component: RoomComponent},      
     {path: 'view/:institutionId/territories/edit', component: TerritoryComponent},      
     {path: 'view/:institutionId/territories/edit/:territoryId', component: TerritoryComponent},      
     {path: 'view/:institutionId/contracts/edit', component: ContractComponent},      
@@ -66,6 +70,8 @@ const routes:Routes = [
     {path: 'view/:institutionId/education-services/edit/:serviceId', component: EducationServiceComponent},      
     {path: 'view/:institutionId/electronic-services/edit', component: ElectronicServiceComponent},      
     {path: 'view/:institutionId/electronic-services/edit/:serviceId', component: ElectronicServiceComponent},      
+    {path: 'view/:institutionId/innovations/edit', component: InnovationComponent},      
+    {path: 'view/:institutionId/innovations/edit/:innovationId', component: InnovationComponent},      
     {path: 'view/:id/:tab', component: ViewComponent},      
     {path: '', component: MapListComponent},
     {path: ':filter', component: MapListComponent},
@@ -118,6 +124,8 @@ const routes:Routes = [
     EducationContractDocumentComponent,
     EducationServiceComponent,
     ElectronicServiceComponent,
+    InnovationComponent,
+    RoomComponent,
   ],
   exports: [],
   providers: [InstitutionService, Classifier_listService],

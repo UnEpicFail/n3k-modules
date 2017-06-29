@@ -58,7 +58,7 @@
           <h2>Помещения</h2>
 
           <div class='buttons-array'>
-            <div class='create-new-btn btn'>
+            <div class='create-new-btn btn' [routerLink] = '"edit/"+_building.identity.id+"/room"'>
                 <span class='icon'><i class="fa fa-plus" aria-hidden="true"></i></span>
                 <span class='text'>Добавить новое</span>
             </div>
