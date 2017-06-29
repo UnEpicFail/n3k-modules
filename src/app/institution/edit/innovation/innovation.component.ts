@@ -89,6 +89,7 @@ export class InnovationComponent implements OnInit {
   }
 
   onSubmit() {
+    console.log('this.form.value.document',this.form.value.document)
     this._innovation = new Innovation({
       identity: this._innovation.identity,
       entity_state: this._innovation.entity_state,
