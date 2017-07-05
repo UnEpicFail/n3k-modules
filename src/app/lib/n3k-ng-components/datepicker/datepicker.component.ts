@@ -2,7 +2,6 @@ import { Component, OnInit, Input, forwardRef, ElementRef, Renderer2 } from '@an
 import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 
 import { OverlayService } from '../overlay.service'
-import { PositionService } from '../../n3k-ng-grid/position.service'
 
 const CUSTOM_VALUE_ACCESSOR: any = {
   provide: NG_VALUE_ACCESSOR,
@@ -61,16 +60,9 @@ export class DatepickerComponent implements OnInit, ControlValueAccessor {
   constructor(
     private el: ElementRef,
     private renderer: Renderer2,
-    private overlay :OverlayService,
-    private positionService: PositionService
+    private overlay :OverlayService
   ) {
-    positionService.neck.subscribe( neck => {
-      this.neck = neck
-    })  
-
-    positionService.header.subscribe( header => {
-      this.header = header
-    })  
+  
   }
 
   ngOnInit() {
@@ -170,8 +162,7 @@ export class DatepickerComponent implements OnInit, ControlValueAccessor {
       // } else {
       //   this.renderer.setStyle(this.dateList, 'top', 'auto')
       // }
-      this.renderer.setStyle(this.dateList, 'top', 
-        this.el.nativeElement.offsetTop + this.el.nativeElement.offsetHeight + this.getClosestColumn(this.el.nativeElement) + 'px')
+      this.renderer.setStyle(this.dateList, 'top', this.getPosition())
 
       this.overlayDown = this.overlay.up(() =>{
         this.renderer.appendChild(this.el.nativeElement.children[0].children[2], this.dateList)
@@ -234,5 +225,13 @@ export class DatepickerComponent implements OnInit, ControlValueAccessor {
     } else {
       return this.getClosestColumn(el.parentNode)
     }
+  }
+
+  private getPosition() {
+    let position = this.el.nativeElement.offsetTop + this.el.nativeElement.offsetHeight + this.getClosestColumn(this.el.nativeElement)
+    if (position + this.dateList.offsetHeight > window.innerHeight) {
+      position -= this.dateList.offsetHeight + this.el.nativeElement.children[0].children[1].offsetHeight
+    }
+    return position + 'px'
   }
 }

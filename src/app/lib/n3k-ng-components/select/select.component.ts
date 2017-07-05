@@ -5,7 +5,6 @@ import { Response } from '../../../api/common/Response';
 import { Pagination } from '../../../api/common/Pagination';
 
 import { OverlayService } from '../overlay.service'
-import { PositionService } from '../../n3k-ng-grid/position.service'
 
 
 const CUSTOM_VALUE_ACCESSOR: any = {
@@ -108,16 +107,7 @@ export class SelectComponent implements OnInit, ControlValueAccessor {
     private el: ElementRef,
     private renderer: Renderer2,
     private overlay: OverlayService,
-    private positionService: PositionService
   ) {
-
-    positionService.neck.subscribe( neck => {
-      this.neck = neck
-    })  
-
-    positionService.header.subscribe( header => {
-      this.header = header
-    })  
 
   }
 
@@ -130,16 +120,8 @@ export class SelectComponent implements OnInit, ControlValueAccessor {
     this.renderer.setStyle(this.optionList, 'width', this.el.nativeElement.offsetWidth+'px')
     this._selected = true;
     setTimeout(()=>{
-      // if (
-      //   this.optionList.offsetTop + this.optionList.offsetHeight > window.innerHeight
-      // ) {
-      //     this.renderer.setStyle(this.optionList, 'top', this.optionList.offsetTop - 300 - this.el.nativeElement.children[0].children[0].offsetHeight+'px')
-      // } else {
-      //   this.renderer.setStyle(this.optionList, 'top', 'auto')
-      // }
-      
-      this.renderer.setStyle(this.optionList, 'top', 
-        this.el.nativeElement.offsetTop + this.el.nativeElement.offsetHeight + this.getClosestColumn(this.el.nativeElement) + 'px')
+
+      this.renderer.setStyle(this.optionList, 'top', this.getPosition())  
 
       this.overlayDown = this.overlay.up(() =>{
         this._selected = false
@@ -152,6 +134,14 @@ export class SelectComponent implements OnInit, ControlValueAccessor {
     if (!this._options) {
       this.getOptions();
     }
+  }
+
+  private getPosition() {
+    let position = this.el.nativeElement.offsetTop + this.el.nativeElement.offsetHeight + this.getClosestColumn(this.el.nativeElement)
+    if (position + this.optionList.offsetHeight > window.innerHeight) {
+      position -= this.optionList.offsetHeight + this.el.nativeElement.children[0].children[0].offsetHeight
+    }
+    return position + 'px'
   }
 
   private getOptions() {
