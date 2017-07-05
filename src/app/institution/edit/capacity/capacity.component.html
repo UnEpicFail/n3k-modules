@@ -14,47 +14,47 @@
 <div class='clones' *ngFor='let capacity of _capacitis; let i = index'>
   <div *ngIf='_editState[i]' >
       
-      <n3k-input
+      <n3-input
         [title] = '"Предельная наполняемость"'
         [placeholder] = '"Предельная наполняемость"'
         [(ngModel)] = 'capacity.total'
         name = 'total'
-      ></n3k-input>
+      ></n3-input>
       
-      <n3k-input
+      <n3-input
         [title] = '"Фактическая наполненность"'
         [placeholder] = '"Фактическая наполненность"'
         [(ngModel)] = 'capacity.current'
         name = 'current'
-      ></n3k-input>
+      ></n3-input>
       
-      <n3k-input
+      <n3-input
         [title] = '"Количество вакантных мест"'
         [placeholder] = '"Количество вакантных мест"'
         [(ngModel)] = 'capacity.vacant'
         name = 'vacant'
-      ></n3k-input>
+      ></n3-input>
       
-      <n3k-input
+      <n3-input
         [title] = '"Количество бюджетных мест"'
         [placeholder] = '"Количество бюджетных мест"'
         [(ngModel)] = 'capacity.budget'
         name = 'budget'
-      ></n3k-input>
+      ></n3-input>
       
-      <n3k-input
+      <n3-input
         [title] = '"Количество контрактных мест"'
         [placeholder] = '"Количество контрактных мест"'
         [(ngModel)] = 'capacity.contract'
         name = 'contract'
-      ></n3k-input>
+      ></n3-input>
       
-      <n3k-input
+      <n3-input
         [title] = '"Количество целевых мест"'
         [placeholder] = '"Количество целевых мест"'
         [(ngModel)] = 'capacity.target'
         name = 'target'
-      ></n3k-input>
+      ></n3-input>
 
       <div class='buttons-array'>
         <div class='create-new-btn btn' (click)='submit(i)'><span class='text'>Сохранить</span></div>

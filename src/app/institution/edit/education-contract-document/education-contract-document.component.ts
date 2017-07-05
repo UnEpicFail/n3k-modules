@@ -4,7 +4,7 @@ import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms'
 
 import { Classifier_listService } from '../../../api/classifier_list'
 import { EducationContractDocument } from '../../../api/institution/EducationContractDocument'
-import { DatepickerComponentOptions } from '../../../lib/n3k-ng-components/datepicker/datepicker.component'
+import { DatepickerComponentOptions } from '../../../lib/n3-ng-components/datepicker/datepicker.component'
 
 const CUSTOM_VALUE_ACCESSOR: any = {
   provide: NG_VALUE_ACCESSOR,

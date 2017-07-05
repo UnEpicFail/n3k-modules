@@ -1,11 +1,11 @@
-<n3k-neck>
+<n3-neck>
     <a class='bread-crumbs' [routerLink] = '["/institution"]'>Образовательные организации</a>
     <br>↓<br>
     <a class='bread-crumbs' (click) = 'back()'>{{_institution.name}}</a>
     <br>↓
     <h1>Подразделение ораганизации</h1>
-</n3k-neck>
-<n3k-columns context='form'>
+</n3-neck>
+<n3-columns context='form'>
   <column-1>
     <form [formGroup]="form" (submit)='onSubmit()'>
         <anchor-target name='common'></anchor-target>
@@ -17,39 +17,39 @@
             formControlName = 'head'
         ></edit-job>
 
-        <n3k-select
+        <n3-select
             [title] = '"Вид"'
             [placeholder] = '"Вид"'
             [fromMethod] = 'kindService'
             formControlName = 'kind'
-        ></n3k-select>
+        ></n3-select>
 
-        <n3k-select
+        <n3-select
             [title] = '"Головное подразделение"'
             [placeholder] = '"Головное подразделение"'
             [fromMethod] = 'parentService'
             formControlName = 'parent'
             [beforeSetValue] = 'beforeParntSetValue'
             [beforeGetValue] = 'beforeParntGetValue'
-        ></n3k-select>
+        ></n3-select>
 
-        <n3k-datepicker 
+        <n3-datepicker 
             [options]="foundationDateOptions"
             formControlName="foundation_date"
         >
-        </n3k-datepicker>
+        </n3-datepicker>
         
-        <n3k-datepicker 
+        <n3-datepicker 
             [options]="liquidationDateOptions"
             formControlName="liquidation_date"
         >
-        </n3k-datepicker>
+        </n3-datepicker>
 
-        <n3k-input
+        <n3-input
             [title] = '"Наименование"'
             [placeholder] = '"Наименование"'
             formControlName = 'name'
-        ></n3k-input>
+        ></n3-input>
 
         <edit-capacity
             [title] = '"Вместительность"'
@@ -58,10 +58,10 @@
             formControlName = 'capacity'
         ></edit-capacity>
 
-        <n3k-checkbox
+        <n3-checkbox
             [title] = '"Располагается на базе другого учреждения"'
             formControlName = 'is_based_on_another_organization'
-        ></n3k-checkbox>
+        ></n3-checkbox>
 
         <anchor-target name='contacts'></anchor-target>
         <h2>Контактная информация</h2>
@@ -97,4 +97,4 @@
       [anchors]='anchors'
     ></anchor-menu>
   </column-2>
-</n3k-columns>
+</n3-columns>

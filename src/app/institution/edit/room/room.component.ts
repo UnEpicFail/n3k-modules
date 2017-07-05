@@ -3,7 +3,7 @@ import { Component, OnInit, QueryList, ViewChildren, AfterContentChecked} from '
 import { FormGroup, FormBuilder } from '@angular/forms';
 import {Router, ActivatedRoute, Params} from '@angular/router';
 
-import { AnchornTargetRefDirective } from '../../../lib/n3k-ng-components/anchor-menu/anchor-menu.component'
+import { AnchornTargetRefDirective } from '../../../lib/n3-ng-components/anchor-menu/anchor-menu.component'
 
 
 import { Classifier_listService } from '../../../api/classifier_list'

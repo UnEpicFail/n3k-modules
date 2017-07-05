@@ -7,9 +7,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { YaCoreModule } from '../angular2-yandex-maps/core.module';
 
-import { N3kNgGridModule } from '../lib/n3k-ng-grid/n3k-ng-grid.module';
-import { N3kNgComponentsModule } from '../lib/n3k-ng-components/n3k-ng-components.module';
-import { N3kNgPipesModule } from '../lib/n3k-ng-pipes/n3k-ng-pipes.module';
+import { N3NgGridModule } from '../lib/n3-ng-grid/n3-ng-grid.module';
+import { N3NgComponentsModule } from '../lib/n3-ng-components/n3-ng-components.module';
+import { N3NgPipesModule } from '../lib/n3-ng-pipes/n3-ng-pipes.module';
 
 import { InstitutionService } from '../api/institution'
 import { Classifier_listService } from '../api/classifier_list';
@@ -84,9 +84,9 @@ const routes:Routes = [
     FormsModule,
     ReactiveFormsModule,
     CommonModule,
-    N3kNgGridModule,
-    N3kNgComponentsModule,
-    N3kNgPipesModule,
+    N3NgGridModule,
+    N3NgComponentsModule,
+    N3NgPipesModule,
     YaCoreModule.forRoot(),
     RouterModule.forRoot([]),
   ],

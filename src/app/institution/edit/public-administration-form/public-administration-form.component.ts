@@ -2,7 +2,7 @@ import { Component, forwardRef, AfterViewInit, OnDestroy } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 
-import { DatepickerComponentOptions } from '../../../lib/n3k-ng-components/datepicker/datepicker.component';
+import { DatepickerComponentOptions } from '../../../lib/n3-ng-components/datepicker/datepicker.component';
 
 import { PublicAdministration } from '../../../api/institution/PublicAdministration'
 

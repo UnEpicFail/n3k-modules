@@ -1,32 +1,32 @@
-<n3k-neck>
+<n3-neck>
     <a class='bread-crumbs' [routerLink] = '["/institution"]'>Образовательные организации</a>
     <br>↓<br>
     <a class='bread-crumbs' (click) = 'back()'>{{_institution.name}}</a>
     <br>↓
     <h1>Договор с учреждениями на осуществление образовательной деятельности</h1>
-</n3k-neck>
-<n3k-columns context='form'>
+</n3-neck>
+<n3-columns context='form'>
   <column-1>
     <form [formGroup]="form" (submit)='onSubmit()'>
       
-        <n3k-select
+        <n3-select
             [title] = '"Предмет договора"'
             [placeholder] = '"Предмет договора"'
             [fromMethod] = 'subjectService'
             formControllName = 'subject'
-        ></n3k-select>
+        ></n3-select>
 
-        <n3k-input
+        <n3-input
             [title] = '"Количество групп"'
             [placeholder] = '"Количество групп"'
             formControllName = 'group_count'
-        ></n3k-input>
+        ></n3-input>
 
-        <n3k-input
+        <n3-input
             [title] = '"Учреждения с которыми подписаны договоры"'
             [placeholder] = '"Учреждения с которыми подписаны договоры"'
             formControllName = 'contragent_institution'
-        ></n3k-input>
+        ></n3-input>
 
         <clone-education-contract-document
             [title] = '"Документ"'
@@ -47,4 +47,4 @@
   </column-1>
   <column-2>    
   </column-2>
-</n3k-columns>
+</n3-columns>

@@ -1,4 +1,4 @@
-<n3k-neck>
+<n3-neck>
   <h1>Образовательные организации</h1>
   <div class='buttons-array'>
     <div class='create-new-btn btn' [routerLink]='["edit"]'>
@@ -10,61 +10,61 @@
     <div class='tab' [class.active]='isActiveMap' (click)='selectedTab = "map"'>На карте</div>
     <div class='tab' [class.active]='isActiveList' (click)='selectedTab = "list"'>Списком</div>
   </div>
-</n3k-neck>
-<n3k-columns context='list'>
+</n3-neck>
+<n3-columns context='list'>
   <column-1>
     <form class='padding-right-1-column' [formGroup]='filter' (ngSubmit)='onFilterSubmit()'>
-      <n3k-input
+      <n3-input
         [title] = '"Поиск"'
         [placeholder] = '"Поиск"'
         [searchIcon] = 'true'
         formControlName = 'p_query'
-      ></n3k-input>
+      ></n3-input>
 
-      <n3k-select
+      <n3-select
         [title] = '"Район"'
         [placeholder] = '"Район"'
         [multi] = 'true'
         [fromMethod] = 'districtsService'
         formControlName = 'p_districts'
-      ></n3k-select>
+      ></n3-select>
 
-      <n3k-select
+      <n3-select
         [title] = '"Уровень образования"'
         [placeholder] = '"Уровень образования"'
         [multi] = 'true'
         [fromMethod] = 'educationLeveService'
         formControlName = 'p_education_levels'
-      ></n3k-select>
+      ></n3-select>
 
-      <n3k-select
+      <n3-select
         [title] = '"Тип организации"'
         [placeholder] = '"Тип организации"'
         [multi] = 'true'
         [fromMethod] = 'institutionTypesService'
         formControlName = 'p_institution_types'
-      ></n3k-select>
+      ></n3-select>
 
-      <n3k-select
+      <n3-select
         [title] = '"Форма собственности"'
         [placeholder] = '"Форма собственности"'
         [multi] = 'true'
         [fromMethod] = 'okfsesService'
         formControlName = 'p_okfses'
-      ></n3k-select>
+      ></n3-select>
 
-      <n3k-select
+      <n3-select
         [title] = '"Статус организации"'
         [placeholder] = '"Статус организации"'
         [multi] = 'true'
         [fromMethod] = 'institutionStatusesService'
         formControlName = 'p_institution_statuses'
-      ></n3k-select>
+      ></n3-select>
 
-      <n3k-checkbox
+      <n3-checkbox
         [title] = '"Показывать заблокированные"'
         formControlName = 'p_deleted'
-      ></n3k-checkbox>
+      ></n3-checkbox>
 
     </form>
   </column-1>
@@ -80,7 +80,7 @@
         </div>
       </div>
     </div>
-    <n3k-pager></n3k-pager>
+    <n3-pager></n3-pager>
   </column-2>
   <column-3 *ngIf='selectedTab === "map"'>
     <ya-map [latitude]="55.76" [longitude]="37.64">
@@ -93,4 +93,4 @@
   <column-3 *ngIf='selectedTab === "list"'>
       LIST
   </column-3>
-</n3k-columns>
+</n3-columns>

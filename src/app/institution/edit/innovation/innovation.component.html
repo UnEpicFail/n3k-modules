@@ -1,43 +1,43 @@
-<n3k-neck>
+<n3-neck>
     <a class='bread-crumbs' [routerLink] = '["/institution"]'>Образовательные организации</a>
     <br>↓<br>
     <a class='bread-crumbs' (click) = 'back()'>{{_institution.name}}</a>
     <br>↓
     <h1>Инновация</h1>
-</n3k-neck>
-<n3k-columns context='form'>
+</n3-neck>
+<n3-columns context='form'>
   <column-1>
     <form [formGroup]="form" (submit)='onSubmit()'>
 
-      <n3k-input
+      <n3-input
         [title] = '"Название"'
         [placeholder] = '"Название"'
         formControlName = 'name'
-      ></n3k-input>
+      ></n3-input>
 
-      <n3k-select
+      <n3-select
         [title] = '"Уровень"'
         [placeholder] = '"Уровень"'
         [fromMethod] = 'levelService'
         formControlName = 'level'
-      ></n3k-select>
+      ></n3-select>
 
-      <n3k-select
+      <n3-select
         [title] = '"Направление деятельности"'
         [placeholder] = '"Направление деятельности"'
         [fromMethod] = 'activityService'
         formControlName = 'activity_direction'
-      ></n3k-select>
+      ></n3-select>
       
-      <n3k-datepicker
+      <n3-datepicker
         [options] = 'activityEndOptions'
         formControlName = 'activity_start'
-      ></n3k-datepicker>
+      ></n3-datepicker>
       
-      <n3k-datepicker
+      <n3-datepicker
         [options] = 'activityEndOptions'
         formControlName = 'activity_end'
-      ></n3k-datepicker>
+      ></n3-datepicker>
 
       <clone-education-contract-document
           [title] = '"Документ"'
@@ -58,5 +58,5 @@
   </column-1>
   <column-2>    
   </column-2>
-</n3k-columns>
+</n3-columns>
 

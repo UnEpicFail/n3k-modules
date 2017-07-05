@@ -1,9 +1,9 @@
-<n3k-neck [@loadState]="loadState">
+<n3-neck [@loadState]="loadState">
   <a class='bread-crumbs' [routerLink] = '["/institution"]'>Образовательные организации</a>
     <br>↓
     <h1>Образовательная организация</h1>
-</n3k-neck>
-<n3k-columns context='form' [@loadState]="loadState">
+</n3-neck>
+<n3-columns context='form' [@loadState]="loadState">
   <column-1>
     <form [formGroup]="form" (submit)='onSubmit()'>
 
@@ -22,67 +22,67 @@
         formControlName = 'head'
       ></edit-job>
       
-      <n3k-select
+      <n3-select
         [title] = '"Регион"'
         [placeholder] = '"Регион"'
         [fromMethod] = 'regionService'
         formControlName = 'region'
-      ></n3k-select>
+      ></n3-select>
       
-      <n3k-select
+      <n3-select
         [title] = '"Район"'
         [placeholder] = '"Район"'
         [fromMethod] = 'districtService'
         formControlName = 'district'
-      ></n3k-select>
+      ></n3-select>
 
-      <n3k-input
+      <n3-input
         [title] = '"Наименование образовательной организации"'
         [placeholder] = '"Наименование образовательной организации"'
         formControlName = 'full_name'
-      ></n3k-input>
+      ></n3-input>
 
-      <n3k-input
+      <n3-input
         [title] = '"Краткое наименование"'
         [placeholder] = '"Краткое наименование"'
         formControlName = 'name'
-      ></n3k-input>
+      ></n3-input>
             
-      <n3k-select
+      <n3-select
         [title] = '"Смены"'
         [placeholder] = '"Смены"'
         [multi] = 'true'
         [fromMethod] = 'shiftService'
         formControlName = 'shift'
-      ></n3k-select>
+      ></n3-select>
             
-      <n3k-select
+      <n3-select
         [title] = '"Статус"'
         [placeholder] = '"Статус"'
         [fromMethod] = 'statusService'
         formControlName = 'status'
-      ></n3k-select>
+      ></n3-select>
             
-      <n3k-select
+      <n3-select
         [title] = '"Тип организации"'
         [placeholder] = '"Тип организации"'
         [fromMethod] = 'typeService'
         formControlName = 'type'
-      ></n3k-select>
+      ></n3-select>
             
-      <n3k-select
+      <n3-select
         [title] = '"Вид организации"'
         [placeholder] = '"Вид организации"'
         [fromMethod] = 'kindService'
         formControlName = 'kind'
-      ></n3k-select>
+      ></n3-select>
             
-      <n3k-select
+      <n3-select
         [title] = '"Тип местности"'
         [placeholder] = '"Тип местности"'
         [fromMethod] = 'terrainService'
         formControlName = 'terrain'
-      ></n3k-select>
+      ></n3-select>
 
       <edit-work-time
         [title] = '"Время работы"'
@@ -90,12 +90,12 @@
         formControlName = 'work_time'
       ></edit-work-time>
 
-      <n3k-select
+      <n3-select
         [title] = '"Основной язык обучения"'
         [placeholder] = '"Основной язык обучения"'
         [fromMethod] = 'educationLanguageService'
         formControlName = 'education_language'
-      ></n3k-select>
+      ></n3-select>
 
       <edit-address 
         [title] = '"Адреса обслуживаемой территории"'
@@ -103,13 +103,13 @@
         formControlName = 'education_area'
       ></edit-address>
 
-      <n3k-select
+      <n3-select
         [title] = '"Уровень образования"'
         [placeholder] = '"Уровень образования"'
         [multi] = 'true'
         [fromMethod] = 'levelsService'
         formControlName = 'levels'
-      ></n3k-select>
+      ></n3-select>
 
       <edit-meals
         [title] = '"Питание"'
@@ -117,33 +117,33 @@
         formControlName = 'meals'
       ></edit-meals>
 
-      <n3k-select
+      <n3-select
         [title] = '"Типы групп ОВЗ доступные в ОО"'
         [placeholder] = '"Типы групп ОВЗ доступные в ОО"'
         [multi] = 'true'
         [fromMethod] = 'ovzGroupTypesService'
         formControlName = 'ovz_group_types'
-      ></n3k-select>
+      ></n3-select>
 
-      <n3k-datepicker 
+      <n3-datepicker 
         [options]="foundationDateOptions"
         formControlName="foundation_date"
       >
-      </n3k-datepicker>
+      </n3-datepicker>
 
 
-      <n3k-select
+      <n3-select
         [title] = '"Подведомственность"'
         [placeholder] = '"Подведомственность"'
         [fromMethod] = 'jurisdictionService'
         formControlName = 'jurisdiction'
-      ></n3k-select>
+      ></n3-select>
 
-      <n3k-wysiwyg
+      <n3-wysiwyg
         [title] = '"Описание"'
         [placeholder] = '"Описание"'
         formControlName = 'description'
-      ></n3k-wysiwyg>
+      ></n3-wysiwyg>
      
       <!-- Картинка для анонса -->
 
@@ -214,4 +214,4 @@
       [anchors]='anchors'
     ></anchor-menu>
   </column-2>
-</n3k-columns>
+</n3-columns>

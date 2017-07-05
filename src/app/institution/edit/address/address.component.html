@@ -13,86 +13,86 @@
 </div>
 <div class='clones' *ngFor='let address of _address; let i = index'>
   <div *ngIf='_editState[i]' >
-      <n3k-select
+      <n3-select
         [title] = '"Регион"'
         [placeholder] = '"Регион"'
         [fromMethod] = 'regionService'       
         [(ngModel)]='address.fias.region'
         name='region'
       >
-      </n3k-select>
+      </n3-select>
       
-      <n3k-select
+      <n3-select
         [title] = '"Округ"'
         [placeholder] = '"Округ"'
         [fromMethod] = 'regionService'       
         [(ngModel)]='address.fias.okrug'
         name='okrug'
       >
-      </n3k-select>
+      </n3-select>
       
-      <n3k-select
+      <n3-select
         [title] = '"Район"'
         [placeholder] = '"Район"'
         [fromMethod] = 'regionService'       
         [(ngModel)]='address.fias.district'
         name='district'
       >
-      </n3k-select>
+      </n3-select>
       
-      <n3k-select
+      <n3-select
         [title] = '"Город"'
         [placeholder] = '"Город"'
         [fromMethod] = 'regionService'       
         [(ngModel)]='address.fias.city'
         name='city'
       >
-      </n3k-select>
+      </n3-select>
       
-      <n3k-select
+      <n3-select
         [title] = '"Внутренние территории"'
         [placeholder] = '"Внутренние территории"'
         [fromMethod] = 'regionService'       
         [(ngModel)]='address.fias.incity'
         name='incity'
       >
-      </n3k-select>
+      </n3-select>
       
-      <n3k-select
+      <n3-select
         [title] = '"Муниципалитет"'
         [placeholder] = '"Муниципалитет"'
         [fromMethod] = 'regionService'       
         [(ngModel)]='address.fias.municipality'
         name='municipality'
       >
-      </n3k-select>
+      </n3-select>
       
-      <n3k-select
+      <n3-select
         [title] = '"Улица"'
         [placeholder] = '"Улица"'
         [fromMethod] = 'regionService'       
         [(ngModel)]='address.fias.street'
         name='street'
       >
-      </n3k-select>
+      </n3-select>
       
-      <n3k-select
+      <n3-select
         [title] = '"Здание"'
         [placeholder] = '"Здание"'
         [fromMethod] = 'regionService'       
         [(ngModel)]='address.fias.building'
         name='building'
       >
-      </n3k-select>
+      </n3-select>
       
-      <n3k-select
+      <n3-select
         [title] = '"Квартира"'
         [placeholder] = '"Квартира"'
         [fromMethod] = 'regionService'       
         [(ngModel)]='address.fias.flat'
         name='flat'
       >
-      </n3k-select>
+      </n3-select>
       
 
       <div class='buttons-array'>

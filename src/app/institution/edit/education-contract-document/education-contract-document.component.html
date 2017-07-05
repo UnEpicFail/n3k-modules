@@ -14,72 +14,72 @@
 <div class='clones' *ngFor='let document of _documents; let i = index'>
   <div *ngIf='_editState[i]' >
     
-    <n3k-select
+    <n3-select
       [title] = '"Статус документа"'
       [placeholder] = '"Статус документа"'
       [fromMethod] = 'statusService'       
       [(ngModel)]='document.status'
       name='status'
-    ></n3k-select>
+    ></n3-select>
 
-    <n3k-input
+    <n3-input
       [title] = '"Серия"'
       [placeholder] = '"Серия"'
       [(ngModel)]='document.series'
       name='series'
-    ></n3k-input>
+    ></n3-input>
 
-    <n3k-input
+    <n3-input
       [title] = '"Номер"'
       [placeholder] = '"Номер"'
       [(ngModel)]='document.number'
       name='number'
-    ></n3k-input>
+    ></n3-input>
 
-    <n3k-input
+    <n3-input
       [title] = '"Реестровый номер"'
       [placeholder] = '"Реестровый номер"'
       [(ngModel)]='document.reg_number'
       name='reg_number'
-    ></n3k-input>
+    ></n3-input>
 
-    <n3k-datepicker
+    <n3-datepicker
       [options] = 'issueDateOptions'
       [(ngModel)]='document.issue_date'
       name='issue_date'
-    ></n3k-datepicker>
+    ></n3-datepicker>
 
-    <n3k-datepicker
+    <n3-datepicker
       [options] = 'regDateOptions'
       [(ngModel)]='document.reg_date'
       name='reg_date'
-    ></n3k-datepicker>
+    ></n3-datepicker>
 
-    <n3k-input
+    <n3-input
       [title] = '"Кто выпустил"'
       [placeholder] = '"Кто выпустил"'
       [(ngModel)]='document.issued_by'
       name='issued_by'
-    ></n3k-input>
+    ></n3-input>
   
-    <n3k-datepicker
+    <n3-datepicker
       [options] = 'validFromOptions'
       [(ngModel)]='document.valid_from'
       name='valid_from'
-    ></n3k-datepicker>
+    ></n3-datepicker>
 
-    <n3k-datepicker
+    <n3-datepicker
       [options] = 'validToOptions'
       [(ngModel)]='document.valid_to'
       name='valid_to'
-    ></n3k-datepicker>
+    ></n3-datepicker>
 
-    <n3k-wysiwyg
+    <n3-wysiwyg
       [title] = '"Описание"'
       [placeholder] = '"Описание"'
       [(ngModel)] = 'document.description'
       name = 'description'
-    ></n3k-wysiwyg>
+    ></n3-wysiwyg>
      
 
     <div class='buttons-array'>

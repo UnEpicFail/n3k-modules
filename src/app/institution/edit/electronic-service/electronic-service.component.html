@@ -1,38 +1,38 @@
-<n3k-neck>
+<n3-neck>
     <a class='bread-crumbs' [routerLink] = '["/institution"]'>Образовательные организации</a>
     <br>↓<br>
     <a class='bread-crumbs' (click) = 'back()'>{{_institution.name}}</a>
     <br>↓
     <h1>Государственные и муниципальные услуги в электронном виде</h1>
-</n3k-neck>
-<n3k-columns context='form'>
+</n3-neck>
+<n3-columns context='form'>
   <column-1>
     <form [formGroup]="form" (submit)='onSubmit()'>
 
-      <n3k-select
+      <n3-select
         [title] = '"Вид образовательной услуги"'
         [placeholder] = '"Вид образовательной услуги"'
         [fromMethod] = 'kindService'
         formControllName = 'kind'
-      ></n3k-select>
+      ></n3-select>
 
-      <n3k-input
+      <n3-input
         [title] = '"Ссылка на ЕПГУ"'
         [placeholder] = '"Ссылка на ЕПГУ"'
         formControllName = 'epgu_url'
-      ></n3k-input>
+      ></n3-input>
 
-      <n3k-input
+      <n3-input
         [title] = '"Ссылка на РПГУ"'
         [placeholder] = '"Ссылка на РПГУ"'
         formControllName = 'rpgu_url'
-      ></n3k-input>
+      ></n3-input>
 
-      <n3k-input
+      <n3-input
         [title] = '"Ссылка на порядок оказания услуг"'
         [placeholder] = '"Ссылка на порядок оказания услуг"'
         formControllName = 'documentation_url'
-      ></n3k-input>
+      ></n3-input>
 
       <div class='buttons-array' fly>
         <div class='create-new-btn btn' (click)='onSubmit()'>
@@ -47,4 +47,4 @@
     </form>
   </column-1>
   <column-2></column-2>
-</n3k-columns>
+</n3-columns>

@@ -1,21 +1,21 @@
-<n3k-neck>
+<n3-neck>
     <a class='bread-crumbs' [routerLink] = '["/institution"]'>Образовательные организации</a>
     <br>↓<br>
     <a class='bread-crumbs' (click) = 'back()'>{{_institution.name}}</a>
     <br>↓
     <h1>Территория ОО</h1>
-</n3k-neck>
-<n3k-columns context='form'>
+</n3-neck>
+<n3-columns context='form'>
   <column-1>
     <form [formGroup]="form" (submit)='onSubmit()'>
       <anchor-target name='common'></anchor-target>
       <h2>Общие сведения</h2>
 
-      <n3k-input
+      <n3-input
           [title] = '"Наименование"'
           [placeholder] = '"Наименование"'
           formControlName = 'name'
-      ></n3k-input>
+      ></n3-input>
 
 
       <anchor-target name='equipment'></anchor-target>
@@ -44,4 +44,4 @@
       [anchors]='anchors'
     ></anchor-menu>
   </column-2>
-</n3k-columns>
+</n3-columns>

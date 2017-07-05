@@ -1,4 +1,4 @@
-<n3k-neck>
+<n3-neck>
     <a class='bread-crumbs' [routerLink] = '["/institution"]'>Поиск организаций</a>
     <br>↓
     <h1>{{institution?.publication.title}}</h1>
@@ -91,7 +91,7 @@
         </div>
         <div class='horizontal-separator'>&nbsp;</div>
     </div>
-</n3k-neck>
+</n3-neck>
 
 <app-common *ngIf='selectedTab === "common"' [institution]='institution'></app-common>
 <app-departments *ngIf='selectedTab === "departments"' [institution]='institution'></app-departments>

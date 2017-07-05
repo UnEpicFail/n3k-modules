@@ -14,20 +14,20 @@
 <div class='clones' *ngFor='let contact of _contacts; let i = index'>
   <div *ngIf='_editState[i]' >
       
-      <n3k-select
+      <n3-select
         [title] = '"Тип"'
         [placeholder] = '"Тип"'
         [(ngModel)] = 'contact.type'
         [fromMethod] = 'contactTypeService'
         name='type'
-      ></n3k-select>
+      ></n3-select>
       
-      <n3k-input
+      <n3-input
         [title] = '"Адрес (номер)"'
         [placeholder] = '"Адрес (номер)"'
         [(ngModel)] = 'contact.value'
         name = 'value'
-      ></n3k-input>
+      ></n3-input>
 
       <div class='buttons-array'>
         <div class='create-new-btn btn' (click)='submit(i)'><span class='text'>Сохранить</span></div>

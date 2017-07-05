@@ -13,31 +13,31 @@
 
 <div class = 'clones' *ngIf='_editState' >
     
-  <n3k-input
+  <n3-input
     [title]='"Фамилия"'
     [placeholder] = '"Фамилия"'
     [(ngModel)] = '_person.surname'
-  ></n3k-input>
+  ></n3-input>
     
-  <n3k-input
+  <n3-input
     [title]='"Имя"'
     [placeholder] = '"Имя"'
     [(ngModel)] = '_person.firstname'
-  ></n3k-input>
+  ></n3-input>
     
-  <n3k-input
+  <n3-input
     [title]='"Отчество"'
     [placeholder] = '"Отчество"'
     [(ngModel)] = '_person.middlename'
-  ></n3k-input>
+  ></n3-input>
   
-  <n3k-select
+  <n3-select
     [title] = '"Гражданство"'
     [placeholder] = '"Гражданство"'
     [fromMethod] = 'countryService'       
     [(ngModel)] = '_person.citizenship.country'
   >
-  </n3k-select>
+  </n3-select>
 
     <div class='buttons-array'>
       <div class='create-new-btn btn' (click)='submit()'><span class='text'>Сохранить</span></div>

@@ -17,21 +17,21 @@
 
   <div class = 'clones' *ngIf='_editState[i]'>
 
-      <n3k-input
+      <n3-input
         [title] = '"Время начала"'
         [placeholder] = '"Время начала"'    
         [(ngModel)]='work_time.begin_time'
         name='begin_time'
-      ></n3k-input>
+      ></n3-input>
 
-      <n3k-input
+      <n3-input
         [title] = '"Время завершения"'
         [placeholder] = '"Время завершения"'    
         [(ngModel)]='work_time.end_time'
         name='end_time'
-      ></n3k-input>
+      ></n3-input>
       
-      <n3k-select
+      <n3-select
         [title] = '"День недели"'
         [placeholder] = '"День недели"'
         [options] = 'workTimeOptions'
@@ -41,7 +41,7 @@
         [(ngModel)]='work_time.week_days'
         name='week_days'
       >
-      </n3k-select>
+      </n3-select>
       
 
       <div class='buttons-array'>

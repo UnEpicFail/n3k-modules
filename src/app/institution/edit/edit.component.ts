@@ -1,7 +1,7 @@
 import { Component, OnInit, AfterContentChecked, AfterContentInit, ViewChildren, QueryList } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Location } from '@angular/common'; 
-import { AnchornTargetRefDirective } from '../../lib/n3k-ng-components/anchor-menu/anchor-menu.component'
+import { AnchornTargetRefDirective } from '../../lib/n3-ng-components/anchor-menu/anchor-menu.component'
 
 
 

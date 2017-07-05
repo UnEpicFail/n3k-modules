@@ -1,106 +1,106 @@
  <fieldset [formGroup]="form">
   <h2>Дополнительная информация</h2>
   
-  <n3k-input
+  <n3-input
     [title]='"Дополнительное наименование образовательной организации"'
     [placeholder] = '"Дополнительное наименование образовательной организации"'
     formControlName = 'additional_name'
-  ></n3k-input>
+  ></n3-input>
 
-  <n3k-input
+  <n3-input
     [title]='"Дополнительное наименование (на момент реорганизации)"'
     [placeholder] = '"Дополнительное наименование (на момент реорганизации)"'
     formControlName = 'reorganization_name'
-  ></n3k-input>
+  ></n3-input>
 
-  <n3k-input
+  <n3-input
     [title]='"Ссылка на образовательную программу на официальном сайте"'
     [placeholder] = '"Ссылка на образовательную программу на официальном сайте"'
     formControlName = 'educational_program_url'
-  ></n3k-input>
+  ></n3-input>
 
-  <n3k-input
+  <n3-input
     [title]='"Укажите организацию разработчика «Электронного дневника»"'
     [placeholder] = '"Укажите организацию разработчика «Электронного дневника»"'
     formControlName = 'electronic_diary_vendor'
-  ></n3k-input>
+  ></n3-input>
 
-  <n3k-input
+  <n3-input
     [title]='"Укажите название информационной системы «Электронного дневника»"'
     [placeholder] = '"Укажите название информационной системы «Электронного дневника»"'
     formControlName = 'electronic_diary_name'
-  ></n3k-input>
+  ></n3-input>
 
-  <n3k-input
+  <n3-input
     [title]='"Укажите ссылку для входа на сервис «Электронный дневник»"'
     [placeholder] = '"Укажите ссылку для входа на сервис «Электронный дневник»"'
     formControlName = 'electronic_diary_url'
-  ></n3k-input>
+  ></n3-input>
 
-  <n3k-checkbox
+  <n3-checkbox
     [title] = '"Будет запись в 1 класс"'
     formControlName = 'is_first_class'
-  ></n3k-checkbox>
+  ></n3-checkbox>
 
-  <n3k-input
+  <n3-input
     [title] = '"Общее количество сотрудников"'
     [placeholder] = '"Общее количество сотрудников"'
     formControlName = 'employee_count'
-  ></n3k-input>
+  ></n3-input>
 
-  <n3k-input
+  <n3-input
     [title] = '"Ссылка на устав"'
     [placeholder] = '"Ссылка на устав"'
     formControlName = 'statute_url'
-  ></n3k-input>
+  ></n3-input>
 
-  <n3k-input
+  <n3-input
     [title] = '"Направление подготвки, специальности, профессии (кроме общего образования)"'
     [placeholder] = '"Направление подготвки, специальности, профессии (кроме общего образования)"'
     formControlName = 'direction_for_ip'
-  ></n3k-input>
+  ></n3-input>
 
-  <n3k-checkbox
+  <n3-checkbox
     [title] = '"Наличие бухгалтерии"'
     formControlName = 'has_bookkeeping'
-  ></n3k-checkbox>
+  ></n3-checkbox>
 
-  <n3k-checkbox
+  <n3-checkbox
     [title] = '"Малокомплектное (для школ)"'
     formControlName = 'is_small_setted'
-  ></n3k-checkbox>
+  ></n3-checkbox>
   
-  <n3k-input
+  <n3-input
     [title] = '"Режим (часы, дни)"'
     [placeholder] = '"Режим (часы, дни)"'
     formControlName = 'schedule_string'
-  ></n3k-input>
+  ></n3-input>
 
-  <n3k-checkbox
+  <n3-checkbox
     [title] = '"Наличие требуемой численности преподователей общепрофессиональных и специальных дисциплин, связанных с ИТ"'
     formControlName = 'has_it_teachers'
-  ></n3k-checkbox>
+  ></n3-checkbox>
 
-  <n3k-checkbox
+  <n3-checkbox
     [title] = '"Переведено на нормативно-бюджетное финансирование"'
     formControlName = 'is_budget_transfered'
-  ></n3k-checkbox>
+  ></n3-checkbox>
 
-  <n3k-select
+  <n3-select
     [title] = '"Использование современных оценочных процедур для оценки достижений по ФГОС"'
     [placeholder] = '"Использование современных оценочных процедур для оценки достижений по ФГОС"'
     [fromMethod] = 'fgosScoringService'
     [multi] = 'true'
     formControlName = 'fgos_scoring'
-  ></n3k-select>
+  ></n3-select>
 
-  <n3k-select
+  <n3-select
     [title] = '"Характеристики сайта ОО"'
     [placeholder] = '"Характеристики сайта ОО"'
     [fromMethod] = 'siteCharacteristicsService'
     [multi] = 'true'
     formControlName = 'site_characteristics'
-  ></n3k-select>
+  ></n3-select>
   
 
 

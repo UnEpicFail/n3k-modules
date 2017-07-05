@@ -2,7 +2,7 @@ import { Component, forwardRef } from '@angular/core';
 import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 
 import { Document } from '../../../api/common/Document'
-import { DatepickerComponentOptions } from '../../../lib/n3k-ng-components/datepicker/datepicker.component'
+import { DatepickerComponentOptions } from '../../../lib/n3-ng-components/datepicker/datepicker.component'
 
 
 const CUSTOM_VALUE_ACCESSOR: any = {

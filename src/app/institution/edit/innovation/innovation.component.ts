@@ -9,7 +9,7 @@ import { InstitutionService } from '../../../api/institution'
 import { Response } from '../../../api/common/Response'
 import { Institution } from '../../../api/institution/Institution'
 import { Innovation } from '../../../api/institution/Innovation'
-import { DatepickerComponentOptions } from '../../../lib/n3k-ng-components/datepicker/datepicker.component'
+import { DatepickerComponentOptions } from '../../../lib/n3-ng-components/datepicker/datepicker.component'
 
 
 @Component({

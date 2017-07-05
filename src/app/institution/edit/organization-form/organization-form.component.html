@@ -1,88 +1,88 @@
  <fieldset [formGroup]="form">
   <h2>Юридическое лицо</h2>
   
-  <n3k-input
+  <n3-input
     [title]='"Наименование юридического лица"'
     [placeholder] = '"Наименование юридического лица"'
     formControlName = 'name'
-  ></n3k-input>
+  ></n3-input>
 
-  <n3k-input
+  <n3-input
     [title]='"ИНН"'
     [placeholder] = '"ИНН"'
     formControlName = 'inn'
-  ></n3k-input>
+  ></n3-input>
   
-  <n3k-input
+  <n3-input
     [title]='"ОГРН"'
     [placeholder] = '"ОГРН"'
     formControlName = 'ogrn'
-  ></n3k-input>
+  ></n3-input>
   
   <fieldset formGroupName="meta">
-    <n3k-input
+    <n3-input
       [title]='"Прежний ОГРН"'
       [placeholder] = '"Прежний ОГРН"'
       formControlName = 'previous_ogrn'
-    ></n3k-input>
+    ></n3-input>
   </fieldset>
 
-  <n3k-input
+  <n3-input
     [title]='"ОКПО"'
     [placeholder] = '"ОКПО"'
     formControlName = 'okpo'
-  ></n3k-input>
+  ></n3-input>
 
-  <n3k-input
+  <n3-input
     [title]='"ОКАТО"'
     [placeholder] = '"ОКАТО"'
     formControlName = 'okato'
-  ></n3k-input>
+  ></n3-input>
 
-  <n3k-input
+  <n3-input
     [title]='"КПП"'
     [placeholder] = '"КПП"'
     formControlName = 'kpp'
-  ></n3k-input>
+  ></n3-input>
 
-  <n3k-select
+  <n3-select
     [title] = '"ОКТМО"'
     [placeholder] = '"ОКТМО"'
     [fromMethod] = 'oktmoService'       
     formControlName = 'oktmo'
   >
-  </n3k-select>
+  </n3-select>
   
-  <n3k-input
+  <n3-input
     [title]='"ОКОГУ"'
     [placeholder] = '"ОКОГУ"'
     formControlName = 'okogu'
-  ></n3k-input>
+  ></n3-input>
 
 
-  <n3k-select
+  <n3-select
     [title] = '"Форма собственности"'
     [placeholder] = '"Форма собственности"'
     [fromMethod] = 'typeOfOwnershipService'       
     formControlName = 'type_of_ownership'
   >
-  </n3k-select>
+  </n3-select>
   
-  <n3k-select
+  <n3-select
     [title] = '"Вид организации по учредителям"'
     [placeholder] = '"Вид организации по учредителям"'
     [fromMethod] = 'oktmoService'       
     formControlName = 'founders_type'
   >
-  </n3k-select>
+  </n3-select>
   
-  <n3k-select
+  <n3-select
     [title] = '"Статус"'
     [placeholder] = '"Статус"'
     [fromMethod] = 'statusService'       
     formControlName = 'status'
   >
-  </n3k-select>
+  </n3-select>
 
   <edit-address 
     [title] = '"Юридический адрес"'
@@ -91,53 +91,53 @@
     formControlName = 'address'
   ></edit-address>
     
-  <n3k-select
+  <n3-select
     [title] = '"Регион"'
     [placeholder] = '"Регион"'
     [fromMethod] = 'regionService'       
     formControlName = 'region'
   >
-  </n3k-select>
+  </n3-select>
     
-  <n3k-select
+  <n3-select
     [title] = '"Район"'
     [placeholder] = '"Район"'
     [fromMethod] = 'districtService'       
     formControlName = 'district'
   >
-  </n3k-select>
+  </n3-select>
     
-  <n3k-select
+  <n3-select
     [title] = '"ОКОПФ"'
     [placeholder] = '"ОКОПФ"'
     [fromMethod] = 'okopfService'       
     formControlName = 'okopf'
   >
-  </n3k-select>
+  </n3-select>
     
-  <n3k-select
+  <n3-select
     [title] = '"ОКФС"'
     [placeholder] = '"ОКФС"'
     [fromMethod] = 'okfsService'       
     formControlName = 'okfs'
   >
-  </n3k-select>
+  </n3-select>
     
-  <n3k-select
+  <n3-select
     [title] = '"ОКВЭД"'
     [placeholder] = '"ОКВЭД"'
     [fromMethod] = 'okvedService'       
     [multi] = 'true'
     formControlName = 'okved'
   >
-  </n3k-select>
+  </n3-select>
 
   <fieldset formGroupName="meta">
-    <n3k-wysiwyg
+    <n3-wysiwyg
       [title] = '"Описание"'
       [placeholder] = '"Описание"'
       formControlName = 'description'
-    ></n3k-wysiwyg>
+    ></n3-wysiwyg>
   </fieldset>
   
   <edit-person
