@@ -1,9 +1,9 @@
-<n3k-neck>
+<n3k-neck [@loadState]="loadState">
   <a class='bread-crumbs' [routerLink] = '["/institution"]'>Образовательные организации</a>
     <br>↓
     <h1>Образовательная организация</h1>
 </n3k-neck>
-<n3k-columns context='form'>
+<n3k-columns context='form' [@loadState]="loadState">
   <column-1>
     <form [formGroup]="form" (submit)='onSubmit()'>
 

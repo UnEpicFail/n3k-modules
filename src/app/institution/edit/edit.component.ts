@@ -12,6 +12,13 @@ import { JobShort } from '../../api/common/JobShort';
 import { Capacity } from '../../api/common/Capacity';
 import { Address } from '../../api/common/Address';
 import { Document } from '../../api/common/Document';
+import { 
+  trigger,
+  state,
+  style,
+  animate,
+  transition 
+} from '@angular/animations';
 
 
 
@@ -22,7 +29,19 @@ import { AddressComponent } from './address/address.component'
 @Component({
   selector: 'app-edit',
   templateUrl: './edit.component.html',
-  styleUrls: ['./edit.component.css']
+  styleUrls: ['./edit.component.css'],
+  animations: [
+    trigger('loadState', [
+      state('unload', style({
+        opacity: 0
+      })),
+      state('load', style({
+        opacity: 1
+      })),
+      transition('unload => load', animate('1000ms ease-in')),
+      transition('load => unload', animate('1000ms ease-out'))
+    ])
+  ]
 })
 export class EditComponent implements OnInit, AfterContentChecked {
 
@@ -35,6 +54,8 @@ export class EditComponent implements OnInit, AfterContentChecked {
     {name:'Аккредитация', target: 'accreditation'},
     {name:'Лицензия', target: 'license'}
   ]
+
+  loadState = 'unload';
 
   form: FormGroup
 
@@ -90,6 +111,9 @@ export class EditComponent implements OnInit, AfterContentChecked {
 
   ngOnInit() {
     this.setForm()
+    setTimeout(() => {
+      this.loadState = 'load'
+    },1000)
   }
 
   ngAfterContentChecked() {
