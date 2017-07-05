@@ -155,19 +155,13 @@ export class DatepickerComponent implements OnInit, ControlValueAccessor {
     this.dateList = this.el.nativeElement.children[0].children[2].children[0]
     this.renderer.setStyle(this.dateList, 'width', this.el.nativeElement.offsetWidth+'px')
     setTimeout(()=>{
-      // if (
-      //   this.dateList.offsetTop + this.dateList.offsetHeight > window.innerHeight
-      // ) {
-      //   this.renderer.setStyle(this.dateList, 'top', this.dateList.offsetTop - this.dateList.offsetHeight - this.el.nativeElement.children[0].children[1].offsetHeight+'px')
-      // } else {
-      //   this.renderer.setStyle(this.dateList, 'top', 'auto')
-      // }
+      
       this.renderer.setStyle(this.dateList, 'top', this.getPosition())
 
       this.overlayDown = this.overlay.up(() =>{
         this.renderer.appendChild(this.el.nativeElement.children[0].children[2], this.dateList)
       })
-      this.renderer.setStyle(this.dateList, 'left', this.el.nativeElement.parentNode.offsetLeft+'px')
+      this.renderer.setStyle(this.dateList, 'left', this.el.nativeElement.offsetLeft+'px')
       this.renderer.appendChild(document.body, this.dateList)
     }, 1);
   }

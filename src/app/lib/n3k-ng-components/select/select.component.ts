@@ -127,7 +127,7 @@ export class SelectComponent implements OnInit, ControlValueAccessor {
         this._selected = false
         this.renderer.appendChild(this.el.nativeElement.children[0].children[1], this.optionList)
       })
-      this.renderer.setStyle(this.optionList, 'left', this.el.nativeElement.parentNode.offsetLeft+'px')
+      this.renderer.setStyle(this.optionList, 'left', this.el.nativeElement.offsetLeft+'px')
       this.renderer.appendChild(document.body, this.optionList)
 
     }, 1);
