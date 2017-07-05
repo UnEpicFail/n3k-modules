@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterContentChecked, ViewChildren, QueryList } from '@angular/core';
+import { Component, OnInit, AfterContentChecked, AfterContentInit, ViewChildren, QueryList } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Location } from '@angular/common'; 
 import { AnchornTargetRefDirective } from '../../lib/n3k-ng-components/anchor-menu/anchor-menu.component'
@@ -43,7 +43,7 @@ import { AddressComponent } from './address/address.component'
     ])
   ]
 })
-export class EditComponent implements OnInit, AfterContentChecked {
+export class EditComponent implements OnInit, AfterContentChecked, AfterContentInit{
 
   anchorList: {}[] = [
     {name:'Юридическое лицо', target: 'organization'},
@@ -111,9 +111,12 @@ export class EditComponent implements OnInit, AfterContentChecked {
 
   ngOnInit() {
     this.setForm()
+  }
+
+  ngAfterContentInit() {
     setTimeout(() => {
       this.loadState = 'load'
-    },1000)
+    }, 1000)
   }
 
   ngAfterContentChecked() {
