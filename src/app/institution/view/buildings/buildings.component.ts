@@ -13,11 +13,14 @@ import { InstitutionService } from '../../../api/institution'
 })
 export class BuildingsComponent implements OnInit {
 
-  public _institution: InstitutionFull;
-  private _building;
-  private selectedBuilding;
-  private _seatsSum = {};
-  private _totalSeatsSum = 0;
+  _institution: InstitutionFull;
+  _building;
+  selectedBuilding;
+  _seatsSum = {};
+  _totalSeatsSum = 0;
+  _params : {
+    tabName: string
+  }
 
   @Input()
   set institution(institution: InstitutionFull) {
@@ -26,6 +29,13 @@ export class BuildingsComponent implements OnInit {
       this.selectBuilding(institution.buildings[0].identity.id);
     }
   }  
+
+  @Input()
+  set params(params: string[]){
+    this._params = {
+      tabName: (params[0] || '')
+    }
+  }
 
   constructor(
     private is: InstitutionService,

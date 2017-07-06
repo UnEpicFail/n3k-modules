@@ -1,7 +1,7 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { Router, ActivatedRoute, Params, NavigationEnd } from '@angular/router';
+import { Component, Input } from '@angular/core';
+import { Router } from '@angular/router';
 
-import { InstitutionFull } from '../../../api/institution/InstitutionFull';
+import { Institution } from '../../../api/institution/Institution';
 import { Response } from '../../../api/common/Response';
 import { Pagination } from '../../../api/common/Pagination';
 import { DepartmentList } from '../../../api/institution/DepartmentList'
@@ -14,21 +14,25 @@ import { InstitutionService } from '../../../api/institution'
   templateUrl: './departments.component.html',
   styleUrls: ['./departments.component.css']
 })
-export class DepartmentsComponent implements OnInit{
+export class DepartmentsComponent {
 
-  private _institution: InstitutionFull;
-  private _params: {
+  _institution: Institution;
+  _params: {
     tabName: string,
     selectedDepartment: string
   }
-  public _departments
-  public _department;
+  _departments
+  _department;
 
-  private _contacts = {};
-  private _parentName = ''
+  _contacts = {};
+  _parentName = ''
+
+  departmentsTree
+  loadDepartment = true
+
 
   @Input()
-  set institution(institution: InstitutionFull) {
+  set institution(institution: Institution) {
     if (institution){
       this._institution = institution
       this.is.departmentList(null, null, null, ''+this._institution.identity.id).subscribe(data => {   
@@ -44,8 +48,8 @@ export class DepartmentsComponent implements OnInit{
   @Input()
   set params (params: string[]) {
     this._params = {
+      selectedDepartment: (params[1] || ''),
       tabName: (params[0] || ''),
-      selectedDepartment: (params[1] || '')
     }
 
     if (this._params.selectedDepartment !== '') {
@@ -53,17 +57,12 @@ export class DepartmentsComponent implements OnInit{
     }
   }  
 
-  departmentsTree
-  loadDepartment = true
-
   constructor (
     private is: InstitutionService,
-    private ar: ActivatedRoute,
     private router: Router
   ) {}
 
   ngOnInit(){
-    
   }
 
   getDepartmentTree(departments){

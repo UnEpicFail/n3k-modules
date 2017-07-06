@@ -12,7 +12,12 @@ export class CommonComponent implements OnInit {
 
   _institution;
   _backgraunImage;
+  
   _contacts={};
+
+  _params: {
+    tabName: string,
+  }
 
   @Input()
   set institution(institution: InstitutionFull){
@@ -24,6 +29,13 @@ export class CommonComponent implements OnInit {
       })
     }
   };
+
+  @Input()
+  set params(params: string[]){
+    this._params = {
+      tabName: (params[0] || '')
+    }
+  }
 
 
   constructor() { }
