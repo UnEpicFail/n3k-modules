@@ -16,12 +16,12 @@ import { InstitutionService } from '../../../api/institution'
 export class BuildingsComponent {
 
   _institution: Institution;
-  _buildings;
-  _building;
+  buildings;
+  building;
 
   selectedBuilding;
-  _seatsSum = {};
-  _totalSeatsSum = 0;
+  seatsSum = {};
+  totalSeatsSum = 0;
   _params : {
     tabName: string,
     selectedBuilding: string
@@ -31,10 +31,10 @@ export class BuildingsComponent {
   set institution(institution: Institution) {
     if (institution){
       this._institution = institution;
-      this.is.buildingList(null, null, null, ''+this._institution.identity.id).subscribe(data => {
-        this._buildings = new Pagination(new Response(data).data).items
+      this.is.buildingList(null, null, null, [this._institution.identity.id]).subscribe(data => {
+        this.buildings = new Pagination(new Response(data).data).items
         if(this._params.selectedBuilding === '') {
-          this.selectBuilding(this._buildings[0].identity.id)
+          this.selectBuilding(this.buildings[0].identity.id)
         }
       })
     }
@@ -67,15 +67,15 @@ export class BuildingsComponent {
   getBuilding(id) {
     this.is.buildingGet(id).subscribe(res => {
       let _res = new Response(res)
-      this._building = _res.data
-      this._building.rooms.map(room=>{
-        this._seatsSum[room.identity.id] = 0
+      this.building = _res.data
+      this.building.rooms.map(room=>{
+        this.seatsSum[room.identity.id] = 0
         room.seats.map(seat=>{
-          this._seatsSum[room.identity.id] += seat.seats
+          this.seatsSum[room.identity.id] += seat.seats
         })
       })
-      for(let i in this._seatsSum){
-        this._totalSeatsSum += this._seatsSum[i]
+      for(let i in this.seatsSum){
+        this.totalSeatsSum += this.seatsSum[i]
       };
     })
   }

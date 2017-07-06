@@ -1,9 +1,10 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Router } from '@angular/router';
 
+import { InstitutionService } from '../../../api/institution'
 import { Institution } from '../../../api/institution/Institution'
 import { EducationContractList } from '../../../api/institution/EducationContractList'
 import { EducationContract } from '../../../api/institution/EducationContract'
-import { InstitutionService } from '../../../api/institution'
 import { Response } from '../../../api/common/Response'
 
 @Component({
@@ -11,35 +12,54 @@ import { Response } from '../../../api/common/Response'
   templateUrl: './contracts.component.html',
   styleUrls: ['./contracts.component.css']
 })
-export class ContractsComponent implements OnInit {
+export class ContractsComponent {
 
-  private _institution: Institution;
-  public _contractList: EducationContractList;
-  public _contract: EducationContract
-  private selectedContract
+  _institution: Institution;
+  _params: {
+    tabName: string,
+    selectedContract: string
+  }
+  contractList: EducationContractList;
+  contract: EducationContract
+  selectedContract
 
   @Input()
   set institution(institution) {
     if(institution) {
       this._institution = new Institution(institution);
       this.is.educationContractList(null, null, null, [this._institution.identity.id]).subscribe(res => {
-        let _res = new Response(res)
-        this._contractList = new EducationContractList(_res.data)
-        this.selectContract(this._contractList.items[0].identity.id)
+        this.contractList = new EducationContractList(new Response(res).data)
+        if(this._params.selectedContract === '') {
+          this.selectContract(this.contractList.items[0].identity.id)
+        }
       })
     }
   }
 
-  constructor(private is: InstitutionService) { }
+  @Input()
+  set params(params) {
+    this._params = {
+      tabName: (params[0] || ''),
+      selectedContract: (params[1] || ''),
+    }
 
-  ngOnInit() {
+    if (this._params.selectedContract !== '') {
+      this.getContract(this._params.selectedContract)
+    }
   }
 
+  constructor(
+    private is: InstitutionService,
+    private router: Router
+  ) { }
+
   selectContract(id) {
-    this.selectedContract = id
+    this.router.navigate(['institution', 'view', this._institution.identity.id], {fragment: this._params.tabName+'/'+id})
+  }
+
+  getContract(id) {
     this.is.educationContractGet(id).subscribe(res => {
-      let _res = new Response(res)
-      this._contract = new EducationContract(_res.data)
+      this.contract = new EducationContract(new Response(res).data)
     })
   }
 

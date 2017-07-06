@@ -21,11 +21,11 @@ export class DepartmentsComponent {
     tabName: string,
     selectedDepartment: string
   }
-  _departments
-  _department;
+  departments
+  department;
 
-  _contacts = {};
-  _parentName = ''
+  contacts = {};
+  parentName = ''
 
   departmentsTree
   loadDepartment = true
@@ -35,9 +35,9 @@ export class DepartmentsComponent {
   set institution(institution: Institution) {
     if (institution){
       this._institution = institution
-      this.is.departmentList(null, null, null, ''+this._institution.identity.id).subscribe(data => {   
-        this._departments = new Pagination(new Response(data).data).items
-        this.departmentsTree = this.getDepartmentTree(this._departments)
+      this.is.departmentList(null, null, null, [this._institution.identity.id]).subscribe(data => {   
+        this.departments = new Pagination(new Response(data).data).items
+        this.departmentsTree = this.getDepartmentTree(this.departments)
         if(this._params.selectedDepartment === '') {
           this.selectDepartment(this.departmentsTree[0].identity.id)
         }
@@ -48,8 +48,8 @@ export class DepartmentsComponent {
   @Input()
   set params (params: string[]) {
     this._params = {
-      selectedDepartment: (params[1] || ''),
       tabName: (params[0] || ''),
+      selectedDepartment: (params[1] || ''),
     }
 
     if (this._params.selectedDepartment !== '') {
@@ -61,9 +61,6 @@ export class DepartmentsComponent {
     private is: InstitutionService,
     private router: Router
   ) {}
-
-  ngOnInit(){
-  }
 
   getDepartmentTree(departments){
     let _departments = departments.sort(function(a,b){
@@ -88,7 +85,7 @@ export class DepartmentsComponent {
   }
 
   getDepartment(id) {
-    if (!this._departments) {
+    if (!this.departments) {
       setTimeout(()=>{
         this.getDepartment(id)
       },1)
@@ -97,29 +94,29 @@ export class DepartmentsComponent {
     this.loadDepartment = true
     this.is.departmentGet(id).subscribe(res => {
       let _res = new Response(res)
-      this._department = _res.data
-      this._department.contacts.map(contact=>{
-        this._contacts[contact.type.id] = contact.value
+      this.department = _res.data
+      this.department.contacts.map(contact=>{
+        this.contacts[contact.type.id] = contact.value
       })
-      if (this._department.parent.id)
-        this._parentName = this.getPatentNameById(this._department.parent.id);
+      if (this.department.parent.id)
+        this.parentName = this.getPatentNameById(this.department.parent.id);
       this.loadDepartment = false
     })
   }
 
   getContactByType(id:number) {
-    for(let i in this._department.contacts) {
-      if (this._department.contacts[i].type.id === id){
-        return this._department.contacts[i]
+    for(let i in this.department.contacts) {
+      if (this.department.contacts[i].type.id === id){
+        return this.department.contacts[i]
       }
     }
     return {}
   }
 
   getPatentNameById(id: number) {
-    for(let i=0, max_i = this._departments.length; i < max_i; i+=1) {
-      if(this._departments[i].identity.id === id){
-        return this._departments[i].name
+    for(let i=0, max_i = this.departments.length; i < max_i; i+=1) {
+      if(this.departments[i].identity.id === id){
+        return this.departments[i].name
       }
     }
     return ''

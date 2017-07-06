@@ -1,13 +1,13 @@
 <n3-columns context='view' *ngIf='_institution'>
   <column-1>
-    <table *ngIf='_building'>
+    <table *ngIf='building'>
       <tr>
         <td colspan="4">
-          <h1>{{_building.name}}</h1>
+          <h1>{{building.name}}</h1>
 
           <div class='status-array'>
-              <div class='status status-{{_building.status.id}}'>
-                  <i class="fa fa-flag"></i> {{_building.status.name}}
+              <div class='status status-{{building.status.id}}'>
+                  <i class="fa fa-flag"></i> {{building.status.name}}
               </div>
           </div>
 
@@ -31,25 +31,25 @@
         <td style="width:25%">
             <div class='description-block'>
               <div class='description-block-title'>Вместительность:</div>
-              {{_building.capacity.total}}
+              {{building.capacity.total}}
             </div>
         </td>
         <td style="width:25%">
             <div class='description-block'>
               <div class='description-block-title'>Тип:</div>
-              {{_building.type.name}}
+              {{building.type.name}}
             </div>
         </td>
         <td style="width:25%">
             <div class='description-block'>
               <div class='description-block-title'>Вид местности:</div>
-              {{_building.terrain.name}}
+              {{building.terrain.name}}
             </div>
         </td>
         <td style="width:25%">
             <div class='description-block'>
               <div class='description-block-title'>Головное здание:</div>
-              {{_building.is_head}}
+              {{building.is_head}}
             </div>
         </td>
       </tr>
@@ -58,7 +58,7 @@
           <h2>Помещения</h2>
 
           <div class='buttons-array'>
-            <div class='create-new-btn btn' [routerLink] = '"edit/"+_building.identity.id+"/room"'>
+            <div class='create-new-btn btn' [routerLink] = '"edit/"+building.identity.id+"/room"'>
                 <span class='icon'><i class="fa fa-plus" aria-hidden="true"></i></span>
                 <span class='text'>Добавить новое</span>
             </div>
@@ -78,20 +78,20 @@
             <tfoot>
               <tr>
                 <td>
-                  Итого {{_institution.buildings.length}} помещенией
+                  Итого {{buildings.length}} помещенией
                 </td>
                 <td>
-                  {{_totalSeatsSum}}
+                  {{totalSeatsSum}}
                 </td>
               </tr>
             </tfoot>
             <tbody>
-              <tr *ngFor='let room of _building.rooms'>
+              <tr *ngFor='let room of building.rooms'>
                 <td>
                   {{room.name}}
                 </td>
                 <td>
-                  {{_seatsSum[room.identity.id]}}
+                  {{seatsSum[room.identity.id]}}
                 </td>
               </tr>
             </tbody>
@@ -103,14 +103,14 @@
           <h2>Контакты</h2>
           <div class='description-block'>
               <div class='description-block-title'>Почтовый адрес:</div>
-              {{_building.address.fias.street.name}}, 
-              {{_building.address.fias.building.name}}, 
-              {{_building.address.postal_index}}, 
-              {{_building.address.fias.city.name}} 
+              {{building.address.fias.street.name}}, 
+              {{building.address.fias.building.name}}, 
+              {{building.address.postal_index}}, 
+              {{building.address.fias.city.name}} 
           </div>
         
-          <ya-map [latitude]="_building.address.latitude" [longitude]="_building.address.longitude">
-              <ya-marker [latitude]="_building.address.latitude" [longitude]="_building.address.longitude">
+          <ya-map [latitude]="building.address.latitude" [longitude]="building.address.longitude">
+              <ya-marker [latitude]="building.address.latitude" [longitude]="building.address.longitude">
               </ya-marker>
           </ya-map>
         </td>
@@ -124,7 +124,7 @@
   </column-1>
   <column-2>
     <ul class='tree-list'>
-      <li *ngFor='let building of _institution.buildings'>
+      <li *ngFor='let building of buildings'>
         <div class='item' [class.active]='_params.selectedBuilding == building.identity.id' (click)='selectBuilding(building.identity.id)'>
           <div class='item-delimiter'>&nbsp;</div>
           {{building.name}}

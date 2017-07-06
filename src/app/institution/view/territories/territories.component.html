@@ -1,6 +1,6 @@
 <n3-columns context='view'>
   <column-1>
-    <div *ngIf='_territory'>
+    <div *ngIf='territory'>
       <h1>{{_territory?.name}}</h1>
       <div class='buttons-array'>
         <div class='default-btn btn'>
@@ -12,12 +12,12 @@
         </div> 
       </div>
     </div>
-
+    {{territory | json}}
   </column-1>
   <column-2>
     <ul class='tree-list' >
-      <li *ngFor='let territory of _territoryList?.items'>
-        <div class='item' [class.active]='selectedTerritory === territory.identity.id' (click)='selectTerritory(territory.identity.id)'>
+      <li *ngFor='let territory of territories'>
+        <div class='item' [class.active]='_params.selectedTeritory == territory.identity.id' (click)='selectTerritory(territory.identity.id)'>
           <div class='item-delimiter'>&nbsp;</div>
           {{territory.name}}
         </div>

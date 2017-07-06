@@ -1845,14 +1845,14 @@ export class InstitutionService {
      * @param {number} p_limit - Количество записей 
      * @param {number} p_page - Страница выдачи 
      * @param {string} p_query - Поисковая строка 
-     * @param {string} p_institutions - Образовательные организации 
+     * @param {number[]} p_institutions - Образовательные организации 
      * @param {string} p_deleted - Показывать удаленные 
      */
     public buildingList(
         p_limit?: number,
         p_page?: number,
         p_query?: string,
-        p_institutions?: string,
+        p_institutions?: number[],
         p_deleted?: string,
     ) {
 
@@ -1927,14 +1927,14 @@ export class InstitutionService {
      * @param {number} p_limit - Количество записей 
      * @param {number} p_page - Страница выдачи 
      * @param {string} p_query - Поисковая строка 
-     * @param {string} p_institutions - Образовательные организации 
+     * @param {number[]} p_institutions - Образовательные организации 
      * @param {string} p_deleted - Показывать удаленные 
      */
     public departmentList(
         p_limit?: number,
         p_page?: number,
         p_query?: string,
-        p_institutions?: string,
+        p_institutions?: number[],
         p_deleted?: string,
     ) {
 
@@ -2383,7 +2383,7 @@ export class InstitutionService {
             ]
         })
 
-         let res = new Observable(observer => {
+        let res = new Observable(observer => {
           setTimeout(() => {
               observer.next(new Response({data: new Pagination({
                   items: [

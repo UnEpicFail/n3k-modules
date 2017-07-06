@@ -1,21 +1,21 @@
 <n3-columns context='view'>
   <column-1 >
-    <!--{{_department | json}}-->
-    <div *ngIf='_department'>
-      <div *ngIf='_department.parent.id'>
-        <div class ='bread-crumbs' (click)='selectDepartment(_department.parent.id)'>
-          {{_parentName}}
+    <!--{{department | json}}-->
+    <div *ngIf='department'>
+      <div *ngIf='department.parent.id'>
+        <div class ='bread-crumbs' (click)='selectDepartment(department.parent.id)'>
+          {{parentName}}
         </div>
         ↓
       </div>
-      <h1>{{_department.name}}</h1>
+      <h1>{{department.name}}</h1>
 
       <div class='status-array'>
-        <div *ngIf='_department?.is_delete' class='status status-deleted'>
+        <div *ngIf='department?.is_delete' class='status status-deleted'>
             <i class="fa fa-lock" aria-hidden="true"></i>
         </div>
-        <!--<div class='status status-{{_department?.status?.id}}'>
-            <i class="fa fa-flag"></i> {{_department?.status?.name}}
+        <!--<div class='status status-{{department?.status?.id}}'>
+            <i class="fa fa-flag"></i> {{department?.status?.name}}
         </div>-->
       </div>
 
@@ -37,39 +37,39 @@
             <td style='width: 25%'>
               <div class='description-block'>
                   <div class='description-block-title'>Тип:</div>
-                  {{_department.kind.name}}
+                  {{department.kind.name}}
               </div>
               <div class='description-block'>
                   <div class='description-block-title'>Вместительность:</div>
-                  {{_department.capacity.total}}
+                  {{department.capacity.total}}
               </div>
             </td>
             <td style='width: 25%'>
               <div class='description-block'>
-                  <div class='description-block-title'>{{_department.head.position_name}}:</div>
-                  {{_department.head.person.surname}} 
-                  {{_department.head.person.firstname}} 
-                  {{_department.head.person.middlename}}
+                  <div class='description-block-title'>{{department.head.position_name}}:</div>
+                  {{department.head.person.surname}} 
+                  {{department.head.person.firstname}} 
+                  {{department.head.person.middlename}}
               </div>
               <div class='description-block'>
                   <div class='description-block-title'>Телефон руководителя:</div>
-                  {{_department}}
+                  {{department}}
               </div>
             </td>
             <td style='width: 25%'>
               <div class='description-block'>
                   <div class='description-block-title'>Дата создания:</div>
-                  {{_department.foundation_date}}
+                  {{department.foundation_date}}
               </div>
               <div class='description-block'>
                   <div class='description-block-title'>Дата закрытия:</div>
-                  {{_department.liquidation_date}}
+                  {{department.liquidation_date}}
               </div>
             </td>
             <td style='width: 25%'>
               <div class='description-block'>
                   <div class='description-block-title'>Разпологается на базе другого учреждения:</div>
-                  {{_department.is_based_on_another_organization}}
+                  {{department.is_based_on_another_organization}}
               </div>
             </td>
         </tr>
@@ -80,40 +80,40 @@
           <td style='width: 25%'>
               <div class='description-block'>
                   <div class='description-block-title'>Почтовый адрес:</div>
-                  {{_department.address.origin_address}}
+                  {{department.address.origin_address}}
               </div>
               <div class='description-block'>
                   <div class='description-block-title'>Телефон:</div>
-                  {{_contacts[1]}}
+                  {{contacts[1]}}
               </div>
             </td>
             <td style='width: 25%'>
               <div class='description-block'>
                   <div class='description-block-title'>Email:</div>
-                  {{_contacts[2]}}
+                  {{contacts[2]}}
               </div>
               <div class='description-block'>
                   <div class='description-block-title'>Сайт:</div>
-                  {{_contacts[3]}}
+                  {{contacts[3]}}
               </div>
             </td>
             <td style='width: 25%'>
               <div class='description-block'>
                   <div class='description-block-title'>Дополнительный телефон:</div>
-                  {{_contacts[4]}}
+                  {{contacts[4]}}
               </div>
             </td>
             <td style='width: 25%'>
               <div class='description-block'>
                   <div class='description-block-title'>Факс:</div>
-                  {{_contacts[5]}}
+                  {{contacts[5]}}
               </div>
             </td>
         </tr>
         <tr>
             <td class='separator' colspan="4"> 
-              <ya-map [latitude]="_department.address.latitude" [longitude]="_department.address.longitude">
-                  <ya-marker [latitude]="_department.address.latitude" [longitude]="_department.address.longitude">
+              <ya-map [latitude]="department.address.latitude" [longitude]="department.address.longitude">
+                  <ya-marker [latitude]="department.address.latitude" [longitude]="department.address.longitude">
                   </ya-marker>
               </ya-map>
             </td>
