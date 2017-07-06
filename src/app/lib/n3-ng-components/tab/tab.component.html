@@ -1,0 +1,3 @@
+<div class='tab-array'>
+  <div class='tab' *ngFor='let tab of _tabs' (click)='openTab(tab.id)' [class.active]='params[0] == tab.id'>{{tab.name}}</div>
+</div>

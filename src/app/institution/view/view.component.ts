@@ -59,6 +59,7 @@ export class ViewComponent implements OnInit {
     },
   ]
 
+  rootLink = '/'
 
 
   constructor(
@@ -66,31 +67,17 @@ export class ViewComponent implements OnInit {
     public institutionService: InstitutionService,
     private router: Router 
   ) {
+    this.rootLink = router.url.split('#')[0]
     this.ar.params.subscribe(params => {
-      this.selectedTab = params.tab
-      this.selectedId = params.institutionId;
-      this.selectedListItem = params.selected
+      this.selectedId = params.institutionId
       institutionService.institutionGet(this.selectedId).subscribe(res => {
-        let _res = new Response(res)
-        this.institution = new InstitutionFull(_res.data)
+        this.institution = new InstitutionFull(new Response(res).data)
       })  
-    })
-    this.router.events.subscribe(params => {
-      if (params instanceof NavigationEnd) {
-        const tree = this.router.parseUrl(this.router.url);
-        if (tree.fragment) {
-          this.params = tree.fragment.split('/')
-          this.selectedTab = this.params[0]
-        }
-      }
     })
   }
 
   ngOnInit() {}
 
-  public openTab(id) {
-    this.router.navigate(['/institution/view/'+this.selectedId], {fragment:id} )
-  }
 
 }
 

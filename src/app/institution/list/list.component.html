@@ -1,19 +1,93 @@
-<!--<app-neck>
-  <span class='neck-title'>
-    Образовательные организации
-  </span>
-  
-  <a class='neck-buttons' [routerLink]="['/institution/edit']">
-    <div class='create-button'>
-      <i class="fa fa-plus-circle" aria-hidden="true"></i> Добавить
-    </div>
-  </a>
-  
-  <div class='neck-tabs'><a [routerLink]="['/institution/map-list']">На карте</a></div>
-  <div class='neck-tabs selected'><a [routerLink]="['/institution/list']">Списком</a></div>
-  
-</app-neck>
+<n3-neck>
+  <h1>Образовательные организации</h1>
+  <div class='buttons-array'>
+    <div class='create-new-btn btn' [routerLink]='["edit"]'>
+      <span class='icon'><i class='fa fa-plus-circle' aria-hidden="true"></i></span>
+      <span class='text'>Добавить</span>
+    </div> 
+  </div>
+  <n3-tab [tabs]='tabs' [root]='rootLink' (change)='params = $event'></n3-tab>
+</n3-neck>
+<n3-columns context='list'>
+  <column-1>
+    <form class='padding-right-1-column' [formGroup]='filter' (ngSubmit)='onFilterSubmit()'>
+      <n3-input
+        [title] = '"Поиск"'
+        [placeholder] = '"Поиск"'
+        [searchIcon] = 'true'
+        formControlName = 'p_query'
+      ></n3-input>
 
-<app-column position=1 of=3 state='list'>C1</app-column>
-<app-column position=2 of=3 state='list'>C2</app-column>
-<app-column position=3 of=3 state='list'>C3</app-column>-->
+      <n3-select
+        [title] = '"Район"'
+        [placeholder] = '"Район"'
+        [multi] = 'true'
+        [fromMethod] = 'districtsService'
+        formControlName = 'p_districts'
+      ></n3-select>
+
+      <n3-select
+        [title] = '"Уровень образования"'
+        [placeholder] = '"Уровень образования"'
+        [multi] = 'true'
+        [fromMethod] = 'educationLeveService'
+        formControlName = 'p_education_levels'
+      ></n3-select>
+
+      <n3-select
+        [title] = '"Тип организации"'
+        [placeholder] = '"Тип организации"'
+        [multi] = 'true'
+        [fromMethod] = 'institutionTypesService'
+        formControlName = 'p_institution_types'
+      ></n3-select>
+
+      <n3-select
+        [title] = '"Форма собственности"'
+        [placeholder] = '"Форма собственности"'
+        [multi] = 'true'
+        [fromMethod] = 'okfsesService'
+        formControlName = 'p_okfses'
+      ></n3-select>
+
+      <n3-select
+        [title] = '"Статус организации"'
+        [placeholder] = '"Статус организации"'
+        [multi] = 'true'
+        [fromMethod] = 'institutionStatusesService'
+        formControlName = 'p_institution_statuses'
+      ></n3-select>
+
+      <n3-checkbox
+        [title] = '"Показывать заблокированные"'
+        formControlName = 'p_deleted'
+      ></n3-checkbox>
+
+    </form>
+  </column-1>
+  <column-2>
+    <div class='list'>
+      <div *ngFor='let item of list.items' class='list-item' [class.active]='params[1] == item.identity.id' (click)='selectListItem(item.identity.id)'>
+        <div><h3>{{item.name}}</h3></div>
+        <div><i class='fa fa-flag status-{{item.status.id}}'></i> {{item.status.name}}</div>
+        <div>
+          {{item.address.origin_address}}
+          <span *ngIf="getFromArray(item.contacts, 'phone')">, {{getFromArray(item.contacts, 'phone')}}</span>
+          <span *ngIf="getFromArray(item.contacts, 'email')">, {{getFromArray(item.contacts, 'email')}}</span>
+        </div>
+      </div>
+    </div>
+    <n3-pager></n3-pager>
+  </column-2>
+  <column-3 *ngIf='params[0] === "map"'>
+    <ya-map [latitude]="55.76" [longitude]="37.64">
+      <ya-marker [latitude]="55.847" [longitude]="38.6">
+      </ya-marker>
+      <ya-marker [latitude]="55.847" [longitude]="35.6">
+      </ya-marker>
+    </ya-map>
+  </column-3>
+  <column-3 *ngIf='params[0] === "list"'>
+      LIST
+  </column-3>
+</n3-columns>

@@ -9,6 +9,7 @@ import { WysiwygComponent } from './wysiwyg/wysiwyg.component';
 import { DatepickerComponent } from './datepicker/datepicker.component';
 import { CheckboxComponent } from './checkbox/checkbox.component'
 import { PagerComponent } from './pager/pager.component';
+import { TabComponent } from './tab/tab.component';
 import { OverlayService } from './overlay.service'
 
 import { N3NgFlyDirective } from './fly.directive';
@@ -33,6 +34,7 @@ import { N3NgFlyDirective } from './fly.directive';
     N3NgFlyDirective,
     CheckboxComponent,
     PagerComponent,
+    TabComponent,
   ],
   exports: [ 
     SelectComponent, 
@@ -46,6 +48,7 @@ import { N3NgFlyDirective } from './fly.directive';
     N3NgFlyDirective,
     CheckboxComponent,
     PagerComponent,
+    TabComponent,
   ]
 })
 export class N3NgComponentsModule { }

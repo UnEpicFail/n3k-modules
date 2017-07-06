@@ -19,11 +19,9 @@
         </div> 
     </div>
 
-    <div class='tab-array'>
-        <div class='tab' *ngFor='let tab of tabs' (click)='openTab(tab.id)' [class.active]='tab.id == selectedTab'>{{tab.name}}</div>
-    </div>
+    <n3-tab [tabs]='tabs' [root]='rootLink' (change)='params = $event'></n3-tab>
 
-    <div *ngIf='selectedTab === "departments"'>
+    <div *ngIf='params[0] === "departments"'>
         <h2>Подразделения</h2>
         <div class='buttons-array'>
             <div class='create-new-btn btn' [routerLink] = '["edit"]'>
@@ -33,7 +31,7 @@
         </div>
         <div class='horizontal-separator'>&nbsp;</div>
     </div>
-    <div *ngIf='selectedTab === "buildings"'>
+    <div *ngIf='params[0] === "buildings"'>
         <h2>Здания</h2>
         <div class='buttons-array'>
             <div class='create-new-btn btn' [routerLink] = '["edit"]'>
@@ -43,7 +41,7 @@
         </div>
         <div class='horizontal-separator'>&nbsp;</div>
     </div>
-    <div *ngIf='selectedTab === "territories"'>
+    <div *ngIf='params[0] === "territories"'>
         <h2>Территория организации</h2>
         <div class='buttons-array'>
             <div class='create-new-btn btn' [routerLink] = '["edit"]'>
@@ -53,7 +51,7 @@
         </div>
         <div class='horizontal-separator'>&nbsp;</div>
     </div>
-    <div *ngIf='selectedTab === "contracts"'>
+    <div *ngIf='params[0] === "contracts"'>
         <h2>Договор с учреждениями на осуществление образовательной деятельности</h2>
         <div class='buttons-array'>
             <div class='create-new-btn btn' [routerLink] = '["edit"]'>
@@ -63,7 +61,7 @@
         </div>
         <div class='horizontal-separator'>&nbsp;</div>
     </div>
-    <div *ngIf='selectedTab === "education-services"'>
+    <div *ngIf='params[0] === "education-services"'>
         <h2>Образовательные услуги</h2>
         <div class='buttons-array'>
             <div class='create-new-btn btn' [routerLink] = '["edit"]'>
@@ -72,7 +70,7 @@
             </div> 
         </div>
     </div>
-    <div *ngIf='selectedTab === "electronic-services"'>
+    <div *ngIf='params[0] === "electronic-services"'>
         <h2>Государственные и муниципальные услуги в электронном виде</h2>
         <div class='buttons-array'>
             <div class='create-new-btn btn' [routerLink] = '["edit"]'>
@@ -81,7 +79,7 @@
             </div> 
         </div>
     </div>
-    <div *ngIf='selectedTab === "innovations"'>
+    <div *ngIf='params[0] === "innovations"'>
         <h2>Инновации</h2>
         <div class='buttons-array'>
             <div class='create-new-btn btn' [routerLink] = '["edit"]'>
@@ -93,11 +91,11 @@
     </div>
 </n3-neck>
 
-<app-common *ngIf='selectedTab === "common"' [institution]='institution' [params]='params'></app-common>
-<app-departments *ngIf='selectedTab === "departments"' [institution]='institution' [params]='params'></app-departments>
-<app-buildings *ngIf='selectedTab === "buildings"' [institution]='institution' [params]='params'></app-buildings>
-<app-territories *ngIf='selectedTab === "territories"'  [institution]='institution' [params]='params'></app-territories>
-<app-contracts *ngIf='selectedTab === "contracts"'  [institution]='institution' [params]='params'></app-contracts>
-<app-education-services *ngIf='selectedTab === "education-services"'  [institution]='institution' [params]='params'></app-education-services>
-<app-electronic-services *ngIf='selectedTab === "electronic-services"'  [institution]='institution' [params]='params'></app-electronic-services>
-<app-innovations *ngIf='selectedTab === "innovations"'  [institution]='institution' [params]='params'></app-innovations>
+<app-common *ngIf='params[0] === "common"' [institution]='institution' [params]='params'></app-common>
+<app-departments *ngIf='params[0] === "departments"' [institution]='institution' [params]='params'></app-departments>
+<app-buildings *ngIf='params[0] === "buildings"' [institution]='institution' [params]='params'></app-buildings>
+<app-territories *ngIf='params[0] === "territories"'  [institution]='institution' [params]='params'></app-territories>
+<app-contracts *ngIf='params[0] === "contracts"'  [institution]='institution' [params]='params'></app-contracts>
+<app-education-services *ngIf='params[0] === "education-services"'  [institution]='institution' [params]='params'></app-education-services>
+<app-electronic-services *ngIf='params[0] === "electronic-services"'  [institution]='institution' [params]='params'></app-electronic-services>
+<app-innovations *ngIf='params[0] === "innovations"'  [institution]='institution' [params]='params'></app-innovations>

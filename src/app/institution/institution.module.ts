@@ -18,7 +18,6 @@ import { InstitutionComponent } from './institution.component';
 import { ViewComponent} from './view/view.component';
 import { EditComponent } from './edit/edit.component';
 import { ListComponent } from './list/list.component';
-import { MapListComponent } from './map-list/map-list.component';
 import { CommonComponent } from './view/common/common.component';
 import { BuildingsComponent } from './view/buildings/buildings.component';
 import { ContractsComponent } from './view/contracts/contracts.component';
@@ -84,8 +83,8 @@ const routes:Routes = [
     {path: 'view/:institutionId/:tab', component: ViewComponent},   
     {path: 'view/:institutionId/:tab/:departmentId', component: ViewComponent},         
     
-    {path: '', component: MapListComponent},
-    {path: ':filter', component: MapListComponent},
+    {path: '', component: ListComponent},
+    {path: ':filter', component: ListComponent},
   ]}
 ]
 
@@ -106,7 +105,6 @@ const routes:Routes = [
     ViewComponent, 
     EditComponent, 
     ListComponent, 
-    MapListComponent,
     CommonComponent,
     BuildingsComponent,
     ContractsComponent,

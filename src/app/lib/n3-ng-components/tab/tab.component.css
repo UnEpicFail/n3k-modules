@@ -1,0 +1,34 @@
+/***TAB***/
+
+.tab-array {
+    border-top-width: 1px;
+    border-top-style: solid;
+    border-top-color: #E3E3E3;
+}
+
+.tab {
+    display: inline-block;
+    padding-top: 20px;
+    margin-top: -1px;
+    margin-right: 50px;
+    font-family: 'ArialMT', 'Arial';
+    font-size: 13px;
+    line-height: 23px;
+    border-top-width: 1px;
+    border-top-style: solid;
+    border-top-color: #E3E3E3;
+    text-decoration: underline;
+    color: #000;
+
+}
+
+.tab.active {
+    color: #D8666C;
+    border-top-color:#D8666C; 
+}
+
+.tab:hover {
+    cursor: pointer;
+}
+
+/***TAB***/
