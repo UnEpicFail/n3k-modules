@@ -1,8 +1,8 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { InstitutionService } from '../../../api/institution';
 import { Institution } from '../../../api/institution/Institution'
-import { InnovationShort } from '../../../api/institution/InnovationShort';
 import { InnovationList } from '../../../api/institution/InnovationList'
 import { Innovation } from '../../../api/institution/Innovation'
 import { Response } from '../../../api/common/Response'
@@ -12,35 +12,54 @@ import { Response } from '../../../api/common/Response'
   templateUrl: './innovations.component.html',
   styleUrls: ['./innovations.component.css']
 })
-export class InnovationsComponent implements OnInit {
+export class InnovationsComponent {
 
-  private _institution:Institution
-  private selectedInnovation: number;
-  public _innovation: Innovation;
-  public _innovationList: InnovationList;
+  _institution:Institution
+  _params: {
+    tabName: string,
+    selectedInnovation: string
+  }
+  innovations;
+  innovation: Innovation;
 
   @Input()
   set institution(institution) {
     if(institution){
       this._institution = new Institution(institution);
       this.is.innovationList(null,null,null,[this._institution.identity.id]).subscribe(res => {
-        let _res = new Response(res)
-        this._innovationList = new InnovationList(_res.data)
-        this.selectInnovation(this._innovationList.items[0].identity.id)
+        this.innovations = new InnovationList(new Response(res).data).items
+
+        if (this._params.selectedInnovation === ''){
+          this.getInnovtion(this.innovations[0].identity.id)
+        }
       })
     }
   }
 
-  constructor(private is: InstitutionService) { }
+  @Input()
+  set params(params) {
+    this._params = {
+      tabName: (params[0] || ''),
+      selectedInnovation: (params[1] || '')
+    }
 
-  ngOnInit() {
+    if (this._params.selectedInnovation !== '') {
+      this.getInnovtion(this._params.selectedInnovation)
+    }
   }
 
+  constructor(
+    private is: InstitutionService,
+    private router: Router
+  ) { }
+
   selectInnovation(id) {
-    this.selectedInnovation = id;
+    this.router.navigate(['institution', 'view', this._institution.identity.id], {fragment: this._params.tabName+'/'+id})
+  }
+
+  getInnovtion(id) {
     this.is.innovationGet(id).subscribe(res => {
-      let _res = new Response(res);
-      this._innovation = new Innovation(_res.data)
+      this.innovation = new Innovation(new Response(res).data)
     })
   }
 
