@@ -1855,26 +1855,69 @@ export class InstitutionService {
         p_institutions?: string,
         p_deleted?: string,
     ) {
-        let _path = '/institutions/building/list';
-        let _body = '';
-        let _params = {
-            headers: new Headers(),
-            search: new URLSearchParams(),
-        }
-        _params.headers.append('X-Requested-With', 'XMLHttpRequest'); 
-        if (typeof p_limit !== 'undefined')
-            _params.search.append('p_limit', ''+p_limit); 
-        if (typeof p_page !== 'undefined')
-            _params.search.append('p_page', ''+p_page); 
-        if (typeof p_query !== 'undefined')
-            _params.search.append('p_query', ''+p_query); 
-        if (typeof p_institutions !== 'undefined')
-            _params.search.append('p_institutions', ''+p_institutions); 
-        if (typeof p_deleted !== 'undefined')
-            _params.search.append('p_deleted', ''+p_deleted); 
+
+        let list = [
+                {
+                    identity: {
+                        id: 1
+                    },
+                    name: 'Школа',
+                    is_head: 'true'
+                },
+                {
+                    identity: {
+                        id: 2
+                    },
+                    name: 'Детский сад',
+                },
+                {
+                    identity: {
+                        id: 3
+                    },
+                    name: 'Администрация',
+                },
+                {
+                    identity: {
+                        id: 4
+                    },
+                    name: 'Спорткомплекс',
+                }
+            ]
+
+        let res = new Observable(observer => {
+          setTimeout(() => {
+              observer.next(new Response({data: new Pagination({
+                  items: list
+              })}));
+          }, 1000);
+
+          setTimeout(() => {
+              observer.complete();
+          }, 3000);
+        })
+
+        return res;
+
+        // let _path = '/institutions/building/list';
+        // let _body = '';
+        // let _params = {
+        //     headers: new Headers(),
+        //     search: new URLSearchParams(),
+        // }
+        // _params.headers.append('X-Requested-With', 'XMLHttpRequest'); 
+        // if (typeof p_limit !== 'undefined')
+        //     _params.search.append('p_limit', ''+p_limit); 
+        // if (typeof p_page !== 'undefined')
+        //     _params.search.append('p_page', ''+p_page); 
+        // if (typeof p_query !== 'undefined')
+        //     _params.search.append('p_query', ''+p_query); 
+        // if (typeof p_institutions !== 'undefined')
+        //     _params.search.append('p_institutions', ''+p_institutions); 
+        // if (typeof p_deleted !== 'undefined')
+        //     _params.search.append('p_deleted', ''+p_deleted); 
 
 
-        return this.http['get'](_path, _params)
+        // return this.http['get'](_path, _params)
     }
     /**
      * Получает список подразделений в постраничном разбиении

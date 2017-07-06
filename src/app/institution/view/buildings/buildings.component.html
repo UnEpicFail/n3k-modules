@@ -125,7 +125,7 @@
   <column-2>
     <ul class='tree-list'>
       <li *ngFor='let building of _institution.buildings'>
-        <div class='item' [class.active]='selectedBuilding === building.identity.id' (click)='selectBuilding(building.identity.id)'>
+        <div class='item' [class.active]='_params.selectedBuilding == building.identity.id' (click)='selectBuilding(building.identity.id)'>
           <div class='item-delimiter'>&nbsp;</div>
           {{building.name}}
         </div>
