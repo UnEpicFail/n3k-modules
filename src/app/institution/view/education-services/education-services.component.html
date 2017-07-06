@@ -1,7 +1,7 @@
 <n3-columns context='view'>
-  <column-1 *ngIf='_educationServicesList'>
+  <column-1 *ngIf='educationServices'>
     <div class='quarter-list'>
-      <div class='quarter-part' *ngFor='let educationService of _educationServicesList.items'> 
+      <div class='quarter-part' *ngFor='let educationService of educationServices'> 
         <h2>{{educationService.name}}</h2>
         <div class='buttons-array'>
           <div class='default-btn btn'>
