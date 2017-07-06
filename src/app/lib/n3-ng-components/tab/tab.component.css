@@ -1,12 +1,19 @@
 /***TAB***/
 
+:host {
+    display: block;
+    overflow: hidden;
+    height: 40px;
+}
+
 .tab-array {
     border-top-width: 1px;
     border-top-style: solid;
     border-top-color: #E3E3E3;
+    font-size: 0;
 }
 
-.tab {
+.tab-array .tab {
     display: inline-block;
     padding-top: 20px;
     margin-top: -1px;
@@ -22,13 +29,51 @@
 
 }
 
-.tab.active {
+.tab-array .tab.active {
     color: #D8666C;
     border-top-color:#D8666C; 
 }
 
-.tab:hover {
+.tab-array .tab:hover {
     cursor: pointer;
+}
+
+.mode-btn{
+    display: inline-block;
+    padding-top: 20px;
+    font-family: 'ArialMT', 'Arial';
+    font-size: 13px;
+    line-height: 23px;
+    color: #000;
+    margin-right: 20px;
+}
+
+.mode-btn:hover {
+    cursor: pointer
+}
+
+.overflowed-tabs {
+    position: fixed;
+    background-color: #fff;
+    z-index: 3002;
+    padding: 30px;
+}
+
+.overflowed-tabs .tab {
+    font-family: 'ArialMT', 'Arial';
+    font-size: 13px;
+    line-height: 23px;
+    color: #000;
+    margin-bottom: 10px;
+    text-decoration: underline;
+}
+
+.overflowed-tabs .tab:hover {
+    cursor: pointer
+}
+
+.visibility-hidden {
+    visibility: hidden
 }
 
 /***TAB***/

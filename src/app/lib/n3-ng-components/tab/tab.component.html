@@ -1,3 +1,15 @@
 <div class='tab-array'>
+  <div class='mode-btn' (click)='trigger()' *ngIf='overflowedTabs.length > 0'>
+    Еще <i class="fa fa-caret-down" aria-hidden="true"></i>
+  </div>
   <div class='tab' *ngFor='let tab of _tabs' (click)='openTab(tab.id)' [class.active]='params[0] == tab.id'>{{tab.name}}</div>
+ 
+</div>
+
+<div class='visibility-hidden'>
+  <div class='overflowed-tabs'>
+    <div class='tab' *ngFor='let tab of overflowedTabs' (click)='openTab(tab.id)' [class.active]='params[0] == tab.id'>
+      {{tab.name}}
+    </div>
+  </div>
 </div>
