@@ -56,23 +56,34 @@ const routes:Routes = [
     {path: 'list/:filter', component: ListComponent},
     {path: 'edit', component: EditComponent},
     {path: 'edit/:id', component: EditComponent},
+
     {path: 'view/:institutionId/departments/edit', component: DepartmentComponent},      
-    {path: 'view/:institutionId/departments/edit/:departmentId', component: DepartmentComponent},      
+    {path: 'view/:institutionId/departments/edit/:departmentId', component: DepartmentComponent},  
+
     {path: 'view/:institutionId/buildings/edit', component: BuildingComponent},      
     {path: 'view/:institutionId/buildings/edit/:buildingId', component: BuildingComponent},      
     {path: 'view/:institutionId/buildings/edit/:buildingId/room', component: RoomComponent},      
     {path: 'view/:institutionId/buildings/edit/:buildingId/room/:roomId', component: RoomComponent},      
+    
     {path: 'view/:institutionId/territories/edit', component: TerritoryComponent},      
     {path: 'view/:institutionId/territories/edit/:territoryId', component: TerritoryComponent},      
+    
     {path: 'view/:institutionId/contracts/edit', component: ContractComponent},      
     {path: 'view/:institutionId/contracts/edit/:contractId', component: ContractComponent},      
+    
     {path: 'view/:institutionId/education-services/edit', component: EducationServiceComponent},      
     {path: 'view/:institutionId/education-services/edit/:serviceId', component: EducationServiceComponent},      
+    
     {path: 'view/:institutionId/electronic-services/edit', component: ElectronicServiceComponent},      
     {path: 'view/:institutionId/electronic-services/edit/:serviceId', component: ElectronicServiceComponent},      
+    
     {path: 'view/:institutionId/innovations/edit', component: InnovationComponent},      
     {path: 'view/:institutionId/innovations/edit/:innovationId', component: InnovationComponent},      
-    {path: 'view/:id/:tab', component: ViewComponent},      
+    
+    {path: 'view/:institutionId', component: ViewComponent},   
+    {path: 'view/:institutionId/:tab', component: ViewComponent},   
+    {path: 'view/:institutionId/:tab/:departmentId', component: ViewComponent},         
+    
     {path: '', component: MapListComponent},
     {path: ':filter', component: MapListComponent},
   ]}

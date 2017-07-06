@@ -1,5 +1,5 @@
 <n3-columns context='view'>
-  <column-1>
+  <column-1 >
     <!--{{_department | json}}-->
     <div *ngIf='_department'>
       <div *ngIf='_department.parent.id'>
@@ -124,13 +124,13 @@
   <column-2>
     <ul class='tree-list'>
       <li *ngFor='let department of departmentsTree'>
-        <div class='item' [class.active]='selectedDepartment === department.identity.id' (click)='selectDepartment(department.identity.id)'>
+        <div class='item' [class.active]='_params.selectedDepartment == department.identity.id' (click)='selectDepartment(department.identity.id)'>
           <div class='item-delimiter'>&nbsp;</div>
           {{department.name}}
         </div>
         <ul>
           <li *ngFor='let children of department.childrens'>
-            <div  class='children item' [class.active]='selectedDepartment === children.identity.id' (click)='selectDepartment(children.identity.id)'>
+            <div  class='children item' [class.active]='_params.selectedDepartment == children.identity.id' (click)='selectDepartment(children.identity.id)'>
               <div class='item-delimiter'>&nbsp;</div>
               {{children.name}}
             </div>

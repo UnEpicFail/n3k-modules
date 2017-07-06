@@ -20,7 +20,7 @@
     </div>
 
     <div class='tab-array'>
-        <div class='tab' *ngFor='let tab of tabs' [routerLink]='[tab.link]'  routerLinkActive='active' >{{tab.name}}</div>
+        <div class='tab' *ngFor='let tab of tabs' (click)='openTab(tab.id)' [class.active]='tab.id == selectedTab'>{{tab.name}}</div>
     </div>
 
     <div *ngIf='selectedTab === "departments"'>
@@ -93,11 +93,11 @@
     </div>
 </n3-neck>
 
-<app-common *ngIf='selectedTab === "common"' [institution]='institution'></app-common>
-<app-departments *ngIf='selectedTab === "departments"' [institution]='institution'></app-departments>
-<app-buildings *ngIf='selectedTab === "buildings"' [institution]='institution'></app-buildings>
-<app-territories *ngIf='selectedTab === "territories"'  [institution]='institution'></app-territories>
-<app-contracts *ngIf='selectedTab === "contracts"'  [institution]='institution'></app-contracts>
-<app-education-services *ngIf='selectedTab === "education-services"'  [institution]='institution'></app-education-services>
-<app-electronic-services *ngIf='selectedTab === "electronic-services"'  [institution]='institution'></app-electronic-services>
-<app-innovations *ngIf='selectedTab === "innovations"'  [institution]='institution'></app-innovations>
+<!--<app-common *ngIf='selectedTab === "common"' [institution]='institution' [params]='params'></app-common>-->
+<app-departments *ngIf='selectedTab === "departments"' [institution]='institution' [params]='params'></app-departments>
+<!--<app-buildings *ngIf='selectedTab === "buildings"' [institution]='institution' [params]='params'></app-buildings>-->
+<!--<app-territories *ngIf='selectedTab === "territories"'  [institution]='institution' [params]='params'></app-territories>-->
+<!--<app-contracts *ngIf='selectedTab === "contracts"'  [institution]='institution' [params]='params'></app-contracts>-->
+<!--<app-education-services *ngIf='selectedTab === "education-services"'  [institution]='institution' [params]='params'></app-education-services>-->
+<!--<app-electronic-services *ngIf='selectedTab === "electronic-services"'  [institution]='institution' [params]='params'></app-electronic-services>-->
+<!--<app-innovations *ngIf='selectedTab === "innovations"'  [institution]='institution' [params]='params'></app-innovations>-->

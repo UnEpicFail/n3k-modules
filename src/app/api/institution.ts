@@ -13,6 +13,8 @@ import { EducationServiceList } from './institution/EducationServiceList';
 
 import { Building } from './institution/Building';
 import { Department } from './institution/Department';
+import { DepartmentList } from './institution/DepartmentList';
+
 import { Innovation } from './institution/Innovation';
 import { InnovationShort } from './institution/InnovationShort';
 import { InnovationList } from './institution/InnovationList';
@@ -765,7 +767,6 @@ export class InstitutionService {
     public departmentGet(
         id: string,
     ) {
-
         let department = new Department({
             identity: {
                 id: 4
@@ -1893,26 +1894,80 @@ export class InstitutionService {
         p_institutions?: string,
         p_deleted?: string,
     ) {
-        let _path = '/institutions/department/list';
-        let _body = '';
-        let _params = {
-            headers: new Headers(),
-            search: new URLSearchParams(),
-        }
-        _params.headers.append('X-Requested-With', 'XMLHttpRequest'); 
-        if (typeof p_limit !== 'undefined')
-            _params.search.append('p_limit', ''+p_limit); 
-        if (typeof p_page !== 'undefined')
-            _params.search.append('p_page', ''+p_page); 
-        if (typeof p_query !== 'undefined')
-            _params.search.append('p_query', ''+p_query); 
-        if (typeof p_institutions !== 'undefined')
-            _params.search.append('p_institutions', ''+p_institutions); 
-        if (typeof p_deleted !== 'undefined')
-            _params.search.append('p_deleted', ''+p_deleted); 
+
+        let list = [
+                {
+                    identity :{
+                        id: 4
+                    }, 
+                    parent: {
+                        id: 1
+                    },
+                    name: 'Администрация'
+                },
+                {
+                    identity :{
+                        id: 5
+                    }, 
+                    parent: {
+                        id: 1
+                    },
+                    name: 'Спорткомплекс'
+                },
+                {
+                    identity :{
+                        id: 1
+                    },
+                    name: 'Школа'
+                },
+                {
+                    identity :{
+                        id: 2
+                    },
+                    name: 'Детский сад'
+                },
+                {
+                    identity :{
+                        id: 3
+                    },
+                    name: 'Спорткомплекс'
+                },
+                
+
+            ]
+
+            let res = new Observable(observer => {
+                setTimeout(() => {
+                    observer.next(new Response({data:new DepartmentList({items:list})}));
+                }, 1000);
+
+                setTimeout(() => {
+                    observer.complete();
+                }, 3000);
+                })
+
+                return res;
+
+        // let _path = '/institutions/department/list';
+        // let _body = '';
+        // let _params = {
+        //     headers: new Headers(),
+        //     search: new URLSearchParams(),
+        // }
+        // _params.headers.append('X-Requested-With', 'XMLHttpRequest'); 
+        // if (typeof p_limit !== 'undefined')
+        //     _params.search.append('p_limit', ''+p_limit); 
+        // if (typeof p_page !== 'undefined')
+        //     _params.search.append('p_page', ''+p_page); 
+        // if (typeof p_query !== 'undefined')
+        //     _params.search.append('p_query', ''+p_query); 
+        // if (typeof p_institutions !== 'undefined')
+        //     _params.search.append('p_institutions', ''+p_institutions); 
+        // if (typeof p_deleted !== 'undefined')
+        //     _params.search.append('p_deleted', ''+p_deleted); 
 
 
-        return this.http['get'](_path, _params)
+        // return this.http['get'](_path, _params)
     }
     /**
      * Получает список иноваций в постраничном разбиении
