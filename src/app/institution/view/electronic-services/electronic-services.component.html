@@ -1,7 +1,7 @@
 <n3-columns context='view'>
-  <column-1 *ngIf='_publicDigitalServiceList'>
+  <column-1 *ngIf='publicDigitalServices'>
     <div class='quarter-list'>
-      <div class='quarter-part' *ngFor='let publicDigitalService of _publicDigitalServiceList.items'> 
+      <div class='quarter-part' *ngFor='let publicDigitalService of publicDigitalServices'> 
         <h2>{{publicDigitalService.service.name}}</h2>
         <div class='buttons-array'>
           <div class='default-btn btn'>

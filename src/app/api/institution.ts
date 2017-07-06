@@ -2215,14 +2215,14 @@ export class InstitutionService {
      * @param {number} p_limit - Количество записей 
      * @param {number} p_page - Страница выдачи 
      * @param {string} p_query - Поисковая строка 
-     * @param {string} p_institutions - Образовательные организации 
+     * @param {number[]} p_institutions - Образовательные организации 
      * @param {string} p_deleted - Показывать удаленные 
      */
     public publicDigitalServiceList(
         p_limit?: number,
         p_page?: number,
         p_query?: string,
-        p_institutions?: string,
+        p_institutions?: number[],
         p_deleted?: string,
     ) {
 

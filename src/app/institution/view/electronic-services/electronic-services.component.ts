@@ -13,18 +13,27 @@ import { PublicDigitalServiceList } from '../../../api/institution/PublicDigital
 })
 export class ElectronicServicesComponent implements OnInit {
 
-  private _institution: Institution;
-  public _publicDigitalServiceList: PublicDigitalServiceList;
+  _institution: Institution;
+  _params: {
+    tabName: string
+  }
+  publicDigitalServices;
 
 
   @Input()
   set institution(institution){
     if (institution) {
       this._institution = new Institution(institution);
-      this.is.publicDigitalServiceList(this._institution.identity.id).subscribe(res => {
-        let _res = new Response(res);
-        this._publicDigitalServiceList = new PublicDigitalServiceList(_res.data);
+      this.is.publicDigitalServiceList(null, null, null, [this._institution.identity.id]).subscribe(res => {
+        this.publicDigitalServices = new PublicDigitalServiceList( new Response(res).data).items;
       })
+    }
+  }
+
+  @Input()
+  set params(params) {
+    this._params = {
+      tabName: params[0]
     }
   }
 
