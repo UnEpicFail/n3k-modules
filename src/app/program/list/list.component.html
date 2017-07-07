@@ -1,3 +1,78 @@
-<p>
-  list works!
-</p>
+<n3-neck>
+  <h1>Образовательные прогаммы</h1>
+  <div class='buttons-array'>
+    <div class='create-new-btn btn' [routerLink]='["edit"]'>
+      <span class='icon'><i class='fa fa-plus-circle' aria-hidden="true"></i></span>
+      <span class='text'>Добавить</span>
+    </div> 
+  </div>
+  <n3-tab 
+    [tabs]='tabs' 
+    [root]='rootLink' 
+    [base]='tabs[0].id'
+    (change)='params = $event'
+  ></n3-tab>
+</n3-neck>
+<n3-columns context='list'>
+  <column-1>
+    <form class='padding-right-1-column' [formGroup]='filter' (ngSubmit)='onFilterSubmit()'>
+      <n3-input
+        [title] = '"Поиск"'
+        [placeholder] = '"Поиск"'
+        [searchIcon] = 'true'
+        formControlName = 'p_query'
+      ></n3-input>
+
+      <n3-select
+        [title] = '"Уровень образования"'
+        [placeholder] = '"Уровень образования"'
+        [fromMethod] = 'educationLevelsMethod'
+        formControlName = 'p_education_levels'
+      ></n3-select>
+
+      <n3-select
+        [title] = '"Район"'
+        [placeholder] = '"Район"'
+        [fromMethod] = 'districtsMethod'
+        formControlName = 'p_districts'
+      ></n3-select>
+
+      <n3-select
+        [title] = '"Организация"'
+        [placeholder] = '"Организация"'
+        [fromMethod] = 'institutionsMethod'
+        formControlName = 'p_institutions'
+      ></n3-select>
+
+      <n3-select
+        [title] = '"Специальность, профессия"'
+        [placeholder] = '"Специальность, профессия"'
+        [fromMethod] = 'educationSpecifiesMethod'
+        formControlName = 'p_education_specifies'
+      ></n3-select>
+
+      <n3-checkbox
+        [title] = '"Показывать заблокированные"'
+        formContolName = 'p_deleted'
+      ></n3-checkbox>
+
+
+    </form>
+  </column-1>
+  <column-2>
+    <div class='list'>
+      <div *ngFor='let item of list.items' class='list-item' [class.active]='params[1] == item.identity.id' (click)='selectListItem(item.identity.id)'>
+        <h3>{{item.name}}</h3>
+      </div> 
+    </div>
+    <n3-pager></n3-pager>
+  </column-2>
+  <column-3 *ngIf='params[0] === "map"'>
+    <ya-map [latitude]="55.76" [longitude]="37.64">
+      <ya-marker [latitude]="55.847" [longitude]="38.6">
+      </ya-marker>
+      <ya-marker [latitude]="55.847" [longitude]="35.6">
+      </ya-marker>
+    </ya-map>
+  </column-3>
+</n3-columns>

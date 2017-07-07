@@ -4,6 +4,11 @@ import { Http, Headers } from '@angular/http';
 import { Program } from './program/Program';
 import { Plan } from './program/Plan';
 import { Subject } from './program/Subject';
+import { ProgramList } from './program/ProgramList'
+
+import { Observable } from 'rxjs'
+
+import { Response } from './common/Response'
 
 @Injectable()
 export class ProgramService {
@@ -103,36 +108,65 @@ export class ProgramService {
         p_adaptives?: string,
         p_deleted?: string,
     ) {
-        let _path = '/programs/program/list';
-        let _body = '';
-        let _params = {
-            headers: new Headers(),
-            search: new URLSearchParams(),
-        }
-        _params.headers.append('X-Requested-With', 'XMLHttpRequest'); 
-        if (typeof p_limit !== 'undefined')
-            _params.search.append('p_limit', ''+p_limit); 
-        if (typeof p_page !== 'undefined')
-            _params.search.append('p_page', ''+p_page); 
-        if (typeof p_query !== 'undefined')
-            _params.search.append('p_query', ''+p_query); 
-        if (typeof p_districts !== 'undefined')
-            _params.search.append('p_districts', ''+p_districts); 
-        if (typeof p_institutions !== 'undefined')
-            _params.search.append('p_institutions', ''+p_institutions); 
-        if (typeof p_education_levels !== 'undefined')
-            _params.search.append('p_education_levels', ''+p_education_levels); 
-        if (typeof p_education_orientations !== 'undefined')
-            _params.search.append('p_education_orientations', ''+p_education_orientations); 
-        if (typeof p_education_specifies !== 'undefined')
-            _params.search.append('p_education_specifies', ''+p_education_specifies); 
-        if (typeof p_adaptives !== 'undefined')
-            _params.search.append('p_adaptives', ''+p_adaptives); 
-        if (typeof p_deleted !== 'undefined')
-            _params.search.append('p_deleted', ''+p_deleted); 
+
+        let list = []
+
+        for (let i=0; i<20; i+=1) {
+            list.push({
+                identity: {id: i+1},
+                name:'Начальное общее образование с углубленным изучением английского языка',
+            })
+        } 
+        let res = new Observable(observer => {
+          setTimeout(() => {
+              observer.next(new Response({data: new ProgramList({
+                items: list,
+                before: 0,
+                current: 1,
+                last: 20,
+                next: 2,
+                total_pages: 20,
+                total_items: 400
+              })}))
+          }, 1000);
+
+          setTimeout(() => {
+              observer.complete();
+          }, 3000);
+        })
+
+        return res;
+
+        // let _path = '/programs/program/list';
+        // let _body = '';
+        // let _params = {
+        //     headers: new Headers(),
+        //     search: new URLSearchParams(),
+        // }
+        // _params.headers.append('X-Requested-With', 'XMLHttpRequest'); 
+        // if (typeof p_limit !== 'undefined')
+        //     _params.search.append('p_limit', ''+p_limit); 
+        // if (typeof p_page !== 'undefined')
+        //     _params.search.append('p_page', ''+p_page); 
+        // if (typeof p_query !== 'undefined')
+        //     _params.search.append('p_query', ''+p_query); 
+        // if (typeof p_districts !== 'undefined')
+        //     _params.search.append('p_districts', ''+p_districts); 
+        // if (typeof p_institutions !== 'undefined')
+        //     _params.search.append('p_institutions', ''+p_institutions); 
+        // if (typeof p_education_levels !== 'undefined')
+        //     _params.search.append('p_education_levels', ''+p_education_levels); 
+        // if (typeof p_education_orientations !== 'undefined')
+        //     _params.search.append('p_education_orientations', ''+p_education_orientations); 
+        // if (typeof p_education_specifies !== 'undefined')
+        //     _params.search.append('p_education_specifies', ''+p_education_specifies); 
+        // if (typeof p_adaptives !== 'undefined')
+        //     _params.search.append('p_adaptives', ''+p_adaptives); 
+        // if (typeof p_deleted !== 'undefined')
+        //     _params.search.append('p_deleted', ''+p_deleted); 
 
 
-        return this.http['get'](_path, _params)
+        // return this.http['get'](_path, _params)
     }
     /**
      * Получает ссылку для скачивания файла экспорта списка программ

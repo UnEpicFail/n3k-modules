@@ -34,6 +34,7 @@ export class ListComponent implements OnInit {
   rootLink = '/institution'
 
   list: InstitutionList = new InstitutionList({});
+  
   pagination: {page:number} = {
     page: 1
   }
@@ -91,7 +92,6 @@ export class ListComponent implements OnInit {
         this.router.navigate(['institution'], {fragment: this.params[0]+'/'+id, queryParamsHandling:"preserve"})
       break;
     }
-    
   }
 
   setFilter(data?) {
@@ -156,7 +156,7 @@ export class ListComponent implements OnInit {
     return (Object.keys(_data).length === 0) ? '' : _data 
   }
   
-  getList(){
+  getList () {
     let p_limit = 20
     let p_page = this.pagination.page
     let p_query = this.filter.value.p_query
