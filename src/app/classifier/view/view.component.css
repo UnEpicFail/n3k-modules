@@ -1,0 +1,24 @@
+table {
+    width: 100%;
+    font-size: 13px;
+}
+
+table, 
+.action {
+    color: #666666;
+    line-height: 35px;
+    font-family: 'ArialMT', 'Arial';
+    font-weight: 400;
+    font-style: normal;
+}
+
+table td {
+    padding-right: 25px;
+    font-size: 16px;
+    border-bottom: 1px solid #e3e3e3;
+}
+
+.action:hover {
+    cursor: pointer;
+    color: #000;
+}

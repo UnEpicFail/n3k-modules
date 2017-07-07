@@ -1,27 +1,34 @@
-<div class='neck'>
+<n3-neck>
   <a [routerLink]="['/classifier']">Справочники</a><br>↓ 
   <h1>Уровни образования</h1>
-  <div><a [routerLink]="['/classifier/edit']">+ Добавить</a> </div>
-</div>
-<div>
-  <table>
-    <thead>
-      <tr>
-        <td></td>
-        <td *ngFor = 'let title of titles'>
-          {{title.name}}
-        </td>
-        <td></td>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor = 'let item of list' >
-        <td><a [routerLink]="['/classifier/edit/', item.id]">EDIT</a></td>
-        <td *ngFor = 'let title of titles'>
-          {{toView(item[title.propertie])}}
-        </td>
-        <td><span (click)='deleteItem(item.id)'>X</span></td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+  <div class='buttons-array'>
+    <div class='create-new-btn btn' [routerLink]='["edit"]'>
+      <span class='icon'><i class='fa fa-plus-circle' aria-hidden="true"></i></span>
+      <span class='text'>Добавить</span>
+    </div> 
+  </div>
+</n3-neck>
+<n3-columns context='view'>
+  <column-1>
+    <table cellpadding=0 cellspacing=0>
+      <thead>
+        <tr>
+          <td></td>
+          <td *ngFor = 'let title of titles'>
+            {{title.name}}
+          </td>
+          <td></td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor = 'let item of list' >
+          <td><a class='action' [routerLink]="['edit', item.id]"><i class="fa fa-pencil" aria-hidden="true"></i></a></td>
+          <td *ngFor = 'let title of titles'>
+            {{toView(item[title.propertie])}}
+          </td>
+          <td><span class='action' (click)='deleteItem(item.id)'><i class="fa fa-trash" aria-hidden="true"></i></span></td>
+        </tr>
+      </tbody>
+    </table>
+  </column-1>
+</n3-columns>

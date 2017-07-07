@@ -1,3 +1,40 @@
-<p>
-  edit works!
-</p>
+<n3-neck>
+  <a class='bread-crumbs' (click)='backToClassifier()'>Название справоччника</a>
+  <br>↓ 
+  <h1>Справочник</h1>
+</n3-neck>
+<n3-columns context='form'>
+  <column-1>
+    <form>
+      <h2>Значение справочника</h2>
+      <n3-input
+        [title] = '"Название"'
+        [placeholder] = '"Название"'
+      ></n3-input>
+      <n3-input
+        [title] = '"Код"'
+        [placeholder] = '"Код"'
+      ></n3-input>
+      <h2>Связь</h2>
+      <n3-select
+        [title] = '"Уровень образования"'
+        [placeholder] = '"Уровень образования"'
+      ></n3-select>
+      <n3-select
+        [title] = '"Регион"'
+        [placeholder] = '"Регион"'
+      ></n3-select>
+      <div class='buttons-array' fly>
+        <div class='create-new-btn btn' (click)='onSubmit()'>
+            <span class='text'>Сохранить</span>
+        </div> 
+
+        <div class='transparent-btn btn' (click)='onCancel()'>
+            <span class='text'>Отменить</span>
+        </div>
+      </div>
+    </form>
+  </column-1>
+  <column-2>
+  </column-2>
+</n3-columns>

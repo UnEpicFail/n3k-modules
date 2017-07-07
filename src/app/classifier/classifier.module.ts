@@ -14,9 +14,9 @@ import { N3NgPipesModule } from '../lib/n3-ng-pipes/n3-ng-pipes.module';
 
 const routes:Routes = [
   {path: 'classifier', children: [
-    {path: 'edit', component: EditComponent},
-    {path: 'edit/:id', component: EditComponent},
-    {path: 'view/:id', component: ViewComponent},        
+    {path: 'view/:classifierId', component: ViewComponent},        
+    {path: 'view/:classifierId/edit', component: EditComponent},        
+    {path: 'view/:classifierId/edit/:itemId', component: EditComponent},        
     {path: '', component: ListComponent},
   ]}
 ]
