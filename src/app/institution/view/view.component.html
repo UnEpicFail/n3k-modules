@@ -19,7 +19,12 @@
         </div> 
     </div>
 
-    <n3-tab [tabs]='tabs' [root]='rootLink' (change)='params = $event'></n3-tab>
+    <n3-tab 
+        [tabs]='tabs' 
+        [root]='rootLink' 
+        [base]='tabs[0].id'
+        (change)='params = $event'
+    ></n3-tab>
 
     <div *ngIf='params[0] === "departments"'>
         <h2>Подразделения</h2>

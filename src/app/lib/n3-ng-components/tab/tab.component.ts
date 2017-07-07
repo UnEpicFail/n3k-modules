@@ -12,8 +12,9 @@ export class TabComponent implements OnInit{
 
   _tabs
   _root
+  _base
   params: string[] = []
-  selectedTab
+  
   overflowedTabs = []
   overlayDown
   moreListUp = false
@@ -29,6 +30,11 @@ export class TabComponent implements OnInit{
     this._root = root
   }
 
+  @Input()
+  set base(base) {
+    this._base = base;
+  }
+
   @Output() change = new EventEmitter()
 
   constructor(
@@ -41,7 +47,7 @@ export class TabComponent implements OnInit{
       if (params instanceof NavigationEnd) {
         const tree = router.parseUrl(router.url);
         if (tree.fragment) {
-          this.params = tree.fragment.split('/')
+          this.params = tree.fragment.split('/') 
           this.change.emit(this.params)
         }
       }
@@ -68,8 +74,6 @@ export class TabComponent implements OnInit{
       } else {
         this.overflowedTabs = []
       }
-      console.log()
-    
     }
 
     window.addEventListener('resize', this.liquiding);
@@ -78,17 +82,24 @@ export class TabComponent implements OnInit{
   ngOnInit() {
     setTimeout(()=>{
       this.liquiding()
+      if (typeof this.params[0] === 'undefined') {
+        if(this._base){
+          this.openTab(this._base)
+        }
+      } else {
+        this.openTab(this.params[0])
+      }
     })
   }
 
   openTab(id) {
     if (this.moreListUp) {
       this.overlayDown()
-      let index = this.getIndexById(id)
-      if (typeof index === 'number') {
-        this._tabs.unshift(this._tabs.splice(index, 1)[0])
-        this.liquiding();
-      }
+    }
+    let index = this.getIndexById(id)
+    if (typeof index === 'number' && this._tabs.length - this.overflowedTabs.length <= index ) {
+      this._tabs.unshift(this._tabs.splice(index, 1)[0])
+      this.liquiding();
     }
     this.router.navigate([this._root], {fragment:id, queryParamsHandling:"preserve"} )
   }

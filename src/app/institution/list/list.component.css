@@ -5,6 +5,11 @@
     box-sizing: border-box;
 }
 
+table {
+    border: 0;
+    padding: 0;
+    margin: 0;
+}
 
 .status-1{
     color:#6CB27B;

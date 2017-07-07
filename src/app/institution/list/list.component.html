@@ -6,7 +6,12 @@
       <span class='text'>Добавить</span>
     </div> 
   </div>
-  <n3-tab [tabs]='tabs' [root]='rootLink' (change)='params = $event'></n3-tab>
+  <n3-tab 
+    [tabs]='tabs' 
+    [root]='rootLink' 
+    [base]='tabs[0].id'
+    (change)='params = $event'
+  ></n3-tab>
 </n3-neck>
 <n3-columns context='list'>
   <column-1>
@@ -86,8 +91,5 @@
       <ya-marker [latitude]="55.847" [longitude]="35.6">
       </ya-marker>
     </ya-map>
-  </column-3>
-  <column-3 *ngIf='params[0] === "list"'>
-      LIST
   </column-3>
 </n3-columns>

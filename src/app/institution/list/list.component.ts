@@ -85,7 +85,7 @@ export class ListComponent implements OnInit {
   selectListItem(id) {
     switch (this.params[0]) {
       case 'map':
-        this.router.navigate(['institution','view',id], {fragment:'common'});
+        this.router.navigate(['institution','view',id]);
       break;
       case 'list':
         this.router.navigate(['institution'], {fragment: this.params[0]+'/'+id, queryParamsHandling:"preserve"})
@@ -198,20 +198,7 @@ export class ListComponent implements OnInit {
     let p_deleted = this.filter.value.p_deleted
 
 
-    console.log(p_limit,
-      p_page,
-      p_query,
-      p_regions,
-      p_districts,
-      p_institution_types,
-      p_institution_kinds,
-      p_education_levels,
-      p_okopfs,
-      p_okfses,
-      p_institution_statuses,
-      p_jurisdictions,
-      p_education_orientations,
-      p_deleted)
+    
 
     this.institutionService.institutionList(
       p_limit,
