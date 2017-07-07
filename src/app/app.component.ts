@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Router, NavigationEnd } from '@angular/router';
+import { Router, NavigationEnd, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -24,22 +24,35 @@ export class AppComponent {
     {link:'classifier', name:'Справочники', icon:'icon-location-pin'}
   ]
 
-  active = [0, 0];
+  sub = [];
 
 
-  constructor(private router: Router) {
-    // router.events.subscribe((val) => { 
-    //     if (val instanceof NavigationEnd) {
-    //       console.log('val', val)
-    //       for(let i in this.menuList) {
-            
-    //       }
-    //     } 
-    // });
+  constructor(
+    private router: Router, 
+    private ar: ActivatedRoute
+  ) {      
+
+    router.events.subscribe(val => { 
+      if (val instanceof NavigationEnd) {
+        let index = this.getActive(val.url.split('#')[0].split('?')[0].split('/')[1])
+        if (index >= 0){
+          this.sub = (this.menuList[index].sub || [])
+        } else {
+          this.sub = []
+        }
+      }
+    });
   }
 
-  getActive() {
-    
-    return 0;
+  getActive(name) {
+    let index = -1;
+    for(let i=0, max_i=this.menuList.length; i <max_i; i+=1){
+      if(name === this.menuList[i].link){
+        index = i;
+        break;
+      }
+    }
+    return index
   }
+
 }

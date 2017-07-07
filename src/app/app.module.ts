@@ -13,13 +13,16 @@ import { GroupModule } from './group/group.module';
 import { ProgramModule } from './program/program.module';
 import { ClassifierModule } from './classifier/classifier.module';
 
+let groupRoutes = GroupModule.getRoutes()
 
 const rourer = [
-  {path:'journal',  children: [
-    GroupModule.getRoutes(),
-    ProgramModule.getRoutes(),
-    {path: '', component: ProgramModule.getIndexComponent()},
-  ]},
+  {
+    path:'journal',  children: [
+      GroupModule.getRoutes(),
+      ProgramModule.getRoutes(),
+      {path: '', component: ProgramModule.getIndexComponent()},
+    ]
+  },
   InstitutionModule.getRoutes(),
   ClassifierModule.getRoutes()
 ]

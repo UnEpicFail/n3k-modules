@@ -27,6 +27,7 @@ export class ColumnsComponent implements AfterContentInit , OnDestroy{
   footer
   body 
   scrollPosition
+  getHeightTimeout
 
   @Input('context')
   context: string
@@ -56,9 +57,11 @@ export class ColumnsComponent implements AfterContentInit , OnDestroy{
   }
 
   setHeight() {
+    if(this.getHeightTimeout)
+      clearTimeout(this.getHeightTimeout)
     if ( typeof this.column3 !== 'undefined') {
       this.columns = 3;
-      setTimeout(()=>{
+      this.getHeightTimeout = setTimeout(()=>{
         this.heights = [
           this.column1.getHeight(), 
           this.column2.getHeight(), 
@@ -68,7 +71,7 @@ export class ColumnsComponent implements AfterContentInit , OnDestroy{
       }, 1)  
     } else if ( typeof this.column2 !== 'undefined') {
       this.columns = 2;
-      setTimeout(()=>{
+      this.getHeightTimeout = setTimeout(()=>{
         this.heights = [
           this.column1.getHeight(), 
           this.column2.getHeight(), 
@@ -77,7 +80,7 @@ export class ColumnsComponent implements AfterContentInit , OnDestroy{
       }, 1)    
     } else if ( typeof this.column1 !== 'undefined') {
       this.columns = 1;
-      setTimeout(()=>{
+      this.getHeightTimeout = setTimeout(()=>{
         this.heights = [
           this.column1.getHeight(), 
         ]

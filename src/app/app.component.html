@@ -22,9 +22,9 @@
       </div>
     </div>
     <div class='main-sub-menu'>
-      <div class='page' *ngFor="let sub of menuList[getActive()].sub">
-        <a [routerLink]="[sub.link]" class="content" routerLinkActive='active'>
-          <div class='text'>{{sub.name}}</div>
+      <div class='page' *ngFor="let item of sub">
+        <a [routerLink]="[item.link]" class="content" routerLinkActive='active'>
+          <div class='text'>{{item.name}}</div>
         </a>
       </div>
     </div>
