@@ -1,0 +1,15 @@
+.classifier-list {
+    border-bottom: 1px solid #e3e3e3; 
+}
+
+.classifier-list li {
+    line-height: 35px;
+    border-top: 1px solid #e3e3e3;
+}
+
+.classifier-list li a{
+    font-size: 16px;
+    color: #5DB3CA;
+    font-family: 'ArialMT', 'Arial';
+    font-weight: 400;
+}

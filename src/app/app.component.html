@@ -12,7 +12,7 @@
             <li
               *ngFor = "let item of menuList"
             >
-              <a [routerLink]="[item.link]" class="content" routerLinkActive='active'>
+              <a [routerLink]="[item.link]" class="content" [class.active]='item.active'>
                 <div class='icon'><i [class]='item.icon'></i></div>
                 <div class='text'>{{item.name}}</div>
               </a>
@@ -23,7 +23,7 @@
     </div>
     <div class='main-sub-menu'>
       <div class='page' *ngFor="let item of sub">
-        <a [routerLink]="[item.link]" class="content" routerLinkActive='active'>
+        <a [routerLink]="[item.link]" class="content" [class.active]='item.active'>
           <div class='text'>{{item.name}}</div>
         </a>
       </div>

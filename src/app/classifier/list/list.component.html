@@ -1,22 +1,18 @@
-<!--<app-neck>
-  <span class='neck-title'>
+<n3-neck>
+  <h1>
     Справочники
-  </span>
-</app-neck>
-<app-column position=1 of=1 state='list'>
-<ul>
-    <li *ngFor = 'let item of list'>
-      <a [routerLink]="['/classifier/view/',item.id]">{{item.name}}</a>
-    </li>
-  </ul>
-  <div class='paginate'>
-    <ul>
-      <li (click)='prew()'> < </li>
-      <li (click)='next()'> > </li>
-      <li (click)='selectPage()'> {{currentRange}} </li>
+  </h1>
+</n3-neck>
+<n3-columns context='view'>
+  <column-1>
+    <ul class='classifier-list'>
+      <li *ngFor = 'let item of list'>
+        <a [routerLink]="['/classifier/view/',item.id]">{{item.name}}</a>
+      </li>
     </ul>
-  </div>
-</app-column>
+    <n3-pager></n3-pager>
+  </column-1>
+</n3-columns>
 
 
--->
+

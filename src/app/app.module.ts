@@ -16,15 +16,10 @@ import { ClassifierModule } from './classifier/classifier.module';
 let groupRoutes = GroupModule.getRoutes()
 
 const rourer = [
-  {
-    path:'journal',  children: [
-      GroupModule.getRoutes(),
-      ProgramModule.getRoutes(),
-      {path: '', component: ProgramModule.getIndexComponent()},
-    ]
-  },
+  GroupModule.getRoutes(),
+  ProgramModule.getRoutes(),
   InstitutionModule.getRoutes(),
-  ClassifierModule.getRoutes()
+  ClassifierModule.getRoutes(),
 ]
 
 @NgModule({
